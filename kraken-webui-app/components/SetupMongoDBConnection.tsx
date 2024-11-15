@@ -1,21 +1,30 @@
 // getting-started.js
 const mongoose = require('mongoose');
 
-SetupMongoDBConnection().catch(err => console.log(err));
-
 async function StartSetup() {
-  await mongoose.connect('mongodb://127.0.0.1:27017/test');
+  await mongoose.connect('mongodb://admin:pass@127.0.0.1:8090/sensor_config');
 
-  // use `await mongoose.connect('mongodb://user:password@127.0.0.1:27017/test');` if your database has auth enabled
 }
 
+const SensorSchema = new mongoose.Schema({
+  name: String
+});
+
+const Sensor = mongoose.model('TestSensor', SensorSchema);
+
+// Adding a test sensor
+const TestSensor = new Sensor({ name: 'Test1' });
+console.log(TestSensor.name); // 'Silence'
+
+/**
 type Props = {
   key: value;
 }
-
-export default function SetupMongoDBConnection(props : Props) {
-  StartSetup()
+*/
+export default function SetupMongoDBConnection() {
+ // StartSetup()
   return (
-    props.children
+    <span>{TestSensor}</span>>
   )
 }
+   
