@@ -6,6 +6,15 @@ import TableItem from "./TableItem";
 
 const PostList = ({posts, listTitle, remove}) => {
 
+    //falls keine Elementen gezeigt werden, dann geben wir den Hinweis mit diser Nachricht 
+    if(!posts.length){
+      return(
+        <h1 style={{textAlign: 'center'}}>
+          keine Sensoren gefunden
+        </h1>
+      )
+    }
+
     const [isTableView, setIsTableView] = useState(false);
 
     return(
@@ -38,7 +47,7 @@ const PostList = ({posts, listTitle, remove}) => {
       </tr>
     </thead>
     <tbody>
-      {posts.map(post => <TableItem post={post} key={post.id} />)}
+      {posts.map(post => <TableItem remove={remove} post={post} key={post.id} />)}
     </tbody>
   </table>
 ) : (

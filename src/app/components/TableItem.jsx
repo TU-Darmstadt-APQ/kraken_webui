@@ -1,4 +1,5 @@
 import React from "react";
+import MyButton from "./UI/button/button/MyButton";
 
 const TableItem = (props) => {
     return(
@@ -13,8 +14,8 @@ const TableItem = (props) => {
             <td>{props.post.uid}</td>
             <td>{props.post.config}</td>
             <td>{props.post.on_connect}</td>
-            <td style={{ borderBottomStyle: 'hidden', borderTopStyle: 'hidden', borderRightStyle: 'hidden' }}><button className="list-button">Edit</button></td>
-            <td style={{ borderBottomStyle: 'hidden', borderTopStyle: 'hidden', borderRightStyle: 'hidden' }}><button className="list-button">Delete</button></td>
+            <td style={{ borderBottomStyle: 'hidden', borderTopStyle: 'hidden', borderRightStyle: 'hidden' }}><MyButton className="list-button">Edit</MyButton></td>
+            <td style={{ borderBottomStyle: 'hidden', borderTopStyle: 'hidden', borderRightStyle: 'hidden' }}><MyButton onClick={() => props.remove(props.post)} className="list-button">Delete</MyButton></td>
         </tr>
     );
 };

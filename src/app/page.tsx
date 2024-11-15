@@ -1,10 +1,12 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 
 import PostList from "./components/PostList";
 import PostForm from "./components/PostForm";
-import MySelect from "./components/UI/button/select/MySelect";
+import PostFilter from "./components/PostFilter";
+import ModalWindow from "./components/UI/button/ModalWindow/ModalWindow";
+import MyButton from "./components/UI/button/button/MyButton";
 
 
 function Page() {
@@ -42,47 +44,49 @@ function Page() {
   //es gibt zwei Moeglichkeiten, wie man Zugrif zu DOM-Objekten kriegt - Controlled component und Uncontrolled component
   //wir benutzen "controlled"
 
-  const[selectedSort, setSelectedSort] = useState('')
+  const [filter, setFilter] = useState({sort: '', query: ''})
+  const [modal, setModal]  =useState(false)
+
+  const sortedPosts = useMemo(() => {
+    if(filter.sort){
+      return [...posts].sort((a: any, b: any) => {
+        if (a[filter.sort] && b[filter.sort]) {
+          return String(a[filter.sort]).localeCompare(String(b[filter.sort]));
+        }
+        return 0;
+      })
+    }
+    return posts;
+  }, [filter.sort, posts])
+
+  //um Suche Registerunabhaengig zu machen, habe ich toLowerCase fuer IP und Titles eingefuehrt
+  const sortedAndSeatchedPosts = useMemo(
+    () => {
+      return sortedPosts.filter(post => post.title.toLowerCase().includes(filter.query.toLowerCase()))
+    }, [filter.query, sortedPosts]
+  )
 
   const createPost = (newPost: Post) => {
     setPosts([...posts, newPost]);
+    setModal(false);
   }
   const removePost = (post: Post) => {
     setPosts(posts.filter(p => p.id != post.id));
   }
-  const sortPosts = (sort: keyof Post) => {
-    setSelectedSort(sort);
-    setPosts([...posts].sort((a, b) => {
-      if (a[sort] && b[sort]) {
-        return String(a[sort]).localeCompare(String(b[sort]));
-      }
-      return 0;
-    })); //da die Methode sort der ursprunglichen Array veraendert machen wir eine Kopie und sortieren sie
-  }
 
   return (
     <div className="App">
-      <PostForm create={createPost}/> {/*als Argument fuer unseren Komponent senden wir eine Methode, die iwelchen Wert fuer Elternknoten zurueckliefert. Es ist so, da React als Baum dargestellt ist und Elternknoten koennen Attribute an Kinder senden, aber nicht umgekehrt */}
+      {/* Pop-Up Window oder ModalWindow */}
+      <MyButton style={{marginTop: 30}} onClick={() => setModal(true)}>
+        Sensor Einfuegen
+      </MyButton>
+      <ModalWindow visible={modal} setVisible={setModal}>
+        <PostForm create={createPost}/> {/*als Argument fuer unseren Komponent senden wir eine Methode, die iwelchen Wert fuer Elternknoten zurueckliefert. Es ist so, da React als Baum dargestellt ist und Elternknoten koennen Attribute an Kinder senden, aber nicht umgekehrt */}
+      </ModalWindow>
+      
       <hr style={{margin: '15px 0'}}></hr>
-      <div>
-        <MySelect
-          value={selectedSort}
-          onChange={sortPosts}
-          defaultValue="sortieren nach:"
-          options={[
-            {value: 'title', name: 'Nach Name'},
-            {value: 'description', name: 'Nach Beschreibung'}
-          ]}
-        />
-      </div>
-      {posts.length !== 0 
-        ? 
-        <PostList remove={removePost} posts={posts} listTitle={"Die Liste aller Sensoren"}></PostList> 
-        :
-        <h1 style={{textAlign: 'center'}}>
-          keine Sensoren gefunden
-        </h1>
-      }
+      <PostFilter filter={filter} setFilter={setFilter}/>
+      <PostList remove={removePost} posts={sortedAndSeatchedPosts} listTitle={"Die Liste aller Sensoren"}></PostList> 
       
     </div>
   );
