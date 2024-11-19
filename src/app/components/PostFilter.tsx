@@ -1,8 +1,10 @@
 import React from 'react';
-import MySelect from "./UI/button/select/MySelect";
-import MyInput from "./UI/button/input/MyInput";
+import MySelect from "./UI/select/MySelect";
+import MyInput from "./UI/input/MyInput";
 
-const PostFilter = ({filter, setFilter}) => {
+import { PostFilterProps, Post } from "../types";
+
+const PostFilter: React.FC<PostFilterProps> = ({filter, setFilter}) => {
   return (
     <div>
         {/*Suchefeld*/}
@@ -14,7 +16,7 @@ const PostFilter = ({filter, setFilter}) => {
 
         <MySelect
           value={filter.query}
-          onChange={selectedSort => setFilter({...filter, sort: selectedSort})}
+          onChange={(selectedSort: keyof Post) => setFilter({...filter, sort: selectedSort})}
           defaultValue="sortieren nach:"
           options={[
             {value: 'title', name: 'Nach Name'},

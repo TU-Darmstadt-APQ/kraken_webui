@@ -1,16 +1,19 @@
 "use client";
 
-import React, { useState, useMemo } from "react";
+import React, { useState } from "react";
+import { usePosts } from "./hooks/usePosts";
 
 import PostList from "./components/PostList";
 import PostForm from "./components/PostForm";
 import PostFilter from "./components/PostFilter";
-import ModalWindow from "./components/UI/button/ModalWindow/ModalWindow";
-import MyButton from "./components/UI/button/button/MyButton";
+import ModalWindow from "./components/UI/ModalWindow/ModalWindow";
+import MyButton from "./components/UI/button/MyButton";
+
+import { Post } from "./types";
 
 
 function Page() {
-  const [posts, setPosts] = useState([
+  const [posts, setPosts] = useState<Post[]>([
     {
       id: 1,
       title: 'Lorem ispum',
@@ -27,44 +30,13 @@ function Page() {
     { id: 3, title: 'Sensor 2', description: 'Description' }
   ]);
 
-  interface Post {
-    id: number;
-    title: string;
-    description: string;
-    date_created: string;
-    date_modified: string;
-    enabled: string;
-    label: string;
-    uid: string;
-    config: string;
-    on_connect: string;
-  }
-
 
   //es gibt zwei Moeglichkeiten, wie man Zugrif zu DOM-Objekten kriegt - Controlled component und Uncontrolled component
   //wir benutzen "controlled"
 
-  const [filter, setFilter] = useState({sort: '', query: ''})
-  const [modal, setModal]  =useState(false)
-
-  const sortedPosts = useMemo(() => {
-    if(filter.sort){
-      return [...posts].sort((a: any, b: any) => {
-        if (a[filter.sort] && b[filter.sort]) {
-          return String(a[filter.sort]).localeCompare(String(b[filter.sort]));
-        }
-        return 0;
-      })
-    }
-    return posts;
-  }, [filter.sort, posts])
-
-  //um Suche Registerunabhaengig zu machen, habe ich toLowerCase fuer IP und Titles eingefuehrt
-  const sortedAndSeatchedPosts = useMemo(
-    () => {
-      return sortedPosts.filter(post => post.title.toLowerCase().includes(filter.query.toLowerCase()))
-    }, [filter.query, sortedPosts]
-  )
+  const [filter, setFilter] = useState<{ sort: keyof Post | ''; query: string }>({sort: '', query: ''});
+  const [modal, setModal]  = useState(false)
+  const sortedAndSearchedPosts = usePosts(posts, filter.sort, filter.query);
 
   const createPost = (newPost: Post) => {
     setPosts([...posts, newPost]);
@@ -86,7 +58,7 @@ function Page() {
       
       <hr style={{margin: '15px 0'}}></hr>
       <PostFilter filter={filter} setFilter={setFilter}/>
-      <PostList remove={removePost} posts={sortedAndSeatchedPosts} listTitle={"Die Liste aller Sensoren"}></PostList> 
+      <PostList remove={removePost} posts={sortedAndSearchedPosts} listTitle={"Die Liste aller Sensoren"}></PostList> 
       
     </div>
   );

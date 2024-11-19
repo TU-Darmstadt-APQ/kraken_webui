@@ -1,10 +1,12 @@
 import React, {useState} from "react";
 
-import MyButton from "./UI/button/button/MyButton";
-import MyInput from "./UI/button/input/MyInput";
+import MyButton from "./UI/button/MyButton";
+import MyInput from "./UI/input/MyInput";
+
+import { PostFormProps } from "../types";
 
 
-const PostForm = ({create}) => {
+const PostForm: React.FC<PostFormProps> = ({create}) => {
     const [post, setPost] = useState({title: '', description: ''}); //gesteuerter Element 
 
     const addNewPost = (e: any) => {
@@ -21,7 +23,7 @@ const PostForm = ({create}) => {
         {/*das kontrollierte/ gesteuerte Objekt*/}
         <MyInput value={post.title} onChange={e => setPost({...post, title: e.target.value})} type="text" placeholder="Name der Sensor"/>
         <MyInput value={post.description} onChange={e => setPost({...post, description: e.target.value})} type="text" placeholder="Beschreibung"/>
-        <MyButton onClick={addNewPost}>Sensor einfuegen</MyButton>
+        <MyButton onClick={addNewPost}>Sensor einfügen</MyButton>
       </form>
     );
 };
