@@ -1,3 +1,5 @@
+import { ReactNode } from 'react';
+
 export interface Post {
     id: number;
     title: string;
@@ -45,4 +47,26 @@ export interface ModalWindowProps {
   children: React.ReactNode; // Inhalte zwischen den Tags
   visible: boolean; // Sichtbarkeit des Fensters
   setVisible: (visible: boolean) => void; // Funktion zur Änderung der Sichtbarkeit
+}
+
+export interface MyButtonProps {
+  children: ReactNode;
+  [key: string]: any; // Catch-all for any additional props
+}
+
+export interface PostListProps {
+  posts: Post[];               // Array von Posts
+  listTitle: string;           // Titel der Liste
+  remove: (post: Post) => void; // Funktion zum Entfernen eines Posts
+}
+
+export interface TableItemProps {
+  post: Post;                   // Ein einzelner Post
+  remove: (post: Post) => void; // Funktion, die einen Post entfernt
+}
+
+export interface PostItemProps {
+  post: Post;                   // Einzelner Post
+  remove: (post: Post) => void; // Funktion, die einen Post entfernt
+  number: number;               // Reihenfolge des Posts (optional)
 }
