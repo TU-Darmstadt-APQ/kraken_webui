@@ -15,10 +15,15 @@ WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY kraken-webui-app/ .
 
+# Disable telemetry
+ENV NEXT_TELEMETRY_DISABLED=1
+
 RUN apk --no-cache upgrade \
   && npm run build
 
 FROM base AS runner
+# Disable telemetry
+ENV NEXT_TELEMETRY_DISABLED=1
 
 ARG WORKER_USER_ID=5556
 
