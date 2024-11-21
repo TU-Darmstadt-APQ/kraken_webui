@@ -22,22 +22,28 @@ RUN apk --no-cache upgrade \
   && npm run build
 
 FROM base AS runner
+WORKDIR /app
+
+ENV NODE_ENV=production
 # Disable telemetry
 ENV NEXT_TELEMETRY_DISABLED=1
 
 ARG WORKER_USER_ID=5556
 
 # Create a non-root user
-RUN addgroup -g ${WORKER_USER_ID} worker && \
-    adduser -D -u ${WORKER_USER_ID} -G worker worker
+RUN apk --no-cache upgrade \
+  && addgroup -g ${WORKER_USER_ID} nodejs \
+  && adduser -D -u ${WORKER_USER_ID} -G nodejs worker
 
 WORKDIR /app
 
 # Copy the built application from the builder stage
-COPY --from=builder /app/dist ./
+COPY --from=builder /app/public ./public
+COPY --from=builder --chown=worker:nodejs /app/.next/standalone ./
+COPY --from=builder --chown=worker:nodejs /app/.next/static ./.next/static
 
 EXPOSE 3000
 
 USER worker
 
-CMD ["node", "index.js"]
+CMD ["node", "server.js"]
