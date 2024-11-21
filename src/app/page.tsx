@@ -10,6 +10,7 @@ import ModalWindow from "./components/UI/ModalWindow/ModalWindow";
 import MyButton from "./components/UI/button/MyButton";
 
 import { Post } from "./types";
+import MyHeader from "./components/UI/header/MyHeader";
 
 
 function Page() {
@@ -94,11 +95,22 @@ function Page() {
 
   return (
     <div className="App">
-      
-      {/* Button to open the modal for adding a new sensor */}
-      <MyButton style={{marginTop: 30}} onClick={() => setModal(true)}>
-        Sensor Einfügen
-      </MyButton>
+      <MyHeader addingNewSensor={() => setModal(true)}/>
+
+      <div className="Content">
+
+        {/* Left Sidebar */}
+        <div className="Sidebar">
+          <MyButton>Option 1</MyButton>
+          <MyButton>Option 2</MyButton>
+          <MyButton>Option 3</MyButton>
+          <MyButton>Option 4</MyButton>
+          <MyButton>Option 5</MyButton>
+        </div>
+
+        {/* Right Main Content */}
+        <div className="MainContent">
+          <div>
 
       {/* Modal window for adding a new sensor */}
       <ModalWindow visible={modal} setVisible={setModal}>
@@ -111,15 +123,15 @@ function Page() {
          * Parents can pass props to children, but children cannot directly modify parent data (!)
          */}
       </ModalWindow>
-      
-      <hr style={{margin: '15px 0'}}></hr>
+
        {/* Component responsible for managing the filter inputs */}
       <PostFilter filter={filter} setFilter={setFilter}/>
 
       {/* Component responsible for displaying the list of sensors.
           It supports two views: table view and post view. */}
       <PostList remove={removePost} posts={sortedAndSearchedPosts} listTitle={"Die Liste aller Sensoren"}></PostList> 
-      
+      </div></div>
+    </div>
     </div>
   );
 }
