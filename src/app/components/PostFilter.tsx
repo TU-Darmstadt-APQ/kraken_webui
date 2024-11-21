@@ -24,19 +24,22 @@ const PostFilter: React.FC<PostFilterProps> = ({ filter, setFilter }) => {
         placeholder="Searching for..." // Placeholder text for the input field
       />
 
-      <MySelect
-        value={filter.query}
-        onChange={(selectedSort: keyof Post) =>
-          setFilter({ ...filter, sort: selectedSort })
-        } // Update the `sort` property in the filter state when a new option is selected
-        defaultValue="Order by:" // Placeholder text for the dropdown menu
-        options={[
-          // Sorting options
-          { value: "title", name: "Name" },
-          { value: "description", name: "Description" },
-        ]}
-      />
-    </div>
+        <MySelect
+          value={filter.query}
+          onChange={(selectedSort: keyof Post) => setFilter({...filter, sort: selectedSort})} // Update the `sort` property in the filter state when a new option is selected
+          defaultValue="sortieren nach:" // Placeholder text for the dropdown menu
+          options={[ // Sorting options
+            {value: 'title', name: 'Nach Name'},
+            {value: 'description', name: 'Nach Beschreibung'},
+            {value: 'id', name: 'Nach ID'},
+            {value: 'date_created', name: 'Nach Erstelsdatum'},
+            {value: 'date_modified', name: 'Zulezt geändert'},
+            {value: 'enabled', name: 'Eingeschaltet'},
+            {value: 'label', name: 'Label'},
+            {value: 'uid', name: 'UID'},
+          ]}
+        />
+      </div>
   );
 };
 
