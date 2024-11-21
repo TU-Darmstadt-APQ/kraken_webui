@@ -1,5 +1,4 @@
-# Stage 1 
-FROM node:18-alpine AS builder
+FROM node:18-alpine AS base
 
 # Set the working directory
 WORKDIR /app
@@ -10,8 +9,7 @@ RUN apk --no-cache upgrade \
   && npm ci
   && npm run build
 
-# Stage 2 
-FROM node:18-alpine
+FROM base AS runner
 
 ARG WORKER_USER_ID=5556
 
