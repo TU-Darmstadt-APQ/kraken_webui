@@ -4,14 +4,20 @@ export interface Post {
     id: number;
     title: string;
     description?: string; //alle mit dem Fragezeichen gezeichnete Zeilen sind opitonal (bzw. müssen nicht bei der Erstellung des Objektes dabei sein)
-    date_created?: string;
-    date_modified?: string;
-    enabled?: string;
+    date_created?: DateType;
+    date_modified?: DateType;
+    enabled?: boolean;
     label?: string;
     uid?: string;
-    config?: string;
+    config?: Record<string, unknown>; // Flexible Konfiguration (Objekt mit beliebigen Werten)
     on_connect?: string;
-  }
+}
+export interface DateType {
+  day?: number;
+  month?: number;
+  year?: number;
+  nanoseconds?: number;
+}
 
 // Definiere das Interface für den Filter
 interface Filter {

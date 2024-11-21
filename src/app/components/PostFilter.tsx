@@ -31,7 +31,13 @@ const PostFilter: React.FC<PostFilterProps> = ({filter, setFilter}) => {
           defaultValue="sortieren nach:" // Placeholder text for the dropdown menu
           options={[ // Sorting options
             {value: 'title', name: 'Nach Name'},
-            {value: 'description', name: 'Nach Beschreibung'}
+            {value: 'description', name: 'Nach Beschreibung'},
+            {value: 'id', name: 'Nach ID'},
+            {value: 'date_created', name: 'Nach Erstelsdatum'},
+            {value: 'date_modified', name: 'Zulezt geändert'},
+            {value: 'enabled', name: 'Eingeschaltet'},
+            {value: 'label', name: 'Label'},
+            {value: 'uid', name: 'UID'},
           ]}
         />
       </div>

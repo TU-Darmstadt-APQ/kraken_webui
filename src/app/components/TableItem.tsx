@@ -2,6 +2,7 @@ import React from "react";
 import MyButton from "./UI/button/MyButton";
 
 import { TableItemProps } from '@/app/types';
+import { fallbackModeToFallbackField } from "next/dist/lib/fallback";
 
 /**
  * A component representing a single table row with data and action buttons.
@@ -17,12 +18,41 @@ const TableItem: React.FC<TableItemProps> = ({post, remove}) => {
             <td>{post.id}</td>
             <td>{post.title}</td>
             <td>{post.description}</td>
-            <td>{post.date_created}</td>
-            <td>{post.date_modified}</td>
-            <td>{post.enabled}</td>
+            <td>{post.date_created
+                ? `${post.date_created.day}.${post.date_created.month}.${post.date_created.year}`
+                : "Datum nicht angegeben"}
+            </td>
+            <td>{post.date_modified
+                ? `${post.date_modified.day}.${post.date_modified.month}.${post.date_modified.year}`
+                : "Datum nicht angegeben"}
+            </td>
+            <td>
+                {post.enabled == true ? (
+                <div style={{ width: "10px", height: "10px", backgroundColor: "green", borderRadius: "50%" }}></div>
+            ): post.enabled == false ? (
+                <div style={{ width: "10px", height: "10px", backgroundColor: "red", borderRadius: "50%" }}></div>
+            ) : null
+                }
+            </td>
             <td>{post.label}</td>
             <td>{post.uid}</td>
-            <td>{post.config}</td>
+            <td>
+  {post.config && Object.entries(post.config).length > 0 ? (
+    <div>
+      <p>config {"{"}</p>
+      <ul style={{ paddingLeft: "20px", margin: "5px 0" }}>
+        {Object.entries(post.config).map(([key, value]) => (
+          <li key={key} style={{ listStyleType: "none" }}>
+            - {key}: {JSON.stringify(value)}
+          </li>
+        ))}
+      </ul>
+      <p>{"}"}</p>
+    </div>
+  ) : (
+    "Keine Konfiguration angegeben"
+  )}
+</td>
             <td>{post.on_connect}</td>
             
             {/* Edit button */}
