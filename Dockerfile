@@ -1,7 +1,7 @@
 FROM node:18-alpine AS base
 
+
 FROM node:18-alpine AS deps
-# Set the working directory
 WORKDIR /app
 
 COPY kraken-webui-app/package.json kraken-webui-app/package-lock.json* ./
@@ -15,17 +15,18 @@ WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY kraken-webui-app/ .
 
-# Disable telemetry
+# Disable Next telemetry, see https://nextjs.org/telemetry
 ENV NEXT_TELEMETRY_DISABLED=1
 
 RUN apk --no-cache upgrade \
   && npm run build
 
+
 FROM base AS runner
 WORKDIR /app
 
 ENV NODE_ENV=production
-# Disable telemetry
+# Disable Next telemetry, see https://nextjs.org/telemetry
 ENV NEXT_TELEMETRY_DISABLED=1
 
 ARG WORKER_USER_ID=5556
