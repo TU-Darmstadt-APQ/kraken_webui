@@ -1,5 +1,7 @@
-import React from "react";
-import { MySelectProps, Post } from "@/app/types";
+import React from 'react';
+import { MySelectProps, Post } from '@/app/types';
+import cl from './MySelect.module.css'
+
 
 /**
  * A reusable and customizable dropdown (select) component.
