@@ -4,13 +4,10 @@ FROM node:18-alpine AS builder
 # Set the working directory
 WORKDIR /app
 
-COPY package*.json ./
+COPY kraken-webui-app/ /app
 
-RUN npm install
-
-COPY . .
-
-RUN npm run build
+RUN npm install \
+  && npm run build
 
 # Stage 2 
 FROM node:18-alpine
