@@ -7,14 +7,22 @@ async function StartSetup() {
 }
 
 const SensorSchema = new mongoose.Schema({
-  name: String
+  name: {
+    type: String,
+    required: true
+  }
 });
 
-const Sensor = mongoose.model('TestSensor', SensorSchema);
+const Sensor = mongoose.models.TestSensor || mongoose.model('TestSensor', SensorSchema);
 
 // Adding a test sensor
-const TestSensor = new Sensor({ name: 'Test1' });
-console.log(TestSensor.name); // 'Silence'
+const testSensor = new Sensor({ name: 'Test1' });
+console.log(testSensor.name); // 'Silence'
+console.log(testSensor)
+// await testSensor.save();
+const sensors = await Sensor.find();
+console.log(sensors);
+const plainSensor = testSensor.toObject();
 
 /**
 type Props = {
@@ -22,9 +30,9 @@ type Props = {
 }
 */
 export default function SetupMongoDBConnection() {
- // StartSetup()
+  StartSetup()
   return (
-    <span>{TestSensor}</span>>
+    <span>{JSON.stringify(plainSensor)}</span>
   )
 }
    
