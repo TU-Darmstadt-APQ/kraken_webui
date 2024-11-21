@@ -17,15 +17,28 @@ function Page() {
   const [posts, setPosts] = useState<Post[]>([
     {
       id: 1,
-      title: "Lorem ispum",
-      description: "Description",
-      date_created: "2012",
-      date_modified: "2012",
-      enabled: "true",
-      label: "XXX",
-      uid: "125633",
-      config: "etwas",
-      on_connect: "etwas anderes",
+      title: 'Lorem ispum',
+      description: 'Description',
+      date_created: {
+        day: 21,
+        month: 11,
+        year: 2024,
+        nanoseconds: 123456789.0,
+      },
+      date_modified: {
+        day: 22,
+        month: 11,
+        year: 2024,
+        nanoseconds: 0.0,
+      },
+      enabled: true,
+      label: 'XXX',
+      uid: '125633',
+      config: {
+        theme: "dark",
+        notifications: true,
+      },
+      on_connect: 'etwas anderes'
     },
     { id: 2, title: "Sensor", description: "Description" },
     { id: 3, title: "Sensor 2", description: "Description" },
