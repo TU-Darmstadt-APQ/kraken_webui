@@ -7,7 +7,7 @@ WORKDIR /app
 COPY kraken-webui-app/ /app
 
 RUN apk --no-cache upgrade \
-  && npm install \
+  && npm ci
   && npm run build
 
 # Stage 2 
