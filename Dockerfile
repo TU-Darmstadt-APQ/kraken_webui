@@ -29,7 +29,7 @@ ENV NODE_ENV=production
 # Disable Next telemetry, see https://nextjs.org/telemetry
 ENV NEXT_TELEMETRY_DISABLED=1
 
-ARG WORKER_USER_ID=5556
+ARG WORKER_USER_ID=1001
 
 # Create a non-root user
 RUN apk --no-cache upgrade \
