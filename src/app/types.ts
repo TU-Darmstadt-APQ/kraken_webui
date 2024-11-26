@@ -77,3 +77,19 @@ export interface PostItemProps {
   remove: (post: Post) => void; // Funktion, die einen Post entfernt
   number: number; // Reihenfolge des Posts (optional)
 }
+
+export interface MyContentProps {
+  modal: boolean;
+  setModal: (value: boolean) => void;
+  filter: { sort: keyof Post | ''; query: string };
+  setFilter: (filter: { sort: keyof Post | ''; query: string }) => void;
+  sortedAndSearchedPosts: Post[];
+  createPost: (newPost: Post) => void;
+  removePost: (post: Post) => void;
+  listTitle: string;
+}
+
+export interface ConfigEditorModalProps {
+  config: Record<string, unknown>;
+  setConfig: (newConfig: Record<string, unknown>) => void;
+}
