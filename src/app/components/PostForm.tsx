@@ -2,6 +2,7 @@ import React, {useState} from "react";
 
 import MyButton from "./UI/button/MyButton";
 import MyInput from "./UI/input/MyInput";
+import ConfigEditorModal from "./UI/ConfigEditorModal";
 
 import { PostFormProps, Post } from '@/app/types';
 
@@ -128,6 +129,13 @@ const PostForm: React.FC<PostFormProps> = ({create}) => {
         onChange={(e) => setPost({ ...post, uid: e.target.value })}
         type="text"
         placeholder="Benutzer-ID"
+      />
+
+
+      {/* Modal für die Bearbeitung der Konfiguration */}
+      <ConfigEditorModal
+        config={post.config|| {}} //falls kein Config existiert, wird ein leeres Objekt übergeben
+        setConfig={(newConfig) => setPost({ ...post, config: newConfig })}
       />
         
         <MyButton onClick={addNewPost}>Sensor einfügen</MyButton>
