@@ -3,14 +3,10 @@
 import React, { useState } from "react";
 import { usePosts } from "./hooks/usePosts";
 
-import PostList from "./components/PostList";
-import PostForm from "./components/PostForm";
-import PostFilter from "./components/PostFilter";
-import ModalWindow from "./components/UI/ModalWindow/ModalWindow";
-import MyButton from "./components/UI/button/MyButton";
-
 import { Post } from "./types";
 import MyHeader from "./components/UI/header/MyHeader";
+import MyContent from "./components/MyContent";
+
 
 function Page() {
   // Placeholder data for testing functionality
@@ -106,44 +102,16 @@ function Page() {
     <div className="App">
       <MyHeader addingNewSensor={() => setModal(true)} />
 
-      <div className="Content">
-        {/* Left Sidebar */}
-        <div className="Sidebar">
-          <MyButton>Option 1</MyButton>
-          <MyButton>Option 2</MyButton>
-          <MyButton>Option 3</MyButton>
-          <MyButton>Option 4</MyButton>
-          <MyButton>Option 5</MyButton>
-        </div>
-
-        {/* Right Main Content */}
-        <div className="MainContent">
-          <div>
-            {/* Modal window for adding a new sensor */}
-            <ModalWindow visible={modal} setVisible={setModal}>
-              <PostForm create={createPost} />
-              {/**
-               * The `create` prop is passed to the child component (`PostForm`)
-               * as a callback function. It allows the child to send data (the new post)
-               * back to the parent (`Page`).
-               * This unidirectional data flow follows React's tree structure:
-               * Parents can pass props to children, but children cannot directly modify parent data (!)
-               */}
-            </ModalWindow>
-
-            {/* Component responsible for managing the filter inputs */}
-            <PostFilter filter={filter} setFilter={setFilter} />
-
-            {/* Component responsible for displaying the list of sensors.
-          It supports two views: table view and post view. */}
-            <PostList
-              remove={removePost}
-              posts={sortedAndSearchedPosts}
-              listTitle={"Die Liste aller Sensoren"}
-            ></PostList>
-          </div>
-        </div>
-      </div>
+      <MyContent 
+        modal={modal}
+        setModal={setModal}
+        filter={filter}
+        setFilter={setFilter}
+        sortedAndSearchedPosts={sortedAndSearchedPosts}
+        createPost={createPost}
+        removePost={removePost}
+        listTitle={"Die Liste aller Sensoren"} 
+      />
     </div>
   );
 }
