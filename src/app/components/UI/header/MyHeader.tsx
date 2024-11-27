@@ -5,12 +5,12 @@ import MyButton from '../button/MyButton';
 const MyHeader= ({addingNewSensor} : {addingNewSensor: () => void}) => {
     return (
         <header className="header">
-            {/* Logo als Bild */}
+            {/* Logo as image */}
             <div className="logo">
                 <img src="/krakenIcon.png" alt="Kraken Logo" />
                 <h1>kraken</h1>
             </div>
-            {/* Buttons rechts */}
+            {/* Buttons on the right */}
             <div className="buttons">
                 <MyButton onClick={addingNewSensor}>Add new Sensor</MyButton>
                 <MyButton>Option 2</MyButton>

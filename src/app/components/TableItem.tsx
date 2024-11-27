@@ -2,7 +2,6 @@ import React from "react";
 import MyButton from "./UI/button/MyButton";
 
 import { TableItemProps } from '@/app/types';
-import { fallbackModeToFallbackField } from "next/dist/lib/fallback";
 
 /**
  * A component representing a single table row with data and action buttons.
@@ -20,11 +19,11 @@ const TableItem: React.FC<TableItemProps> = ({post, remove}) => {
             <td>{post.description}</td>
             <td>{post.date_created
                 ? `${post.date_created.day}.${post.date_created.month}.${post.date_created.year}`
-                : "Datum nicht angegeben"}
+                : "Date not given"}
             </td>
             <td>{post.date_modified
                 ? `${post.date_modified.day}.${post.date_modified.month}.${post.date_modified.year}`
-                : "Datum nicht angegeben"}
+                : "Date not given"}
             </td>
             <td>
                 {post.enabled == true ? (
@@ -50,7 +49,7 @@ const TableItem: React.FC<TableItemProps> = ({post, remove}) => {
       <p>{"}"}</p>
     </div>
   ) : (
-    "Keine Konfiguration angegeben"
+    "No configuration given"
   )}
 </td>
             <td>{post.on_connect}</td>

@@ -6,8 +6,8 @@ import { ConfigEditorModalProps } from '@/app/types';
 
 const ConfigEditorModal: React.FC<ConfigEditorModalProps> = ({config, setConfig,}) => {
   
-    const [key, setKey] = useState<string>(""); // Schlüssel (Key)
-    const [value, setValue] = useState<string>(""); // Wert (Value)
+    const [key, setKey] = useState<string>(""); // state for Key
+    const [value, setValue] = useState<string>(""); // state for Value
 
     const addConfigEntry = (e) => {
         e.preventDefault();
@@ -26,37 +26,37 @@ const ConfigEditorModal: React.FC<ConfigEditorModalProps> = ({config, setConfig,
 
   return (
       <div style={{ marginTop: "20px" }}>
-        <span>Konfiguration bearbeiten</span>
-        {/* Eingabefelder für Key und Value */}
+        <span>Edit configuration</span>
+        {/* Inputfields for Key and Value */}
         <div style={{ display: "flex", gap: "10px", marginBottom: "20px" }}>
           <MyInput
             value={key}
             onChange={(e) => setKey(e.target.value)}
             type="text"
-            placeholder="Schlüssel"
+            placeholder="Key"
           />
           <MyInput
             value={value}
             onChange={(e) => setValue(e.target.value)}
             type="text"
-            placeholder="Wert"
+            placeholder="Value"
           />
-          <MyButton onClick={addConfigEntry}>Hinzufügen</MyButton>
+          <MyButton onClick={addConfigEntry}>Add</MyButton>
         </div>
 
-        {/* Liste der aktuellen Konfiguration */}
+        {/* List of the current configuration */}
         <ul
           style={{
             listStyleType: "none",
             padding: 0,
-            maxHeight: "75px", // Maximale Höhe ohne Scroll
-            overflowY: "auto", // Scrollbar für die Liste
+            maxHeight: "75px", // Maximum height without scrolling
+            overflowY: "auto", // Scrollbar for the list
             border: "1px solid teal",
           }}
         >
           {Object.keys(config).length === 0 ? (
             <li style={{ textAlign: "center", color: "#888"}}>
-                Noch keine Konfiguration hinzugefügt.
+                No configuration added yet.
             </li>
             ) : 
           
@@ -74,7 +74,7 @@ const ConfigEditorModal: React.FC<ConfigEditorModalProps> = ({config, setConfig,
                 <b>{entryKey}</b>: {String(entryValue)}
               </span>
               <MyButton onClick={() => removeConfigEntry(entryKey)} styles={{ margin: "5px 0"}}>
-                Entfernen
+                Delete
               </MyButton>
             </li>
           )))}

@@ -21,7 +21,7 @@ import cl from './MySelect.module.css'
 const MySelect: React.FC<MySelectProps> = ({ options, defaultValue, value, onChange }) => {
   return (
     <select value={value} onChange={event => onChange(event.target.value as keyof Post)} // Converts selected value to a key of `Post`
-    > {/*Fraglich. Man muss den Typen besser anpassen */}
+    > {/* Questionable. We have to adapt the type better */}
 
       {/* Default option, disabled to act as a placeholder */}
       <option disabled value="">{defaultValue}</option>
