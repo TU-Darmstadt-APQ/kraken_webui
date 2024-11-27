@@ -35,9 +35,7 @@ function Page() {
         notifications: true,
       },
       on_connect: 'etwas anderes'
-    },
-    { id: 2, title: "Sensor", description: "Description" },
-    { id: 3, title: "Sensor 2", description: "Description" },
+    }
   ]);
 
   /**
@@ -110,7 +108,7 @@ function Page() {
         sortedAndSearchedPosts={sortedAndSearchedPosts}
         createPost={createPost}
         removePost={removePost}
-        listTitle={"Die Liste aller Sensoren"} 
+        listTitle={"The list of all sensors"} 
       />
     </div>
   );

@@ -4,7 +4,7 @@ import { DateType } from '@/app/types';
 
 type SortKey = keyof Post;
 
-// Custom Hook: Alle Custom Hooks benutzen in sich bereits vordefinierte Hooks von React (useState, useMemo etc)
+// Custom Hook: All custom hooks use predefined hooks from React (useState, useMemo etc)
 export const useSortedPosts = (posts: Post[], sort: SortKey | ''): Post[] => {
   const sortedPosts = useMemo(() => {
     if (sort) {
@@ -12,55 +12,55 @@ export const useSortedPosts = (posts: Post[], sort: SortKey | ''): Post[] => {
         const valueA = a[sort];
         const valueB = b[sort];
 
-        // Vergleich für Boolean
+        // Compare for Boolean
         if (typeof valueA === 'boolean' || typeof valueB === 'boolean') {
-          // `true` hat die höchste Priorität
-          if (valueA === true && valueB !== true) return -1; // `a` kommt vor `b`
-          if (valueB === true && valueA !== true) return 1;  // `b` kommt vor `a`
+          // `true` has the highest priority
+          if (valueA === true && valueB !== true) return -1; // `a` comes before `b
+          if (valueB === true && valueA !== true) return 1;  // `b` comes before `a`
 
-          // `false` hat die zweite Priorität
-          if (valueA === false && valueB !== false) return -1; // `a` kommt vor `b`
-          if (valueB === false && valueA !== false) return 1;  // `b` kommt vor `a`
+          // `false` has the second priority
+          if (valueA === false && valueB !== false) return -1; // `a` comes before `b`
+          if (valueB === false && valueA !== false) return 1;  // `b` comes before `a`
 
-          // `undefined` oder `null` kommen zuletzt
-          if (valueA == null && valueB != null) return 1;  // `a` nach `b`
-          if (valueB == null && valueA != null) return -1; // `b` nach `a`
+          // `undefined` or `null` come last
+          if (valueA == null && valueB != null) return 1;  // `a` after `b`
+          if (valueB == null && valueA != null) return -1; // `b` after `a`
         }
 
-        // Schieben alle null- oder undefinierten Werte nach unten
+        // Move all null- or undefined values down
         if (
           (valueA == null && valueB != null) ||
           (valueA == undefined && valueB != undefined) ||
           (valueA === '' && valueB !== '')
         )
-          return 1; // `a` nach `b`
+          return 1; // `a` after `b`
         if (
           (valueB == null && valueA != null) ||
           (valueB == undefined && valueA != undefined) ||
           (valueA !== '' && valueB === '')
         )
-          return -1; // `b` nach `a`
+          return -1; // `b` after `a`
         if (
           (valueA == null && valueB == null) ||
           (valueA == undefined && valueB == undefined) ||
           (valueA === '' && valueB === '')
         )
-          return 0; // beide gleich
+          return 0; // both are equal
 
-        // Vergleich für Zahlen
+        // Compare for Numbers
         if (typeof valueA === 'number' && typeof valueB === 'number') {
           return valueA - valueB;
         }
 
-        // Vergleich für Strings
+        // Compare for Strings
         if (typeof valueA === 'string' && typeof valueB === 'string') {
           return valueA.localeCompare(valueB);
         }
 
-        // Vergleich für DateType
+        // Compare for DateType
         const defaultDate: DateType = { year: 0, month: 0, day: 0, nanoseconds: 0 };
 
-        // Falls valueA null oder undefined ist, dann wird die rechte Seite von ?? zugewiesen
+        // If valueA is null or undefined, then the right-hand side of ?? is assigned
         const dateA = valueA ?? defaultDate;
         const dateB = valueB ?? defaultDate;
 
@@ -90,7 +90,7 @@ export const useSortedPosts = (posts: Post[], sort: SortKey | ''): Post[] => {
           }
         }
 
-        // Randfall für unbekannte Typen
+        // Edge case for unknown types
         return 0;
       });
     }
@@ -105,7 +105,7 @@ export const useSortedPosts = (posts: Post[], sort: SortKey | ''): Post[] => {
 export const usePosts = (posts: Post[], sort: SortKey | '', query: string) => {
   const sortedPosts = useSortedPosts(posts, sort);
 
-  // Um Suche Registerunabhängig zu machen, habe ich toLowerCase für Titel eingeführt
+  // To make the search register-independent, it was "toLowerCase" for titles implemented
   const sortedAndSearchedPosts = useMemo(
     () => {
       return sortedPosts.filter(post => post.title.toLowerCase().includes(query.toLowerCase()));

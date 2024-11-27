@@ -14,10 +14,15 @@ import { PostListProps } from "@/app/types";
  * @param {(post: object) => void} remove - Callback function to handle removing a post.
  */
 const PostList: React.FC<PostListProps> = ({ posts, listTitle, remove }) => {
-  // Display a message when no posts are available
-  if (!posts.length) {
-    return <h1 style={{ textAlign: "center" }}>No sensors found.</h1>;
-  }
+
+    // Display a message when no posts are available
+    if (!posts.length) {
+        return (
+            <h1 style={{ textAlign: 'center' }}>
+                No sensors found
+            </h1>
+        );
+    }
 
   // State to toggle between table view and post view
   const [isTableView, setIsTableView] = useState(false);
