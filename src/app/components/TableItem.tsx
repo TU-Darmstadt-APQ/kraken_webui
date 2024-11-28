@@ -10,7 +10,7 @@ import { TableItemProps } from '@/app/types';
  * @param {Post} post - The data object for the table row.
  * @param {(post: Post) => void} props.remove - Callback to handle the removal of a row.
  */
-const TableItem: React.FC<TableItemProps> = ({post, remove}) => {
+const TableItem: React.FC<TableItemProps> = ({post, remove, edit}) => {
     return(
         <tr>
             {/* Displaying properties of the `post` object */}
@@ -34,7 +34,7 @@ const TableItem: React.FC<TableItemProps> = ({post, remove}) => {
                 }
             </td>
             <td>{post.label}</td>
-            <td>{post.uid}</td>
+            <td>{post.uuid}</td>
             <td>
   {post.config && Object.entries(post.config).length > 0 ? (
     <div>
@@ -55,10 +55,28 @@ const TableItem: React.FC<TableItemProps> = ({post, remove}) => {
             <td>{post.on_connect}</td>
             
             {/* Edit button */}
-            <td style={{ borderBottomStyle: 'hidden', borderTopStyle: 'hidden', borderRightStyle: 'hidden' }}><MyButton className="list-button">Edit</MyButton></td>
+            <td style={{ borderBottomStyle: 'hidden', borderTopStyle: 'hidden', borderRightStyle: 'hidden' }}>
+              <MyButton className="list-button" onClick={() => edit(post)}>
+                <img 
+                  src="/edit.png" 
+                  alt="Edit" 
+                  //className="icon-button" 
+                  width={20} 
+                  height={20} 
+                />
+              </MyButton></td>
             
             {/* Delete button with callback */}
-            <td style={{ borderBottomStyle: 'hidden', borderTopStyle: 'hidden', borderRightStyle: 'hidden' }}><MyButton onClick={() => remove(post)} className="list-button">Delete</MyButton></td>
+            <td style={{ borderBottomStyle: 'hidden', borderTopStyle: 'hidden', borderRightStyle: 'hidden' }}>
+              <MyButton onClick={() => remove(post)} className="list-button">
+                <img 
+                  src="/trashCan.png" 
+                  alt="Delete" 
+                  //className="icon-button" 
+                  width={20} 
+                  height={20} 
+                />
+              </MyButton></td>
         </tr>
     );
 };

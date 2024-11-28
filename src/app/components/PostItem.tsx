@@ -26,8 +26,24 @@ const PostItem: React.FC<PostItemProps> = (props) => {
 
           {/* Action buttons: Edit and Delete */}
           <div className="post__btns">
-            <MyButton>Edit</MyButton>
-            <MyButton onClick={() => props.remove(props.post)}>Delete</MyButton>
+            <MyButton onClick={() => props.edit(props.post)}>
+              <img 
+                src="/edit.png" 
+                alt="Edit" 
+                //className="icon-button" 
+                width={20} 
+                height={20} 
+              />
+            </MyButton>
+            <MyButton onClick={() => props.remove(props.post)}>
+              <img 
+                src="/trashCan.png" 
+                alt="Delete" 
+                //className="icon-button" 
+                width={20} 
+                height={20} 
+              />
+            </MyButton>
           </div>
 
 

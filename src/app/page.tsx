@@ -30,12 +30,18 @@ function Page() {
       },
       enabled: true,
       label: 'XXX',
-      uid: '125633',
+      uuid: '125633',
       config: {
         theme: "dark",
         notifications: true,
       },
-      on_connect: 'etwas anderes'
+      on_connect: 'etwas anderes',
+      topic: "sensor",
+      unit: "FB20",
+      driver: "Tinkerforge",
+      pad: 2,
+      sad: 2,
+      port: 8
     }
   ]);
 
@@ -79,6 +85,8 @@ function Page() {
    */
   const sortedAndSearchedPosts = usePosts(posts, filter.sort, filter.query);
 
+  const [postToEdit, setPostToEdit] = useState<Post | null>(null);
+
   /**
    * Adds a new post to the list.
    * Also closes the modal window after the post is created.
@@ -99,9 +107,19 @@ function Page() {
     setPosts(posts.filter(p => p.id != post.id));
   }
 
+  const editPost = (updatedPost: Post) => {
+    setPosts(posts.map((p) => (p.id === updatedPost.id ? updatedPost : p)));
+    setModal(false);
+    setPostToEdit(null);
+  };
+  const handleEdit = (post: Post) => {
+    setPostToEdit(post);
+    setModal(true);
+  };
+
   return (
     <div className="App">
-      <MyHeader addingNewSensor={() => setModal(true)}/>
+      <MyHeader addingNewSensor={() => {setModal(true); setPostToEdit(null);}}/>
 
       <MyContent 
         modal={modal}
@@ -111,6 +129,9 @@ function Page() {
         sortedAndSearchedPosts={sortedAndSearchedPosts}
         createPost={createPost}
         removePost={removePost}
+        editPost={editPost}
+        handleEdit={handleEdit}
+        postToEdit={postToEdit}
         listTitle={"The list of all sensors"} 
       />
     </div>

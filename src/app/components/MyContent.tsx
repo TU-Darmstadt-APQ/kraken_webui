@@ -18,6 +18,9 @@ const MyContent: React.FC<MyContentProps> = (
         sortedAndSearchedPosts,
         createPost,
         removePost,
+        editPost,
+        handleEdit,
+        postToEdit,
         listTitle,
       }
 ) => {
@@ -39,7 +42,7 @@ const MyContent: React.FC<MyContentProps> = (
 
       {/* Modal window for adding a new sensor */}
       <ModalWindow visible={modal} setVisible={setModal}>
-        <PostForm create={createPost}/> 
+        <PostForm create={createPost} edit={editPost} postToEdit={postToEdit}/> 
         {/**
          * The `create` prop is passed to the child component (`PostForm`) 
          * as a callback function. It allows the child to send data (the new post)
@@ -54,7 +57,7 @@ const MyContent: React.FC<MyContentProps> = (
 
       {/* Component responsible for displaying the list of sensors.
           It supports two views: table view and post view. */}
-      <PostList remove={removePost} posts={sortedAndSearchedPosts} listTitle={listTitle}></PostList> 
+      <PostList remove={removePost} posts={sortedAndSearchedPosts} listTitle={listTitle} edit={handleEdit}></PostList> 
       </div>
       </div>
     </div>

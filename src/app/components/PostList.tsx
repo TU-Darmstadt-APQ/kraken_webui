@@ -13,7 +13,7 @@ import { PostListProps } from '@/app/types';
  * @param {string} listTitle - Title of the list.
  * @param {(post: object) => void} remove - Callback function to handle removing a post.
  */
-const PostList: React.FC<PostListProps> = ({ posts, listTitle, remove }) => {
+const PostList: React.FC<PostListProps> = ({ posts, listTitle, remove, edit }) => {
 
     // Display a message when no posts are available
     if (!posts.length) {
@@ -60,21 +60,22 @@ const PostList: React.FC<PostListProps> = ({ posts, listTitle, remove }) => {
                 <table className="sensor-table" border={0}>
                     <thead>
                         <tr>
-                            <th>ID</th>
-                            <th>Title</th>
-                            <th>Description</th>
-                            <th>Date created</th>
-                            <th>Date modified</th>
-                            <th>Enabled</th>
-                            <th>Label</th>
-                            <th>UID</th>
-                            <th>Config</th>
-                            <th>on_connect</th>
+                            <th style={{ width: "30px" }}>ID</th>
+                            <th style={{ width: "60px" }}>Title</th>
+                            <th style={{ width: "80px" }}>Description</th>
+                            <th style={{ width: "90px" }}>Date created</th>
+                            <th style={{ width: "100px" }}>Date modified</th>
+                            <th style={{ width: "15px" }}>Enabled</th>
+                            <th style={{ width: "60px" }}>Label</th>
+                            <th style={{ width: "60px" }}>UID</th>
+                            <th style={{ width: "150px" }}>Config</th>
+                            <th style={{ width: "80px" }}>on_connect</th>
                         </tr>
                     </thead>
                     <tbody>
                         {posts.map(post => (
                             <TableItem 
+                                edit={edit}
                                 remove={remove} 
                                 post={post} 
                                 key={post.id} 
@@ -86,6 +87,7 @@ const PostList: React.FC<PostListProps> = ({ posts, listTitle, remove }) => {
                 // Render posts in a card-like view
                 posts.map((post, index) => (
                     <PostItem 
+                        edit={edit}
                         remove={remove} 
                         number={index + 1} 
                         post={post} 
