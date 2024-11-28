@@ -103,6 +103,7 @@ header div {
   width: 100%;
   border-collapse: collapse;
   margin-top: 15px;
+  table-layout: fixed; /* Prevent columns from resizing dynamically */
 }
 
 .sensor-table th,
@@ -110,6 +111,9 @@ header div {
   border: 1px solid teal;
   padding: 8px;
   text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis; /* Add ellipsis for overflowing text */
+  white-space: nowrap; /* Prevent wrapping */
 }
 
 .view-buttons {

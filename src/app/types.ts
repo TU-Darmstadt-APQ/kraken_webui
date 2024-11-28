@@ -3,15 +3,22 @@ import { ReactNode } from "react";
 
 export interface Post {
     id: number;
-    title: string;
+    title?: string;
     description?: string; // All lines marked with a question mark are optional (or do not have to be included when the object is created)
     date_created: DateType;
     date_modified: DateType;
     enabled?: boolean;
     label?: string;
-    uid?: string;
+    uuid: string;
     config?: Record<string, unknown>; // Flexible configuration (object with any values)
     on_connect?: string;
+    topic: string;
+    unit: string;
+    port?: number;
+    pad?: number;
+    sad?: number;
+    driver: string;
+    sensor_type?: string;
 }
 export interface DateType {
   day?: number;
@@ -48,6 +55,8 @@ export interface MySelectProps {
 
 export interface PostFormProps {
   create: (post: Post) => void;
+  edit: (post: Post) => void;
+  postToEdit: Post;
 }
 
 export interface ModalWindowProps {
@@ -65,16 +74,19 @@ export interface PostListProps {
   posts: Post[];               // Array of Posts
   listTitle: string;           // Title of list
   remove: (post: Post) => void; // Function that deletes the post
+  edit: (post: Post) => void;
 }
 
 export interface TableItemProps {
   post: Post;                   // Post object
   remove: (post: Post) => void; // Function that deletes the post
+  edit: (post: Post) => void;
 }
 
 export interface PostItemProps {
   post: Post;                   // Post object
   remove: (post: Post) => void; // Function that deletes the post
+  edit: (post: Post) => void;
   number: number;               // Order of the post (optional)
 }
 
@@ -86,6 +98,9 @@ export interface MyContentProps {
   sortedAndSearchedPosts: Post[];
   createPost: (newPost: Post) => void;
   removePost: (post: Post) => void;
+  editPost: (post: Post) => void;
+  handleEdit: (post: Post) => void;
+  postToEdit: Post;
   listTitle: string;
 }
 

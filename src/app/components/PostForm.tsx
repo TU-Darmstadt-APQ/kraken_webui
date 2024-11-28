@@ -17,7 +17,7 @@ import { PostFormProps, Post } from '@/app/types';
  *
  * @returns {JSX.Element} A form with controlled input fields for post creation.
  */
-const PostForm: React.FC<PostFormProps> = ({create}) => {
+const PostForm: React.FC<PostFormProps> = ({create, edit, postToEdit}) => {
     // Helper function to generate the current date
     const getCurrentDate = () => {
       const now = new Date();
@@ -29,8 +29,7 @@ const PostForm: React.FC<PostFormProps> = ({create}) => {
       };
     };
 
-    // State for managing the input values of the form  
-    const [post, setPost] = useState<Post>({
+    const defaultPost: Post = {
       id: 0,
       title: "",
       description: "",
@@ -38,29 +37,63 @@ const PostForm: React.FC<PostFormProps> = ({create}) => {
       date_modified: getCurrentDate(),
       enabled: false,
       label: "",
-      uid: "",
+      uuid: "",
       config: {},
       on_connect: undefined,
-    });
+      topic: "",
+      unit: "",
+      driver: "",
+      port: 0,
+      sad: 0,
+      pad: 0,
+    };
 
-    const addNewPost = (e: React.FormEvent) => {
+    // State for managing the input values of the form  
+    const [post, setPost] = useState<Post>(postToEdit || defaultPost);
+
+    React.useEffect(() => {
+      // Update the form state whenever `postToEdit` changes
+      if (postToEdit) {
+        setPost(postToEdit); // editing mode
+      }
+      else{
+        setPost(defaultPost); // creation mode => we clear all inputFields
+      }
+    }, [postToEdit]); // Runs whenever `postToEdit` changes
+
+    const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault(); // So that the page does not refresh after pressing the button
 
         // Check for required fields
-        if (!post.title.trim()) {
-          alert("The title cannot be empty.");
+        if (!post.driver.trim()) {
+          alert("The `driver` cannot be empty.");
           return;
         }
-        if (!post.uid || !post.uid.trim()) {
-          alert("The user ID cannot be empty.");
+        if (!post.uuid.trim()) {
+          alert("The `UUID` cannot be empty.");
+          return;
+        }
+        if (!post.topic.trim()) {
+          alert("The `topic` cannot be empty.");
+          return;
+        }
+        if (!post.unit.trim()) {
+          alert("The `unit` cannot be empty.");
           return;
         }
 
 
-        const newPost ={
-            ...post, id: Date.now() // Generate a unique ID based on the current timestamp
-        }// We change the state indirectly. We create a new array where we write our old one. And at the end comes the new element
-        create(newPost);
+        // Generate a unique ID based on the current timestamp
+        // We change the state indirectly. We create a new array where we write our old one. And at the end comes the new element
+        
+        if(postToEdit){
+          edit({ ...post, date_modified: getCurrentDate() });
+          //create({...post, id: Date.now()}); 
+        }
+        else{
+          create({...post, id: Date.now()});
+        }
+
         setPost({
           id: 0,
           title: "",
@@ -69,57 +102,94 @@ const PostForm: React.FC<PostFormProps> = ({create}) => {
           date_modified: getCurrentDate(),
           enabled: false,
           label: "",
-          uid: "",
+          uuid: "",
           config: {},
           on_connect: undefined,
+          topic: "",
+          unit: "",
+          driver: "",
+          port: 0,
+          sad: 0, 
+          pad: 0
         }); // After inserting Element, we empty InputFields
       }
 
     return(
         <form>
-         {/* Controlled input field for the post title */}
-        <MyInput value={post.title} onChange={e => setPost({...post, title: e.target.value})} type="text" placeholder="Name of the sensor"/>
-        <MyInput value={post.description} onChange={e => setPost({...post, description: e.target.value})} type="text" placeholder="Description"/>
+          {/* Sensor Host UUID */}
+          <MyInput
+            value={post.uuid}
+            onChange={(e) => setPost({ ...post, uuid: e.target.value })}
+            type="text"
+            placeholder="Sensor Host UUID"
+          />
+
+          {/* Topic and Unit */}
+          <div style={{ display: "flex", gap: "10px" }}>
+            <MyInput
+              value={post.topic}
+              onChange={(e) => setPost({ ...post, topic: e.target.value })}
+              type="text"
+              placeholder="Topic"
+            />
+            <MyInput
+              value={post.unit}
+              onChange={(e) => setPost({ ...post, unit: e.target.value })}
+              type="text"
+              placeholder="Unit"
+            />
+          </div>
+
+          {/* Port, Pad, Sad, Driver */}
+          <div style={{ display: "flex", gap: "10px" }}>
+            <MyInput
+              value={post.port}
+              onChange={(e) => setPost({ ...post, port: parseInt(e.target.value) })}
+              type="number"
+              placeholder="Port"
+            />
+            <MyInput
+              value={post.pad}
+              onChange={(e) => setPost({ ...post, pad: parseInt(e.target.value) })}
+              type="number"
+              placeholder="Pad"
+            />
+            <MyInput
+              value={post.sad}
+              onChange={(e) => setPost({ ...post, sad: parseInt(e.target.value) })}
+              type="number"
+              placeholder="Sad"
+            />
+            <MyInput
+              value={post.driver}
+              onChange={(e) => setPost({ ...post, driver: e.target.value })}
+              type="text"
+              placeholder="Driver"
+            />
+          </div>
+
+          {/* Description */}
+          <MyInput
+            value={post.description}
+            onChange={(e) =>
+              setPost({ ...post, description: e.target.value })
+            }
+            type="text"
+            placeholder="Description"
+          />
+
+      
+
+
+          {/* For editing the configuration */}
+          <ConfigEditorModal
+            config={post.config || {}} // If no Config exists, an empty object is provided
+            setConfig={(newConfig) => setPost({ ...post, config: newConfig })}
+          />
         
-        {/* Display the creation date */}
-        <div>
-          <span>Created on: {`${post.date_created.day}.${post.date_created.month}.${post.date_created.year}`}</span>
-        </div>
-
-      {/* Input for the status */}
-      <label>
-        Enabled:
-        <input
-          type="checkbox"
-          checked={post.enabled}
-          onChange={(e) => setPost({ ...post, enabled: e.target.checked })}
-        />
-      </label>
-
-      {/* Input for Label */}
-      <MyInput
-        value={post.label}
-        onChange={(e) => setPost({ ...post, label: e.target.value })}
-        type="text"
-        placeholder="Label"
-      />
-
-      {/* Input for User-ID */}
-      <MyInput
-        value={post.uid}
-        onChange={(e) => setPost({ ...post, uid: e.target.value })}
-        type="text"
-        placeholder="User-ID"
-      />
-
-
-      {/* Modal for editing the configuration */}
-      <ConfigEditorModal
-        config={post.config || {}} // If no Config exists, an empty object is provided
-        setConfig={(newConfig) => setPost({ ...post, config: newConfig })}
-      />
-        
-        <MyButton onClick={addNewPost}>Add new Sensor</MyButton>
+          <MyButton onClick={handleSubmit}>
+            {postToEdit ? "Save changes" : "Add new sensor"}
+          </MyButton>
       </form>
     );
 };
