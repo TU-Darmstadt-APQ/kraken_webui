@@ -27,10 +27,30 @@ const PostList: React.FC<PostListProps> = ({ posts, listTitle, remove, edit }) =
   // State to toggle between table view and post view
   const [isTableView, setIsTableView] = useState(false);
 
-  return (
-    <div>
-      {/* Title for the list */}
-      <h1 style={{ textAlign: "center" }}>{listTitle}</h1>
+    const [selectedColumns, setSelectedColumns] = useState({
+        id: true,
+        title: false,
+        description: true,
+        date_created: true,
+        date_modified: true,
+        enabled: true,
+        label: false,
+        uuid: true,
+        config: true,
+        on_connect: false,
+        topic: false,
+        unit: false,
+        port: false,
+        pad: false,
+        sad: false,
+        driver: false,
+        sensor_type: false
+      });
+
+    return (
+        <div>
+            {/* Title for the list */}
+            <h1 style={{ textAlign: 'center' }}>{listTitle}</h1>
 
       {/* Buttons to toggle view mode */}
       <div className="view-buttons">
@@ -56,20 +76,39 @@ const PostList: React.FC<PostListProps> = ({ posts, listTitle, remove, edit }) =
 
             {/* Conditional rendering for table view or post view */}
             {isTableView ? (
-                // Render posts in table format
+                <div>
+                {Object.keys(selectedColumns).map((columnKey) => (
+                    <label key={columnKey}>
+                      <input
+                        type="checkbox"
+                        checked={selectedColumns[columnKey]}
+                        onChange={(e) =>
+                          setSelectedColumns((prev) => ({
+                            ...prev,
+                            [columnKey]: e.target.checked,
+                          }))
+                        }
+                      />
+                      {columnKey}
+                    </label>
+                  ))}
+                
+
+                {/* Render posts in table format */}
+                <div className="table-container">
                 <table className="sensor-table" border={0}>
                     <thead>
                         <tr>
-                            <th style={{ width: "30px" }}>ID</th>
-                            <th style={{ width: "60px" }}>Title</th>
-                            <th style={{ width: "80px" }}>Description</th>
-                            <th style={{ width: "90px" }}>Date created</th>
-                            <th style={{ width: "100px" }}>Date modified</th>
-                            <th style={{ width: "15px" }}>Enabled</th>
-                            <th style={{ width: "60px" }}>Label</th>
-                            <th style={{ width: "60px" }}>UID</th>
-                            <th style={{ width: "150px" }}>Config</th>
-                            <th style={{ width: "80px" }}>on_connect</th>
+                            {selectedColumns.id && <th>ID</th>}
+                            {selectedColumns.title && <th>Title</th>}
+                            {selectedColumns.description && <th>Description</th>}
+                            {selectedColumns.date_created && <th>Date created</th>}
+                            {selectedColumns.date_modified && <th>Date modified</th>}
+                            {selectedColumns.enabled && <th>Enabled</th>}
+                            {selectedColumns.label && <th>Label</th>}
+                            {selectedColumns.uuid && <th>UUID</th>}
+                            {selectedColumns.config && <th>Config</th>}
+                            {selectedColumns.on_connect && <th>on_connect</th>}
                         </tr>
                     </thead>
                     <tbody>
@@ -78,11 +117,14 @@ const PostList: React.FC<PostListProps> = ({ posts, listTitle, remove, edit }) =
                                 edit={edit}
                                 remove={remove} 
                                 post={post} 
+                                selectedColumns={selectedColumns}
                                 key={post.id} 
                             />
                         ))}
                     </tbody>
                 </table>
+                </div>
+                </div>
             ) : (
                 // Render posts in a card-like view
                 posts.map((post, index) => (

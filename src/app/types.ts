@@ -81,6 +81,7 @@ export interface TableItemProps {
   post: Post;                   // Post object
   remove: (post: Post) => void; // Function that deletes the post
   edit: (post: Post) => void;
+  selectedColumns: {[key: string]: boolean};
 }
 
 export interface PostItemProps {
