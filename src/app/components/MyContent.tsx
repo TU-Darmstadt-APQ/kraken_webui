@@ -54,6 +54,7 @@ const MyContent: React.FC<MyContentProps> = (
 
        {/* Component responsible for managing the filter inputs */}
       <PostFilter filter={filter} setFilter={setFilter}/>
+      
 
       {/* Component responsible for displaying the list of sensors.
           It supports two views: table view and post view. */}
