@@ -1,0 +1,7 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+# This pre-commit hook runs before a commit is made. 
+# It is used to run automated checks or commands (like running tests, linting, or formatting) 
+# to ensure that the code is in good condition before it's committed to the repository.
+# For example, you might use it to run `npm test` or `npm lint` to make sure everything works correctly.
