@@ -2,7 +2,7 @@ name: ci
 
 on:
   push:
-    branches: [ "master" , "dev"]  
+    branches: [ "master" , "dev" , "feature/ci-docker"]  
     tags: [ '*.*.*' ]  
   pull_request:       
 
