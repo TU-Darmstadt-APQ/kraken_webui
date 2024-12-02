@@ -1,4 +1,4 @@
 // hello.ts
 
-const message: string = "Hell, world!";
+const message: string = "Hey, world!";
 console.log(message);
