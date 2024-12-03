@@ -140,4 +140,3 @@ jobs:
         if: needs.prepare.outputs.push == 'true'
         run: |
           docker buildx imagetools inspect '${{ needs.prepare.outputs.image }}:${{ needs.prepare.outputs.meta-version }}'
-          
