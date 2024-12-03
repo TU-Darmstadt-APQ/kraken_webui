@@ -2,7 +2,7 @@ name: ci
 
 on:
   push:
-    branches: [ "master" , "dev" , "feature/ci-docker"]  
+    branches: [ "master" , "dev"]  
     tags: [ '*.*.*' ]  
   pull_request:       
 
@@ -49,7 +49,6 @@ jobs:
       matrix:
         platform:
           - linux/amd64
-          - linux/arm64
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
