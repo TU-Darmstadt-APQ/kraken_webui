@@ -2,9 +2,9 @@ name: ci
 
 on:
   push:
-    branches: [ "master" , "dev"]  
-    tags: [ '*.*.*' ]  
-  pull_request:       
+    branches: [ "master" , "dev"]
+    tags: [ '*.*.*' ]
+  pull_request:
 
 env:
   REGISTRY: ghcr.io  # Using GitHub Container Registry
@@ -39,7 +39,7 @@ jobs:
       meta-version: ${{ steps.meta.outputs.version }}
 
   build:
-    needs: 
+    needs:
       - prepare
     runs-on: ubuntu-latest
     permissions:
@@ -102,7 +102,7 @@ jobs:
           retention-days: 1
 
   push:
-    needs: 
+    needs:
       - prepare
       - build
     if: needs.prepare.outputs.push == 'true'
