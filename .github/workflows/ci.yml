@@ -80,7 +80,6 @@ jobs:
 
   build:
     needs:
-      - lint
       - prepare
     runs-on: ubuntu-latest
     permissions:
@@ -144,7 +143,6 @@ jobs:
 
   push:
     needs:
-      - lint
       - prepare
       - build
     if: needs.prepare.outputs.push == 'true'
