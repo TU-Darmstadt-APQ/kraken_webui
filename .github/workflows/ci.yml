@@ -11,7 +11,27 @@ env:
   IMAGE_NAME: ${{ github.repository }}
 
 jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22.11.0'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run ESLint
+        run: npx eslint .
+
   test:
+    needs: 
+      - lint
     runs-on: ubuntu-latest
     steps:
        - name: Checkout code
@@ -60,6 +80,7 @@ jobs:
 
   build:
     needs:
+      - lint
       - prepare
     runs-on: ubuntu-latest
     permissions:
@@ -123,6 +144,7 @@ jobs:
 
   push:
     needs:
+      - lint
       - prepare
       - build
     if: needs.prepare.outputs.push == 'true'
