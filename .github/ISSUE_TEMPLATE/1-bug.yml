@@ -13,8 +13,8 @@ body:
     attributes:
       label: What is the expected behavior?
       description: Please reference the code if possible. If someone would ask you for help it would be nice to have a neat overview right?
-      placeholder: Tell us what you want!
-      value: "A bug happened!"
+      placeholder: Tell us what you want to happen!
+      value: "What should have happened..."
     validations:
       required: true
   - type: textarea
@@ -23,13 +23,14 @@ body:
       label: What is the actual behavior?
       description: Please reference the code if possible. If someone would ask you for help it would be nice to have a neat overview right?
       placeholder: Tell us what you see!
-      value: "What I've expected instead!"
+      value: "What happened instead!"
     validations:
       required: true
   - type: textarea
     id: logs
     attributes:
       label: Relevant log output
+      value: "Relevant logs..."
       description: Please copy and paste any relevant log output. This will be automatically formatted into code, so no need for backticks.
       render: shell
   - type: textarea
