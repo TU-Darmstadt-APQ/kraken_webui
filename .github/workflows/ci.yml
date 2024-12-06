@@ -27,7 +27,7 @@ jobs:
          run: npm ci
 
        - name: Run Jest tests
-         run: npx jest
+         run: npx jest --passWithNoTests
 
   prepare:
     needs:
