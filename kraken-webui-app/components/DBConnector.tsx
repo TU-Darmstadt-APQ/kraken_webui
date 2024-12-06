@@ -29,7 +29,6 @@ async function run() {
 
 
 export default async function DBConnector() {
-  // WriteTest()
   try {
     await StartSetup();
     await run();
