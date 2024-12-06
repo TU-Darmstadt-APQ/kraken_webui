@@ -46,9 +46,7 @@ body:
     id: my-environment 
     attributes:
       label: What is your environment?
-      description: Tell us about your enviroment if you don't want to hear "well it works on my machine."
-      Post your .env file without credentials.
-      If it is a backend problem or your Webbrowser including version if it is a frontend problem.
+      description: Tell us about your enviroment if you don't want to hear "well it works on my machine."\nPost your .env file without credentials. \nIf it is a backend problem or your Webbrowser including version if it is a frontend problem.
       placeholder: Tell us about your environment!
       value: "I'm running the code with..."
     validations:
