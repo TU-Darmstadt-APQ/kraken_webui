@@ -1,8 +1,5 @@
 import { config } from "../config";
-
-
-// getting-started.js
-const mongoose = require('mongoose');
+import mongoose from "mongoose";
 
 async function StartSetup() {
   console.log("Starting MongoDB connection...");
