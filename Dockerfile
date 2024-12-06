@@ -1,7 +1,7 @@
-FROM node:18-alpine AS base
+FROM node:22.12-alpine3.20 AS base
 
 
-FROM node:18-alpine AS deps
+FROM base AS deps
 WORKDIR /app
 
 COPY kraken-webui-app/package.json kraken-webui-app/package-lock.json* ./
