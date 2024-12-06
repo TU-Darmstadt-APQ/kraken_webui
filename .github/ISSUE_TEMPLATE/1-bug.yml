@@ -1,7 +1,7 @@
 name: Bug Report
 description: File a bug report.
 title: "[Bug]: "
-labels: ["bug", "triage"]
+labels: ["bug"]
 projects: ["TU-Darmstadt-APQ/kraken_webui"]
 body:
   - type: markdown
@@ -9,12 +9,21 @@ body:
       value: |
         Thanks for taking the time to fill out this bug report!
   - type: textarea
-    id: what-happened
+    id: expected-behavior
     attributes:
-      label: What happened?
-      description: Also tell us, what did you expect to happen?
-      placeholder: Tell us what you see!
+      label: What is the expected behavior?
+      description: Please reference the code if possible. If someone would ask you for help it would be nice to have a neat overview right?
+      placeholder: Tell us what you want!
       value: "A bug happened!"
+    validations:
+      required: true
+  - type: textarea
+    id: actual-behavior
+    attributes:
+      label: What is the actual behavior?
+      description: Please reference the code if possible. If someone would ask you for help it would be nice to have a neat overview right?
+      placeholder: Tell us what you see!
+      value: "What I've expected instead!"
     validations:
       required: true
   - type: textarea
@@ -23,3 +32,21 @@ body:
       label: Relevant log output
       description: Please copy and paste any relevant log output. This will be automatically formatted into code, so no need for backticks.
       render: shell
+  - type: textarea
+    id: what-was-tried 
+    attributes:
+      label: What did you try?
+      description: You probably did more than just trying the same thing again expecting a different behavior... right?
+      placeholder: Tell us what you did!
+      value: "I've tried..."
+    validations:
+      required: true
+  - type: textarea
+    id: steps-to-reproduce 
+    attributes:
+      label: How can we reproduce the bug?
+      description: Show us how you've got the bug so that we can try it out and help you!
+      placeholder: Tell us the steps to reproduce the bug!
+      value: "Steps to reproduce the bug..."
+    validations:
+      required: true
