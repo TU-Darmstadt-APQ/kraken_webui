@@ -13,7 +13,11 @@ async function StartSetup() {
 async function run() {
   try {
     console.log("Starting ping test...")
-    await mongoose.connection.db.admin().command({ ping: 1 });
+    if (mongoose.connection.db === undefined) {
+      throw new Error("Database not connected");
+    } else {
+      await mongoose.connection.db.admin().command({ ping: 1 });
+    }
     console.log("Pinged your deployment. You successfully connected to MongoDB!");
   } finally {
     // Ensures that the client will close when you finish/error
