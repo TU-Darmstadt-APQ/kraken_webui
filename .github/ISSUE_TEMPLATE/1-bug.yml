@@ -13,7 +13,7 @@ body:
     attributes:
       label: What is the expected behavior?
       description: Please reference the code if possible. If someone would ask you for help it would be nice to have a neat overview right?
-      placeholder: Tell us what you want to happen!
+      placeholder: What did you expect from the code/function? What was supposed to happen? 
       value: "What should have happened..."
     validations:
       required: true
@@ -23,7 +23,7 @@ body:
       label: What is the actual behavior?
       description: Please reference the code if possible. If someone would ask you for help it would be nice to have a neat overview right?
       placeholder: Tell us what you see!
-      value: "What happened instead!"
+      value: "What happened instead of the expected behavior..."
     validations:
       required: true
   - type: textarea
