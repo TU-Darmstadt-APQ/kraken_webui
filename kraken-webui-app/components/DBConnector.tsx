@@ -9,23 +9,6 @@ async function StartSetup() {
 
 }
 
-function WriteTest() {
-  const SensorSchema = new mongoose.Schema({
-    name: {
-      type: String,
-      required: true
-    }
-  });
-
-  const Sensor = mongoose.models.TestSensor || mongoose.model('TestSensor', SensorSchema);
-
-  // Adding a test sensor
-  const testSensor = new Sensor({ name: 'Test1' });
-  // await testSensor.save();
-  const sensors = Sensor.find();
-  console.log(sensors);
-  // const plainSensor = testSensor.toObject();
-}
 
 async function run() {
   try {
