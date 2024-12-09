@@ -13,7 +13,7 @@ RUN apk --no-cache upgrade \
 FROM base AS builder
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
-COPY kraken-webui-app/ .
+COPY . .
 
 # Disable Next telemetry, see https://nextjs.org/telemetry
 ENV NEXT_TELEMETRY_DISABLED=1
