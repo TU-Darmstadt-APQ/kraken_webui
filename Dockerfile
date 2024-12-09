@@ -4,7 +4,7 @@ FROM node:22.12-alpine3.20 AS base
 FROM base AS deps
 WORKDIR /app
 
-COPY kraken-webui-app/package.json kraken-webui-app/package-lock.json* ./
+COPY package.json package-lock.json* ./
 
 RUN apk --no-cache upgrade \
   && npm ci
