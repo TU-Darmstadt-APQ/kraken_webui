@@ -4,7 +4,7 @@ FROM node:22.12-alpine3.20 AS base
 FROM base AS deps
 WORKDIR /app
 
-COPY kraken-webui-app/package.json kraken-webui-app/package-lock.json* ./
+COPY package.json package-lock.json* ./
 
 RUN apk --no-cache upgrade \
   && npm ci
@@ -13,7 +13,7 @@ RUN apk --no-cache upgrade \
 FROM base AS builder
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
-COPY kraken-webui-app/ .
+COPY . .
 
 # Disable Next telemetry, see https://nextjs.org/telemetry
 ENV NEXT_TELEMETRY_DISABLED=1
