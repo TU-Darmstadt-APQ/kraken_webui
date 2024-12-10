@@ -25,7 +25,7 @@ Coming soon...
 
 ## CI/CD
 
-This project uses GitHub Actions for CI/CD. The configuration is located in the `.github/workflows/ci.yml` file. The CI pipeline includes the following steps:
+This project uses GitHub Actions for CI/CD. The configuration is located in the [.github/workflows/ci.yml](.github/workflows/ci.yml) file. The CI pipeline includes the following steps:
 - Checkout the code
 - Set up Node.js
 - Install dependencies
