@@ -23,6 +23,37 @@ An open source web ui to configure sensors with a gui and displaying the existin
 
 Coming soon...
 
+# CI/CD
+
+This project uses GitHub Actions for CI/CD. The configuration is located in the [.github/workflows/ci.yml](.github/workflows/ci.yml) file. The CI pipeline includes the following steps:
+- Checkout the code
+- Set up Node.js
+- Install dependencies
+- Run Jest tests
+- Build and push Docker images to GitHub Container Registry
+
+To trigger the CI pipeline, push changes to the `master` or `dev` branches, or create a pull request.
+
+# Dockerfile
+
+The Dockerfile for this project is located in the root directory. It consists of multiple stages:
+- `base`: Sets up the base image with Node.js.
+- `deps`: Installs the project dependencies.
+- `builder`: Builds the Next.js application.
+- `runner`: runs the application.
+
+To build and run the Docker image locally, use the following commands:
+
+## Build the Docker image
+```bash
+docker build -t kraken-webui .
+```
+
+# Run the Docker container
+```bash
+docker run -p 3000:3000 kraken-webui
+```
+
 # License
 
 See the LICENSE file for license rights and limitations (MIT).
