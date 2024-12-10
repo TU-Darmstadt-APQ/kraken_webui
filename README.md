@@ -44,7 +44,7 @@ The Dockerfile for this project is located in the root directory. It consists of
 
 To build and run the Docker image locally, use the following commands:
 
-# Build the Docker image
+## Build the Docker image
 ```bash
 docker build -t kraken-webui .
 ```
