@@ -48,7 +48,9 @@ To build and run the Docker image locally, use the following commands:
 docker build -t kraken-webui .
 
 # Run the Docker container
+```bash
 docker run -p 3000:3000 kraken-webui
+```
 
 ## License
 
