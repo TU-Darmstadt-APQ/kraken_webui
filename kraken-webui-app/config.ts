@@ -11,5 +11,7 @@ const getEnvironmentVariable = (environmentVariable: string): string => {
   };
 
   export const config = {
-    krakenConfigsMongodbConnectionString: getEnvironmentVariable("KRAKEN_CONFIGS_MONGODB_CONNECTION_STRING")
+    get krakenConfigsMongodbConnectionString() {
+      return getEnvironmentVariable("KRAKEN_CONFIGS_MONGODB_CONNECTION_STRING");
+    }
   };
