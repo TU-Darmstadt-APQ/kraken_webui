@@ -11,16 +11,17 @@ export default [
   {
     files: ["**/*.{js,mjs,cjs,ts,jsx,tsx}"],
     languageOptions: {
+      parser: tsParser, // Use TypeScript parser for .ts, .tsx files
+      parserOptions: {
+        ecmaVersion: "latest",
+        sourceType: "module",
+      },
       globals: {
         ...globals.browser,
         ...globals.node,
       },
     },
-    parser: tsParser, // Use TypeScript parser for .ts, .tsx files
-    parserOptions: {
-      ecmaVersion: "latest",
-      sourceType: "module",
-    },
+    
     plugins: {
       "@typescript-eslint": tseslint, // Changed to object format
       react: pluginReact,            // Changed to object format
