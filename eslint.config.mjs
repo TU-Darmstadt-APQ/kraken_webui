@@ -1,6 +1,7 @@
 import globals from "globals";
 import pluginJs from "@eslint/js";
 import tseslint from "@typescript-eslint/eslint-plugin";
+import tsParser from "@typescript-eslint/parser";
 import pluginReact from "eslint-plugin-react";
 
 /** 
@@ -10,20 +11,26 @@ export default [
   {
     files: ["**/*.{js,mjs,cjs,ts,jsx,tsx}"],
     languageOptions: {
+      parser: tsParser, // Use TypeScript parser for .ts, .tsx files
+      parserOptions: {
+        ecmaVersion: "latest",
+        sourceType: "module",
+      },
       globals: {
         ...globals.browser,
         ...globals.node,
       },
     },
-    plugins: [
-      "@typescript-eslint",
-      "react",
-    ],
-    extends: [
-      pluginJs.configs.recommended,
-      ...tseslint.configs.recommended,
-      pluginReact.configs.flat.recommended,
-    ],
+    
+    plugins: {
+      "@typescript-eslint": tseslint, // Changed to object format
+      react: pluginReact,            // Changed to object format
+    },
+
+      ...pluginJs.configs.recommended[0],
+      ...tseslint.configs.recommended[0],
+      ...pluginReact.configs.flat.recommended[0],
+
     settings: {
       react: {
         version: 'detect', // Automatically detects the version of React
