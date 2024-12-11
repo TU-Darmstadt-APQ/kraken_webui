@@ -15,13 +15,13 @@ export default [
         ...globals.node,
       },
     },
-    plugins: [
-      "@typescript-eslint",
-      "react",
-    ],
+    plugins: {
+      "@typescript-eslint": tseslint, // Changed to object format
+      react: pluginReact,            // Changed to object format
+    },
     extends: [
       pluginJs.configs.recommended,
-      tseslint.configs.recommended,
+      ...tseslint.configs.recommended,
       pluginReact.configs.flat.recommended,
     ],
     settings: {
