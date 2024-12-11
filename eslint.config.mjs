@@ -1,6 +1,7 @@
 import globals from "globals";
 import pluginJs from "@eslint/js";
 import tseslint from "@typescript-eslint/eslint-plugin";
+import tsParser from "@typescript-eslint/parser";
 import pluginReact from "eslint-plugin-react";
 
 /** 
@@ -14,6 +15,11 @@ export default [
         ...globals.browser,
         ...globals.node,
       },
+    },
+    parser: tsParser, // Use TypeScript parser for .ts, .tsx files
+    parserOptions: {
+      ecmaVersion: "latest",
+      sourceType: "module",
     },
     plugins: {
       "@typescript-eslint": tseslint, // Changed to object format
