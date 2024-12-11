@@ -1,5 +1,3 @@
-import React, {ReactNode} from 'react';
-import classes from './MyHeader.module.css';
 import MyButton from '../button/MyButton';
 
 const MyHeader= ({addingNewSensor} : {addingNewSensor: () => void}) => {

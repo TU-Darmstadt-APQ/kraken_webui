@@ -1,3 +1,4 @@
+import React from 'react'; // Add import for React
 import { ReactNode } from 'react';
 
 export interface Post {
