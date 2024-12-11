@@ -20,9 +20,9 @@ export default [
       react: pluginReact,            // Changed to object format
     },
 
-      ...pluginJs.configs.recommended,
-      ...tseslint.configs.recommended,
-      ...pluginReact.configs.flat.recommended,
+      ...pluginJs.configs.recommended[0],
+      ...tseslint.configs.recommended[0],
+      ...pluginReact.configs.flat.recommended[0],
 
     settings: {
       react: {
