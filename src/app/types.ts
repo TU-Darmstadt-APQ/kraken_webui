@@ -15,7 +15,7 @@ export interface Post {
   }
 
 // Definiere das Interface für den Filter
-interface Filter {
+export interface Filter {
   sort: keyof Post | ''; // Das 'sort' kann ein Schlüssel von Post oder ein leerer String sein
   query: string; // Suchbegriff
 }
