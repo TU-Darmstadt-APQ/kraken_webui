@@ -30,6 +30,7 @@ export interface DateType {
 interface Filter {
   sort: keyof Post | ''; // The 'sort' can be a key from Post or an empty string
   query: string; // Search keyword
+  searchField: keyof Post | ''; // Current Searchfield
 }
 
 // Type the props of the PostFilter component
@@ -93,8 +94,6 @@ export interface PostItemProps {
 export interface MyContentProps {
   modal: boolean;
   setModal: (value: boolean) => void;
-  filter: { sort: keyof Post | ''; query: string };
-  setFilter: (filter: { sort: keyof Post | ''; query: string }) => void;
   sortedAndSearchedPosts: Post[];
   createPost: (newPost: Post) => void;
   removePost: (post: Post) => void;
@@ -107,4 +106,10 @@ export interface MyContentProps {
 export interface ConfigEditorModalProps {
   config: Record<string, unknown>;
   setConfig: (newConfig: Record<string, unknown>) => void;
+}
+
+export interface MyHeaderProps {
+  addingNewSensor: () => void;
+  filter: { sort: keyof Post | ''; query: string }
+  setFilter: (filter: { sort: keyof Post | ''; query: string; searchField: keyof Post | '' }) => void;
 }

@@ -4,6 +4,28 @@ import { DateType } from '@/app/types';
 
 type SortKey = keyof Post;
 
+// the method converts DataType into a string
+const formatDate = (date: DateType): string => {
+  const { day, month, year, nanoseconds } = date;
+  return `${day ?? ''}.${month ?? ''}.${year ?? ''} ${nanoseconds ?? ''}`;
+};
+
+// the method filter boolean
+const filterBoolean = (query: string, post: Post): boolean => {
+  const normalizedQuery = query.toLowerCase().trim();
+
+  if (['on', 'enabled', 'true'].includes(normalizedQuery)) {
+    return post.enabled === true;
+  }
+  if (['off', 'disabled', 'false'].includes(normalizedQuery)) {
+    return post.enabled === false;
+  }
+  if (['undefined', 'offline'].includes(normalizedQuery)) {
+    return post.enabled === undefined || post.enabled === null;
+  }
+  return false;
+}
+
 // Custom Hook: All custom hooks use predefined hooks from React (useState, useMemo etc)
 export const useSortedPosts = (posts: Post[], sort: SortKey | ''): Post[] => {
   const sortedPosts = useMemo(() => {
@@ -100,15 +122,57 @@ export const useSortedPosts = (posts: Post[], sort: SortKey | ''): Post[] => {
   return sortedPosts;
 };
 
-export const usePosts = (posts: Post[], sort: SortKey | '', query: string) => {
+export const usePosts = (posts: Post[], sort: SortKey | '', query: string, searchField: keyof Post | 'all') => {
   const sortedPosts = useSortedPosts(posts, sort);
 
   // To make the search register-independent, it was "toLowerCase" for titles implemented
   const sortedAndSearchedPosts = useMemo(
     () => {
-      return sortedPosts.filter(post => post.title.toLowerCase().includes(query.toLowerCase()));
+      if (!query.trim()) return sortedPosts; // if query is empty - return the original list
+
+      return sortedPosts.filter((post) => {
+        
+        // if we search in all fields of Post
+        if(searchField === 'all'){
+          return Object.values(post).some((value) => {
+            if (typeof value === 'string' || typeof value === 'number') {
+              return value.toString().toLowerCase().includes(query.toLowerCase());
+            }
+            // identificate DataType
+            if (typeof value === 'object' && value !== null && 'year' in value && 'month' in value && 'day' in value) {
+              return formatDate(value as DateType).toLowerCase().includes(query.toLowerCase());
+            }
+            /*if(typeof value === 'object' && value !== null){
+              return isTextInConfig(value, query);
+            }*/
+            // identificate Enabled-status
+            if(typeof value === 'boolean'){
+              return filterBoolean(query, post);
+            }
+            return false;
+          });
+        }
+
+        const fieldValue = post[searchField];
+        // If the fieldValue is of type DateType
+        if (typeof fieldValue === 'object' && fieldValue !== null && 'year' in fieldValue && 'month' in fieldValue && 'day' in fieldValue) {
+          return formatDate(fieldValue as DateType).toLowerCase().includes(query.toLowerCase());
+        }
+        // If the fieldValue is of type Config
+        /*if(typeof fieldValue === 'object' && fieldValue !== null){
+          return isTextInConfig(fieldValue, query);
+        }*/
+        if(typeof fieldValue === 'boolean'){
+          return filterBoolean(query, post);
+        }
+        if (typeof fieldValue === 'string' || typeof fieldValue === 'number') {
+          return fieldValue.toString().toLowerCase().includes(query.toLowerCase());
+        }
+
+        return false;
+      });
     },
-    [query, sortedPosts]
+    [query, sortedPosts, searchField]
   );
 
   return sortedAndSearchedPosts;

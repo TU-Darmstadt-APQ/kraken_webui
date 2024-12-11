@@ -13,8 +13,6 @@ const MyContent: React.FC<MyContentProps> = (
     {
         modal,
         setModal,
-        filter,
-        setFilter,
         sortedAndSearchedPosts,
         createPost,
         removePost,
@@ -51,9 +49,6 @@ const MyContent: React.FC<MyContentProps> = (
          * Parents can pass props to children, but children cannot directly modify parent data (!)
          */}
       </ModalWindow>
-
-       {/* Component responsible for managing the filter inputs */}
-      <PostFilter filter={filter} setFilter={setFilter}/>
       
 
       {/* Component responsible for displaying the list of sensors.

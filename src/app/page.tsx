@@ -42,6 +42,68 @@ function Page() {
       pad: 2,
       sad: 2,
       port: 8
+    },
+    {
+      id: 2,
+      title: 'A_Thinkpad',
+      description: 'Laptop-sensor',
+      date_created: {
+        day: 22,
+        month: 12,
+        year: 2023,
+        nanoseconds: 223456789.0,
+      },
+      date_modified: {
+        day: 22,
+        month: 12,
+        year: 2024,
+        nanoseconds: 0.0,
+      },
+      enabled: false,
+      label: 'YYY',
+      uuid: '63354645',
+      config: {
+        theme: "light",
+        notifications: false,
+      },
+      on_connect: 'etwas anderes',
+      topic: "laptop_sensor",
+      unit: "FB20",
+      driver: "Tinkerforge",
+      pad: 2,
+      sad: 2,
+      port: 8
+    },
+    {
+      id: 3,
+      title: 'Xiaomi',
+      description: 'none',
+      date_created: {
+        day: 1,
+        month: 1,
+        year: 2022,
+        nanoseconds: 3456789.0,
+      },
+      date_modified: {
+        day: 2,
+        month: 1,
+        year: 2025,
+        nanoseconds: 0.0,
+      },
+      enabled: true,
+      label: 'ZZZ',
+      uuid: '3',
+      config: {
+        theme: "blue",
+        notifications: true,
+      },
+      on_connect: 'etwas anderes',
+      topic: "smartphone_sensor",
+      unit: "FB8",
+      driver: "Tinkerforge",
+      pad: 3,
+      sad: 3,
+      port: 9
     }
   ]);
 
@@ -68,7 +130,11 @@ function Page() {
    * @property {keyof Post | ''} sort - Specifies the field to sort the posts by (e.g., 'title', 'id').
    * @property {string} query - Text for searching/filtering posts.
    */
-  const [filter, setFilter] = useState<{ sort: keyof Post | ''; query: string }>({sort: '', query: ''});
+  const [filter, setFilter] = useState<{ 
+    sort: keyof Post | '';
+    query: string;
+    searchField: keyof Post | 'all' //save the current searchfield
+  }>({sort: '', query: '', searchField: 'all'});
 
 
   /**
@@ -83,7 +149,7 @@ function Page() {
    * `usePosts` returns a copy (!) of the posts array based on the filter criteria, 
    * without modifying the original state.
    */
-  const sortedAndSearchedPosts = usePosts(posts, filter.sort, filter.query);
+  const sortedAndSearchedPosts = usePosts(posts, filter.sort, filter.query, filter.searchField);
 
   const [postToEdit, setPostToEdit] = useState<Post | null>(null);
 
@@ -119,13 +185,15 @@ function Page() {
 
   return (
     <div className="App">
-      <MyHeader addingNewSensor={() => {setModal(true); setPostToEdit(null);}}/>
+      <MyHeader 
+        addingNewSensor={() => {setModal(true); setPostToEdit(null);}}
+        filter={filter}
+        setFilter={setFilter}
+      />
 
       <MyContent 
         modal={modal}
         setModal={setModal}
-        filter={filter}
-        setFilter={setFilter}
         sortedAndSearchedPosts={sortedAndSearchedPosts}
         createPost={createPost}
         removePost={removePost}

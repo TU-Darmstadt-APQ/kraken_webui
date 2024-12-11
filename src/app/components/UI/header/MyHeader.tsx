@@ -1,22 +1,33 @@
 import React, {ReactNode} from 'react';
 import classes from './MyHeader.module.css';
 import MyButton from '../button/MyButton';
+import { MyHeaderProps } from '@/app/types';
+import PostFilter from '../../PostFilter';
 
-const MyHeader= ({addingNewSensor} : {addingNewSensor: () => void}) => {
+const MyHeader: React.FC<MyHeaderProps> = ({addingNewSensor, filter, setFilter}) => {
     return (
         <header className="header">
             {/* Logo as image */}
             <div className="logo">
-                <img src="/krakenIcon.png" alt="Kraken Logo" />
+                <img src="/krakenLogo.png" alt="Kraken Logo" />
                 <h1>kraken</h1>
             </div>
+
             {/* Buttons on the right */}
-            <div className="buttons">
-                <MyButton onClick={addingNewSensor}>Add new Sensor</MyButton>
-                <MyButton>Option 2</MyButton>
-                <MyButton>Option 3</MyButton>
-                <MyButton>Option 4</MyButton>
-                <MyButton>Option 5</MyButton>
+            <div className="actions">
+                <div className="filter-container">
+                    {/* Component responsible for managing the filter inputs */}
+                    <PostFilter filter={filter} setFilter={setFilter}/>
+                </div>
+
+                <MyButton className="icon-button" onClick={addingNewSensor}>
+                    <img 
+                        src="/plusIcon.png" 
+                        alt="Add new Sensor" 
+                        width={30} 
+                        height={30}
+                    />
+                </MyButton>
             </div>
         </header>
     );
