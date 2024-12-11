@@ -19,11 +19,11 @@ export default [
       "@typescript-eslint": tseslint, // Changed to object format
       react: pluginReact,            // Changed to object format
     },
-    extends: [
-      pluginJs.configs.recommended,
-      tseslint.configs.recommended,
-      pluginReact.configs.flat.recommended,
-    ],
+
+      ...pluginJs.configs.recommended,
+      ...tseslint.configs.recommended,
+      ...pluginReact.configs.flat.recommended,
+
     settings: {
       react: {
         version: 'detect', // Automatically detects the version of React
