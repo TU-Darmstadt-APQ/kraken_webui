@@ -18,34 +18,9 @@ header {
   justify-content: space-between;
   align-items: center;
   background-color: teal;
-  color: white;
-  width: 100%;
+  padding: 10px 20px;
   box-sizing: border-box;
-  padding: 0 40px;
-}
-
-header a {
-  font-size: 24px;
-  font-weight: bold;
-  color: white;
-  text-decoration: none;
-}
-
-header .buttons > * {
-  background-color: rgb(0, 96, 96);
-  color: white; /* textcolor */
-  border: 1px solid teal;
-  padding: 8px 16px;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s, color 0.3s;
-  transform: scale(0.8); /* Scaling, because they were too big */
-  transform-origin: center;
-}
-
-header div {
-  display: flex;
-  gap: 10px;
+  height: 60px;
 }
 
 .logo {
@@ -55,14 +30,33 @@ header div {
 }
 
 .logo img {
-  height: 40px;
-  width: auto;
+  width: 30px;
+  height: 30px;
 }
 
-.buttons {
+.logo h1 {
+  font-size: 20px;
+  font-weight: 500;
+  margin: 0;
+  color: white;
+}
+
+.actions {
   display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.filter-container {
+  display: flex;
+  align-items: center;
   gap: 10px;
 }
+
+.filter-container span{
+  color: white;
+}
+
 
 .Content {
   display: flex;
@@ -149,4 +143,40 @@ header div {
 
 .list-button:hover {
   background-color: darkcyan;
+}
+
+
+.toggle-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;                /* gap between elements */
+  padding: 10px;      
+  background-color: #f0f0f0;
+  border-radius: 10px;     /* round corners */
+  border: 1px solid #ccc;  /* create border for div */
+  max-width: 100%;  
+}
+
+.toggle-container label {
+  display: flex;
+  align-items: center;
+  gap: 5px;                /* gap between toggle and text */
+  background-color: white;
+  padding: 4px 8px;
+  border-radius: 5px;      /* round border-corners */
+  border: 1px solid #ccc;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.toggle-container label:hover {
+  background-color: #e0f7fa;
+  border-color: #00acc1;
+}
+
+.toggle-container input[type="checkbox"] {
+  accent-color: #00796b;  /* Color of checkbox */
+  width: 14px;
+  height: 14px;
 }

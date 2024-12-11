@@ -11,7 +11,11 @@ import { TableItemProps } from '@/app/types';
  * @param {(post: Post) => void} props.remove - Callback to handle the removal of a row.
  */
 const TableItem: React.FC<TableItemProps> = ({post, remove, edit, selectedColumns}) => {
-    return(
+  const isRowVisible = Object.values(selectedColumns).some((value) => value);
+
+  if (!isRowVisible) return null; // we check if minimum one is true
+  
+  return(
         <tr>
             {/* Displaying properties of the `post` object */}
             {selectedColumns.id && <td>{post.id}</td>}
