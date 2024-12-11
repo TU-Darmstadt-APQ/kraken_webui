@@ -77,6 +77,7 @@ const PostList: React.FC<PostListProps> = ({ posts, listTitle, remove, edit }) =
             {/* Conditional rendering for table view or post view */}
             {isTableView ? (
                 <div>
+                <div className="toggle-container">
                 {Object.keys(selectedColumns).map((columnKey) => (
                     <label key={columnKey}>
                       <input
@@ -92,6 +93,7 @@ const PostList: React.FC<PostListProps> = ({ posts, listTitle, remove, edit }) =
                       {columnKey}
                     </label>
                   ))}
+                  </div>
                 
 
                 {/* Render posts in table format */}
