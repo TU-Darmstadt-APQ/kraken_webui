@@ -1,5 +1,5 @@
-import React, {ReactNode} from 'react';
-import classes from './MyHeader.module.css';
+//import React, {ReactNode} from 'react'; // Remove unused import
+//import classes from './MyHeader.module.css'; // Remove unused import
 import MyButton from '../button/MyButton';
 
 const MyHeader= ({addingNewSensor} : {addingNewSensor: () => void}) => {
