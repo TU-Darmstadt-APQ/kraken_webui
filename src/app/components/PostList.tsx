@@ -6,6 +6,7 @@ import styles from './../styles/PostList.module.css';
 
 import { PostListProps } from '@/app/types';
 import MyToggle from './UI/toggle/MyToggle';
+import MyTooltip from './UI/tooltip/MyTooltip';
 
 /**
  * Component for rendering a list of posts with the ability to toggle between table view and post view.
@@ -56,24 +57,28 @@ const PostList: React.FC<PostListProps> = ({ posts, listTitle, remove, edit }) =
 
             {/* Buttons to toggle view mode */}
             <div className={styles["view-buttons"]}>
+                <MyTooltip infoText="Table view of sensors" position="top">
                 <button onClick={() => setIsTableView(true)} className={styles["list-button"]}>
                     <Image 
-                        src="/table-list.png" 
+                        src="/tableIcon.png" 
                         alt="Table View" 
                         className="icon-button" 
                         width={20} 
                         height={20} 
                     />
                 </button>
+                </MyTooltip>
+                <MyTooltip infoText="Post view of sensors" position="top-right">
                 <button onClick={() => setIsTableView(false)} className={styles["list-button"]}>
                     <Image 
-                        src="/list.png" 
+                        src="/blogIcon.png" 
                         alt="Posts View" 
                         className="icon-button" 
                         width={20} 
                         height={20} 
                     />
                 </button>
+                </MyTooltip>
             </div>
 
             {/* Conditional rendering for table view or post view */}
