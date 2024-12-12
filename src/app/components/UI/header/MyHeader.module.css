@@ -1,0 +1,60 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: teal;
+  padding: 10px 15px;
+  box-sizing: border-box;
+  height: auto; /* automaticly passes to the content inside header */
+}
+  
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+  
+.logo img {
+  width: 30px;
+  height: 30px;
+}
+  
+.logo h1 {
+  font-size: 20px;
+  font-weight: 500;
+  margin: 0;
+  color: white;
+}
+  
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  max-height: 100%;
+}
+  
+.filter-container {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+  
+.filter-container span{
+  color: white;
+}
+  
+#icon-button:hover {
+  background-color: rgb(0, 100, 100);
+  border-color: rgb(0, 100, 100);  
+  border-radius: 10px;     /* round corners */  
+}
+
+.buttons-container::before {
+  content: '';                /* empty element */
+  display: inline-block;      /* Inline-Block for better control */
+  width: 1px;
+  height: 30px;
+  background-color: #f0f0f0;
+  margin-right: 15px;
+}
