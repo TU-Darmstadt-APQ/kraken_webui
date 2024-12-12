@@ -120,3 +120,9 @@ export interface ToggleProps {
   checked: boolean;
   onChange: (checked: boolean) => void;
 }
+
+export interface MyTooltipProps {
+  infoText: string;
+  children: React.ReactNode;
+  position?: 'top' | 'bottom' | 'left' | 'right' | 'bottom-right' | 'top-right'; // possible direction for tooltip appereance
+}
