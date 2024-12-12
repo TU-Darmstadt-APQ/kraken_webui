@@ -32,6 +32,18 @@ async function run() {
 }
 
 
+async function getAllDocuments() {
+  const User = mongoose.model('testUser', Schema({
+    name: String,
+    email: String
+  }));
+  
+  // Empty `filter` means "match all documents"
+  const filter = {};
+  const all = await User.find(filter);
+}
+
+
 export default async function DBConnector() {
   try {
     await StartSetup();
