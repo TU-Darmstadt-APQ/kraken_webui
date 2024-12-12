@@ -3,6 +3,7 @@ import MyButton from '../button/MyButton';
 import { MyHeaderProps } from '@/app/types';
 import PostFilter from '../../PostFilter';
 import classes from './MyHeader.module.css';
+import MyTooltip from './../tooltip/MyTooltip';
 
 const MyHeader: React.FC<MyHeaderProps> = ({addingNewSensor, filter, setFilter}) => {
     return (
@@ -21,6 +22,8 @@ const MyHeader: React.FC<MyHeaderProps> = ({addingNewSensor, filter, setFilter})
                 </div>
 
                 <div className={classes["buttons-container"]}>
+                <MyTooltip infoText="Add new Sensor" position="bottom-right">
+                    
                 <MyButton id={classes["icon-button"]} onClick={addingNewSensor}>
                     <img 
                         src="/plusIcon.png" 
@@ -29,6 +32,7 @@ const MyHeader: React.FC<MyHeaderProps> = ({addingNewSensor, filter, setFilter})
                         height={30}
                     />
                 </MyButton>
+                </ MyTooltip>
                 </div>
             </div>
         </header>

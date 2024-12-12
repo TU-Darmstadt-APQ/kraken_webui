@@ -7,6 +7,7 @@ import PostList from "./PostList";
 import PostForm from "./PostForm";
 import ModalWindow from "./UI/ModalWindow/ModalWindow";
 import MyButton from "./UI/button/MyButton";
+import MyTooltip from './UI/tooltip/MyTooltip';
 
 
 const MyContent: React.FC<MyContentProps> = (
@@ -27,11 +28,42 @@ const MyContent: React.FC<MyContentProps> = (
 
         {/* Left Sidebar */}
         <div className={styles["Sidebar"]}>
-          <MyButton>Option 1</MyButton>
-          <MyButton>Option 2</MyButton>
-          <MyButton>Option 3</MyButton>
-          <MyButton>Option 4</MyButton>
-          <MyButton>Option 5</MyButton>
+          <MyTooltip infoText="List of sensors" position="right">
+            <MyButton>
+              <img 
+                src="/listIcon.png" 
+                alt="Table View" 
+                className="icon-button" 
+                width={25} 
+                height={25} 
+              />
+            </MyButton>
+          </MyTooltip>
+          <hr/>
+          <MyTooltip infoText="Sensor data analysis" position="right">
+            <MyButton>
+              <img 
+                src="/diagrammIcon.png" 
+                alt="Table View" 
+                className="icon-button" 
+                width={25} 
+                height={25} 
+              />
+            </MyButton>
+          </MyTooltip>
+          <hr/>
+          <MyTooltip infoText="Sensor data share" position="right">
+            <MyButton>
+              <img 
+                src="/shareIcon.png" 
+                alt="Table View" 
+                className="icon-button" 
+                width={25} 
+                height={25} 
+              />
+            </MyButton>
+          </MyTooltip>
+          
         </div>
 
         {/* Right Main Content */}
