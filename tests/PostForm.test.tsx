@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import React from 'react';
 import { render, screen, fireEvent, cleanup } from '@testing-library/react';
 import PostForm from '@/app/components/PostForm'; // Adjust the import path accordingly

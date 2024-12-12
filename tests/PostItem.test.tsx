@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import React from 'react';
 import { render, screen, fireEvent, cleanup } from '@testing-library/react';
 import PostItem from '@/app/components/PostItem'; // Adjust the import path accordingly

@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import { render, screen, fireEvent } from '@testing-library/react';
 import TableItem from '@/app/components/TableItem';
 import { Post } from '@/app/types';
@@ -9,56 +10,17 @@ describe('TableItem Component', () => {
     id: 1,
     title: 'Test Post',
     description: 'Test Description',
-    date_created: { day: 10, month: 12, year: 2024 },
-    date_modified: { day: 11, month: 12, year: 2024 },
-    enabled: true,
+    date_created: `${2024}-12-10`, // Format as "YYYY-MM-DD"
+    date_modified: `${2024}-12-11`, // Format as "YYYY-MM-DD"
+    enabled: String(true), // Convert the boolean to a string
     label: 'Test Label',
-    uuid: 'uuid-123',
-    config: { key1: 'value1' },
+    uid: 'uuid-123',
+    config: JSON.stringify({ key1: 'value1' }), // Convert the object to a JSON string
     on_connect: 'test-connect',
-    topic: 'test-topic',
-    unit: 'unit1',
-    driver: 'test-driver',
-  };
-
-  const selectedColumns = {
-    id: true,
-    title: true,
-    description: true,
-    date_created: true,
-    date_modified: true,
-    enabled: true,
-    label: true,
-    uuid: true,
-    config: true,
-    on_connect: true,
   };
 
   // Mock functions for callbacks
   const mockRemove = jest.fn();
-  const mockEdit = jest.fn();
-
-  it('calls edit callback when edit button is clicked', () => {
-    render(
-      <table>
-        <tbody>
-          <TableItem
-            post={mockPost}
-            remove={mockRemove}
-            edit={mockEdit}
-            selectedColumns={selectedColumns}
-          />
-        </tbody>
-      </table>
-    );
-
-    // Trigger the edit button click
-    const editButton = screen.getByAltText('Edit');
-    fireEvent.click(editButton);
-
-    // Check if the edit function was called with the correct post
-    expect(mockEdit).toHaveBeenCalledWith(mockPost);
-  });
 
   it('calls remove callback when remove button is clicked', () => {
     render(
@@ -66,19 +28,21 @@ describe('TableItem Component', () => {
         <tbody>
           <TableItem
             post={mockPost}
-            remove={mockRemove}
-            edit={mockEdit}
-            selectedColumns={selectedColumns}
+            remove={mockRemove}  // Only pass remove, since edit is no longer part of TableItemProps
           />
         </tbody>
       </table>
     );
 
     // Trigger the remove button click
-    const removeButton = screen.getByAltText('Delete');
+    const removeButton = screen.getByText('Delete');
     fireEvent.click(removeButton);
 
     // Check if the remove function was called with the correct post
     expect(mockRemove).toHaveBeenCalledWith(mockPost);
   });
 });
+
+
+
+
