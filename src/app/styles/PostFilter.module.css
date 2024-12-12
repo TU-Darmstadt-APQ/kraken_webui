@@ -1,0 +1,29 @@
+.filter-container {
+  display: flex;            /* Arrange elements in a row */
+  flex-direction: row;      /* Ensure items are in a horizontal line */
+  align-items: center;      /* Vertically align items to the center */
+  gap: 10px;                /* Space between elements */
+  width: auto;              /* Set automatic width */
+}
+
+.filter-container input {
+  width: auto;         
+  padding: 4px 6px;
+  font-size: 12px;
+}
+
+.filter-container .filter-options {
+  display: flex;
+  gap: 10px;
+}
+
+.filter-container span {
+  font-size: 12px;
+  margin-right: 3px;
+}
+
+.filter-container select {
+  padding: 4px 6px;
+  font-size: 12px;
+  max-width: 120px;
+}

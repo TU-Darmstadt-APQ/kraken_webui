@@ -114,3 +114,9 @@ export interface MyHeaderProps {
   filter: { sort: keyof Post | ''; query: string }
   setFilter: (filter: { sort: keyof Post | ''; query: string; searchField: keyof Post | '' }) => void;
 }
+
+export interface ToggleProps {
+  label: string;
+  checked: boolean;
+  onChange: (checked: boolean) => void;
+}

@@ -1,6 +1,6 @@
 import React from 'react';
 import { MySelectProps, Post } from '@/app/types';
-import cl from './MySelect.module.css'
+import styles from './MySelect.module.css';
 
 
 /**
@@ -25,7 +25,8 @@ const MySelect: React.FC<MySelectProps> = ({
   onChange,
 }) => {
   return (
-    <select value={value} onChange={event => onChange(event.target.value as keyof Post)} // Converts selected value to a key of `Post`
+    <div className={styles['select-container']}>
+    <select className={styles['my-select']} value={value} onChange={event => onChange(event.target.value as keyof Post)} // Converts selected value to a key of `Post`
     > {/* Questionable. We have to adapt the type better */}
 
       {/* Default option, disabled to act as a placeholder */}
@@ -39,6 +40,7 @@ const MySelect: React.FC<MySelectProps> = ({
         </option>
       ))}
     </select>
+    </div>
   );
 };
 
