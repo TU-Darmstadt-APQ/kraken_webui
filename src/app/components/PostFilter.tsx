@@ -1,6 +1,7 @@
 import React from 'react';
 import MySelect from "./UI/select/MySelect";
 import MyInput from "./UI/input/MyInput";
+import styles from './../styles/PostFilter.module.css';
 
 import { PostFilterProps, Post } from '@/app/types';
 
@@ -17,7 +18,7 @@ import { PostFilterProps, Post } from '@/app/types';
  */
 const PostFilter: React.FC<PostFilterProps> = ({filter, setFilter}) => {
   return (
-    <div>
+    <div className={styles['filter-container']}>
          {/* Input field for entering a search query */}
         <MyInput
           value={filter.query}
@@ -25,6 +26,8 @@ const PostFilter: React.FC<PostFilterProps> = ({filter, setFilter}) => {
           placeholder="Search for..." // Placeholder text for the input field
         />
 
+        <div className={styles['filter-options']}>
+        <div>
         <span>Sort by: </span>
 
         <MySelect
@@ -42,7 +45,9 @@ const PostFilter: React.FC<PostFilterProps> = ({filter, setFilter}) => {
             {value: 'uuid', name: 'UUID'},
           ]}
         />
-
+        </div>
+        
+        <div>
         <span>Search by: </span>
 
         <MySelect
@@ -70,6 +75,8 @@ const PostFilter: React.FC<PostFilterProps> = ({filter, setFilter}) => {
             {value: 'sensor_type', name: 'Sensor Type'}
           ]}
         />
+        </div>
+      </div>
       </div>
   );
 };

@@ -1,10 +1,10 @@
 import React from 'react';
 
 import { MyContentProps } from '@/app/types';
+import styles from './../styles/MyContent.module.css';
 
 import PostList from "./PostList";
 import PostForm from "./PostForm";
-import PostFilter from "./PostFilter";
 import ModalWindow from "./UI/ModalWindow/ModalWindow";
 import MyButton from "./UI/button/MyButton";
 
@@ -23,10 +23,10 @@ const MyContent: React.FC<MyContentProps> = (
       }
 ) => {
   return (
-    <div className="Content">
+    <div className={styles["Content"]}>
 
         {/* Left Sidebar */}
-        <div className="Sidebar">
+        <div className={styles["Sidebar"]}>
           <MyButton>Option 1</MyButton>
           <MyButton>Option 2</MyButton>
           <MyButton>Option 3</MyButton>
@@ -35,7 +35,7 @@ const MyContent: React.FC<MyContentProps> = (
         </div>
 
         {/* Right Main Content */}
-        <div className="MainContent">
+        <div className={styles["MainContent"]}>
           <div>
 
       {/* Modal window for adding a new sensor */}

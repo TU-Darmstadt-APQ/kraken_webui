@@ -1,5 +1,6 @@
 import React from "react";
 import MyButton from "./UI/button/MyButton";
+import styles from './../styles/PostItem.module.css';
 
 import { PostItemProps } from '@/app/types';
 
@@ -15,7 +16,7 @@ import { PostItemProps } from '@/app/types';
  */
 const PostItem: React.FC<PostItemProps> = (props) => {
     return(
-        <div className="post">
+        <div className={styles["post"]}>
           {/* Post content: number, title, and description */}
           <div className="post__content">
             <strong>{props.number}. {props.post.title}</strong>

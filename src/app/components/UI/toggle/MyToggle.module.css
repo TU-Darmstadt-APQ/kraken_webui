@@ -1,0 +1,23 @@
+.toggle-label {
+    display: flex;
+    align-items: center;
+    gap: 5px;                /* gap between toggle and text */
+    background-color: white;
+    padding: 4px 8px;
+    border-radius: 5px;      /* round border-corners */
+    border: 1px solid #ccc;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s;
+  }
+  
+  .toggle-label:hover {
+    background-color: #e0f7fa;
+    border-color: #00acc1;
+  }
+  
+  .toggle-label input[type="checkbox"] {
+    accent-color: #00796b;  /* Color of checkbox */
+    width: 14px;
+    height: 14px;
+  }

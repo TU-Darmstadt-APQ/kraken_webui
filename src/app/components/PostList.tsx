@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import Image from "next/image";
 import PostItem from "./PostItem"
 import TableItem from "./TableItem";
+import styles from './../styles/PostList.module.css';
 
 import { PostListProps } from '@/app/types';
+import MyToggle from './UI/toggle/MyToggle';
 
 /**
  * Component for rendering a list of posts with the ability to toggle between table view and post view.
@@ -53,8 +55,8 @@ const PostList: React.FC<PostListProps> = ({ posts, listTitle, remove, edit }) =
             <h1 style={{ textAlign: 'center' }}>{listTitle}</h1>
 
             {/* Buttons to toggle view mode */}
-            <div className="view-buttons">
-                <button onClick={() => setIsTableView(true)} className="list-button">
+            <div className={styles["view-buttons"]}>
+                <button onClick={() => setIsTableView(true)} className={styles["list-button"]}>
                     <Image 
                         src="/table-list.png" 
                         alt="Table View" 
@@ -63,7 +65,7 @@ const PostList: React.FC<PostListProps> = ({ posts, listTitle, remove, edit }) =
                         height={20} 
                     />
                 </button>
-                <button onClick={() => setIsTableView(false)} className="list-button">
+                <button onClick={() => setIsTableView(false)} className={styles["list-button"]}>
                     <Image 
                         src="/list.png" 
                         alt="Posts View" 
@@ -77,28 +79,26 @@ const PostList: React.FC<PostListProps> = ({ posts, listTitle, remove, edit }) =
             {/* Conditional rendering for table view or post view */}
             {isTableView ? (
                 <div>
-                <div className="toggle-container">
+                <div className={styles["toggle-container"]}>
                 {Object.keys(selectedColumns).map((columnKey) => (
-                    <label key={columnKey}>
-                      <input
-                        type="checkbox"
+                      <MyToggle
+                        key={columnKey} //key is used in the map call to give each element a unique identification. It is not passed on to MyToggle as a prop.
+                        label={columnKey}
                         checked={selectedColumns[columnKey]}
                         onChange={(e) =>
                           setSelectedColumns((prev) => ({
                             ...prev,
-                            [columnKey]: e.target.checked,
+                            [columnKey]: e,
                           }))
                         }
                       />
-                      {columnKey}
-                    </label>
                   ))}
                   </div>
                 
 
                 {/* Render posts in table format */}
-                <div className="table-container">
-                <table className="sensor-table" border={0}>
+                <div className={styles["table-container"]}>
+                <table className={styles["sensor-table"]} border={0}>
                     <thead>
                         <tr>
                             {selectedColumns.id && <th>ID</th>}
