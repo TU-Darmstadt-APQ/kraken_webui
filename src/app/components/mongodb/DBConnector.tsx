@@ -22,12 +22,6 @@ async function run() {
   } finally {
     // Ensures that the client will close when you finish/error
     console.log("Disconnecting from MongoDB...")
-    // try {
-    //   await mongoose.disconnect();
-    // } catch (error) {
-    //   console.log(error)
-    // }
-    // console.log("Disconnected.");
   }
 }
 
