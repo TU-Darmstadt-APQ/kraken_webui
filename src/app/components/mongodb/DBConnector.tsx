@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { config } from "../../../../config";
 import mongoose from "mongoose";
 import TinkerforgeSensor from "@/app/models/tinkerforgeSensor";
