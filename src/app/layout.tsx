@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import DBConnector from "../../components/DBConnector";
+import DBConnector from "./components/mongodb/DBConnector";
 import React from 'react'; // Add import for React
 
 const geistSans = localFont({
