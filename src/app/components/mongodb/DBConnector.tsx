@@ -1,12 +1,12 @@
-import { config } from "../config";
+import { useEffect } from "react";
+import { config } from "../../../../config";
 import mongoose from "mongoose";
+import TinkerforgeSensor from "@/app/models/tinkerforgeSensor";
 
 async function StartSetup() {
   console.log("Starting MongoDB connection...");
   await mongoose.connect(`${config.krakenConfigsMongodbConnectionString}`);
   console.log("Connection with MongoDB successfully established.");
-  // mongoose.connection.on('error', (err : any) => console.log("Catch Connection Error:", err));
-
 }
 
 
@@ -22,17 +22,24 @@ async function run() {
   } finally {
     // Ensures that the client will close when you finish/error
     console.log("Disconnecting from MongoDB...")
-    try {
-      await mongoose.disconnect();
-    } catch (error) {
-      console.log(error)
-    }
-    console.log("Disconnected.");
+    // try {
+    //   await mongoose.disconnect();
+    // } catch (error) {
+    //   console.log(error)
+    // }
+    // console.log("Disconnected.");
   }
 }
 
 
+async function getAllDocuments() {
+  return await TinkerforgeSensor.find({});
+}
+
+
+
 export default async function DBConnector() {
+
   try {
     await StartSetup();
     await run();
@@ -40,6 +47,10 @@ export default async function DBConnector() {
     console.log("Catch Error:", error);
   }
 
+  let documents = await getAllDocuments();
+  console.log("\nprinting documents start\n");
+  console.log(documents);
+  console.log("\nprinting documents end\n");
   return (
     <span></span>
   )
