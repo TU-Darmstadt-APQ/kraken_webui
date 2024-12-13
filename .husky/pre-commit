@@ -1,5 +1,8 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
+ npm run lint
+
+ #Dont remove this, the tests are not done 
 # npm test
-# npm run lint
+
