@@ -3,48 +3,45 @@ import { config } from "../../../../config";
 import mongoose from "mongoose";
 import TinkerforgeSensor from "@/app/models/tinkerforgeSensor";
 
+
+
+/*  
+* Creates a connection with MongoDB
+*/
 async function StartSetup() {
   console.log("Starting MongoDB connection...");
   await mongoose.connect(`${config.krakenConfigsMongodbConnectionString}`);
   console.log("Connection with MongoDB successfully established.");
 }
 
-
-async function run() {
-  try {
-    console.log("Starting ping test...")
-    if (mongoose.connection.db === undefined) {
-      throw new Error("Database not connected");
-    } else {
-      await mongoose.connection.db.admin().command({ ping: 1 });
-    }
-    console.log("Pinged your deployment. You successfully connected to MongoDB!");
-  } finally {
-    // Ensures that the client will close when you finish/error
-    console.log("Disconnecting from MongoDB...")
-    // try {
-    //   await mongoose.disconnect();
-    // } catch (error) {
-    //   console.log(error)
-    // }
-    // console.log("Disconnected.");
+/* 
+* Validates the MongoDB connection exists and is working
+*/
+async function ValidateMongoDBConnection() {
+  console.log("MongoDB ping test - Starting...")
+  if (mongoose.connection.db === undefined) {
+    throw new Error("MongoDB connection is undefined. Please check the db connector and the MongoDB connection setup.");
+  } else {
+    await mongoose.connection.db.admin().command({ ping: 1 });
+    console.log("MongoDB ping test - successful")
   }
 }
 
 
+/*
+* Queries all documents from TinkerforgeSensor collection
+*/
 async function getAllDocuments() {
   return await TinkerforgeSensor.find({});
 }
 
 
-
 export default async function DBConnector() {
-
   try {
     await StartSetup();
-    await run();
+    await ValidateMongoDBConnection();
   } catch (error) {
-    console.log("Catch Error:", error);
+    console.log("MongoDB Connection Setup Error:", error);
   }
 
   let documents = await getAllDocuments();

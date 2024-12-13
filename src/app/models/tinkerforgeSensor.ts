@@ -1,10 +1,5 @@
 import mongoose from "mongoose";
 
-if (typeof window === 'undefined') {
-    console.log('running on server');
-} else {
-    console.log('running on client');
-}
 
 let TinkerforgeSensor : ReturnType<typeof getModel>;
 
