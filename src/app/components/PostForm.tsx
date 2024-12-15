@@ -32,9 +32,9 @@ const PostForm: React.FC<PostFormProps> = ({create}) => {
     return(
         <form>
          {/* Controlled input field for the post title */}
-        <MyInput value={post.title} onChange={e => setPost({...post, title: e.target.value})} type="text" placeholder="Name der Sensor"/>
-        <MyInput value={post.description} onChange={e => setPost({...post, description: e.target.value})} type="text" placeholder="Beschreibung"/>
-        <MyButton onClick={addNewPost}>Sensor einfügen</MyButton>
+        <MyInput value={post.title} onChange={e => setPost({...post, title: e.target.value})} type="text" placeholder="Name of sensor"/>
+        <MyInput value={post.description} onChange={e => setPost({...post, description: e.target.value})} type="text" placeholder="Description"/>
+        <MyButton onClick={addNewPost}>Add sensor</MyButton>
       </form>
     );
 };
