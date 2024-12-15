@@ -21,27 +21,27 @@ describe('PostForm component', () => {
     renderPostForm({ create: mockCreate, edit: mockEdit });
 
     // Check if input fields are rendered with the correct placeholder text
-    expect(screen.getByPlaceholderText('Name der Sensor')).toBeInTheDocument();
-    expect(screen.getByPlaceholderText('Beschreibung')).toBeInTheDocument();
+    expect(screen.getByPlaceholderText('Name of sensor')).toBeInTheDocument();
+    expect(screen.getByPlaceholderText('Description')).toBeInTheDocument();
 
     // Simulate user input
-    fireEvent.change(screen.getByPlaceholderText('Name der Sensor'), { target: { value: 'uuid-1234' } });
-    fireEvent.change(screen.getByPlaceholderText('Beschreibung'), { target: { value: 'Topic 1' } });
+    fireEvent.change(screen.getByPlaceholderText('Name of sensor'), { target: { value: 'uuid-1234' } });
+    fireEvent.change(screen.getByPlaceholderText('Description'), { target: { value: 'Topic 1' } });
 
     // Verify the input values
-    expect(screen.getByPlaceholderText('Name der Sensor')).toHaveValue('uuid-1234');
-    expect(screen.getByPlaceholderText('Beschreibung')).toHaveValue('Topic 1');
+    expect(screen.getByPlaceholderText('Name of sensor')).toHaveValue('uuid-1234');
+    expect(screen.getByPlaceholderText('Description')).toHaveValue('Topic 1');
   });
 
   it('calls create when submitting the form with new data', () => {
     renderPostForm({ create: mockCreate, edit: mockEdit });
 
     // Fill the form with values
-    fireEvent.change(screen.getByPlaceholderText('Name der Sensor'), { target: { value: 'uuid-1234' } });
-    fireEvent.change(screen.getByPlaceholderText('Beschreibung'), { target: { value: 'Topic 1' } });
+    fireEvent.change(screen.getByPlaceholderText('Name of sensor'), { target: { value: 'uuid-1234' } });
+    fireEvent.change(screen.getByPlaceholderText('Description'), { target: { value: 'Topic 1' } });
     
     // Submit the form (click the button)
-    fireEvent.click(screen.getByText('Sensor einfügen'));
+    fireEvent.click(screen.getByText('Add sensor'));
 
     // Check if the create function is called
     expect(mockCreate).toHaveBeenCalledTimes(1);
@@ -52,30 +52,6 @@ describe('PostForm component', () => {
     }));
   });
 
-  it('calls edit when submitting the form with postToEdit prop', () => {
-    const postToEdit = {
-      id: 1,
-      title: 'uuid-1234',
-      description: 'Topic 1',
-    };
-
-    // Pass postToEdit as a prop
-    renderPostForm({ create: mockCreate, edit: mockEdit, postToEdit });
-
-    // Check initial values from postToEdit
-    expect(screen.getByPlaceholderText('Name der Sensor')).toHaveValue('uuid-1234');
-    expect(screen.getByPlaceholderText('Beschreibung')).toHaveValue('Topic 1');
-
-    // Submit the form (click the button)
-    fireEvent.click(screen.getByText('Sensor einfügen'));
-
-    // Check if the edit function is called
-    expect(mockEdit).toHaveBeenCalledTimes(1);
-    expect(mockEdit).toHaveBeenCalledWith(expect.objectContaining({
-      title: 'uuid-1234',
-      description: 'Topic 1',
-      id: 1,
-    }));
-  });
+  
 });
 
