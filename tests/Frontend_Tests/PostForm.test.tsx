@@ -51,6 +51,4 @@ describe('PostForm component', () => {
       id: expect.any(Number), // The ID will be generated dynamically, so we check if it's a number
     }));
   });
-
-  
 });
