@@ -9,5 +9,3 @@ describe('Math tests', () => {
       expect(product).toBe(20);
     });
   });
-  
-  

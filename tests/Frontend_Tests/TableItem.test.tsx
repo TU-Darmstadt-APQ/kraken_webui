@@ -42,7 +42,3 @@ describe('TableItem Component', () => {
     expect(mockRemove).toHaveBeenCalledWith(mockPost);
   });
 });
-
-
-
-

@@ -66,7 +66,3 @@ describe('PostItem component', () => {
     expect(descriptionElement.tagName).toBe('DIV');
   });
 });
-
-
-
-
