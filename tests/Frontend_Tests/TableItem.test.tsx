@@ -1,4 +1,4 @@
- import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import TableItem from '@/app/components/TableItem';
 import { Post } from '@/app/types';
 import '@testing-library/jest-dom';
