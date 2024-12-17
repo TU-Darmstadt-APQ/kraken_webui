@@ -1,0 +1,123 @@
+{
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "_id": {
+        "type": "object",
+        "properties": {
+          "$binary": {
+            "type": "object",
+            "properties": {
+              "base64": {
+                "type": "string"
+              },
+              "subType": {
+                "type": "string"
+              }
+            },
+            "required": ["base64", "subType"]
+          }
+        },
+        "required": ["$binary"],
+        "description": "Unique identifier for the sensor configuration"
+      },
+      "date_created": {
+        "type": "object",
+        "properties": {
+          "$date": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "required": ["$date"],
+        "description": "Timestamp of creation"
+      },
+      "date_modified": {
+        "type": "object",
+        "properties": {
+          "$date": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "required": ["$date"],
+        "description": "Timestamp of last modification"
+      },
+      "enabled": {
+        "type": "boolean",
+        "description": "Indicates if the sensor is enabled"
+      },
+      "label": {
+        "type": ["string", "null"],
+        "description": "Optional label for the sensor"
+      },
+      "description": {
+        "type": "string",
+        "description": "Description of the sensor"
+      },
+      "uid": {
+        "type": "integer",
+        "description": "Unique identifier for the sensor"
+      },
+      "config": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "object",
+          "properties": {
+            "interval": {
+              "type": "integer",
+              "description": "Interval in milliseconds"
+            },
+            "trigger_only_on_change": {
+              "type": "boolean",
+              "description": "Trigger only on change"
+            },
+            "description": {
+              "type": "string",
+              "description": "Description of the configuration"
+            },
+            "topic": {
+              "type": "string",
+              "description": "MQTT topic"
+            },
+            "unit": {
+              "type": "string",
+              "description": "Unit of measurement"
+            }
+          },
+          "required": ["interval", "trigger_only_on_change", "topic", "unit"]
+        }
+      },
+      "on_connect": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "function": {
+              "type": "string",
+              "description": "Function to call on connect"
+            },
+            "args": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "Arguments for the function"
+            },
+            "kwargs": {
+              "type": "object",
+              "description": "Keyword arguments for the function"
+            },
+            "timeout": {
+              "type": ["integer", "null"],
+              "description": "Timeout for the function call"
+            }
+          },
+          "required": ["function", "args", "kwargs"]
+        }
+      }
+    },
+    "required": ["_id", "date_created", "date_modified", "enabled", "uid", "config", "on_connect"]
+  }
+}
