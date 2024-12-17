@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 
 let TinkerforgeSensor : ReturnType<typeof getModel>;
 
-if (mongoose.models.TinkerforgeSensor) {
+if (mongoose.models?.TinkerforgeSensor) {
     TinkerforgeSensor = mongoose.model('TinkerforgeSensor');
 } else {
     TinkerforgeSensor = getModel();
