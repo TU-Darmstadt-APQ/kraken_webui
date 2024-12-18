@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 import { MyContentProps } from '@/app/types';
 import styles from './../styles/MyContent.module.css';
@@ -23,13 +23,21 @@ const MyContent: React.FC<MyContentProps> = (
         listTitle,
       }
 ) => {
+  // State for actual content in MyContent
+  const [activeContent, setActiveContent] = useState<string>('sensorList');
+
+  // Functions for switching the content
+  const showList = () => setActiveContent('sensorList');
+  const showAnalysis = () => setActiveContent('analysis');
+  const showShare = () => setActiveContent('share');
+
   return (
     <div className={styles["Content"]}>
 
         {/* Left Sidebar */}
         <div className={styles["Sidebar"]}>
           <MyTooltip infoText="List of sensors" position="right">
-            <MyButton>
+            <MyButton onClick={showList}>
               <img 
                 src="/listIcon.png" 
                 alt="Table View" 
@@ -41,7 +49,7 @@ const MyContent: React.FC<MyContentProps> = (
           </MyTooltip>
           <hr/>
           <MyTooltip infoText="Sensor data analysis" position="right">
-            <MyButton>
+            <MyButton onClick={showAnalysis}>
               <img 
                 src="/diagrammIcon.png" 
                 alt="Table View" 
@@ -53,7 +61,7 @@ const MyContent: React.FC<MyContentProps> = (
           </MyTooltip>
           <hr/>
           <MyTooltip infoText="Sensor data share" position="right">
-            <MyButton>
+            <MyButton onClick={showShare}>
               <img 
                 src="/shareIcon.png" 
                 alt="Table View" 
@@ -83,9 +91,35 @@ const MyContent: React.FC<MyContentProps> = (
       </ModalWindow>
       
 
+      {/* Conditional Content Rendering */}
+
       {/* Component responsible for displaying the list of sensors.
           It supports two views: table view and post view. */}
-      <PostList remove={removePost} posts={sortedAndSearchedPosts} listTitle={listTitle} edit={handleEdit}></PostList> 
+      {activeContent === 'sensorList' && (
+        <PostList remove={removePost} posts={sortedAndSearchedPosts} listTitle={listTitle} edit={handleEdit}></PostList> 
+      )}
+
+      {activeContent === 'analysis' && (
+        <div style={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center'
+        }}>
+          <h2>Sensor Data Analysis</h2>
+          <p>Graphical data analysis for all inputs and outputs of sensors</p>
+        </div>
+      )}
+
+      {activeContent === 'share' && (
+        <div style={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center'
+        }}>
+          <h2>Sensor Data Share</h2>
+          <p>Share the data with ???</p>
+        </div>
+      )}
       </div>
       </div>
     </div>
