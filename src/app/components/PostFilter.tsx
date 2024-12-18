@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useState } from 'react';
 import MySelect from "./UI/select/MySelect";
 import MyInput from "./UI/input/MyInput";
 import styles from './../styles/PostFilter.module.css';
 
-import { PostFilterProps, Post } from "@/app/types";
+import { PostFilterProps, Post } from '@/app/types';
+
+import { validateQuery } from '../zodShemas';
+
 
 /**
  * A component for filtering posts based on a search query and a selected sorting option.
@@ -15,14 +18,34 @@ import { PostFilterProps, Post } from "@/app/types";
  *
  * @returns {JSX.Element} A filtering interface with an input for searching and a dropdown for sorting.
  */
-const PostFilter: React.FC<PostFilterProps> = ({ filter, setFilter }) => {
+const PostFilter: React.FC<PostFilterProps> = ({filter, setFilter}) => {
+  const [error, setError] = useState<string | null>(null);
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newValue = e.target.value;
+
+    // Validate the new value using validateQuery
+    const result = validateQuery(newValue);
+
+    if (!result.success) {
+      // If validation fails, set the error message
+      setError(result.error.errors[0].message);
+    } else {
+      // If validation passes, clear the error and update the filter
+      setError(null);
+      setFilter({ ...filter, query: newValue });
+    }
+  };
+
   return (
     <div className={styles['filter-container']}>
          {/* Input field for entering a search query */}
         <MyInput
           value={filter.query}
-          onChange={e => setFilter({...filter, query: e.target.value})} // Update the `query` property in the filter state when the user types
+          onChange={handleInputChange} // Update the `query` property in the filter state when the user types
           placeholder="Search for..." // Placeholder text for the input field
+          tooltipPosition='bottom'
+          error={error || undefined}
         />
 
         <div className={styles['filter-options']}>
