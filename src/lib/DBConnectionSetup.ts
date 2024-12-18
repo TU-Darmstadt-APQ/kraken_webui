@@ -1,4 +1,4 @@
-import { config } from "../../../../config";
+import { config } from "../../config";
 import mongoose from "mongoose";
 import TinkerforgeSensor from "@/models/tinkerforgeSensor";
 
@@ -9,8 +9,15 @@ import TinkerforgeSensor from "@/models/tinkerforgeSensor";
 */
 export async function StartSetup() {
   console.log("Starting MongoDB connection...");
-  await mongoose.connect(`${config.krakenConfigsMongodbConnectionString}`);
-  console.log("Connection with MongoDB successfully established.");
+  const db = await mongoose.connect(`${config.krakenConfigsMongodbConnectionString}`);
+  console.log("After assigning db")
+  if (db) {
+    console.log("Connection with MongoDB successfully established.");
+    return 1;
+  } else {
+    console.log("Connection with MongoDB failed to established.");
+    return 0;
+  }
 }
 
 /* 
