@@ -36,18 +36,27 @@ async function getAllDocuments() {
 
 
 export default async function DBConnector() {
+  let connectionFailed = false;
   try {
     await StartSetup();
     await ValidateMongoDBConnection();
   } catch (error) {
+    connectionFailed = true;
     console.log("MongoDB Connection Setup Error:", error);
+    return (<span>error2</span>);
   }
 
   let documents = await getAllDocuments();
   console.log("\nprinting documents start\n");
   console.log(documents);
   console.log("\nprinting documents end\n");
-  return (
-    <span></span>
-  )
+  if (connectionFailed){
+    return (
+      <span>error</span>
+    )
+  } else{
+    return (
+      <span>Connection successfully set up</span>
+    )
+  }
 }
