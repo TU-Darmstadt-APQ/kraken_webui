@@ -3,6 +3,7 @@ import pluginJs from "@eslint/js";
 import tseslint from "@typescript-eslint/eslint-plugin";
 import tsParser from "@typescript-eslint/parser";
 import pluginReact from "eslint-plugin-react";
+import eslintConfigPrettier from "eslint-config-prettier";
 
 /** 
  * @type {import('eslint').Linter.Config[]} 
@@ -43,4 +44,6 @@ export default [
       "no-useless-escape": "error", // Prevent unnecessary escapes
     },
   },
+   // Add prettier config last to ensure it overrides other settings
+   eslintConfigPrettier,
 ];
