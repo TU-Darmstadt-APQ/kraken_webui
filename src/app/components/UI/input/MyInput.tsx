@@ -1,11 +1,10 @@
 import React, { ForwardedRef, InputHTMLAttributes } from "react";
-import classes from './MyInput.module.css';
-
+import classes from "./MyInput.module.css";
 
 /**
  * Custom input component that supports all standard HTML input attributes.
  *
- * This component enhances the native `<input>` element by adding custom styling 
+ * This component enhances the native `<input>` element by adding custom styling
  * and supports React's `ref` forwarding for easier DOM manipulation.
  *
  * @component
@@ -15,10 +14,10 @@ import classes from './MyInput.module.css';
  */
 type MyInputProps = InputHTMLAttributes<HTMLInputElement>;
 
-const MyInput = React.forwardRef((props: MyInputProps, ref: ForwardedRef<HTMLInputElement>) => {
-    return (
-      <input className={classes.myInput} {...props}/>
-    );
-  });
+const MyInput = React.forwardRef(
+  (props: MyInputProps, ref: ForwardedRef<HTMLInputElement>) => {
+    return <input className={classes.myInput} {...props} />;
+  },
+);
 
 export default MyInput;
