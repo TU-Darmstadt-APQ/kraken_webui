@@ -1,4 +1,5 @@
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
   width: 100%;
@@ -19,7 +20,7 @@ header {
   background-color: teal;
   color: white;
   width: 100%;
-  box-sizing: border-box; 
+  box-sizing: border-box;
   padding: 0 40px;
 }
 
@@ -37,7 +38,9 @@ header .buttons > * {
   padding: 8px 16px;
   border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s, color 0.3s;
+  transition:
+    background-color 0.3s,
+    color 0.3s;
   transform: scale(0.8); /* Skalieren, da die zu groß waren */
   transform-origin: center;
 }
@@ -55,12 +58,12 @@ header div {
 
 .logo img {
   height: 40px;
-  width: auto; 
+  width: auto;
 }
 
 .buttons {
-  display: flex; 
-  gap: 10px; 
+  display: flex;
+  gap: 10px;
 }
 
 .Content {
@@ -77,11 +80,10 @@ header div {
   display: flex;
   flex-direction: column; /* Buttons untereinander ausrichten */
 }
-.Sidebar button{
+.Sidebar button {
   border-top: 0px;
   color: white;
 }
-
 
 .MainContent {
   flex: 1;
@@ -89,8 +91,6 @@ header div {
   overflow-y: auto;
   background-color: #f0f0f0;
 }
-
-
 
 .post {
   display: flex;
@@ -107,7 +107,8 @@ header div {
   margin-top: 15px;
 }
 
-.sensor-table th, .sensor-table td {
+.sensor-table th,
+.sensor-table td {
   border: 1px solid teal;
   padding: 8px;
   text-align: left;

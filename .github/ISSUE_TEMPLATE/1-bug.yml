@@ -13,7 +13,7 @@ body:
     attributes:
       label: What is the expected behavior?
       description: Please reference the code if possible. If someone would ask you for help it would be nice to have a neat overview right?
-      placeholder: What did you expect from the code/function? What was supposed to happen? 
+      placeholder: What did you expect from the code/function? What was supposed to happen?
       value: "What should have happened..."
     validations:
       required: true
@@ -34,7 +34,7 @@ body:
       description: Please copy and paste any relevant log output. This will be automatically formatted into code, so no need for backticks.
       render: shell
   - type: textarea
-    id: what-was-tried 
+    id: what-was-tried
     attributes:
       label: What did you try?
       description: You probably did more than just trying the same thing again expecting a different behavior... right?
@@ -43,7 +43,7 @@ body:
     validations:
       required: true
   - type: textarea
-    id: my-environment 
+    id: my-environment
     attributes:
       label: What is your environment?
       description: >
@@ -56,7 +56,7 @@ body:
     validations:
       required: true
   - type: textarea
-    id: steps-to-reproduce 
+    id: steps-to-reproduce
     attributes:
       label: How can we reproduce the bug?
       description: Show us how you've got the bug so that we can try it out and help you!

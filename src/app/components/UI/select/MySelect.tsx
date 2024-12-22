@@ -1,6 +1,5 @@
-import React from 'react';
-import { MySelectProps, Post } from '@/app/types';
-
+import React from "react";
+import { MySelectProps, Post } from "@/app/types";
 
 /**
  * A reusable and customizable dropdown (select) component.
@@ -17,16 +16,25 @@ import { MySelectProps, Post } from '@/app/types';
  *
  * @returns {JSX.Element} A `<select>` dropdown element with options.
  */
-const MySelect: React.FC<MySelectProps> = ({ options, defaultValue, value, onChange }) => {
+const MySelect: React.FC<MySelectProps> = ({
+  options,
+  defaultValue,
+  value,
+  onChange,
+}) => {
   return (
-    <select value={value} onChange={event => onChange(event.target.value as keyof Post)} // Converts selected value to a key of `Post`
-    > {/*Fraglich. Man muss den Typen besser anpassen */}
-
+    <select
+      value={value}
+      onChange={(event) => onChange(event.target.value as keyof Post)} // Converts selected value to a key of `Post`
+    >
+      {" "}
+      {/*Fraglich. Man muss den Typen besser anpassen */}
       {/* Default option, disabled to act as a placeholder */}
-      <option disabled value="">{defaultValue}</option>
-
+      <option disabled value="">
+        {defaultValue}
+      </option>
       {/* Dynamically generate options based on the `options` array */}
-      {options.map(option => (
+      {options.map((option) => (
         <option key={option.value} value={option.value}>
           {option.name}
         </option>

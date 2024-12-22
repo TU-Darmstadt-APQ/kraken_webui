@@ -5,8 +5,8 @@ import tsParser from "@typescript-eslint/parser";
 import pluginReact from "eslint-plugin-react";
 import eslintConfigPrettier from "eslint-config-prettier";
 
-/** 
- * @type {import('eslint').Linter.Config[]} 
+/**
+ * @type {import('eslint').Linter.Config[]}
  */
 export default [
   {
@@ -22,28 +22,28 @@ export default [
         ...globals.node,
       },
     },
-    
+
     plugins: {
       "@typescript-eslint": tseslint, // Changed to object format
-      react: pluginReact,            // Changed to object format
+      react: pluginReact, // Changed to object format
     },
 
-      ...pluginJs.configs.recommended[0],
-      ...tseslint.configs.recommended[0],
-      ...pluginReact.configs.flat.recommended[0],
+    ...pluginJs.configs.recommended[0],
+    ...tseslint.configs.recommended[0],
+    ...pluginReact.configs.flat.recommended[0],
 
     settings: {
       react: {
-        version: 'detect', // Automatically detects the version of React
+        version: "detect", // Automatically detects the version of React
       },
     },
     rules: {
-      "no-unused-vars": ["error", { "args": "none" }],  // Option to allow unused function arguments
-      "no-console": "warn",  // Optional, for preventing console.log in production code
-      "eol-last": ["error", "always"],  // Ensure files end with a newline
+      "no-unused-vars": ["error", { args: "none" }], // Option to allow unused function arguments
+      "no-console": "warn", // Optional, for preventing console.log in production code
+      "eol-last": ["error", "always"], // Ensure files end with a newline
       "no-useless-escape": "error", // Prevent unnecessary escapes
     },
   },
-   // Add prettier config last to ensure it overrides other settings
-   eslintConfigPrettier,
+  // Add prettier config last to ensure it overrides other settings
+  eslintConfigPrettier,
 ];

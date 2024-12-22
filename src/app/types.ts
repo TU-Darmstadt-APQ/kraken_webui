@@ -1,22 +1,22 @@
-import React from 'react'; // Add import for React
-import { ReactNode } from 'react';
+import React from "react"; // Add import for React
+import { ReactNode } from "react";
 
 export interface Post {
-    id: number;
-    title: string;
-    description?: string; //alle mit dem Fragezeichen gezeichnete Zeilen sind opitonal (bzw. müssen nicht bei der Erstellung des Objektes dabei sein)
-    date_created?: string;
-    date_modified?: string;
-    enabled?: string;
-    label?: string;
-    uid?: string;
-    config?: string;
-    on_connect?: string;
-  }
+  id: number;
+  title: string;
+  description?: string; //alle mit dem Fragezeichen gezeichnete Zeilen sind opitonal (bzw. müssen nicht bei der Erstellung des Objektes dabei sein)
+  date_created?: string;
+  date_modified?: string;
+  enabled?: string;
+  label?: string;
+  uid?: string;
+  config?: string;
+  on_connect?: string;
+}
 
 // Definiere das Interface für den Filter
 export interface Filter {
-  sort: keyof Post | ''; // Das 'sort' kann ein Schlüssel von Post oder ein leerer String sein
+  sort: keyof Post | ""; // Das 'sort' kann ein Schlüssel von Post oder ein leerer String sein
   query: string; // Suchbegriff
 }
 
@@ -56,18 +56,18 @@ export interface MyButtonProps {
 }
 
 export interface PostListProps {
-  posts: Post[];               // Array von Posts
-  listTitle: string;           // Titel der Liste
+  posts: Post[]; // Array von Posts
+  listTitle: string; // Titel der Liste
   remove: (post: Post) => void; // Funktion zum Entfernen eines Posts
 }
 
 export interface TableItemProps {
-  post: Post;                   // Ein einzelner Post
+  post: Post; // Ein einzelner Post
   remove: (post: Post) => void; // Funktion, die einen Post entfernt
 }
 
 export interface PostItemProps {
-  post: Post;                   // Einzelner Post
+  post: Post; // Einzelner Post
   remove: (post: Post) => void; // Funktion, die einen Post entfernt
-  number: number;               // Reihenfolge des Posts (optional)
+  number: number; // Reihenfolge des Posts (optional)
 }
