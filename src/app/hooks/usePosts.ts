@@ -131,8 +131,6 @@ export const useSortedPosts = (posts: Post[], sort: SortKey | ''): Post[] => {
 
   return sortedPosts;
 };
-  return sortedPosts;
-};
 
 export const usePosts = (posts: Post[], sort: SortKey | '', query: string, searchField: keyof Post | 'all') => {
   const sortedPosts = useSortedPosts(posts, sort);
@@ -186,9 +184,6 @@ export const usePosts = (posts: Post[], sort: SortKey | '', query: string, searc
     },
     [query, sortedPosts, searchField]
   );
-
-  return sortedAndSearchedPosts;
-};
 
   return sortedAndSearchedPosts;
 };

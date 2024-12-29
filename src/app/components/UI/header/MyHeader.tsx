@@ -1,4 +1,4 @@
-import React, {ReactNode} from 'react';
+import React from 'react';
 import MyButton from '../button/MyButton';
 import { MyHeaderProps } from '@/app/types';
 import PostFilter from '../../PostFilter';
