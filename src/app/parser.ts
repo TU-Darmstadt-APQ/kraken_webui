@@ -1,7 +1,9 @@
+// Validates the TinkerforgeSensor data against the schema defined in TinkerforgeSensor.schema.ts
 import { z } from 'zod';
 import * as fs from 'fs';
 import tinkerforgeSensorSchema from './schema/TinkerforgeSensor.schema';
 
+// Load the TinkerforgeSensor data from the file
 const tinkerforgeSensorData = JSON.parse(
     fs.readFileSync('./data/tinkerforgeSensorData.json', 'utf8')
   );
