@@ -1,7 +1,20 @@
+/**
+ * Unit tests for the `PostItem` component.
+ *
+ * The `PostItem` component displays individual post details and provides actions such as editing or deleting the post.
+ *
+ * Tests include:
+ * - Verifying correct rendering of post data (title and description).
+ * - Ensuring the "Edit" and "Delete" buttons are rendered.
+ * - Checking that the `remove` function is called with the correct post data when the "Delete" button is clicked.
+ * - Confirming that title and description are rendered within the appropriate HTML elements.
+ * - Cleaning up the DOM after each test to prevent side effects.
+ */
+
 import React from "react";
 import { render, screen, fireEvent, cleanup } from "@testing-library/react";
-import PostItem from "@/app/components/PostItem"; // Adjust the import path accordingly
-import "@testing-library/jest-dom"; // Import jest-dom to enable matchers like `toBeInTheDocument`
+import PostItem from "@/app/components/PostItem";
+import "@testing-library/jest-dom";
 // Mocking the remove function passed as props
 const mockRemove = jest.fn();
 
@@ -42,7 +55,7 @@ describe("PostItem component", () => {
     expect(mockRemove).toHaveBeenCalledWith(mockPost);
   });
 
-  // New test: Check if Edit button is rendered
+  //  Check if Edit button is rendered
   it('renders the "Edit" button', () => {
     render(
       <PostItem number={mockNumber} post={mockPost} remove={mockRemove} />,
@@ -51,7 +64,7 @@ describe("PostItem component", () => {
     expect(editButton).toBeInTheDocument(); // Ensure the "Edit" button is rendered
   });
 
-  // New test: Check if Delete button is rendered
+  //  Check if Delete button is rendered
   it('renders the "Delete" button', () => {
     render(
       <PostItem number={mockNumber} post={mockPost} remove={mockRemove} />,
@@ -60,7 +73,7 @@ describe("PostItem component", () => {
     expect(deleteButton).toBeInTheDocument(); // Ensure the "Delete" button is rendered
   });
 
-  // New test: Check if title and description are inside the right elements
+  //  Check if title and description are inside the right elements
   it("renders post title and description inside the correct elements", () => {
     render(
       <PostItem number={mockNumber} post={mockPost} remove={mockRemove} />,
