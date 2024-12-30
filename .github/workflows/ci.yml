@@ -36,6 +36,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
@@ -47,9 +49,7 @@ jobs:
         run: npm ci
 
       - name: Run Prettier on changed files
-        run: |
-          git fetch origin dev
-          npx prettier --check $(git diff --name-only origin/dev HEAD)
+        run: npx prettier --check $(git diff --name-only HEAD^)
 
   test:
     needs:
@@ -58,8 +58,6 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
