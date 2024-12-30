@@ -46,8 +46,8 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Run Prettier
-        run: npx prettier --check . || true
+      - name: Run Prettier on changed files
+        run: npx prettier --check $(git diff --name-only HEAD^)
 
   test:
     needs:
