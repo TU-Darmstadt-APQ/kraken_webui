@@ -31,7 +31,6 @@ jobs:
 
   prettier:
     needs:
-      - lint
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -54,6 +53,7 @@ jobs:
   test:
     needs:
       - prettier
+      - lint
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
