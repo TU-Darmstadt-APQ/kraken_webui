@@ -3,6 +3,8 @@
 
  npm run lint
 
+ npx prettier --write . 
+ 
  #Dont remove this, the tests are not done 
 # npm test
 
