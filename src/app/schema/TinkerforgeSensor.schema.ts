@@ -1,4 +1,3 @@
-// Defines the schema for the Tinkerforge Sensor
 import { z } from 'zod';
 
 // Defines the schema for the config object

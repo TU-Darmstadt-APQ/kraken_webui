@@ -1,11 +1,11 @@
 // Validates the TinkerforgeSensor data against the schema defined in TinkerforgeSensor.schema.ts
 import { z } from 'zod';
 import * as fs from 'fs';
-import tinkerforgeSensorSchema from './schema/TinkerforgeSensor.schema';
+import tinkerforgeSensorSchema from '/Users/anshulchahar/Documents/GitHub/kraken_webui/src/app/schema/TinkerforgeSensor.schema';
 
-// Load the TinkerforgeSensor data from the file
+// Load dummy data for a TinkerforgeSensor from a file to test the schema validator
 const tinkerforgeSensorData = JSON.parse(
-    fs.readFileSync('./data/tinkerforgeSensorData.json', 'utf8')
+    fs.readFileSync('./data/tinkerforgeSensorData.json', 'utf8') // Read the JSON data from the file and parse it into a JavaScript object
   );
   
   try {
