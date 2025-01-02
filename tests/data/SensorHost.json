@@ -1,47 +1,1009 @@
-{"_id":{"$binary":{"base64":"wnw9vL3JRN2snS9BEoi8pA==","subType":"04"}},"hostname":"192.168.120.114","port":1234,"pad":2,"sad":0,"driver":"prologix_gpib2","node_id":{"$binary":{"base64":"62YJzZv5SL2IlEZjcDYeyw==","subType":"04"}},"reconnect_interval":10,"revision_id":{"$binary":{"base64":"90nrfuv5ROmu/zaRvfSBGA==","subType":"04"}},"date_created":{"$date":"2021-10-24T10:30:13.080Z"},"date_modified":{"$date":"2024-11-01T11:28:35.616Z"},"enabled":true,"label":"QUIPS HP3478A (2911A49229) Cavity Monitor","description":""}
-{"_id":{"$binary":{"base64":"qQOUROTiSVuMNWWLjIr6JQ==","subType":"04"}},"hostname":"192.168.120.85","port":4223,"pad":null,"sad":null,"driver":"tinkerforge2","node_id":{"$binary":{"base64":"62YJzZv5SL2IlEZjcDYeyw==","subType":"04"}},"reconnect_interval":10,"revision_id":{"$binary":{"base64":"pfnqfR0SR+CLefnUhV2W7A==","subType":"04"}},"date_created":{"$date":"2021-10-24T10:30:13.080Z"},"date_modified":{"$date":"2024-11-01T11:28:35.616Z"},"enabled":true,"label":"017 QUIPS B","description":""}
-{"_id":{"$binary":{"base64":"w7c/KZw8Qgi1UZ/SpRUQbQ==","subType":"04"}},"hostname":"192.168.120.82","port":4223,"pad":null,"sad":null,"driver":"tinkerforge2","node_id":{"$binary":{"base64":"62YJzZv5SL2IlEZjcDYeyw==","subType":"04"}},"reconnect_interval":10,"revision_id":{"$binary":{"base64":"j23Hfv/rTrqGZqRDV1hIYg==","subType":"04"}},"date_created":{"$date":"2021-10-24T10:30:13.080Z"},"date_modified":{"$date":"2024-11-01T11:28:35.616Z"},"enabled":true,"label":"015 ATOMICS back","description":""}
-{"_id":{"$binary":{"base64":"WF/dxudJTcyAkbHr76WmzA==","subType":"04"}},"hostname":"192.168.120.81","port":4223,"pad":null,"sad":null,"driver":"tinkerforge2","node_id":{"$binary":{"base64":"62YJzZv5SL2IlEZjcDYeyw==","subType":"04"}},"reconnect_interval":null,"revision_id":{"$binary":{"base64":"WG/nFm1DRaCfLOKRf6Ay0Q==","subType":"04"}},"date_created":{"$date":"2021-10-24T10:30:13.080Z"},"date_modified":{"$date":"2024-11-01T11:28:35.616Z"},"enabled":true,"label":"011 Neon","description":""}
-{"_id":{"$binary":{"base64":"w82cICdeT6ScOYKaxd6WGA==","subType":"04"}},"hostname":"192.168.120.105","port":4223,"pad":null,"sad":null,"driver":"tinkerforge2","node_id":{"$binary":{"base64":"62YJzZv5SL2IlEZjcDYeyw==","subType":"04"}},"reconnect_interval":null,"revision_id":{"$binary":{"base64":"Yh1a46HCTkmMv27LMrLS/A==","subType":"04"}},"date_created":{"$date":"2021-10-24T10:30:13.080Z"},"date_modified":{"$date":"2024-11-01T11:28:35.617Z"},"enabled":true,"label":"011 Neon Back","description":""}
-{"_id":{"$binary":{"base64":"hgH2Vp3OQXq6QPe0UTv+zA==","subType":"04"}},"hostname":"192.168.120.86","port":4223,"pad":null,"sad":null,"driver":"tinkerforge2","node_id":{"$binary":{"base64":"62YJzZv5SL2IlEZjcDYeyw==","subType":"04"}},"reconnect_interval":null,"revision_id":{"$binary":{"base64":"ijuSC9prTgqpj6EWiqEmKQ==","subType":"04"}},"date_created":{"$date":"2021-10-24T10:30:13.080Z"},"date_modified":{"$date":"2024-11-01T11:28:35.617Z"},"enabled":true,"label":"Elektronik Werkstatt","description":""}
-{"_id":{"$binary":{"base64":"TY3MIJiwRxuudTIoxg0jZA==","subType":"04"}},"hostname":"192.168.120.102","port":4223,"pad":null,"sad":null,"driver":"tinkerforge2","node_id":{"$binary":{"base64":"62YJzZv5SL2IlEZjcDYeyw==","subType":"04"}},"reconnect_interval":null,"revision_id":{"$binary":{"base64":"TLxa1/7ORZmVFs+Z8yCrWQ==","subType":"04"}},"date_created":{"$date":"2021-10-24T10:30:13.080Z"},"date_modified":{"$date":"2024-11-01T11:28:35.617Z"},"enabled":true,"label":"K01 Server Room","description":""}
-{"_id":{"$binary":{"base64":"B7BFwqQcTn2ags4gvuTmMw==","subType":"04"}},"hostname":"192.168.120.83","port":4223,"pad":null,"sad":null,"driver":"tinkerforge2","node_id":{"$binary":{"base64":"62YJzZv5SL2IlEZjcDYeyw==","subType":"04"}},"reconnect_interval":null,"revision_id":{"$binary":{"base64":"p+alWlIKRDycQFKGn48C2Q==","subType":"04"}},"date_created":{"$date":"2021-10-24T10:30:13.080Z"},"date_modified":{"$date":"2024-11-01T11:28:35.617Z"},"enabled":true,"label":"Labor 019","description":""}
-{"_id":{"$binary":{"base64":"b/V4k3N8R5KzF8k+FOo9zQ==","subType":"04"}},"hostname":"192.168.120.87","port":4223,"pad":null,"sad":null,"driver":"tinkerforge2","node_id":{"$binary":{"base64":"62YJzZv5SL2IlEZjcDYeyw==","subType":"04"}},"reconnect_interval":null,"revision_id":{"$binary":{"base64":"qj6Ay/l1S8S6I9kkEfi69A==","subType":"04"}},"date_created":{"$date":"2021-10-24T10:30:13.080Z"},"date_modified":{"$date":"2024-11-01T11:28:35.617Z"},"enabled":true,"label":"012 Laserlabor left","description":""}
-{"_id":{"$binary":{"base64":"MHpEBRQBSVa8FjqQJzrk/w==","subType":"04"}},"hostname":"192.168.120.92","port":4223,"pad":null,"sad":null,"driver":"tinkerforge2","node_id":{"$binary":{"base64":"62YJzZv5SL2IlEZjcDYeyw==","subType":"04"}},"reconnect_interval":null,"revision_id":{"$binary":{"base64":"i6Mtzz6CRhSMqx+N7ePupA==","subType":"04"}},"date_created":{"$date":"2021-10-24T10:30:13.080Z"},"date_modified":{"$date":"2024-11-01T11:28:35.618Z"},"enabled":true,"label":"012 Laserlabor right","description":""}
-{"_id":{"$binary":{"base64":"ekA0AaxARbGLvrvRZm6yUA==","subType":"04"}},"hostname":"192.168.120.89","port":4223,"pad":null,"sad":null,"driver":"tinkerforge2","node_id":{"$binary":{"base64":"62YJzZv5SL2IlEZjcDYeyw==","subType":"04"}},"reconnect_interval":null,"revision_id":{"$binary":{"base64":"qamWjnO7Trmr5c9vqq6Ysg==","subType":"04"}},"date_created":{"$date":"2021-10-24T10:30:13.080Z"},"date_modified":{"$date":"2024-11-01T11:28:35.618Z"},"enabled":true,"label":"018 QUIPS C Table 1","description":""}
-{"_id":{"$binary":{"base64":"mDW1oBLAQyC9G0/c2CAxtA==","subType":"04"}},"hostname":"192.168.120.90","port":4223,"pad":null,"sad":null,"driver":"tinkerforge2","node_id":{"$binary":{"base64":"62YJzZv5SL2IlEZjcDYeyw==","subType":"04"}},"reconnect_interval":null,"revision_id":{"$binary":{"base64":"JJe+7ZLYTiyj1VdavNxrNQ==","subType":"04"}},"date_created":{"$date":"2021-10-24T10:30:13.080Z"},"date_modified":{"$date":"2024-11-01T11:28:35.618Z"},"enabled":true,"label":"018 QUIPS C Table 2","description":""}
-{"_id":{"$binary":{"base64":"Dw5tDk5BR4OQonuNMVuw0w==","subType":"04"}},"hostname":"192.168.120.91","port":4223,"pad":null,"sad":null,"driver":"tinkerforge2","node_id":{"$binary":{"base64":"62YJzZv5SL2IlEZjcDYeyw==","subType":"04"}},"reconnect_interval":null,"revision_id":{"$binary":{"base64":"cpqviXcsQIOynm0qBtwWDg==","subType":"04"}},"date_created":{"$date":"2021-10-24T10:30:13.080Z"},"date_modified":{"$date":"2024-11-01T11:28:35.618Z"},"enabled":true,"label":"018 QUIPS C Table 3","description":""}
-{"_id":{"$binary":{"base64":"YqmdFwtBR6yAl7+c21R6Jg==","subType":"04"}},"hostname":"192.168.120.93","port":4223,"pad":null,"sad":null,"driver":"tinkerforge2","node_id":{"$binary":{"base64":"62YJzZv5SL2IlEZjcDYeyw==","subType":"04"}},"reconnect_interval":null,"revision_id":{"$binary":{"base64":"rSmIY/QwRl+pd+9I/2eqvg==","subType":"04"}},"date_created":{"$date":"2021-10-24T10:30:13.080Z"},"date_modified":{"$date":"2024-11-01T11:28:35.619Z"},"enabled":true,"label":"Server Room Brain42","description":""}
-{"_id":{"$binary":{"base64":"1Ux+C0aRTqec5L99Mxj/GA==","subType":"04"}},"hostname":"192.168.2.95","port":4223,"pad":null,"sad":null,"driver":"tinkerforge2","node_id":{"$binary":{"base64":"62YJzZv5SL2IlEZjcDYeyw==","subType":"04"}},"reconnect_interval":null,"revision_id":{"$binary":{"base64":"J1IwfXTnR5WpNGzBOExY5A==","subType":"04"}},"date_created":{"$date":"2021-10-24T10:30:13.080Z"},"date_modified":{"$date":"2024-11-01T11:28:35.619Z"},"enabled":false,"label":"K01 Server Room Hal42","description":""}
-{"_id":{"$binary":{"base64":"V5tjbD/zQ6aqI+oGylxbvQ==","subType":"04"}},"hostname":"192.168.120.88","port":4223,"pad":null,"sad":null,"driver":"tinkerforge2","node_id":{"$binary":{"base64":"62YJzZv5SL2IlEZjcDYeyw==","subType":"04"}},"reconnect_interval":null,"revision_id":{"$binary":{"base64":"jChTxBeESwmNHR6Zq3NOAw==","subType":"04"}},"date_created":{"$date":"2021-10-24T10:30:13.080Z"},"date_modified":{"$date":"2024-11-01T11:28:35.619Z"},"enabled":true,"label":"016 Zwischenlabor Ti:Sa","description":""}
-{"_id":{"$binary":{"base64":"3FLin8Q0TjmxOh+Vbo0kKg==","subType":"04"}},"hostname":"192.168.120.100","port":4223,"pad":null,"sad":null,"driver":"tinkerforge2","node_id":{"$binary":{"base64":"62YJzZv5SL2IlEZjcDYeyw==","subType":"04"}},"reconnect_interval":null,"revision_id":{"$binary":{"base64":"Hz0VF4cjTmm3EhFcLS/41g==","subType":"04"}},"date_created":{"$date":"2021-10-24T10:30:13.080Z"},"date_modified":{"$date":"2024-11-01T11:28:35.619Z"},"enabled":true,"label":"016 Zwischenlabor Pumpenraum","description":""}
-{"_id":{"$binary":{"base64":"K1gM4IchTEetqmJTq7QhIA==","subType":"04"}},"hostname":"192.168.120.84","port":4223,"pad":null,"sad":null,"driver":"labnode","node_id":{"$binary":{"base64":"62YJzZv5SL2IlEZjcDYeyw==","subType":"04"}},"reconnect_interval":null,"revision_id":{"$binary":{"base64":"XLe/9g2VSpu0IzR3qTfuSA==","subType":"04"}},"date_created":{"$date":"2021-10-24T12:39:08.754Z"},"date_modified":{"$date":"2024-11-01T11:28:35.619Z"},"enabled":true,"label":"Room temperature controller 018 QUIPS C Table2","description":""}
-{"_id":{"$binary":{"base64":"gDtcKnPmRPmJknC8qnspYA==","subType":"04"}},"hostname":"192.168.120.94","port":4223,"pad":null,"sad":null,"driver":"labnode","node_id":{"$binary":{"base64":"62YJzZv5SL2IlEZjcDYeyw==","subType":"04"}},"reconnect_interval":null,"revision_id":{"$binary":{"base64":"qX/nhO5bQPucopucbHJkJw==","subType":"04"}},"date_created":{"$date":"2021-10-24T12:39:08.754Z"},"date_modified":{"$date":"2024-11-01T11:28:35.620Z"},"enabled":true,"label":"Room temperature controller 017 QUIPS B","description":""}
-{"_id":{"$binary":{"base64":"xi0tJOnAQeOdwLGbobWW6w==","subType":"04"}},"hostname":"192.168.120.96","port":4223,"pad":null,"sad":null,"driver":"labnode","node_id":{"$binary":{"base64":"62YJzZv5SL2IlEZjcDYeyw==","subType":"04"}},"reconnect_interval":5,"revision_id":{"$binary":{"base64":"aEo0o+dbTEeNL2L5CoOpyw==","subType":"04"}},"date_created":{"$date":"2021-10-24T12:39:08.754Z"},"date_modified":{"$date":"2024-11-01T11:28:35.620Z"},"enabled":true,"label":"Room temperature controller 011 Neon","description":""}
-{"_id":{"$binary":{"base64":"tGB9pf9ESeGzJ0zIX0U/Zg==","subType":"04"}},"hostname":"192.168.120.97","port":4223,"pad":null,"sad":null,"driver":"labnode","node_id":{"$binary":{"base64":"62YJzZv5SL2IlEZjcDYeyw==","subType":"04"}},"reconnect_interval":null,"revision_id":{"$binary":{"base64":"v/lspyixQzW1Dcwun3alEw==","subType":"04"}},"date_created":{"$date":"2021-10-24T12:39:08.754Z"},"date_modified":{"$date":"2024-11-01T11:28:35.620Z"},"enabled":true,"label":"Room temperature controller 018 QUIPS C","description":""}
-{"_id":{"$binary":{"base64":"jgmCmy21SC29V1Kujn+Yww==","subType":"04"}},"hostname":"192.168.120.98","port":4223,"pad":null,"sad":null,"driver":"labnode","node_id":{"$binary":{"base64":"62YJzZv5SL2IlEZjcDYeyw==","subType":"04"}},"reconnect_interval":null,"revision_id":{"$binary":{"base64":"/frXOXPCTG6ILzF/SeS1BA==","subType":"04"}},"date_created":{"$date":"2021-10-24T12:39:08.754Z"},"date_modified":{"$date":"2024-11-01T11:28:35.620Z"},"enabled":true,"label":"Room temperature controller 015 ATOMICS","description":""}
-{"_id":{"$binary":{"base64":"hWu/qBryS76pqyWNs2Ylpw==","subType":"04"}},"hostname":"192.168.120.99","port":4223,"pad":null,"sad":null,"driver":"labnode","node_id":{"$binary":{"base64":"62YJzZv5SL2IlEZjcDYeyw==","subType":"04"}},"reconnect_interval":null,"revision_id":{"$binary":{"base64":"qxKk0cbQRzemsealwfbS0Q==","subType":"04"}},"date_created":{"$date":"2021-10-24T12:39:08.754Z"},"date_modified":{"$date":"2024-11-01T11:28:35.621Z"},"enabled":true,"label":"Room temperature controller 016 Zwischenlabor","description":""}
-{"_id":{"$binary":{"base64":"N2EWlCXCRaaqV0CrTbTp9Q==","subType":"04"}},"hostname":"192.168.120.101","port":4223,"pad":null,"sad":null,"driver":"labnode","node_id":{"$binary":{"base64":"62YJzZv5SL2IlEZjcDYeyw==","subType":"04"}},"reconnect_interval":null,"revision_id":{"$binary":{"base64":"3cBuYc5ISUma7RFLBFm9jA==","subType":"04"}},"date_created":{"$date":"2021-10-24T12:39:08.754Z"},"date_modified":{"$date":"2024-11-01T11:28:35.621Z"},"enabled":true,"label":"Room temperature controller 016 Pumpenraum","description":""}
-{"_id":{"$binary":{"base64":"vvs95YtMRrifZI46GeZLJg==","subType":"04"}},"hostname":"192.168.120.103","port":4223,"pad":null,"sad":null,"driver":"labnode","node_id":{"$binary":{"base64":"62YJzZv5SL2IlEZjcDYeyw==","subType":"04"}},"reconnect_interval":null,"revision_id":{"$binary":{"base64":"E2ts2aHXRoKNoX9WCYXsRw==","subType":"04"}},"date_created":{"$date":"2021-10-24T12:39:08.754Z"},"date_modified":{"$date":"2024-11-01T11:28:35.621Z"},"enabled":true,"label":"Room temperature controller K01 Serverraum","description":""}
-{"_id":{"$binary":{"base64":"bMjowRcnRbaFGxFW9VrWyA==","subType":"04"}},"hostname":"192.168.120.104","port":4223,"pad":null,"sad":null,"driver":"labnode","node_id":{"$binary":{"base64":"62YJzZv5SL2IlEZjcDYeyw==","subType":"04"}},"reconnect_interval":null,"revision_id":{"$binary":{"base64":"8W073cLASf69Br3boGcjzA==","subType":"04"}},"date_created":{"$date":"2021-10-24T12:39:08.754Z"},"date_modified":{"$date":"2024-11-01T11:28:35.621Z"},"enabled":true,"label":"Room temperature controller 011 Neon Ti:Sa","description":""}
-{"_id":{"$binary":{"base64":"POFKdvPGQGqm3feHDehc7w==","subType":"04"}},"hostname":"192.168.120.106","port":4223,"pad":null,"sad":null,"driver":"labnode","node_id":{"$binary":{"base64":"62YJzZv5SL2IlEZjcDYeyw==","subType":"04"}},"reconnect_interval":null,"revision_id":{"$binary":{"base64":"2/oruQugRLuhDX4LK8SFNg==","subType":"04"}},"date_created":{"$date":"2021-11-23T15:53:46.099Z"},"date_modified":{"$date":"2024-11-01T11:28:35.622Z"},"enabled":true,"label":"Room temperature controller 015 Front","description":""}
-{"_id":{"$binary":{"base64":"NvDd/Uh9SVyjPaTTBLL3Ww==","subType":"04"}},"hostname":"192.168.120.107","port":4223,"pad":null,"sad":null,"driver":"labnode","node_id":{"$binary":{"base64":"62YJzZv5SL2IlEZjcDYeyw==","subType":"04"}},"reconnect_interval":null,"revision_id":{"$binary":{"base64":"nRvJtfH3RAS+ApwIbrQYKQ==","subType":"04"}},"date_created":{"$date":"2021-12-14T16:52:58.484Z"},"date_modified":{"$date":"2024-11-01T11:28:35.622Z"},"enabled":true,"label":"Room temperature controller 017 QUIPS B Front","description":""}
-{"_id":{"$binary":{"base64":"my5XH/JGTfSRO3/9HzxYCw==","subType":"04"}},"hostname":"192.168.120.108","port":4223,"pad":null,"sad":null,"driver":"tinkerforge2","node_id":{"$binary":{"base64":"62YJzZv5SL2IlEZjcDYeyw==","subType":"04"}},"reconnect_interval":null,"revision_id":{"$binary":{"base64":"/2A874ApRUiyi8iwgl05Gw==","subType":"04"}},"date_created":{"$date":"2022-02-14T13:28:07.309Z"},"date_modified":{"$date":"2024-11-01T11:28:35.622Z"},"enabled":true,"label":"018 QUIPS C Center","description":""}
-{"_id":{"$binary":{"base64":"zC8hWeL7TtmAIXdxiQs3rQ==","subType":"04"}},"hostname":"192.168.120.109","port":4223,"pad":null,"sad":null,"driver":"labnode","node_id":{"$binary":{"base64":"62YJzZv5SL2IlEZjcDYeyw==","subType":"04"}},"reconnect_interval":null,"revision_id":{"$binary":{"base64":"331UQHcCTBKlbME1mJ3t1g==","subType":"04"}},"date_created":{"$date":"2022-02-22T16:18:32.954Z"},"date_modified":{"$date":"2024-11-01T11:28:35.622Z"},"enabled":true,"label":"Room temperature controller 012 Table 2","description":""}
-{"_id":{"$binary":{"base64":"np8O2qhVQymlLf1q7D3iSQ==","subType":"04"}},"hostname":"192.168.1.196","port":5025,"pad":null,"sad":null,"driver":"generic_ethernet2","node_id":{"$binary":{"base64":"62YJzZv5SL2IlEZjcDYeyw==","subType":"04"}},"reconnect_interval":3,"revision_id":{"$binary":{"base64":"1k+8LKGPQ4+Oy43pt+Uu8w==","subType":"04"}},"date_created":{"$date":"2022-03-03T19:18:49.349Z"},"date_modified":{"$date":"2024-11-01T11:28:35.622Z"},"enabled":false,"label":"Keysight 34470A","description":""}
-{"_id":{"$binary":{"base64":"Odmx+Nz/TyOcAYxmdRoUrw==","subType":"04"}},"hostname":"192.168.120.110","port":4223,"pad":null,"sad":null,"driver":"labnode","node_id":{"$binary":{"base64":"62YJzZv5SL2IlEZjcDYeyw==","subType":"04"}},"reconnect_interval":5,"revision_id":{"$binary":{"base64":"obrGvjq4Qz2IOHl5sBuZBQ==","subType":"04"}},"date_created":{"$date":"2022-04-14T15:07:15.199Z"},"date_modified":{"$date":"2024-11-01T11:28:35.623Z"},"enabled":true,"label":"Room temperature controller 012 Table 1","description":""}
-{"_id":{"$binary":{"base64":"Ko70k/0/Ts6cyyjF7oHRYw==","subType":"04"}},"hostname":"192.168.120.112","port":1234,"pad":27,"sad":0,"driver":"prologix_gpib2","node_id":{"$binary":{"base64":"62YJzZv5SL2IlEZjcDYeyw==","subType":"04"}},"reconnect_interval":10,"revision_id":{"$binary":{"base64":"8Cx1fOyjSImZgIjocTIl0g==","subType":"04"}},"date_created":{"$date":"2022-04-19T12:54:12.092Z"},"date_modified":{"$date":"2024-11-01T11:28:35.623Z"},"enabled":true,"label":"QUIPS C HP3478A (2520A20614) 840 nm Cavity Monitor","description":""}
-{"_id":{"$binary":{"base64":"ST/kSsk2RD+DPl6+WpJU0g==","subType":"04"}},"hostname":"192.168.1.221","port":5025,"pad":null,"sad":null,"driver":"generic_ethernet2","node_id":{"$binary":{"base64":"QLldtBH0R6CMFkBdkoKtlg==","subType":"04"}},"reconnect_interval":3,"date_created":{"$date":"2022-04-29T14:27:24.387Z"},"date_modified":{"$date":"2023-05-29T21:15:22.135Z"},"enabled":false,"label":"123 Demo","description":""}
-{"_id":{"$binary":{"base64":"lZjmKz3sS+mus6il5Pgg3Q==","subType":"04"}},"hostname":"192.168.1.234","port":5025,"pad":null,"sad":null,"driver":"generic_ethernet2","node_id":{"$binary":{"base64":"62YJzZv5SL2IlEZjcDYeyw==","subType":"04"}},"reconnect_interval":3,"revision_id":{"$binary":{"base64":"/TwBn/mhTIO/eT1QDaZttg==","subType":"04"}},"date_created":{"$date":"2022-05-20T13:34:14.533Z"},"date_modified":{"$date":"2024-11-01T11:28:35.623Z"},"enabled":false,"label":"Keithley DMM6500","description":""}
-{"_id":{"$binary":{"base64":"Uvm+spS1QwCBj64YLGdbdA==","subType":"04"}},"hostname":"192.168.1.164","port":4223,"pad":null,"sad":null,"driver":"tinkerforge2","node_id":{"$binary":{"base64":"QLldtBH0R6CMFkBdkoKtlg==","subType":"04"}},"reconnect_interval":3,"date_created":{"$date":"2022-06-02T13:19:42.460Z"},"date_modified":{"$date":"2023-05-29T21:15:22.135Z"},"enabled":false,"label":"123 Demo","description":""}
-{"_id":{"$binary":{"base64":"Ci4rdOMdT66JfqoKkISx0A==","subType":"04"}},"hostname":"192.168.120.113","port":1234,"pad":3,"sad":0,"driver":"prologix_gpib2","node_id":{"$binary":{"base64":"62YJzZv5SL2IlEZjcDYeyw==","subType":"04"}},"reconnect_interval":30,"revision_id":{"$binary":{"base64":"Du24aNU0TZ+1ntKVBc6D+w==","subType":"04"}},"date_created":{"$date":"2022-06-21T15:28:54.309Z"},"date_modified":{"$date":"2024-11-01T11:28:35.623Z"},"enabled":true,"label":"HP 53131A QUIPS Master Laser beat","description":""}
-{"_id":{"$binary":{"base64":"hibm8PkIQ7Wi+XW11TFq3w==","subType":"04"}},"hostname":0,"port":1,"pad":21,"sad":0,"driver":"linux-gpib","node_id":{"$binary":{"base64":"QLldtBH0R6CMFkBdkoKtlg==","subType":"04"}},"reconnect_interval":3,"date_created":{"$date":"2022-06-23T14:22:17.755Z"},"date_modified":{"$date":"2023-05-29T21:15:22.136Z"},"enabled":false,"label":"Demo 123 ","description":""}
-{"_id":{"$binary":{"base64":"PyHTPnC/QLGJyZmapUVQ5Q==","subType":"04"}},"hostname":"192.168.120.111","port":4223,"pad":null,"sad":null,"driver":"tinkerforge2","node_id":{"$binary":{"base64":"62YJzZv5SL2IlEZjcDYeyw==","subType":"04"}},"reconnect_interval":null,"revision_id":{"$binary":{"base64":"n0N0PEkzSreQH8kQr9A+ig==","subType":"04"}},"date_created":{"$date":"2022-06-27T07:23:38.544Z"},"date_modified":{"$date":"2024-11-01T11:28:35.624Z"},"enabled":true,"label":"FP Room","description":""}
-{"_id":{"$binary":{"base64":"xclAVE9IRamf2cMlI070pA==","subType":"04"}},"hostname":"192.168.120.151","port":4223,"pad":null,"sad":null,"driver":"tinkerforge2","node_id":{"$binary":{"base64":"62YJzZv5SL2IlEZjcDYeyw==","subType":"04"}},"reconnect_interval":null,"revision_id":{"$binary":{"base64":"F0aHnBoYQq+oJeTk4gutzQ==","subType":"04"}},"date_created":{"$date":"2022-10-25T16:48:44.401Z"},"date_modified":{"$date":"2024-11-01T11:28:35.624Z"},"enabled":true,"label":"151 ATOMICS","description":""}
-{"_id":{"$binary":{"base64":"ztvhMK98Q3q9Zh69ETfxgw==","subType":"04"}},"hostname":"192.168.120.115","port":4223,"pad":null,"sad":null,"driver":"labnode","node_id":{"$binary":{"base64":"62YJzZv5SL2IlEZjcDYeyw==","subType":"04"}},"reconnect_interval":5,"revision_id":{"$binary":{"base64":"CpA616FpQKel+Pwv2fOz1w==","subType":"04"}},"date_created":{"$date":"2023-01-28T08:36:16.114Z"},"date_modified":{"$date":"2024-11-01T11:28:35.624Z"},"enabled":true,"label":"Room temperature controller 018 QUIPS C Front","description":""}
-{"_id":{"$binary":{"base64":"M22uS6i3Tr69Q8E2TLnNPw==","subType":"04"}},"date_created":{"$date":"2023-09-01T16:02:50.290Z"},"date_modified":{"$date":"2024-11-01T11:28:35.624Z"},"description":"","driver":"generic_ethernet2","enabled":true,"hostname":"192.168.1.45","label":"HighFinesse WS8 QUIPS C","node_id":{"$binary":{"base64":"62YJzZv5SL2IlEZjcDYeyw==","subType":"04"}},"port":5556,"reconnect_interval":10,"pad":null,"sad":null}
-{"_id":{"$binary":{"base64":"AjGtJfD5RSyi+1swOcK20A==","subType":"04"}},"date_created":{"$date":"2023-09-01T16:02:50.290Z"},"date_modified":{"$date":"2024-11-01T11:28:35.624Z"},"description":"","driver":"generic_ethernet2","enabled":true,"hostname":"192.168.1.240","label":"HighFinesse WS8 GSI","node_id":{"$binary":{"base64":"62YJzZv5SL2IlEZjcDYeyw==","subType":"04"}},"port":5555,"reconnect_interval":10,"pad":null,"sad":null}
-{"_id":{"$binary":{"base64":"Mr5rt0Z/TimWgN8sthVDFw==","subType":"04"}},"date_created":{"$date":"2023-09-01T16:02:50.290Z"},"date_modified":{"$date":"2024-11-01T11:28:35.625Z"},"description":"","driver":"generic_ethernet2","enabled":true,"hostname":"192.168.1.240","label":"HighFinesse WS6 QUIPS B","node_id":{"$binary":{"base64":"62YJzZv5SL2IlEZjcDYeyw==","subType":"04"}},"port":5556,"reconnect_interval":10,"pad":null,"sad":null}
-{"_id":{"$binary":{"base64":"l3I7mDWxSkqR+7xyN81RhQ==","subType":"04"}},"date_created":{"$date":"2023-09-19T10:49:20.729Z"},"date_modified":{"$date":"2023-09-19T10:49:20.729Z"},"description":"","driver":"tinkerforge2","enabled":true,"hostname":"tinkerforge-gsi-laserlab.docker.internal","label":"GSI Laserlab","node_id":{"$binary":{"base64":"yULeNzRrScO2yY+otMRBJg==","subType":"04"}},"pad":0,"port":4223,"reconnect_interval":10,"sad":null}
-{"_id":{"$binary":{"base64":"xKiaQVjsQuONETomXiz99Q==","subType":"04"}},"date_created":{"$date":"2024-03-14T14:37:46.198Z"},"date_modified":{"$date":"2024-11-01T11:28:35.625Z"},"description":"","driver":"labnode","enabled":true,"hostname":"192.168.120.116","label":"Room temperature controller 109 FP MOT","node_id":{"$binary":{"base64":"62YJzZv5SL2IlEZjcDYeyw==","subType":"04"}},"pad":0,"port":4223,"reconnect_interval":5,"sad":null}
-{"_id":{"$binary":{"base64":"lNFDqrOpT66NxsytVVoNyw==","subType":"04"}},"date_created":{"$date":"2024-06-28T10:09:45.012Z"},"date_modified":{"$date":"2024-11-01T11:28:35.625Z"},"description":"","driver":"tinkerforge2","enabled":true,"hostname":"192.168.120.117","label":"151 ATOMICS front","node_id":{"$binary":{"base64":"62YJzZv5SL2IlEZjcDYeyw==","subType":"04"}},"pad":0,"port":4223,"reconnect_interval":10,"sad":null}
+[
+  {
+    "_id": {
+      "$binary": { "base64": "wnw9vL3JRN2snS9BEoi8pA==", "subType": "04" }
+    },
+    "hostname": "192.168.120.114",
+    "port": 1234,
+    "pad": 2,
+    "sad": 0,
+    "driver": "prologix_gpib2",
+    "node_id": {
+      "$binary": { "base64": "62YJzZv5SL2IlEZjcDYeyw==", "subType": "04" }
+    },
+    "reconnect_interval": 10,
+    "revision_id": {
+      "$binary": { "base64": "90nrfuv5ROmu/zaRvfSBGA==", "subType": "04" }
+    },
+    "date_created": { "$date": "2021-10-24T10:30:13.080Z" },
+    "date_modified": { "$date": "2024-11-01T11:28:35.616Z" },
+    "enabled": true,
+    "label": "QUIPS HP3478A (2911A49229) Cavity Monitor",
+    "description": ""
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "qQOUROTiSVuMNWWLjIr6JQ==", "subType": "04" }
+    },
+    "hostname": "192.168.120.85",
+    "port": 4223,
+    "pad": null,
+    "sad": null,
+    "driver": "tinkerforge2",
+    "node_id": {
+      "$binary": { "base64": "62YJzZv5SL2IlEZjcDYeyw==", "subType": "04" }
+    },
+    "reconnect_interval": 10,
+    "revision_id": {
+      "$binary": { "base64": "pfnqfR0SR+CLefnUhV2W7A==", "subType": "04" }
+    },
+    "date_created": { "$date": "2021-10-24T10:30:13.080Z" },
+    "date_modified": { "$date": "2024-11-01T11:28:35.616Z" },
+    "enabled": true,
+    "label": "017 QUIPS B",
+    "description": ""
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "w7c/KZw8Qgi1UZ/SpRUQbQ==", "subType": "04" }
+    },
+    "hostname": "192.168.120.82",
+    "port": 4223,
+    "pad": null,
+    "sad": null,
+    "driver": "tinkerforge2",
+    "node_id": {
+      "$binary": { "base64": "62YJzZv5SL2IlEZjcDYeyw==", "subType": "04" }
+    },
+    "reconnect_interval": 10,
+    "revision_id": {
+      "$binary": { "base64": "j23Hfv/rTrqGZqRDV1hIYg==", "subType": "04" }
+    },
+    "date_created": { "$date": "2021-10-24T10:30:13.080Z" },
+    "date_modified": { "$date": "2024-11-01T11:28:35.616Z" },
+    "enabled": true,
+    "label": "015 ATOMICS back",
+    "description": ""
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "WF/dxudJTcyAkbHr76WmzA==", "subType": "04" }
+    },
+    "hostname": "192.168.120.81",
+    "port": 4223,
+    "pad": null,
+    "sad": null,
+    "driver": "tinkerforge2",
+    "node_id": {
+      "$binary": { "base64": "62YJzZv5SL2IlEZjcDYeyw==", "subType": "04" }
+    },
+    "reconnect_interval": null,
+    "revision_id": {
+      "$binary": { "base64": "WG/nFm1DRaCfLOKRf6Ay0Q==", "subType": "04" }
+    },
+    "date_created": { "$date": "2021-10-24T10:30:13.080Z" },
+    "date_modified": { "$date": "2024-11-01T11:28:35.616Z" },
+    "enabled": true,
+    "label": "011 Neon",
+    "description": ""
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "w82cICdeT6ScOYKaxd6WGA==", "subType": "04" }
+    },
+    "hostname": "192.168.120.105",
+    "port": 4223,
+    "pad": null,
+    "sad": null,
+    "driver": "tinkerforge2",
+    "node_id": {
+      "$binary": { "base64": "62YJzZv5SL2IlEZjcDYeyw==", "subType": "04" }
+    },
+    "reconnect_interval": null,
+    "revision_id": {
+      "$binary": { "base64": "Yh1a46HCTkmMv27LMrLS/A==", "subType": "04" }
+    },
+    "date_created": { "$date": "2021-10-24T10:30:13.080Z" },
+    "date_modified": { "$date": "2024-11-01T11:28:35.617Z" },
+    "enabled": true,
+    "label": "011 Neon Back",
+    "description": ""
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "hgH2Vp3OQXq6QPe0UTv+zA==", "subType": "04" }
+    },
+    "hostname": "192.168.120.86",
+    "port": 4223,
+    "pad": null,
+    "sad": null,
+    "driver": "tinkerforge2",
+    "node_id": {
+      "$binary": { "base64": "62YJzZv5SL2IlEZjcDYeyw==", "subType": "04" }
+    },
+    "reconnect_interval": null,
+    "revision_id": {
+      "$binary": { "base64": "ijuSC9prTgqpj6EWiqEmKQ==", "subType": "04" }
+    },
+    "date_created": { "$date": "2021-10-24T10:30:13.080Z" },
+    "date_modified": { "$date": "2024-11-01T11:28:35.617Z" },
+    "enabled": true,
+    "label": "Elektronik Werkstatt",
+    "description": ""
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "TY3MIJiwRxuudTIoxg0jZA==", "subType": "04" }
+    },
+    "hostname": "192.168.120.102",
+    "port": 4223,
+    "pad": null,
+    "sad": null,
+    "driver": "tinkerforge2",
+    "node_id": {
+      "$binary": { "base64": "62YJzZv5SL2IlEZjcDYeyw==", "subType": "04" }
+    },
+    "reconnect_interval": null,
+    "revision_id": {
+      "$binary": { "base64": "TLxa1/7ORZmVFs+Z8yCrWQ==", "subType": "04" }
+    },
+    "date_created": { "$date": "2021-10-24T10:30:13.080Z" },
+    "date_modified": { "$date": "2024-11-01T11:28:35.617Z" },
+    "enabled": true,
+    "label": "K01 Server Room",
+    "description": ""
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "B7BFwqQcTn2ags4gvuTmMw==", "subType": "04" }
+    },
+    "hostname": "192.168.120.83",
+    "port": 4223,
+    "pad": null,
+    "sad": null,
+    "driver": "tinkerforge2",
+    "node_id": {
+      "$binary": { "base64": "62YJzZv5SL2IlEZjcDYeyw==", "subType": "04" }
+    },
+    "reconnect_interval": null,
+    "revision_id": {
+      "$binary": { "base64": "p+alWlIKRDycQFKGn48C2Q==", "subType": "04" }
+    },
+    "date_created": { "$date": "2021-10-24T10:30:13.080Z" },
+    "date_modified": { "$date": "2024-11-01T11:28:35.617Z" },
+    "enabled": true,
+    "label": "Labor 019",
+    "description": ""
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "b/V4k3N8R5KzF8k+FOo9zQ==", "subType": "04" }
+    },
+    "hostname": "192.168.120.87",
+    "port": 4223,
+    "pad": null,
+    "sad": null,
+    "driver": "tinkerforge2",
+    "node_id": {
+      "$binary": { "base64": "62YJzZv5SL2IlEZjcDYeyw==", "subType": "04" }
+    },
+    "reconnect_interval": null,
+    "revision_id": {
+      "$binary": { "base64": "qj6Ay/l1S8S6I9kkEfi69A==", "subType": "04" }
+    },
+    "date_created": { "$date": "2021-10-24T10:30:13.080Z" },
+    "date_modified": { "$date": "2024-11-01T11:28:35.617Z" },
+    "enabled": true,
+    "label": "012 Laserlabor left",
+    "description": ""
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "MHpEBRQBSVa8FjqQJzrk/w==", "subType": "04" }
+    },
+    "hostname": "192.168.120.92",
+    "port": 4223,
+    "pad": null,
+    "sad": null,
+    "driver": "tinkerforge2",
+    "node_id": {
+      "$binary": { "base64": "62YJzZv5SL2IlEZjcDYeyw==", "subType": "04" }
+    },
+    "reconnect_interval": null,
+    "revision_id": {
+      "$binary": { "base64": "i6Mtzz6CRhSMqx+N7ePupA==", "subType": "04" }
+    },
+    "date_created": { "$date": "2021-10-24T10:30:13.080Z" },
+    "date_modified": { "$date": "2024-11-01T11:28:35.618Z" },
+    "enabled": true,
+    "label": "012 Laserlabor right",
+    "description": ""
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "ekA0AaxARbGLvrvRZm6yUA==", "subType": "04" }
+    },
+    "hostname": "192.168.120.89",
+    "port": 4223,
+    "pad": null,
+    "sad": null,
+    "driver": "tinkerforge2",
+    "node_id": {
+      "$binary": { "base64": "62YJzZv5SL2IlEZjcDYeyw==", "subType": "04" }
+    },
+    "reconnect_interval": null,
+    "revision_id": {
+      "$binary": { "base64": "qamWjnO7Trmr5c9vqq6Ysg==", "subType": "04" }
+    },
+    "date_created": { "$date": "2021-10-24T10:30:13.080Z" },
+    "date_modified": { "$date": "2024-11-01T11:28:35.618Z" },
+    "enabled": true,
+    "label": "018 QUIPS C Table 1",
+    "description": ""
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "mDW1oBLAQyC9G0/c2CAxtA==", "subType": "04" }
+    },
+    "hostname": "192.168.120.90",
+    "port": 4223,
+    "pad": null,
+    "sad": null,
+    "driver": "tinkerforge2",
+    "node_id": {
+      "$binary": { "base64": "62YJzZv5SL2IlEZjcDYeyw==", "subType": "04" }
+    },
+    "reconnect_interval": null,
+    "revision_id": {
+      "$binary": { "base64": "JJe+7ZLYTiyj1VdavNxrNQ==", "subType": "04" }
+    },
+    "date_created": { "$date": "2021-10-24T10:30:13.080Z" },
+    "date_modified": { "$date": "2024-11-01T11:28:35.618Z" },
+    "enabled": true,
+    "label": "018 QUIPS C Table 2",
+    "description": ""
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "Dw5tDk5BR4OQonuNMVuw0w==", "subType": "04" }
+    },
+    "hostname": "192.168.120.91",
+    "port": 4223,
+    "pad": null,
+    "sad": null,
+    "driver": "tinkerforge2",
+    "node_id": {
+      "$binary": { "base64": "62YJzZv5SL2IlEZjcDYeyw==", "subType": "04" }
+    },
+    "reconnect_interval": null,
+    "revision_id": {
+      "$binary": { "base64": "cpqviXcsQIOynm0qBtwWDg==", "subType": "04" }
+    },
+    "date_created": { "$date": "2021-10-24T10:30:13.080Z" },
+    "date_modified": { "$date": "2024-11-01T11:28:35.618Z" },
+    "enabled": true,
+    "label": "018 QUIPS C Table 3",
+    "description": ""
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "YqmdFwtBR6yAl7+c21R6Jg==", "subType": "04" }
+    },
+    "hostname": "192.168.120.93",
+    "port": 4223,
+    "pad": null,
+    "sad": null,
+    "driver": "tinkerforge2",
+    "node_id": {
+      "$binary": { "base64": "62YJzZv5SL2IlEZjcDYeyw==", "subType": "04" }
+    },
+    "reconnect_interval": null,
+    "revision_id": {
+      "$binary": { "base64": "rSmIY/QwRl+pd+9I/2eqvg==", "subType": "04" }
+    },
+    "date_created": { "$date": "2021-10-24T10:30:13.080Z" },
+    "date_modified": { "$date": "2024-11-01T11:28:35.619Z" },
+    "enabled": true,
+    "label": "Server Room Brain42",
+    "description": ""
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "1Ux+C0aRTqec5L99Mxj/GA==", "subType": "04" }
+    },
+    "hostname": "192.168.2.95",
+    "port": 4223,
+    "pad": null,
+    "sad": null,
+    "driver": "tinkerforge2",
+    "node_id": {
+      "$binary": { "base64": "62YJzZv5SL2IlEZjcDYeyw==", "subType": "04" }
+    },
+    "reconnect_interval": null,
+    "revision_id": {
+      "$binary": { "base64": "J1IwfXTnR5WpNGzBOExY5A==", "subType": "04" }
+    },
+    "date_created": { "$date": "2021-10-24T10:30:13.080Z" },
+    "date_modified": { "$date": "2024-11-01T11:28:35.619Z" },
+    "enabled": false,
+    "label": "K01 Server Room Hal42",
+    "description": ""
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "V5tjbD/zQ6aqI+oGylxbvQ==", "subType": "04" }
+    },
+    "hostname": "192.168.120.88",
+    "port": 4223,
+    "pad": null,
+    "sad": null,
+    "driver": "tinkerforge2",
+    "node_id": {
+      "$binary": { "base64": "62YJzZv5SL2IlEZjcDYeyw==", "subType": "04" }
+    },
+    "reconnect_interval": null,
+    "revision_id": {
+      "$binary": { "base64": "jChTxBeESwmNHR6Zq3NOAw==", "subType": "04" }
+    },
+    "date_created": { "$date": "2021-10-24T10:30:13.080Z" },
+    "date_modified": { "$date": "2024-11-01T11:28:35.619Z" },
+    "enabled": true,
+    "label": "016 Zwischenlabor Ti:Sa",
+    "description": ""
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "3FLin8Q0TjmxOh+Vbo0kKg==", "subType": "04" }
+    },
+    "hostname": "192.168.120.100",
+    "port": 4223,
+    "pad": null,
+    "sad": null,
+    "driver": "tinkerforge2",
+    "node_id": {
+      "$binary": { "base64": "62YJzZv5SL2IlEZjcDYeyw==", "subType": "04" }
+    },
+    "reconnect_interval": null,
+    "revision_id": {
+      "$binary": { "base64": "Hz0VF4cjTmm3EhFcLS/41g==", "subType": "04" }
+    },
+    "date_created": { "$date": "2021-10-24T10:30:13.080Z" },
+    "date_modified": { "$date": "2024-11-01T11:28:35.619Z" },
+    "enabled": true,
+    "label": "016 Zwischenlabor Pumpenraum",
+    "description": ""
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "K1gM4IchTEetqmJTq7QhIA==", "subType": "04" }
+    },
+    "hostname": "192.168.120.84",
+    "port": 4223,
+    "pad": null,
+    "sad": null,
+    "driver": "labnode",
+    "node_id": {
+      "$binary": { "base64": "62YJzZv5SL2IlEZjcDYeyw==", "subType": "04" }
+    },
+    "reconnect_interval": null,
+    "revision_id": {
+      "$binary": { "base64": "XLe/9g2VSpu0IzR3qTfuSA==", "subType": "04" }
+    },
+    "date_created": { "$date": "2021-10-24T12:39:08.754Z" },
+    "date_modified": { "$date": "2024-11-01T11:28:35.619Z" },
+    "enabled": true,
+    "label": "Room temperature controller 018 QUIPS C Table2",
+    "description": ""
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "gDtcKnPmRPmJknC8qnspYA==", "subType": "04" }
+    },
+    "hostname": "192.168.120.94",
+    "port": 4223,
+    "pad": null,
+    "sad": null,
+    "driver": "labnode",
+    "node_id": {
+      "$binary": { "base64": "62YJzZv5SL2IlEZjcDYeyw==", "subType": "04" }
+    },
+    "reconnect_interval": null,
+    "revision_id": {
+      "$binary": { "base64": "qX/nhO5bQPucopucbHJkJw==", "subType": "04" }
+    },
+    "date_created": { "$date": "2021-10-24T12:39:08.754Z" },
+    "date_modified": { "$date": "2024-11-01T11:28:35.620Z" },
+    "enabled": true,
+    "label": "Room temperature controller 017 QUIPS B",
+    "description": ""
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "xi0tJOnAQeOdwLGbobWW6w==", "subType": "04" }
+    },
+    "hostname": "192.168.120.96",
+    "port": 4223,
+    "pad": null,
+    "sad": null,
+    "driver": "labnode",
+    "node_id": {
+      "$binary": { "base64": "62YJzZv5SL2IlEZjcDYeyw==", "subType": "04" }
+    },
+    "reconnect_interval": 5,
+    "revision_id": {
+      "$binary": { "base64": "aEo0o+dbTEeNL2L5CoOpyw==", "subType": "04" }
+    },
+    "date_created": { "$date": "2021-10-24T12:39:08.754Z" },
+    "date_modified": { "$date": "2024-11-01T11:28:35.620Z" },
+    "enabled": true,
+    "label": "Room temperature controller 011 Neon",
+    "description": ""
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "tGB9pf9ESeGzJ0zIX0U/Zg==", "subType": "04" }
+    },
+    "hostname": "192.168.120.97",
+    "port": 4223,
+    "pad": null,
+    "sad": null,
+    "driver": "labnode",
+    "node_id": {
+      "$binary": { "base64": "62YJzZv5SL2IlEZjcDYeyw==", "subType": "04" }
+    },
+    "reconnect_interval": null,
+    "revision_id": {
+      "$binary": { "base64": "v/lspyixQzW1Dcwun3alEw==", "subType": "04" }
+    },
+    "date_created": { "$date": "2021-10-24T12:39:08.754Z" },
+    "date_modified": { "$date": "2024-11-01T11:28:35.620Z" },
+    "enabled": true,
+    "label": "Room temperature controller 018 QUIPS C",
+    "description": ""
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "jgmCmy21SC29V1Kujn+Yww==", "subType": "04" }
+    },
+    "hostname": "192.168.120.98",
+    "port": 4223,
+    "pad": null,
+    "sad": null,
+    "driver": "labnode",
+    "node_id": {
+      "$binary": { "base64": "62YJzZv5SL2IlEZjcDYeyw==", "subType": "04" }
+    },
+    "reconnect_interval": null,
+    "revision_id": {
+      "$binary": { "base64": "/frXOXPCTG6ILzF/SeS1BA==", "subType": "04" }
+    },
+    "date_created": { "$date": "2021-10-24T12:39:08.754Z" },
+    "date_modified": { "$date": "2024-11-01T11:28:35.620Z" },
+    "enabled": true,
+    "label": "Room temperature controller 015 ATOMICS",
+    "description": ""
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "hWu/qBryS76pqyWNs2Ylpw==", "subType": "04" }
+    },
+    "hostname": "192.168.120.99",
+    "port": 4223,
+    "pad": null,
+    "sad": null,
+    "driver": "labnode",
+    "node_id": {
+      "$binary": { "base64": "62YJzZv5SL2IlEZjcDYeyw==", "subType": "04" }
+    },
+    "reconnect_interval": null,
+    "revision_id": {
+      "$binary": { "base64": "qxKk0cbQRzemsealwfbS0Q==", "subType": "04" }
+    },
+    "date_created": { "$date": "2021-10-24T12:39:08.754Z" },
+    "date_modified": { "$date": "2024-11-01T11:28:35.621Z" },
+    "enabled": true,
+    "label": "Room temperature controller 016 Zwischenlabor",
+    "description": ""
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "N2EWlCXCRaaqV0CrTbTp9Q==", "subType": "04" }
+    },
+    "hostname": "192.168.120.101",
+    "port": 4223,
+    "pad": null,
+    "sad": null,
+    "driver": "labnode",
+    "node_id": {
+      "$binary": { "base64": "62YJzZv5SL2IlEZjcDYeyw==", "subType": "04" }
+    },
+    "reconnect_interval": null,
+    "revision_id": {
+      "$binary": { "base64": "3cBuYc5ISUma7RFLBFm9jA==", "subType": "04" }
+    },
+    "date_created": { "$date": "2021-10-24T12:39:08.754Z" },
+    "date_modified": { "$date": "2024-11-01T11:28:35.621Z" },
+    "enabled": true,
+    "label": "Room temperature controller 016 Pumpenraum",
+    "description": ""
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "vvs95YtMRrifZI46GeZLJg==", "subType": "04" }
+    },
+    "hostname": "192.168.120.103",
+    "port": 4223,
+    "pad": null,
+    "sad": null,
+    "driver": "labnode",
+    "node_id": {
+      "$binary": { "base64": "62YJzZv5SL2IlEZjcDYeyw==", "subType": "04" }
+    },
+    "reconnect_interval": null,
+    "revision_id": {
+      "$binary": { "base64": "E2ts2aHXRoKNoX9WCYXsRw==", "subType": "04" }
+    },
+    "date_created": { "$date": "2021-10-24T12:39:08.754Z" },
+    "date_modified": { "$date": "2024-11-01T11:28:35.621Z" },
+    "enabled": true,
+    "label": "Room temperature controller K01 Serverraum",
+    "description": ""
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "bMjowRcnRbaFGxFW9VrWyA==", "subType": "04" }
+    },
+    "hostname": "192.168.120.104",
+    "port": 4223,
+    "pad": null,
+    "sad": null,
+    "driver": "labnode",
+    "node_id": {
+      "$binary": { "base64": "62YJzZv5SL2IlEZjcDYeyw==", "subType": "04" }
+    },
+    "reconnect_interval": null,
+    "revision_id": {
+      "$binary": { "base64": "8W073cLASf69Br3boGcjzA==", "subType": "04" }
+    },
+    "date_created": { "$date": "2021-10-24T12:39:08.754Z" },
+    "date_modified": { "$date": "2024-11-01T11:28:35.621Z" },
+    "enabled": true,
+    "label": "Room temperature controller 011 Neon Ti:Sa",
+    "description": ""
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "POFKdvPGQGqm3feHDehc7w==", "subType": "04" }
+    },
+    "hostname": "192.168.120.106",
+    "port": 4223,
+    "pad": null,
+    "sad": null,
+    "driver": "labnode",
+    "node_id": {
+      "$binary": { "base64": "62YJzZv5SL2IlEZjcDYeyw==", "subType": "04" }
+    },
+    "reconnect_interval": null,
+    "revision_id": {
+      "$binary": { "base64": "2/oruQugRLuhDX4LK8SFNg==", "subType": "04" }
+    },
+    "date_created": { "$date": "2021-11-23T15:53:46.099Z" },
+    "date_modified": { "$date": "2024-11-01T11:28:35.622Z" },
+    "enabled": true,
+    "label": "Room temperature controller 015 Front",
+    "description": ""
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "NvDd/Uh9SVyjPaTTBLL3Ww==", "subType": "04" }
+    },
+    "hostname": "192.168.120.107",
+    "port": 4223,
+    "pad": null,
+    "sad": null,
+    "driver": "labnode",
+    "node_id": {
+      "$binary": { "base64": "62YJzZv5SL2IlEZjcDYeyw==", "subType": "04" }
+    },
+    "reconnect_interval": null,
+    "revision_id": {
+      "$binary": { "base64": "nRvJtfH3RAS+ApwIbrQYKQ==", "subType": "04" }
+    },
+    "date_created": { "$date": "2021-12-14T16:52:58.484Z" },
+    "date_modified": { "$date": "2024-11-01T11:28:35.622Z" },
+    "enabled": true,
+    "label": "Room temperature controller 017 QUIPS B Front",
+    "description": ""
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "my5XH/JGTfSRO3/9HzxYCw==", "subType": "04" }
+    },
+    "hostname": "192.168.120.108",
+    "port": 4223,
+    "pad": null,
+    "sad": null,
+    "driver": "tinkerforge2",
+    "node_id": {
+      "$binary": { "base64": "62YJzZv5SL2IlEZjcDYeyw==", "subType": "04" }
+    },
+    "reconnect_interval": null,
+    "revision_id": {
+      "$binary": { "base64": "/2A874ApRUiyi8iwgl05Gw==", "subType": "04" }
+    },
+    "date_created": { "$date": "2022-02-14T13:28:07.309Z" },
+    "date_modified": { "$date": "2024-11-01T11:28:35.622Z" },
+    "enabled": true,
+    "label": "018 QUIPS C Center",
+    "description": ""
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "zC8hWeL7TtmAIXdxiQs3rQ==", "subType": "04" }
+    },
+    "hostname": "192.168.120.109",
+    "port": 4223,
+    "pad": null,
+    "sad": null,
+    "driver": "labnode",
+    "node_id": {
+      "$binary": { "base64": "62YJzZv5SL2IlEZjcDYeyw==", "subType": "04" }
+    },
+    "reconnect_interval": null,
+    "revision_id": {
+      "$binary": { "base64": "331UQHcCTBKlbME1mJ3t1g==", "subType": "04" }
+    },
+    "date_created": { "$date": "2022-02-22T16:18:32.954Z" },
+    "date_modified": { "$date": "2024-11-01T11:28:35.622Z" },
+    "enabled": true,
+    "label": "Room temperature controller 012 Table 2",
+    "description": ""
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "np8O2qhVQymlLf1q7D3iSQ==", "subType": "04" }
+    },
+    "hostname": "192.168.1.196",
+    "port": 5025,
+    "pad": null,
+    "sad": null,
+    "driver": "generic_ethernet2",
+    "node_id": {
+      "$binary": { "base64": "62YJzZv5SL2IlEZjcDYeyw==", "subType": "04" }
+    },
+    "reconnect_interval": 3,
+    "revision_id": {
+      "$binary": { "base64": "1k+8LKGPQ4+Oy43pt+Uu8w==", "subType": "04" }
+    },
+    "date_created": { "$date": "2022-03-03T19:18:49.349Z" },
+    "date_modified": { "$date": "2024-11-01T11:28:35.622Z" },
+    "enabled": false,
+    "label": "Keysight 34470A",
+    "description": ""
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "Odmx+Nz/TyOcAYxmdRoUrw==", "subType": "04" }
+    },
+    "hostname": "192.168.120.110",
+    "port": 4223,
+    "pad": null,
+    "sad": null,
+    "driver": "labnode",
+    "node_id": {
+      "$binary": { "base64": "62YJzZv5SL2IlEZjcDYeyw==", "subType": "04" }
+    },
+    "reconnect_interval": 5,
+    "revision_id": {
+      "$binary": { "base64": "obrGvjq4Qz2IOHl5sBuZBQ==", "subType": "04" }
+    },
+    "date_created": { "$date": "2022-04-14T15:07:15.199Z" },
+    "date_modified": { "$date": "2024-11-01T11:28:35.623Z" },
+    "enabled": true,
+    "label": "Room temperature controller 012 Table 1",
+    "description": ""
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "Ko70k/0/Ts6cyyjF7oHRYw==", "subType": "04" }
+    },
+    "hostname": "192.168.120.112",
+    "port": 1234,
+    "pad": 27,
+    "sad": 0,
+    "driver": "prologix_gpib2",
+    "node_id": {
+      "$binary": { "base64": "62YJzZv5SL2IlEZjcDYeyw==", "subType": "04" }
+    },
+    "reconnect_interval": 10,
+    "revision_id": {
+      "$binary": { "base64": "8Cx1fOyjSImZgIjocTIl0g==", "subType": "04" }
+    },
+    "date_created": { "$date": "2022-04-19T12:54:12.092Z" },
+    "date_modified": { "$date": "2024-11-01T11:28:35.623Z" },
+    "enabled": true,
+    "label": "QUIPS C HP3478A (2520A20614) 840 nm Cavity Monitor",
+    "description": ""
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "ST/kSsk2RD+DPl6+WpJU0g==", "subType": "04" }
+    },
+    "hostname": "192.168.1.221",
+    "port": 5025,
+    "pad": null,
+    "sad": null,
+    "driver": "generic_ethernet2",
+    "node_id": {
+      "$binary": { "base64": "QLldtBH0R6CMFkBdkoKtlg==", "subType": "04" }
+    },
+    "reconnect_interval": 3,
+    "date_created": { "$date": "2022-04-29T14:27:24.387Z" },
+    "date_modified": { "$date": "2023-05-29T21:15:22.135Z" },
+    "enabled": false,
+    "label": "123 Demo",
+    "description": ""
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "lZjmKz3sS+mus6il5Pgg3Q==", "subType": "04" }
+    },
+    "hostname": "192.168.1.234",
+    "port": 5025,
+    "pad": null,
+    "sad": null,
+    "driver": "generic_ethernet2",
+    "node_id": {
+      "$binary": { "base64": "62YJzZv5SL2IlEZjcDYeyw==", "subType": "04" }
+    },
+    "reconnect_interval": 3,
+    "revision_id": {
+      "$binary": { "base64": "/TwBn/mhTIO/eT1QDaZttg==", "subType": "04" }
+    },
+    "date_created": { "$date": "2022-05-20T13:34:14.533Z" },
+    "date_modified": { "$date": "2024-11-01T11:28:35.623Z" },
+    "enabled": false,
+    "label": "Keithley DMM6500",
+    "description": ""
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "Uvm+spS1QwCBj64YLGdbdA==", "subType": "04" }
+    },
+    "hostname": "192.168.1.164",
+    "port": 4223,
+    "pad": null,
+    "sad": null,
+    "driver": "tinkerforge2",
+    "node_id": {
+      "$binary": { "base64": "QLldtBH0R6CMFkBdkoKtlg==", "subType": "04" }
+    },
+    "reconnect_interval": 3,
+    "date_created": { "$date": "2022-06-02T13:19:42.460Z" },
+    "date_modified": { "$date": "2023-05-29T21:15:22.135Z" },
+    "enabled": false,
+    "label": "123 Demo",
+    "description": ""
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "Ci4rdOMdT66JfqoKkISx0A==", "subType": "04" }
+    },
+    "hostname": "192.168.120.113",
+    "port": 1234,
+    "pad": 3,
+    "sad": 0,
+    "driver": "prologix_gpib2",
+    "node_id": {
+      "$binary": { "base64": "62YJzZv5SL2IlEZjcDYeyw==", "subType": "04" }
+    },
+    "reconnect_interval": 30,
+    "revision_id": {
+      "$binary": { "base64": "Du24aNU0TZ+1ntKVBc6D+w==", "subType": "04" }
+    },
+    "date_created": { "$date": "2022-06-21T15:28:54.309Z" },
+    "date_modified": { "$date": "2024-11-01T11:28:35.623Z" },
+    "enabled": true,
+    "label": "HP 53131A QUIPS Master Laser beat",
+    "description": ""
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "hibm8PkIQ7Wi+XW11TFq3w==", "subType": "04" }
+    },
+    "hostname": 0,
+    "port": 1,
+    "pad": 21,
+    "sad": 0,
+    "driver": "linux-gpib",
+    "node_id": {
+      "$binary": { "base64": "QLldtBH0R6CMFkBdkoKtlg==", "subType": "04" }
+    },
+    "reconnect_interval": 3,
+    "date_created": { "$date": "2022-06-23T14:22:17.755Z" },
+    "date_modified": { "$date": "2023-05-29T21:15:22.136Z" },
+    "enabled": false,
+    "label": "Demo 123 ",
+    "description": ""
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "PyHTPnC/QLGJyZmapUVQ5Q==", "subType": "04" }
+    },
+    "hostname": "192.168.120.111",
+    "port": 4223,
+    "pad": null,
+    "sad": null,
+    "driver": "tinkerforge2",
+    "node_id": {
+      "$binary": { "base64": "62YJzZv5SL2IlEZjcDYeyw==", "subType": "04" }
+    },
+    "reconnect_interval": null,
+    "revision_id": {
+      "$binary": { "base64": "n0N0PEkzSreQH8kQr9A+ig==", "subType": "04" }
+    },
+    "date_created": { "$date": "2022-06-27T07:23:38.544Z" },
+    "date_modified": { "$date": "2024-11-01T11:28:35.624Z" },
+    "enabled": true,
+    "label": "FP Room",
+    "description": ""
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "xclAVE9IRamf2cMlI070pA==", "subType": "04" }
+    },
+    "hostname": "192.168.120.151",
+    "port": 4223,
+    "pad": null,
+    "sad": null,
+    "driver": "tinkerforge2",
+    "node_id": {
+      "$binary": { "base64": "62YJzZv5SL2IlEZjcDYeyw==", "subType": "04" }
+    },
+    "reconnect_interval": null,
+    "revision_id": {
+      "$binary": { "base64": "F0aHnBoYQq+oJeTk4gutzQ==", "subType": "04" }
+    },
+    "date_created": { "$date": "2022-10-25T16:48:44.401Z" },
+    "date_modified": { "$date": "2024-11-01T11:28:35.624Z" },
+    "enabled": true,
+    "label": "151 ATOMICS",
+    "description": ""
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "ztvhMK98Q3q9Zh69ETfxgw==", "subType": "04" }
+    },
+    "hostname": "192.168.120.115",
+    "port": 4223,
+    "pad": null,
+    "sad": null,
+    "driver": "labnode",
+    "node_id": {
+      "$binary": { "base64": "62YJzZv5SL2IlEZjcDYeyw==", "subType": "04" }
+    },
+    "reconnect_interval": 5,
+    "revision_id": {
+      "$binary": { "base64": "CpA616FpQKel+Pwv2fOz1w==", "subType": "04" }
+    },
+    "date_created": { "$date": "2023-01-28T08:36:16.114Z" },
+    "date_modified": { "$date": "2024-11-01T11:28:35.624Z" },
+    "enabled": true,
+    "label": "Room temperature controller 018 QUIPS C Front",
+    "description": ""
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "M22uS6i3Tr69Q8E2TLnNPw==", "subType": "04" }
+    },
+    "date_created": { "$date": "2023-09-01T16:02:50.290Z" },
+    "date_modified": { "$date": "2024-11-01T11:28:35.624Z" },
+    "description": "",
+    "driver": "generic_ethernet2",
+    "enabled": true,
+    "hostname": "192.168.1.45",
+    "label": "HighFinesse WS8 QUIPS C",
+    "node_id": {
+      "$binary": { "base64": "62YJzZv5SL2IlEZjcDYeyw==", "subType": "04" }
+    },
+    "port": 5556,
+    "reconnect_interval": 10,
+    "pad": null,
+    "sad": null
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "AjGtJfD5RSyi+1swOcK20A==", "subType": "04" }
+    },
+    "date_created": { "$date": "2023-09-01T16:02:50.290Z" },
+    "date_modified": { "$date": "2024-11-01T11:28:35.624Z" },
+    "description": "",
+    "driver": "generic_ethernet2",
+    "enabled": true,
+    "hostname": "192.168.1.240",
+    "label": "HighFinesse WS8 GSI",
+    "node_id": {
+      "$binary": { "base64": "62YJzZv5SL2IlEZjcDYeyw==", "subType": "04" }
+    },
+    "port": 5555,
+    "reconnect_interval": 10,
+    "pad": null,
+    "sad": null
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "Mr5rt0Z/TimWgN8sthVDFw==", "subType": "04" }
+    },
+    "date_created": { "$date": "2023-09-01T16:02:50.290Z" },
+    "date_modified": { "$date": "2024-11-01T11:28:35.625Z" },
+    "description": "",
+    "driver": "generic_ethernet2",
+    "enabled": true,
+    "hostname": "192.168.1.240",
+    "label": "HighFinesse WS6 QUIPS B",
+    "node_id": {
+      "$binary": { "base64": "62YJzZv5SL2IlEZjcDYeyw==", "subType": "04" }
+    },
+    "port": 5556,
+    "reconnect_interval": 10,
+    "pad": null,
+    "sad": null
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "l3I7mDWxSkqR+7xyN81RhQ==", "subType": "04" }
+    },
+    "date_created": { "$date": "2023-09-19T10:49:20.729Z" },
+    "date_modified": { "$date": "2023-09-19T10:49:20.729Z" },
+    "description": "",
+    "driver": "tinkerforge2",
+    "enabled": true,
+    "hostname": "tinkerforge-gsi-laserlab.docker.internal",
+    "label": "GSI Laserlab",
+    "node_id": {
+      "$binary": { "base64": "yULeNzRrScO2yY+otMRBJg==", "subType": "04" }
+    },
+    "pad": 0,
+    "port": 4223,
+    "reconnect_interval": 10,
+    "sad": null
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "xKiaQVjsQuONETomXiz99Q==", "subType": "04" }
+    },
+    "date_created": { "$date": "2024-03-14T14:37:46.198Z" },
+    "date_modified": { "$date": "2024-11-01T11:28:35.625Z" },
+    "description": "",
+    "driver": "labnode",
+    "enabled": true,
+    "hostname": "192.168.120.116",
+    "label": "Room temperature controller 109 FP MOT",
+    "node_id": {
+      "$binary": { "base64": "62YJzZv5SL2IlEZjcDYeyw==", "subType": "04" }
+    },
+    "pad": 0,
+    "port": 4223,
+    "reconnect_interval": 5,
+    "sad": null
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "lNFDqrOpT66NxsytVVoNyw==", "subType": "04" }
+    },
+    "date_created": { "$date": "2024-06-28T10:09:45.012Z" },
+    "date_modified": { "$date": "2024-11-01T11:28:35.625Z" },
+    "description": "",
+    "driver": "tinkerforge2",
+    "enabled": true,
+    "hostname": "192.168.120.117",
+    "label": "151 ATOMICS front",
+    "node_id": {
+      "$binary": { "base64": "62YJzZv5SL2IlEZjcDYeyw==", "subType": "04" }
+    },
+    "pad": 0,
+    "port": 4223,
+    "reconnect_interval": 10,
+    "sad": null
+  }
+]

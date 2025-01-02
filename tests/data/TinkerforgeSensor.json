@@ -1,97 +1,3106 @@
-{"_id":{"$binary":{"base64":"sXrdA/6IS3SbJam0xY2k7g==","subType":"04"}},"date_created":{"$date":"2021-10-24T10:30:13.080Z"},"date_modified":{"$date":"2023-05-29T21:15:22.086Z"},"enabled":true,"label":null,"description":"","uid":125633,"config":{"0":{"interval":2000,"trigger_only_on_change":false,"description":"","topic":"sensors/server/temperature","unit":"K"},"1":{"interval":1000,"trigger_only_on_change":false,"description":"","topic":"sensors/server/humidity","unit":"%rH"}},"on_connect":[{"function":"set_status_led_config","args":[],"kwargs":{"config":2},"timeout":null}]}
-{"_id":{"$binary":{"base64":"SAGHR6sySF2PBqsvTFGAYA==","subType":"04"}},"date_created":{"$date":"2021-10-24T10:30:13.080Z"},"date_modified":{"$date":"2023-05-29T21:15:22.087Z"},"enabled":true,"label":null,"description":"","uid":50052,"config":{"0":{"interval":20000,"trigger_only_on_change":true,"description":"","topic":"sensors/room_017/humidity/room","unit":"%rH"}},"on_connect":[]}
-{"_id":{"$binary":{"base64":"DCbV4IM3QcahsVxCbkuzzA==","subType":"04"}},"date_created":{"$date":"2021-10-24T10:30:13.080Z"},"date_modified":{"$date":"2023-05-29T21:15:22.087Z"},"enabled":true,"label":null,"description":"","uid":85141,"config":{"0":{"interval":10000,"trigger_only_on_change":true,"description":"","topic":"sensors/room_017/temperature/cooling_water","unit":"K"}},"on_connect":[{"function":"set_noise_rejection_filter","args":[],"kwargs":{"line_filter":0},"timeout":null},{"function":"set_wire_mode","args":[],"kwargs":{"mode":4},"timeout":null}]}
-{"_id":{"$binary":{"base64":"qLbR4opATN+LlUg6qXPWCg==","subType":"04"}},"date_created":{"$date":"2021-10-24T10:30:13.080Z"},"date_modified":{"$date":"2023-05-29T21:15:22.088Z"},"enabled":true,"label":null,"description":"","uid":156236,"config":{"0":{"interval":20000,"trigger_only_on_change":true,"description":"","topic":"sensors/room_017/temperature/table_raman","unit":"K"}},"on_connect":[{"function":"set_moving_average_configuration","args":[],"kwargs":{"moving_average_length_resistance":1,"moving_average_length_temperature":500},"timeout":null},{"function":"set_noise_rejection_filter","args":[],"kwargs":{"line_filter":0},"timeout":null},{"function":"set_wire_mode","args":[],"kwargs":{"mode":4},"timeout":null},{"function":"set_status_led_config","args":[],"kwargs":{"config":2},"timeout":null}]}
-{"_id":{"$binary":{"base64":"WkURgas1QoaxbuUIswjD+g==","subType":"04"}},"date_created":{"$date":"2021-10-24T10:30:13.080Z"},"date_modified":{"$date":"2023-05-29T21:15:22.088Z"},"enabled":true,"label":null,"description":"","uid":155624,"config":{"0":{"interval":1000,"trigger_only_on_change":true,"description":"","topic":"sensors/room_017/temperature/table_laser","unit":"K"}},"on_connect":[{"function":"set_moving_average_configuration","args":[],"kwargs":{"moving_average_length_resistance":1,"moving_average_length_temperature":50},"timeout":null},{"function":"set_noise_rejection_filter","args":[],"kwargs":{"line_filter":0},"timeout":null},{"function":"set_wire_mode","args":[],"kwargs":{"mode":4},"timeout":null},{"function":"set_status_led_config","args":[],"kwargs":{"config":2},"timeout":null}]}
-{"_id":{"$binary":{"base64":"XzzBQ/IqRKuWWJ2XPPKYNw==","subType":"04"}},"date_created":{"$date":"2021-10-24T10:30:13.080Z"},"date_modified":{"$date":"2023-05-29T21:15:22.088Z"},"enabled":true,"label":null,"description":"","uid":155685,"config":{"0":{"interval":20000,"trigger_only_on_change":true,"description":"","topic":"sensors/room_017/temperature/table_vacuum_chamber","unit":"K"}},"on_connect":[{"function":"set_moving_average_configuration","args":[],"kwargs":{"moving_average_length_resistance":1,"moving_average_length_temperature":500},"timeout":null},{"function":"set_noise_rejection_filter","args":[],"kwargs":{"line_filter":0},"timeout":null},{"function":"set_wire_mode","args":[],"kwargs":{"mode":4},"timeout":null},{"function":"set_status_led_config","args":[],"kwargs":{"config":2},"timeout":null}]}
-{"_id":{"$binary":{"base64":"yYULc6h1SUuXyJUywbMmiQ==","subType":"04"}},"date_created":{"$date":"2021-10-24T10:30:13.080Z"},"date_modified":{"$date":"2023-05-29T21:15:22.089Z"},"enabled":true,"label":null,"description":"","uid":85275,"config":{"0":{"interval":1000,"trigger_only_on_change":true,"description":"","topic":"sensors/room_015/temperature/room_back","unit":"K"}},"on_connect":[]}
-{"_id":{"$binary":{"base64":"2tJydHkrTHCQbhrF3s8gqA==","subType":"04"}},"date_created":{"$date":"2021-10-24T10:30:13.080Z"},"date_modified":{"$date":"2023-05-29T21:15:22.089Z"},"enabled":true,"label":null,"description":"","uid":147263,"config":{"0":{"interval":1,"trigger_only_on_change":true,"description":"","topic":"sensors/room_015/temperature/room_front","unit":"K"}},"on_connect":[]}
-{"_id":{"$binary":{"base64":"RE5NDsT+Tvien9tsZDOB1w==","subType":"04"}},"date_created":{"$date":"2021-10-24T10:30:13.080Z"},"date_modified":{"$date":"2023-05-29T21:15:22.089Z"},"enabled":true,"label":null,"description":"","uid":174546,"config":{"0":{"interval":60000,"trigger_only_on_change":true,"description":"","topic":"sensors/room_015/temperature/air_intake","unit":"K"}},"on_connect":[{"function":"set_moving_average_configuration","args":[],"kwargs":{"moving_average_length_resistance":1,"moving_average_length_temperature":500},"timeout":null},{"function":"set_noise_rejection_filter","args":[],"kwargs":{"line_filter":0},"timeout":null},{"function":"set_wire_mode","args":[],"kwargs":{"mode":4},"timeout":null},{"function":"set_status_led_config","args":[],"kwargs":{"config":2},"timeout":null}]}
-{"_id":{"$binary":{"base64":"Falj32zTSf6LKgn99tgukw==","subType":"04"}},"date_created":{"$date":"2021-10-24T10:30:13.080Z"},"date_modified":{"$date":"2023-05-29T21:15:22.090Z"},"enabled":true,"label":null,"description":"","uid":155788,"config":{"0":{"interval":10000,"trigger_only_on_change":true,"description":"","topic":"sensors/room_015/temperature/table_chamber","unit":"K"}},"on_connect":[{"function":"set_moving_average_configuration","args":[],"kwargs":{"moving_average_length_resistance":1,"moving_average_length_temperature":500},"timeout":null},{"function":"set_noise_rejection_filter","args":[],"kwargs":{"line_filter":0},"timeout":null},{"function":"set_wire_mode","args":[],"kwargs":{"mode":4},"timeout":null},{"function":"set_status_led_config","args":[],"kwargs":{"config":2},"timeout":null}]}
-{"_id":{"$binary":{"base64":"/zK8pJscQxeHi1PmcDaTSA==","subType":"04"}},"date_created":{"$date":"2021-10-24T10:30:13.080Z"},"date_modified":{"$date":"2023-05-29T21:15:22.090Z"},"enabled":true,"label":null,"description":"","uid":155641,"config":{"0":{"interval":10000,"trigger_only_on_change":true,"description":"","topic":"sensors/room_015/temperature/table_laser","unit":"K"}},"on_connect":[{"function":"set_moving_average_configuration","args":[],"kwargs":{"moving_average_length_resistance":1,"moving_average_length_temperature":500},"timeout":null},{"function":"set_noise_rejection_filter","args":[],"kwargs":{"line_filter":0},"timeout":null},{"function":"set_wire_mode","args":[],"kwargs":{"mode":4},"timeout":null},{"function":"set_status_led_config","args":[],"kwargs":{"config":2},"timeout":null}]}
-{"_id":{"$binary":{"base64":"gX3uGkClQoKdAYx77sbMng==","subType":"04"}},"date_created":{"$date":"2021-10-24T10:30:13.080Z"},"date_modified":{"$date":"2023-05-29T21:15:22.090Z"},"enabled":true,"label":null,"description":"","uid":49923,"config":{"0":{"interval":10000,"trigger_only_on_change":true,"description":"","topic":"sensors/room_015/humidity/room","unit":"%rH"}},"on_connect":[]}
-{"_id":{"$binary":{"base64":"xzAbVv40Scmxc07CcwpItg==","subType":"04"}},"date_created":{"$date":"2021-10-24T10:30:13.080Z"},"date_modified":{"$date":"2023-05-29T21:15:22.091Z"},"enabled":true,"label":null,"description":"","uid":155559,"config":{"0":{"interval":60000,"trigger_only_on_change":true,"description":"","topic":"sensors/room_011/temperature/air_intake","unit":"K"}},"on_connect":[]}
-{"_id":{"$binary":{"base64":"uAuJxYzIQrKioZn/wMA10g==","subType":"04"}},"date_created":{"$date":"2021-10-24T10:30:13.080Z"},"date_modified":{"$date":"2023-05-29T21:15:22.091Z"},"enabled":true,"label":null,"description":"","uid":163244,"config":{"0":{"interval":1000,"trigger_only_on_change":true,"description":"","topic":"sensors/room_011/temperature/room","unit":"K"}},"on_connect":[]}
-{"_id":{"$binary":{"base64":"SPOt67zhQUyE5wTtiuRh1w==","subType":"04"}},"date_created":{"$date":"2021-10-24T10:30:13.080Z"},"date_modified":{"$date":"2023-05-29T21:15:22.091Z"},"enabled":true,"label":null,"description":"","uid":45896,"config":{"0":{"interval":60000,"trigger_only_on_change":true,"description":"","topic":"sensors/room_011/humidity/room","unit":"%rH"}},"on_connect":[]}
-{"_id":{"$binary":{"base64":"x4n2vidxReqLuUmJLa0PGA==","subType":"04"}},"date_created":{"$date":"2021-10-24T10:30:13.080Z"},"date_modified":{"$date":"2023-05-29T21:15:22.091Z"},"enabled":true,"label":null,"description":"","uid":112668,"config":{"0":{"interval":1000,"trigger_only_on_change":true,"description":"","topic":"sensors/room_011/temperature/room_back","unit":"K"}},"on_connect":[]}
-{"_id":{"$binary":{"base64":"PyFozyIBQNSoXRvzUhyhwA==","subType":"04"}},"date_created":{"$date":"2021-10-24T10:30:13.080Z"},"date_modified":{"$date":"2023-05-29T21:15:22.087Z"},"enabled":true,"label":null,"description":"","uid":169138,"config":{"0":{"interval":60000,"trigger_only_on_change":false,"description":"","topic":"sensors/room_017/pressure/vacuum","unit":"V"},"1":{"interval":10000,"trigger_only_on_change":false,"description":"","topic":"sensors/room_017/laser/power_master","unit":"V"}},"on_connect":[{"function":"set_status_led_config","args":[],"kwargs":{"config":2},"timeout":null},{"function":"set_sample_rate","args":[],"kwargs":{"rate":7},"timeout":null}]}
-{"_id":{"$binary":{"base64":"nPFjdXHhTpmaIKq1tvrWQw==","subType":"04"}},"date_created":{"$date":"2021-10-24T10:30:13.080Z"},"date_modified":{"$date":"2023-05-29T21:15:22.092Z"},"enabled":true,"label":null,"description":"","uid":169226,"config":{"0":{"interval":1000,"trigger_only_on_change":true,"description":"","topic":"sensors/room_011/laser/power_tisa","unit":"V"},"1":{"interval":1000,"trigger_only_on_change":true,"description":"","topic":"sensors/room_011/laser/power_tisa_2","unit":"V"}},"on_connect":[{"function":"set_sample_rate","args":[],"kwargs":{"rate":7},"timeout":null},{"function":"set_status_led_config","args":[],"kwargs":{"config":2},"timeout":null}]}
-{"_id":{"$binary":{"base64":"vXPHZ61OSi6z32N+le2hhw==","subType":"04"}},"date_created":{"$date":"2021-10-24T10:30:13.080Z"},"date_modified":{"$date":"2023-05-29T21:15:22.092Z"},"enabled":true,"label":null,"description":"","uid":174524,"config":{"0":{"interval":60000,"trigger_only_on_change":true,"description":"","topic":"sensors/room_011/temperature/water_verdi","unit":"K"}},"on_connect":[{"function":"set_moving_average_configuration","args":[],"kwargs":{"moving_average_length_resistance":1,"moving_average_length_temperature":500},"timeout":null},{"function":"set_noise_rejection_filter","args":[],"kwargs":{"line_filter":0},"timeout":null},{"function":"set_wire_mode","args":[],"kwargs":{"mode":4},"timeout":null},{"function":"set_status_led_config","args":[],"kwargs":{"config":2},"timeout":null}]}
-{"_id":{"$binary":{"base64":"bBhr5BxPSc6vUrQ7JN/lDg==","subType":"04"}},"date_created":{"$date":"2021-10-24T10:30:13.080Z"},"date_modified":{"$date":"2023-05-29T21:15:22.092Z"},"enabled":true,"label":null,"description":"","uid":113317,"config":{"0":{"interval":60000,"trigger_only_on_change":true,"description":"","topic":"sensors/room_K03/temperature/room","unit":"K"}},"on_connect":[]}
-{"_id":{"$binary":{"base64":"OsvOkf+JRuuWI2FT0nSgPA==","subType":"04"}},"date_created":{"$date":"2021-10-24T10:30:13.080Z"},"date_modified":{"$date":"2023-05-29T21:15:22.093Z"},"enabled":true,"label":null,"description":"","uid":95194,"config":{"0":{"interval":60000,"trigger_only_on_change":true,"description":"","topic":"sensors/room_K03/humidity/room","unit":"K"}},"on_connect":[]}
-{"_id":{"$binary":{"base64":"fKA9JrDrTRaCc+7zD3D24g==","subType":"04"}},"date_created":{"$date":"2021-10-24T10:30:13.080Z"},"date_modified":{"$date":"2023-05-29T21:15:22.093Z"},"enabled":true,"label":null,"description":"","uid":113331,"config":{"0":{"interval":60000,"trigger_only_on_change":true,"description":"","topic":"sensors/room_K01/temperature/room","unit":"K"}},"on_connect":[]}
-{"_id":{"$binary":{"base64":"QjGtijeRR2Kk9pxqOuNw9w==","subType":"04"}},"date_created":{"$date":"2021-10-24T10:30:13.080Z"},"date_modified":{"$date":"2023-05-29T21:15:22.093Z"},"enabled":true,"label":null,"description":"","uid":149308,"config":{"0":{"interval":60000,"trigger_only_on_change":true,"description":"","topic":"sensors/room_K01/humidity/room","unit":"%rH"}},"on_connect":[]}
-{"_id":{"$binary":{"base64":"A6LflSHwRfKBsfB8WXMF8A==","subType":"04"}},"date_created":{"$date":"2021-10-24T10:30:13.080Z"},"date_modified":{"$date":"2023-05-29T21:15:22.093Z"},"enabled":true,"label":null,"description":"","uid":43286,"config":{"0":{"interval":60000,"trigger_only_on_change":true,"description":"","topic":"sensors/outdoor/temperature/air","unit":"K"}},"on_connect":[]}
-{"_id":{"$binary":{"base64":"GoPImcdbR/aSekR+XS2bVg==","subType":"04"}},"date_created":{"$date":"2021-10-24T10:30:13.080Z"},"date_modified":{"$date":"2023-05-29T21:15:22.093Z"},"enabled":true,"label":null,"description":"","uid":50490,"config":{"0":{"interval":60000,"trigger_only_on_change":true,"description":"","topic":"sensors/outdoor/pressure/air","unit":"Pa"}},"on_connect":[]}
-{"_id":{"$binary":{"base64":"K6I26XcgQTObQn+xtjRDdQ==","subType":"04"}},"date_created":{"$date":"2021-10-24T10:30:13.080Z"},"date_modified":{"$date":"2023-05-29T21:15:22.094Z"},"enabled":true,"label":null,"description":"","uid":48448,"config":{"0":{"interval":60000,"trigger_only_on_change":true,"description":"","topic":"sensors/outdoor/temperature/air_pt100","unit":"K"}},"on_connect":[{"function":"set_noise_rejection_filter","args":[],"kwargs":{"line_filter":0},"timeout":null}]}
-{"_id":{"$binary":{"base64":"qbnYqBItSgq/P3noOwVcig==","subType":"04"}},"date_created":{"$date":"2021-10-24T10:30:13.080Z"},"date_modified":{"$date":"2023-05-29T21:15:22.094Z"},"enabled":true,"label":null,"description":"","uid":50050,"config":{"0":{"interval":60000,"trigger_only_on_change":true,"description":"","topic":"sensors/outdoor/humidity/air","unit":"%rH"}},"on_connect":[]}
-{"_id":{"$binary":{"base64":"F3m2+xL0TKmEgvAPxw7RQA==","subType":"04"}},"date_created":{"$date":"2021-10-24T10:30:13.080Z"},"date_modified":{"$date":"2023-05-29T21:15:22.094Z"},"enabled":true,"label":null,"description":"","uid":112121,"config":{"0":{"interval":60000,"trigger_only_on_change":true,"description":"","topic":"sensors/room_019/temperature/room","unit":"K"}},"on_connect":[]}
-{"_id":{"$binary":{"base64":"L9dLuxbeTwGsBJkbYUPrkQ==","subType":"04"}},"date_created":{"$date":"2021-10-24T10:30:13.080Z"},"date_modified":{"$date":"2023-05-29T21:15:22.094Z"},"enabled":true,"label":null,"description":"","uid":121125,"config":{"0":{"interval":60000,"trigger_only_on_change":true,"description":"","topic":"sensors/room_019/humidity/room","unit":"%rH"}},"on_connect":[]}
-{"_id":{"$binary":{"base64":"syBe7ph1TwiUTNXG8i5ecw==","subType":"04"}},"date_created":{"$date":"2021-10-24T10:30:13.080Z"},"date_modified":{"$date":"2023-05-29T21:15:22.095Z"},"enabled":true,"label":null,"description":"","uid":112013,"config":{"0":{"interval":60000,"trigger_only_on_change":true,"description":"","topic":"sensors/room_012/temperature/ceiling_front","unit":"K"}},"on_connect":[]}
-{"_id":{"$binary":{"base64":"j4Wa+Nd1S0m6i9TMLB/aCQ==","subType":"04"}},"date_created":{"$date":"2021-10-24T10:30:13.080Z"},"date_modified":{"$date":"2023-05-29T21:15:22.095Z"},"enabled":true,"label":null,"description":"","uid":95266,"config":{"0":{"interval":60000,"trigger_only_on_change":true,"description":"","topic":"sensors/room_012/humidity/room","unit":"K"}},"on_connect":[]}
-{"_id":{"$binary":{"base64":"oPrgp8k8SraF3g9omCNFjw==","subType":"04"}},"date_created":{"$date":"2021-10-24T10:30:13.080Z"},"date_modified":{"$date":"2023-05-29T21:15:22.095Z"},"enabled":true,"label":null,"description":"","uid":112512,"config":{"0":{"interval":60000,"trigger_only_on_change":true,"description":"","topic":"sensors/room_012/temperature/ceiling_back_left","unit":"K"}},"on_connect":[]}
-{"_id":{"$binary":{"base64":"3gWrCw+VScOWzGZ0/llkBA==","subType":"04"}},"date_created":{"$date":"2021-10-24T10:30:13.080Z"},"date_modified":{"$date":"2023-05-29T21:15:22.095Z"},"enabled":true,"label":null,"description":"","uid":113312,"config":{"0":{"interval":60000,"trigger_only_on_change":true,"description":"","topic":"sensors/room_012/temperature/ceiling_front_left","unit":"K"}},"on_connect":[]}
-{"_id":{"$binary":{"base64":"U9+kbV40Q0KKefirl/CtTg==","subType":"04"}},"date_created":{"$date":"2021-10-24T10:30:13.080Z"},"date_modified":{"$date":"2023-05-29T21:15:22.096Z"},"enabled":true,"label":null,"description":"","uid":112631,"config":{"0":{"interval":60000,"trigger_only_on_change":true,"description":"","topic":"sensors/room_012/temperature/ceiling_back_right","unit":"K"}},"on_connect":[]}
-{"_id":{"$binary":{"base64":"J+ccmGiVSvCcMhj3DrkxFw==","subType":"04"}},"date_created":{"$date":"2021-10-24T10:30:13.080Z"},"date_modified":{"$date":"2023-05-29T21:15:22.096Z"},"enabled":true,"label":null,"description":"","uid":42400,"config":{"0":{"interval":60000,"trigger_only_on_change":true,"description":"","topic":"sensors/room_012/temperature/ceiling_front_right","unit":"K"}},"on_connect":[]}
-{"_id":{"$binary":{"base64":"YcCiq1h3R7eRAhQQUEdt9w==","subType":"04"}},"date_created":{"$date":"2021-10-24T10:30:13.080Z"},"date_modified":{"$date":"2023-05-29T21:15:22.096Z"},"enabled":true,"label":null,"description":"","uid":112574,"config":{"0":{"interval":60000,"trigger_only_on_change":true,"description":"","topic":"sensors/room_012/temperature/floor_front_right","unit":"K"}},"on_connect":[]}
-{"_id":{"$binary":{"base64":"wmMrXSTTQ626o8oo/SItNg==","subType":"04"}},"date_created":{"$date":"2021-10-24T10:30:13.080Z"},"date_modified":{"$date":"2023-05-29T21:15:22.096Z"},"enabled":true,"label":null,"description":"","uid":91900,"config":{"0":{"interval":60000,"trigger_only_on_change":true,"description":"","topic":"sensors/room_018/temperature/room","unit":"K"}},"on_connect":[]}
-{"_id":{"$binary":{"base64":"M3lFZCz3TmeVY28VmpUIiw==","subType":"04"}},"date_created":{"$date":"2021-10-24T10:30:13.080Z"},"date_modified":{"$date":"2023-05-29T21:15:22.097Z"},"enabled":true,"label":null,"description":"","uid":140929,"config":{"0":{"interval":60000,"trigger_only_on_change":true,"description":"","topic":"sensors/room_018/pressure/sls_cavity","unit":"V"},"1":{"interval":60000,"trigger_only_on_change":true,"description":"","topic":"sensors/room_018/pressure/vacuum_chamber","unit":"V"}},"on_connect":[{"function":"set_status_led_config","args":[],"kwargs":{"config":2},"timeout":null},{"function":"set_sample_rate","args":[],"kwargs":{"rate":7},"timeout":null}]}
-{"_id":{"$binary":{"base64":"DH8DBpdPTgyxM34JLvZ2nQ==","subType":"04"}},"date_created":{"$date":"2021-10-24T10:30:13.080Z"},"date_modified":{"$date":"2023-05-29T21:15:22.097Z"},"enabled":true,"label":null,"description":"","uid":45880,"config":{"0":{"interval":60000,"trigger_only_on_change":true,"description":"","topic":"sensors/room_018/humidity/room","unit":"%rH"}},"on_connect":[]}
-{"_id":{"$binary":{"base64":"cZrcj+/wQRirAcJJUutXCA==","subType":"04"}},"date_created":{"$date":"2021-10-24T10:30:13.080Z"},"date_modified":{"$date":"2023-05-29T21:15:22.097Z"},"enabled":true,"label":null,"description":"","uid":121094,"config":{"0":{"interval":60000,"trigger_only_on_change":true,"description":"","topic":"sensors/room_K01/humidity/brain42","unit":"%rH"}},"on_connect":[]}
-{"_id":{"$binary":{"base64":"yNCjygE8QXmVfuHl+XWS0A==","subType":"04"}},"date_created":{"$date":"2021-10-24T10:30:13.080Z"},"date_modified":{"$date":"2023-05-29T21:15:22.097Z"},"enabled":true,"label":null,"description":"","uid":112014,"config":{"0":{"interval":60000,"trigger_only_on_change":true,"description":"","topic":"sensors/room_K01/temperature/brain42","unit":"%rH"}},"on_connect":[]}
-{"_id":{"$binary":{"base64":"zYpJJT2ASS2o6ECDwZhzHA==","subType":"04"}},"date_created":{"$date":"2021-10-24T10:30:13.080Z"},"date_modified":{"$date":"2023-05-29T21:15:22.098Z"},"enabled":true,"label":null,"description":"","uid":137510,"config":{"0":{"interval":1000,"trigger_only_on_change":true,"description":"","topic":"sensors/room_016/temperature/room","unit":"K"}},"on_connect":[]}
-{"_id":{"$binary":{"base64":"IQPd2M3hQIyzgmcxdxLbMw==","subType":"04"}},"date_created":{"$date":"2021-10-24T10:30:13.080Z"},"date_modified":{"$date":"2023-05-29T21:15:22.098Z"},"enabled":true,"label":null,"description":"","uid":148188,"config":{"0":{"interval":60000,"trigger_only_on_change":true,"description":"","topic":"sensors/room_K01/illuminance/brain42","unit":"lux"}},"on_connect":[]}
-{"_id":{"$binary":{"base64":"5fwwS+pkQvab6e78Z6pXkw==","subType":"04"}},"date_created":{"$date":"2021-10-24T10:30:13.080Z"},"date_modified":{"$date":"2023-05-29T21:15:22.098Z"},"enabled":true,"label":null,"description":"","uid":72865,"config":{"0":{"interval":60000,"trigger_only_on_change":true,"description":"","topic":"sensors/room_016/humidity/room","unit":"%rH"}},"on_connect":[]}
-{"_id":{"$binary":{"base64":"NbRlY8NcTkqXt1MKeiIrEw==","subType":"04"}},"date_created":{"$date":"2021-10-24T10:30:13.080Z"},"date_modified":{"$date":"2023-05-29T21:15:22.098Z"},"enabled":true,"label":null,"description":"","uid":112041,"config":{"0":{"interval":60000,"trigger_only_on_change":true,"description":"","topic":"sensors/room_016/temperature/flowbox","unit":"K"}},"on_connect":[]}
-{"_id":{"$binary":{"base64":"a9VtEmoVQ4CL7QtKoRTOOg==","subType":"04"}},"date_created":{"$date":"2021-10-24T10:30:13.080Z"},"date_modified":{"$date":"2023-05-29T21:15:22.098Z"},"enabled":true,"label":null,"description":"","uid":48414,"config":{"0":{"interval":60000,"trigger_only_on_change":true,"description":"","topic":"sensors/room_016/temperature/water","unit":"K"}},"on_connect":[]}
-{"_id":{"$binary":{"base64":"sNVa1V2qQqe0Ti8lnW3uvQ==","subType":"04"}},"date_created":{"$date":"2021-10-24T10:30:13.080Z"},"date_modified":{"$date":"2023-05-29T21:15:22.099Z"},"enabled":true,"label":null,"description":"","uid":163684,"config":{"0":{"interval":30000,"trigger_only_on_change":false,"description":"","topic":"sensors/room_015/water_sensor/room","unit":""},"1":{"interval":60000,"trigger_only_on_change":false,"description":"","topic":"sensors/room_016/water_sensor/pumproom","unit":""},"2":{"interval":60000,"trigger_only_on_change":false,"description":"","topic":"sensors/room_017/water_sensor/room","unit":""}},"on_connect":[{"function":"set_configuration","args":[],"kwargs":{"channel":0,"direction":"i","value":true},"timeout":null},{"function":"set_configuration","args":[],"kwargs":{"channel":1,"direction":"i","value":true},"timeout":null},{"function":"set_configuration","args":[],"kwargs":{"channel":2,"direction":"i","value":true},"timeout":null},{"function":"set_configuration","args":[],"kwargs":{"channel":3,"direction":"i","value":true},"timeout":null},{"function":"set_status_led_config","args":[],"kwargs":{"config":2},"timeout":null}]}
-{"_id":{"$binary":{"base64":"xJQpljAdS6O9X6v5TyXJ3g==","subType":"04"}},"date_created":{"$date":"2021-10-24T10:30:13.080Z"},"date_modified":{"$date":"2023-05-29T21:15:22.099Z"},"enabled":true,"label":null,"description":"","uid":169158,"config":{"0":{"interval":60000,"trigger_only_on_change":false,"description":"","topic":"sensors/room_016/laser/bragg_ta","unit":"V"},"1":{"interval":60000,"trigger_only_on_change":true,"description":"","topic":"sensors/room_016/laser/power_tisa","unit":"V"}},"on_connect":[{"function":"set_status_led_config","args":[],"kwargs":{"config":2},"timeout":null},{"function":"set_sample_rate","args":[],"kwargs":{"rate":6},"timeout":null}]}
-{"_id":{"$binary":{"base64":"EU5XrEItT0CvmpDYZK2lag==","subType":"04"}},"date_created":{"$date":"2021-10-24T10:30:13.080Z"},"date_modified":{"$date":"2023-05-29T21:15:22.100Z"},"enabled":true,"label":null,"description":"","uid":84077,"config":{"0":{"interval":60000,"trigger_only_on_change":true,"description":"","topic":"sensors/room_016/humidity/pumproom","unit":"%rH"}},"on_connect":[]}
-{"_id":{"$binary":{"base64":"hj3w8015RlK1pU6tKuWsIA==","subType":"04"}},"date_created":{"$date":"2021-10-24T10:30:13.080Z"},"date_modified":{"$date":"2023-05-29T21:15:22.100Z"},"enabled":true,"label":null,"description":"","uid":113409,"config":{"0":{"interval":1000,"trigger_only_on_change":true,"description":"","topic":"sensors/room_016/temperature/pumproom","unit":"K"}},"on_connect":[]}
-{"_id":{"$binary":{"base64":"GCwbTslmTeCGZw67F1a4IQ==","subType":"04"}},"date_created":{"$date":"2022-02-14T13:28:07.309Z"},"date_modified":{"$date":"2023-05-29T21:15:22.100Z"},"enabled":true,"label":null,"description":"","uid":156531,"config":{"0":{"interval":60000,"trigger_only_on_change":true,"description":"","topic":"sensors/room_018/temperature/aircon_table1","unit":"K"}},"on_connect":[]}
-{"_id":{"$binary":{"base64":"U+TsZ+vVRZ+3z5AKxsZNTw==","subType":"04"}},"date_created":{"$date":"2022-02-14T13:40:48.073Z"},"date_modified":{"$date":"2023-05-29T21:15:22.100Z"},"enabled":true,"label":null,"description":"","uid":156494,"config":{"0":{"interval":1000,"trigger_only_on_change":true,"description":"","topic":"sensors/room_018/temperature/aircon_table2","unit":"K"}},"on_connect":[]}
-{"_id":{"$binary":{"base64":"N6NmpUg8SHeCCCv/r7Tz1Q==","subType":"04"}},"date_created":{"$date":"2022-02-14T16:30:25.309Z"},"date_modified":{"$date":"2023-05-29T21:15:22.100Z"},"enabled":true,"label":null,"description":"","uid":113405,"config":{"0":{"interval":1000,"trigger_only_on_change":true,"description":"","topic":"sensors/room_012/temperature/aircon_table1","unit":"K"}},"on_connect":[]}
-{"_id":{"$binary":{"base64":"OIvOqoPhTxuh70GqHzyMXA==","subType":"04"}},"date_created":{"$date":"2022-02-15T09:53:52.021Z"},"date_modified":{"$date":"2023-05-29T21:15:22.101Z"},"enabled":true,"label":null,"description":"","uid":48410,"config":{"0":{"interval":10000,"trigger_only_on_change":true,"description":"","topic":"sensors/room_011/temperature/cooling_water","unit":"K"}},"on_connect":[{"function":"set_noise_rejection_filter","args":[],"kwargs":{"line_filter":0},"timeout":null},{"function":"set_wire_mode","args":[],"kwargs":{"mode":4},"timeout":null}]}
-{"_id":{"$binary":{"base64":"ZwbNrKM3TYaxQEx8biVG3A==","subType":"04"}},"date_created":{"$date":"2022-02-15T11:45:54.769Z"},"date_modified":{"$date":"2023-05-29T21:15:22.101Z"},"enabled":true,"label":null,"description":"","uid":156646,"config":{"0":{"interval":60000,"trigger_only_on_change":true,"description":"","topic":"sensors/room_012/temperature/aircon_table2","unit":"K"}},"on_connect":[]}
-{"_id":{"$binary":{"base64":"1Zyn6OwsTeiaGUlXPGppng==","subType":"04"}},"date_created":{"$date":"2022-02-18T10:33:35.554Z"},"date_modified":{"$date":"2023-05-29T21:15:22.101Z"},"enabled":true,"label":null,"description":"","uid":64051,"config":{"0":{"interval":4000,"trigger_only_on_change":true,"description":"","topic":"sensors/room_015/pressure/air","unit":"Pa"}},"on_connect":[]}
-{"_id":{"$binary":{"base64":"LqoJ/61/QKmPu+e/BgiNQg==","subType":"04"}},"date_created":{"$date":"2022-02-18T10:54:19.244Z"},"date_modified":{"$date":"2023-05-29T21:15:22.101Z"},"enabled":true,"label":null,"description":"","uid":156811,"config":{"0":{"interval":2000,"trigger_only_on_change":true,"description":"","topic":"sensors/room_018/pressure/air","unit":"Pa"}},"on_connect":[{"function":"set_status_led_config","args":[],"kwargs":{"config":2},"timeout":null},{"function":"set_sensor_configuration","args":[],"kwargs":{"data_rate":4,"air_pressure_low_pass_filter":1},"timeout":null},{"function":"set_moving_average_configuration","args":[],"kwargs":{"moving_average_length_air_pressure":100},"timeout":null}]}
-{"_id":{"$binary":{"base64":"zWi3/kfqTpaeRxt/8UzQsw==","subType":"04"}},"date_created":{"$date":"2022-02-22T18:11:21.385Z"},"date_modified":{"$date":"2023-05-29T21:15:22.102Z"},"enabled":true,"label":null,"description":"","uid":156632,"config":{"0":{"interval":10000,"trigger_only_on_change":true,"description":"","topic":"sensors/room_015/temperature/aircon_table_back","unit":"K"}},"on_connect":[]}
-{"_id":{"$binary":{"base64":"imcBhLCwTyis7L+gE6tGLQ==","subType":"04"}},"date_created":{"$date":"2022-03-04T11:19:52.689Z"},"date_modified":{"$date":"2023-05-29T21:15:22.102Z"},"enabled":true,"label":null,"description":"","uid":88470,"config":{"0":{"interval":60000,"trigger_only_on_change":true,"description":"","topic":"sensors/room_018/temperature/aircon_table_3","unit":"K"}},"on_connect":[]}
-{"_id":{"$binary":{"base64":"4OvM8UbdR62rWCpJpeWG4A==","subType":"04"}},"date_created":{"$date":"2022-03-04T11:32:23.377Z"},"date_modified":{"$date":"2023-05-29T21:15:22.102Z"},"enabled":true,"label":null,"description":"","uid":85201,"config":{"0":{"interval":60000,"trigger_only_on_change":true,"description":"","topic":"sensors/room_018/temperature/table3","unit":"K"}},"on_connect":[{"function":"set_noise_rejection_filter","args":[],"kwargs":{"line_filter":0},"timeout":null},{"function":"set_wire_mode","args":[],"kwargs":{"mode":4},"timeout":null}]}
-{"_id":{"$binary":{"base64":"IeO6xPPzRQy+BjdeAI7aSg==","subType":"04"}},"date_created":{"$date":"2022-03-04T20:20:05.930Z"},"date_modified":{"$date":"2023-05-29T21:15:22.102Z"},"enabled":true,"label":null,"description":"","uid":42306,"config":{"0":{"interval":60000,"trigger_only_on_change":true,"description":"","topic":"sensors/room_018/temperature/aircon_front","unit":"K"}},"on_connect":[]}
-{"_id":{"$binary":{"base64":"PGudVAIpQ+mWl1UOsKcscQ==","subType":"04"}},"date_created":{"$date":"2022-03-04T20:21:59.100Z"},"date_modified":{"$date":"2023-05-29T21:15:22.103Z"},"enabled":true,"label":null,"description":"","uid":174515,"config":{"0":{"interval":60000,"trigger_only_on_change":true,"description":"","topic":"sensors/room_018/temperature/table1","unit":"K"}},"on_connect":[{"function":"set_moving_average_configuration","args":[],"kwargs":{"moving_average_length_resistance":1,"moving_average_length_temperature":500},"timeout":null},{"function":"set_noise_rejection_filter","args":[],"kwargs":{"line_filter":0},"timeout":null},{"function":"set_wire_mode","args":[],"kwargs":{"mode":4},"timeout":null},{"function":"set_status_led_config","args":[],"kwargs":{"config":2},"timeout":null}]}
-{"_id":{"$binary":{"base64":"yT5ybFqIR+2OnLmbACi9+Q==","subType":"04"}},"date_created":{"$date":"2022-03-17T10:33:52.985Z"},"date_modified":{"$date":"2023-05-29T21:15:22.103Z"},"enabled":true,"label":null,"description":"","uid":174166,"config":{"0":{"interval":10000,"trigger_only_on_change":true,"description":"","topic":"sensors/room_012/temperature/air_intake","unit":"K"}},"on_connect":[{"function":"set_moving_average_configuration","args":[],"kwargs":{"moving_average_length_resistance":1,"moving_average_length_temperature":500},"timeout":null},{"function":"set_noise_rejection_filter","args":[],"kwargs":{"line_filter":0},"timeout":null},{"function":"set_wire_mode","args":[],"kwargs":{"mode":4},"timeout":null},{"function":"set_status_led_config","args":[],"kwargs":{"config":2},"timeout":null}]}
-{"_id":{"$binary":{"base64":"a4No+fzkTlenI/EDntqk1A==","subType":"04"}},"date_created":{"$date":"2022-03-17T14:19:05.400Z"},"date_modified":{"$date":"2023-05-29T21:15:22.104Z"},"enabled":true,"label":null,"description":"","uid":174191,"config":{"0":{"interval":10000,"trigger_only_on_change":true,"description":"","topic":"sensors/room_011/temperature/table1","unit":"K"}},"on_connect":[{"function":"set_moving_average_configuration","args":[],"kwargs":{"moving_average_length_resistance":1,"moving_average_length_temperature":500},"timeout":null},{"function":"set_noise_rejection_filter","args":[],"kwargs":{"line_filter":0},"timeout":null},{"function":"set_wire_mode","args":[],"kwargs":{"mode":4},"timeout":null},{"function":"set_status_led_config","args":[],"kwargs":{"config":2},"timeout":null}]}
-{"_id":{"$binary":{"base64":"T5Qs0SFET4yzXz7pPXg/RQ==","subType":"04"}},"date_created":{"$date":"2022-03-17T12:39:53.375Z"},"date_modified":{"$date":"2023-05-29T21:15:22.104Z"},"enabled":true,"label":null,"description":"","uid":174416,"config":{"0":{"interval":10000,"trigger_only_on_change":true,"description":"","topic":"sensors/room_011/temperature/table_tisa","unit":"K"}},"on_connect":[{"function":"set_moving_average_configuration","args":[],"kwargs":{"moving_average_length_resistance":1,"moving_average_length_temperature":500},"timeout":null},{"function":"set_noise_rejection_filter","args":[],"kwargs":{"line_filter":0},"timeout":null},{"function":"set_wire_mode","args":[],"kwargs":{"mode":4},"timeout":null},{"function":"set_status_led_config","args":[],"kwargs":{"config":2},"timeout":null}]}
-{"_id":{"$binary":{"base64":"YCfF7NgGSO6t6bC6Sunhjg==","subType":"04"}},"date_created":{"$date":"2022-03-17T16:19:02.383Z"},"date_modified":{"$date":"2023-05-29T21:15:22.104Z"},"enabled":true,"label":null,"description":"","uid":174187,"config":{"0":{"interval":10000,"trigger_only_on_change":true,"description":"","topic":"sensors/room_012/temperature/table1","unit":"K"}},"on_connect":[{"function":"set_moving_average_configuration","args":[],"kwargs":{"moving_average_length_resistance":1,"moving_average_length_temperature":250},"timeout":null},{"function":"set_noise_rejection_filter","args":[],"kwargs":{"line_filter":0},"timeout":null},{"function":"set_wire_mode","args":[],"kwargs":{"mode":4},"timeout":null},{"function":"set_status_led_config","args":[],"kwargs":{"config":2},"timeout":null}]}
-{"_id":{"$binary":{"base64":"/f9wM2I8T2+3kKdJzIqG7A==","subType":"04"}},"date_created":{"$date":"2022-03-18T08:11:34.208Z"},"date_modified":{"$date":"2023-05-29T21:15:22.105Z"},"enabled":true,"label":null,"description":"","uid":174185,"config":{"0":{"interval":10000,"trigger_only_on_change":true,"description":"","topic":"sensors/room_012/temperature/table2","unit":"K"}},"on_connect":[{"function":"set_moving_average_configuration","args":[],"kwargs":{"moving_average_length_resistance":1,"moving_average_length_temperature":500},"timeout":null},{"function":"set_noise_rejection_filter","args":[],"kwargs":{"line_filter":0},"timeout":null},{"function":"set_wire_mode","args":[],"kwargs":{"mode":4},"timeout":null},{"function":"set_status_led_config","args":[],"kwargs":{"config":2},"timeout":null}]}
-{"_id":{"$binary":{"base64":"fW6XBfr/SBS4X0Detrq7zA==","subType":"04"}},"date_created":{"$date":"2022-03-24T09:09:21.532Z"},"date_modified":{"$date":"2023-05-29T21:15:22.105Z"},"enabled":true,"label":null,"description":"","uid":146829,"config":{"0":{"interval":1000,"trigger_only_on_change":true,"description":"","topic":"sensors/room_017/temperature/room","unit":"K"}},"on_connect":[]}
-{"_id":{"$binary":{"base64":"MM8i3204QlaM5UPaVIY2QA==","subType":"04"}},"date_created":{"$date":"2022-03-24T14:48:44.473Z"},"date_modified":{"$date":"2023-05-29T21:15:22.105Z"},"enabled":true,"label":null,"description":"","uid":174413,"config":{"0":{"interval":60000,"trigger_only_on_change":true,"description":"","topic":"sensors/room_017/temperature/air_intake","unit":"K"}},"on_connect":[{"function":"set_moving_average_configuration","args":[],"kwargs":{"moving_average_length_resistance":1,"moving_average_length_temperature":500},"timeout":null},{"function":"set_noise_rejection_filter","args":[],"kwargs":{"line_filter":0},"timeout":null},{"function":"set_wire_mode","args":[],"kwargs":{"mode":4},"timeout":null},{"function":"set_status_led_config","args":[],"kwargs":{"config":2},"timeout":null}]}
-{"_id":{"$binary":{"base64":"Lipx+nP0Q8G28emMsQC/Fw==","subType":"04"}},"date_created":{"$date":"2022-03-25T09:41:38.191Z"},"date_modified":{"$date":"2023-05-29T21:15:22.106Z"},"enabled":true,"label":null,"description":"","uid":174151,"config":{"0":{"interval":60000,"trigger_only_on_change":true,"description":"","topic":"sensors/room_017/temperature/air_ceiling_radiator","unit":"K"}},"on_connect":[{"function":"set_moving_average_configuration","args":[],"kwargs":{"moving_average_length_resistance":1,"moving_average_length_temperature":500},"timeout":null},{"function":"set_noise_rejection_filter","args":[],"kwargs":{"line_filter":0},"timeout":null},{"function":"set_wire_mode","args":[],"kwargs":{"mode":4},"timeout":null},{"function":"set_status_led_config","args":[],"kwargs":{"config":2},"timeout":null}]}
-{"_id":{"$binary":{"base64":"HSsuCC57QU6gMi16C8GRoQ==","subType":"04"}},"date_created":{"$date":"2022-04-25T07:59:31.147Z"},"date_modified":{"$date":"2023-05-29T21:15:22.106Z"},"enabled":true,"label":"018_table_2_io4","description":"","uid":161750,"config":{"0":{"interval":30000,"trigger_only_on_change":false,"description":"","topic":"sensors/room_018/water_sensor/room","unit":""}},"on_connect":[{"function":"set_configuration","args":[],"kwargs":{"channel":0,"direction":"i","value":true},"timeout":null},{"function":"set_configuration","args":[],"kwargs":{"channel":1,"direction":"i","value":true},"timeout":null},{"function":"set_configuration","args":[],"kwargs":{"channel":2,"direction":"i","value":true},"timeout":null},{"function":"set_configuration","args":[],"kwargs":{"channel":3,"direction":"i","value":true},"timeout":null},{"function":"set_status_led_config","args":[],"kwargs":{"config":2},"timeout":null}]}
-{"_id":{"$binary":{"base64":"DkCf/JghSkOw+1wAT0vaCQ==","subType":"04"}},"date_created":{"$date":"2022-04-27T11:20:31.574Z"},"date_modified":{"$date":"2023-05-29T21:15:22.106Z"},"enabled":true,"label":"Industrial Dual Analog In Bricklet 2.0","description":"","uid":169087,"config":{"0":{"interval":10000,"trigger_only_on_change":false,"description":"","topic":"sensors/room_018/laser/power_master","unit":"V"},"1":{"interval":10000,"trigger_only_on_change":false,"description":"","topic":"sensors/room_018/laser/795nm_beat","unit":"V"}},"on_connect":[{"function":"set_status_led_config","args":[],"kwargs":{"config":2},"timeout":null},{"function":"set_sample_rate","args":[],"kwargs":{"rate":7},"timeout":null}]}
-{"_id":{"$binary":{"base64":"s8Rmx2QVSAi5WncMAXOqdg==","subType":"04"}},"date_created":{"$date":"2022-05-09T09:29:13.787Z"},"date_modified":{"$date":"2023-05-29T21:15:22.107Z"},"enabled":true,"label":null,"description":"","uid":174308,"config":{"0":{"interval":60000,"trigger_only_on_change":true,"description":"","topic":"sensors/room_018/temperature/table_2","unit":"K"}},"on_connect":[{"function":"set_moving_average_configuration","args":[],"kwargs":{"moving_average_length_resistance":1,"moving_average_length_temperature":500},"timeout":null},{"function":"set_noise_rejection_filter","args":[],"kwargs":{"line_filter":0},"timeout":null},{"function":"set_wire_mode","args":[],"kwargs":{"mode":4},"timeout":null},{"function":"set_status_led_config","args":[],"kwargs":{"config":2},"timeout":null}]}
-{"_id":{"$binary":{"base64":"Fso2AFU3TbKYZ2dEtlCe+g==","subType":"04"}},"date_created":{"$date":"2022-05-09T09:40:16.268Z"},"date_modified":{"$date":"2023-05-29T21:15:22.107Z"},"enabled":true,"label":null,"description":"","uid":174257,"config":{"0":{"interval":60000,"trigger_only_on_change":true,"description":"","topic":"sensors/room_018/temperature/air_intake","unit":"K"}},"on_connect":[{"function":"set_moving_average_configuration","args":[],"kwargs":{"moving_average_length_resistance":1,"moving_average_length_temperature":500},"timeout":null},{"function":"set_noise_rejection_filter","args":[],"kwargs":{"line_filter":0},"timeout":null},{"function":"set_wire_mode","args":[],"kwargs":{"mode":4},"timeout":null},{"function":"set_status_led_config","args":[],"kwargs":{"config":2},"timeout":null}]}
-{"_id":{"$binary":{"base64":"/J4d06ZpSQ+TD4b2jlXCNA==","subType":"04"}},"date_created":{"$date":"2022-05-13T08:44:51.255Z"},"date_modified":{"$date":"2023-05-29T21:15:22.107Z"},"enabled":true,"label":null,"description":"","uid":174209,"config":{"0":{"interval":60000,"trigger_only_on_change":true,"description":"","topic":"sensors/room_016/temperature/cooling_water_machines","unit":"K"}},"on_connect":[{"function":"set_moving_average_configuration","args":[],"kwargs":{"moving_average_length_resistance":1,"moving_average_length_temperature":500},"timeout":null},{"function":"set_noise_rejection_filter","args":[],"kwargs":{"line_filter":0},"timeout":null},{"function":"set_wire_mode","args":[],"kwargs":{"mode":4},"timeout":null},{"function":"set_status_led_config","args":[],"kwargs":{"config":2},"timeout":null}]}
-{"_id":{"$binary":{"base64":"FLRVQl6CQPyR27xqKRWw/g==","subType":"04"}},"date_created":{"$date":"2022-05-13T09:52:21.307Z"},"date_modified":{"$date":"2023-05-29T21:15:22.108Z"},"enabled":true,"label":"Temperature air intake 016","description":"","uid":174189,"config":{"0":{"interval":60000,"trigger_only_on_change":true,"description":"","topic":"sensors/room_016/temperature/air_intake","unit":"K"}},"on_connect":[{"function":"set_moving_average_configuration","args":[],"kwargs":{"moving_average_length_resistance":1,"moving_average_length_temperature":500},"timeout":null},{"function":"set_noise_rejection_filter","args":[],"kwargs":{"line_filter":0},"timeout":null},{"function":"set_wire_mode","args":[],"kwargs":{"mode":4},"timeout":null},{"function":"set_status_led_config","args":[],"kwargs":{"config":2},"timeout":null}]}
-{"_id":{"$binary":{"base64":"oj9AO11eQDyevriyNtfXcw==","subType":"04"}},"date_created":{"$date":"2022-06-02T11:15:09.088Z"},"date_modified":{"$date":"2023-05-29T21:15:22.108Z"},"enabled":true,"label":"Industrial Dual Analog In Bricklet 2.0","description":"","uid":166383,"config":{"0":{"interval":10000,"trigger_only_on_change":false,"description":"","topic":"sensors/room_015/laser/power_fiber_laser_arm1","unit":"V"},"1":{"interval":1000,"trigger_only_on_change":false,"description":"","topic":"sensors/room_015/laser/power_master","unit":"V"}},"on_connect":[{"function":"set_channel_led_config","args":[],"kwargs":{"channel":0,"config":0},"timeout":null},{"function":"set_channel_led_config","args":[],"kwargs":{"channel":1,"config":1},"timeout":null},{"function":"set_status_led_config","args":[],"kwargs":{"config":2},"timeout":null},{"function":"set_sample_rate","args":[],"kwargs":{"rate":7},"timeout":null}]}
-{"_id":{"$binary":{"base64":"BGHImD/ISW2E30kZfEW6TQ==","subType":"04"}},"date_created":{"$date":"2022-06-02T13:43:53.255Z"},"date_modified":{"$date":"2023-05-29T21:15:22.108Z"},"enabled":true,"label":"Demo Temperature Bricklet","description":"","uid":161085,"config":{"0":{"interval":1000,"trigger_only_on_change":false,"description":"","topic":"sensors/room_123/temperature/room","unit":"K"}},"on_connect":[{"function":"set_status_led_config","args":[],"kwargs":{"config":2},"timeout":null}]}
-{"_id":{"$binary":{"base64":"27r+kJINSbOCqJ2CMnbE/w==","subType":"04"}},"date_created":{"$date":"2022-06-10T14:21:00.986Z"},"date_modified":{"$date":"2023-05-29T21:15:22.109Z"},"enabled":true,"label":null,"description":"","uid":43776,"config":{"0":{"interval":20000,"trigger_only_on_change":true,"description":"","topic":"sensors/room_017/temperature/backup","unit":"K"}},"on_connect":[]}
-{"_id":{"$binary":{"base64":"yQ1feogLRjygpK8npGcwWg==","subType":"04"}},"date_created":{"$date":"2022-06-10T14:21:00.986Z"},"date_modified":{"$date":"2023-05-29T21:15:22.109Z"},"enabled":true,"label":null,"description":"","uid":91888,"config":{"0":{"interval":60000,"trigger_only_on_change":true,"description":"","topic":"sensors/room_018/temperature/table_2","unit":"K"}},"on_connect":[]}
-{"_id":{"$binary":{"base64":"0LXWKa/eQQ2TjXE0DOzsxw==","subType":"04"}},"date_created":{"$date":"2022-06-27T07:32:57.115Z"},"date_modified":{"$date":"2023-05-29T21:15:22.109Z"},"enabled":true,"label":"Humidity Bricklet","description":"","uid":179480,"config":{"0":{"interval":60000,"trigger_only_on_change":true,"description":"","topic":"sensors/room_109/humidity/room","unit":"%rH"}},"on_connect":[{"function":"set_status_led_config","args":[],"kwargs":{"config":2},"timeout":null}]}
-{"_id":{"$binary":{"base64":"TvLq9vU7SCC0XIJWsFfk7w==","subType":"04"}},"date_created":{"$date":"2022-06-27T07:35:09.373Z"},"date_modified":{"$date":"2023-05-29T21:15:22.109Z"},"enabled":true,"label":"Temperature Bricklet","description":"","uid":156486,"config":{"0":{"interval":1000,"trigger_only_on_change":true,"description":"","topic":"sensors/room_109/temperature/room","unit":"K"}},"on_connect":[{"function":"set_status_led_config","args":[],"kwargs":{"config":2},"timeout":null}]}
-{"_id":{"$binary":{"base64":"ZrjC/8DTRGqz/wYIRhp73g==","subType":"04"}},"date_created":{"$date":"2022-10-24T19:14:05.278Z"},"date_modified":{"$date":"2023-05-29T21:15:22.109Z"},"enabled":true,"label":"Temperature Bricklet","description":"","uid":147254,"config":{"0":{"interval":2000,"trigger_only_on_change":true,"description":"","topic":"sensors/room_011/temperature/aircon","unit":"K"}},"on_connect":[{"function":"set_status_led_config","args":[],"kwargs":{"config":2},"timeout":null}]}
-{"_id":{"$binary":{"base64":"3CPpxveKTMC3NNeYLS/s0w==","subType":"04"}},"date_created":{"$date":"2022-10-25T17:04:55.798Z"},"date_modified":{"$date":"2023-05-29T21:15:22.110Z"},"enabled":true,"label":"Temperature Bricklet","description":"","uid":43278,"config":{"0":{"interval":60000,"trigger_only_on_change":true,"description":"","topic":"sensors/room_151/temperature/room","unit":"K"}},"on_connect":[]}
-{"_id":{"$binary":{"base64":"pALCgmsvQoa/287UmSjrwA==","subType":"04"}},"date_created":{"$date":"2023-02-03T15:39:54.025Z"},"date_modified":{"$date":"2023-05-29T21:15:22.110Z"},"enabled":true,"label":"Industrial Dual Analog In Bricklet 2.0","description":"","uid":189020,"config":{"1":{"interval":10000,"trigger_only_on_change":false,"description":"","topic":"sensors/room_016/laser/power_lightsheet_ta","unit":"V"}},"on_connect":[{"function":"set_channel_led_config","args":[],"kwargs":{"channel":0,"config":0},"timeout":null},{"function":"set_channel_led_config","args":[],"kwargs":{"channel":1,"config":1},"timeout":null},{"function":"set_status_led_config","args":[],"kwargs":{"config":2},"timeout":null},{"function":"set_sample_rate","args":[],"kwargs":{"rate":7},"timeout":null}]}
-{"_id":{"$binary":{"base64":"UwvjGsUgTgWAtRjJkjn2OQ==","subType":"04"}},"date_created":{"$date":"2023-03-14T10:27:37.963Z"},"date_modified":{"$date":"2023-05-29T21:15:22.110Z"},"enabled":true,"label":"Temperature table 016","description":"","uid":203380,"config":{"0":{"interval":60000,"trigger_only_on_change":true,"description":"","topic":"sensors/room_016/temperature/table","unit":"K"}},"on_connect":[{"function":"set_moving_average_configuration","args":[],"kwargs":{"moving_average_length_resistance":1,"moving_average_length_temperature":500},"timeout":null},{"function":"set_noise_rejection_filter","args":[],"kwargs":{"line_filter":0},"timeout":null},{"function":"set_wire_mode","args":[],"kwargs":{"mode":4},"timeout":null},{"function":"set_status_led_config","args":[],"kwargs":{"config":2},"timeout":null}]}
-{"_id":{"$binary":{"base64":"7vHuX5+cSpagppYfDoGTgw==","subType":"04"}},"date_created":{"$date":"2023-05-10T17:43:38.623Z"},"date_modified":{"$date":"2023-05-29T21:15:22.111Z"},"enabled":true,"label":"Industrial Dual Analog In Bricklet 2.0","description":"","uid":188992,"config":{"0":{"interval":10000,"trigger_only_on_change":false,"description":"","topic":"sensors/room_015/pressure/vaccum_chamber","unit":"V"},"1":{"interval":60000,"trigger_only_on_change":false,"description":"","topic":"sensors/room_015/laser/bragg_ta","unit":"V"}},"on_connect":[{"function":"set_channel_led_config","args":[],"kwargs":{"channel":0,"config":0},"timeout":null},{"function":"set_channel_led_config","args":[],"kwargs":{"channel":1,"config":1},"timeout":null},{"function":"set_status_led_config","args":[],"kwargs":{"config":2},"timeout":null},{"function":"set_sample_rate","args":[],"kwargs":{"rate":7},"timeout":null}]}
-{"_id":{"$binary":{"base64":"BhF6JgD+RcCHqIcmzGrO+A==","subType":"04"}},"config":{"0":{"interval":60000,"trigger_only_on_change":true,"description":"","topic":"sensors/gsi/temperature/laser_lab","unit":"K"}},"date_created":{"$date":"2023-09-29T10:29:40.314Z"},"date_modified":{"$date":"2023-09-29T10:29:40.314Z"},"description":"","enabled":true,"label":"Temperature Bricklet","on_connect":[],"uid":42720}
-{"_id":{"$binary":{"base64":"J3J3aPuWS0meEWJ8mkacRw==","subType":"04"}},"config":{"0":{"interval":60000,"trigger_only_on_change":true,"description":"","topic":"sensors/gsi/pressure/laser_lab","unit":"Pa"}},"date_created":{"$date":"2023-09-29T10:34:26.611Z"},"date_modified":{"$date":"2023-09-29T10:34:26.611Z"},"description":"","enabled":true,"label":"Barometer Bricklet","on_connect":[],"uid":64090}
-{"_id":{"$binary":{"base64":"XRm2AYhEQoerVsSiz8ihbg==","subType":"04"}},"config":{"0":{"interval":60000,"trigger_only_on_change":true,"description":"","topic":"sensors/gsi/humidty/laser_lab","unit":"%rH"}},"date_created":{"$date":"2023-09-29T10:37:31.209Z"},"date_modified":{"$date":"2023-09-29T10:37:31.209Z"},"description":"","enabled":true,"label":"Humidity Bricklet","on_connect":[],"uid":73042}
-{"_id":{"$binary":{"base64":"uPozuj61RQewnA+dpqitqg==","subType":"04"}},"config":{"0":{"interval":10000,"trigger_only_on_change":false,"description":"","topic":"sensors/room_018/laser/power_rydberg_960nm_quibs_b","unit":"V"},"1":{"interval":10000,"trigger_only_on_change":false,"description":"","topic":"sensors/room_018/laser/power_rydberg_780nm_quibs_b","unit":"V"}},"date_created":{"$date":"2024-05-27T20:38:24.239Z"},"date_modified":{"$date":"2024-05-27T20:38:24.239Z"},"description":"","enabled":true,"label":"Industrial Dual Analog In Bricklet 2.0","on_connect":[{"function":"set_status_led_config","args":[],"kwargs":{"config":2},"timeout":0.5},{"function":"set_sample_rate","args":[],"kwargs":{"rate":7},"timeout":0.5}],"uid":169143}
-{"_id":{"$binary":{"base64":"gtuQ51/tSme2qU/mXKAwJg==","subType":"04"}},"config":{"0":{"interval":1000,"trigger_only_on_change":false,"description":"","topic":"sensors/room_018/laser/piezo_rydberg_960nm_quibs_b","unit":"V"},"1":{"interval":1000,"trigger_only_on_change":false,"description":"","topic":"sensors/room_018/laser/pdh_servo_rydberg_960nm_quibs_b","unit":"V"}},"date_created":{"$date":"2024-06-05T00:02:10.730Z"},"date_modified":{"$date":"2024-06-05T00:02:10.730Z"},"description":"","enabled":true,"label":"Industrial Dual Analog In Bricklet 2.0","on_connect":[{"function":"set_status_led_config","args":[],"kwargs":{"config":2},"timeout":0.5},{"function":"set_sample_rate","args":[],"kwargs":{"rate":7},"timeout":0.5}],"uid":189027}
-{"_id":{"$binary":{"base64":"0eE1AFp9Tg2Sjvpxkkr8BA==","subType":"04"}},"config":{"0":{"interval":60000,"trigger_only_on_change":true,"description":"","topic":"sensors/room_015/temperature/rb_oven_chamber","unit":"K"}},"date_created":{"$date":"2024-06-20T15:51:21.118Z"},"date_modified":{"$date":"2024-06-20T15:51:21.118Z"},"description":"","enabled":true,"label":"Thermocouple Bricklet 2.0","on_connect":[{"function":"set_configuration","args":[],"kwargs":{"averaging":16,"sensor_type":3,"line_filter":0},"timeout":0.5},{"function":"set_status_led_config","args":[],"kwargs":{"config":2},"timeout":0.5}],"uid":224618}
-{"_id":{"$binary":{"base64":"QBnjm5nJQ5OAKRGaNqpUmQ==","subType":"04"}},"config":{"0":{"interval":60000,"trigger_only_on_change":true,"description":"","topic":"sensors/room_018/temperature/vacuum_chamber","unit":"K"}},"date_created":{"$date":"2024-06-25T15:02:15.590Z"},"date_modified":{"$date":"2024-06-25T15:02:15.590Z"},"description":"","enabled":true,"label":"Temperature vacuum chamber table 3 018","on_connect":[{"function":"set_moving_average_configuration","args":[],"kwargs":{"moving_average_length_resistance":1,"moving_average_length_temperature":500},"timeout":0.5},{"function":"set_noise_rejection_filter","args":[],"kwargs":{"line_filter":0},"timeout":0.5},{"function":"set_wire_mode","args":[],"kwargs":{"mode":4},"timeout":0.5},{"function":"set_status_led_config","args":[],"kwargs":{"config":2},"timeout":0.5}],"uid":203279}
-{"_id":{"$binary":{"base64":"10AcIXZKT4GMM+/6Yr7t4g==","subType":"04"}},"config":{"0":{"interval":60000,"trigger_only_on_change":true,"description":"","topic":"sensors/room_018/temperature/table4","unit":"K"}},"date_created":{"$date":"2024-06-25T15:06:14.341Z"},"date_modified":{"$date":"2024-06-25T15:06:14.341Z"},"description":"","enabled":true,"label":"Temperature table 4 018","on_connect":[{"function":"set_moving_average_configuration","args":[],"kwargs":{"moving_average_length_resistance":1,"moving_average_length_temperature":500},"timeout":0.5},{"function":"set_noise_rejection_filter","args":[],"kwargs":{"line_filter":0},"timeout":0.5},{"function":"set_wire_mode","args":[],"kwargs":{"mode":4},"timeout":0.5},{"function":"set_status_led_config","args":[],"kwargs":{"config":2},"timeout":0.5}],"uid":203303}
-{"_id":{"$binary":{"base64":"RQXT28tOQ2KZ1bFP83D8lg==","subType":"04"}},"config":{"0":{"interval":60000,"trigger_only_on_change":true,"description":"","topic":"sensors/room_015/temperature/rb_oven_nozzle","unit":"K"}},"date_created":{"$date":"2024-06-28T10:09:45.012Z"},"date_modified":{"$date":"2024-06-28T10:09:45.012Z"},"description":"","enabled":true,"label":"Temperature Rb oven nozzle ATOMICS","on_connect":[{"function":"set_configuration","args":[],"kwargs":{"averaging":16,"sensor_type":3,"line_filter":0},"timeout":0.5},{"function":"set_status_led_config","args":[],"kwargs":{"config":2},"timeout":0.5}],"uid":226769}
-{"_id":{"$binary":{"base64":"A+b0P/7mQCKHO3DeNPGvkg==","subType":"04"}},"config":{"0":{"interval":60000,"trigger_only_on_change":true,"description":"","topic":"sensors/room_015/temperature/rb_oven","unit":"K"}},"date_created":{"$date":"2024-06-28T10:16:05.493Z"},"date_modified":{"$date":"2024-06-28T10:16:05.493Z"},"description":"","enabled":true,"label":"Temperature Rb oven ATOMICS","on_connect":[{"function":"set_configuration","args":[],"kwargs":{"averaging":16,"sensor_type":3,"line_filter":0},"timeout":0.5},{"function":"set_status_led_config","args":[],"kwargs":{"config":2},"timeout":0.5}],"uid":226767}
+[
+  {
+    "_id": {
+      "$binary": { "base64": "sXrdA/6IS3SbJam0xY2k7g==", "subType": "04" }
+    },
+    "date_created": { "$date": "2021-10-24T10:30:13.080Z" },
+    "date_modified": { "$date": "2023-05-29T21:15:22.086Z" },
+    "enabled": true,
+    "label": null,
+    "description": "",
+    "uid": 125633,
+    "config": {
+      "0": {
+        "interval": 2000,
+        "trigger_only_on_change": false,
+        "description": "",
+        "topic": "sensors/server/temperature",
+        "unit": "K"
+      },
+      "1": {
+        "interval": 1000,
+        "trigger_only_on_change": false,
+        "description": "",
+        "topic": "sensors/server/humidity",
+        "unit": "%rH"
+      }
+    },
+    "on_connect": [
+      {
+        "function": "set_status_led_config",
+        "args": [],
+        "kwargs": { "config": 2 },
+        "timeout": null
+      }
+    ]
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "SAGHR6sySF2PBqsvTFGAYA==", "subType": "04" }
+    },
+    "date_created": { "$date": "2021-10-24T10:30:13.080Z" },
+    "date_modified": { "$date": "2023-05-29T21:15:22.087Z" },
+    "enabled": true,
+    "label": null,
+    "description": "",
+    "uid": 50052,
+    "config": {
+      "0": {
+        "interval": 20000,
+        "trigger_only_on_change": true,
+        "description": "",
+        "topic": "sensors/room_017/humidity/room",
+        "unit": "%rH"
+      }
+    },
+    "on_connect": []
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "DCbV4IM3QcahsVxCbkuzzA==", "subType": "04" }
+    },
+    "date_created": { "$date": "2021-10-24T10:30:13.080Z" },
+    "date_modified": { "$date": "2023-05-29T21:15:22.087Z" },
+    "enabled": true,
+    "label": null,
+    "description": "",
+    "uid": 85141,
+    "config": {
+      "0": {
+        "interval": 10000,
+        "trigger_only_on_change": true,
+        "description": "",
+        "topic": "sensors/room_017/temperature/cooling_water",
+        "unit": "K"
+      }
+    },
+    "on_connect": [
+      {
+        "function": "set_noise_rejection_filter",
+        "args": [],
+        "kwargs": { "line_filter": 0 },
+        "timeout": null
+      },
+      {
+        "function": "set_wire_mode",
+        "args": [],
+        "kwargs": { "mode": 4 },
+        "timeout": null
+      }
+    ]
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "qLbR4opATN+LlUg6qXPWCg==", "subType": "04" }
+    },
+    "date_created": { "$date": "2021-10-24T10:30:13.080Z" },
+    "date_modified": { "$date": "2023-05-29T21:15:22.088Z" },
+    "enabled": true,
+    "label": null,
+    "description": "",
+    "uid": 156236,
+    "config": {
+      "0": {
+        "interval": 20000,
+        "trigger_only_on_change": true,
+        "description": "",
+        "topic": "sensors/room_017/temperature/table_raman",
+        "unit": "K"
+      }
+    },
+    "on_connect": [
+      {
+        "function": "set_moving_average_configuration",
+        "args": [],
+        "kwargs": {
+          "moving_average_length_resistance": 1,
+          "moving_average_length_temperature": 500
+        },
+        "timeout": null
+      },
+      {
+        "function": "set_noise_rejection_filter",
+        "args": [],
+        "kwargs": { "line_filter": 0 },
+        "timeout": null
+      },
+      {
+        "function": "set_wire_mode",
+        "args": [],
+        "kwargs": { "mode": 4 },
+        "timeout": null
+      },
+      {
+        "function": "set_status_led_config",
+        "args": [],
+        "kwargs": { "config": 2 },
+        "timeout": null
+      }
+    ]
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "WkURgas1QoaxbuUIswjD+g==", "subType": "04" }
+    },
+    "date_created": { "$date": "2021-10-24T10:30:13.080Z" },
+    "date_modified": { "$date": "2023-05-29T21:15:22.088Z" },
+    "enabled": true,
+    "label": null,
+    "description": "",
+    "uid": 155624,
+    "config": {
+      "0": {
+        "interval": 1000,
+        "trigger_only_on_change": true,
+        "description": "",
+        "topic": "sensors/room_017/temperature/table_laser",
+        "unit": "K"
+      }
+    },
+    "on_connect": [
+      {
+        "function": "set_moving_average_configuration",
+        "args": [],
+        "kwargs": {
+          "moving_average_length_resistance": 1,
+          "moving_average_length_temperature": 50
+        },
+        "timeout": null
+      },
+      {
+        "function": "set_noise_rejection_filter",
+        "args": [],
+        "kwargs": { "line_filter": 0 },
+        "timeout": null
+      },
+      {
+        "function": "set_wire_mode",
+        "args": [],
+        "kwargs": { "mode": 4 },
+        "timeout": null
+      },
+      {
+        "function": "set_status_led_config",
+        "args": [],
+        "kwargs": { "config": 2 },
+        "timeout": null
+      }
+    ]
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "XzzBQ/IqRKuWWJ2XPPKYNw==", "subType": "04" }
+    },
+    "date_created": { "$date": "2021-10-24T10:30:13.080Z" },
+    "date_modified": { "$date": "2023-05-29T21:15:22.088Z" },
+    "enabled": true,
+    "label": null,
+    "description": "",
+    "uid": 155685,
+    "config": {
+      "0": {
+        "interval": 20000,
+        "trigger_only_on_change": true,
+        "description": "",
+        "topic": "sensors/room_017/temperature/table_vacuum_chamber",
+        "unit": "K"
+      }
+    },
+    "on_connect": [
+      {
+        "function": "set_moving_average_configuration",
+        "args": [],
+        "kwargs": {
+          "moving_average_length_resistance": 1,
+          "moving_average_length_temperature": 500
+        },
+        "timeout": null
+      },
+      {
+        "function": "set_noise_rejection_filter",
+        "args": [],
+        "kwargs": { "line_filter": 0 },
+        "timeout": null
+      },
+      {
+        "function": "set_wire_mode",
+        "args": [],
+        "kwargs": { "mode": 4 },
+        "timeout": null
+      },
+      {
+        "function": "set_status_led_config",
+        "args": [],
+        "kwargs": { "config": 2 },
+        "timeout": null
+      }
+    ]
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "yYULc6h1SUuXyJUywbMmiQ==", "subType": "04" }
+    },
+    "date_created": { "$date": "2021-10-24T10:30:13.080Z" },
+    "date_modified": { "$date": "2023-05-29T21:15:22.089Z" },
+    "enabled": true,
+    "label": null,
+    "description": "",
+    "uid": 85275,
+    "config": {
+      "0": {
+        "interval": 1000,
+        "trigger_only_on_change": true,
+        "description": "",
+        "topic": "sensors/room_015/temperature/room_back",
+        "unit": "K"
+      }
+    },
+    "on_connect": []
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "2tJydHkrTHCQbhrF3s8gqA==", "subType": "04" }
+    },
+    "date_created": { "$date": "2021-10-24T10:30:13.080Z" },
+    "date_modified": { "$date": "2023-05-29T21:15:22.089Z" },
+    "enabled": true,
+    "label": null,
+    "description": "",
+    "uid": 147263,
+    "config": {
+      "0": {
+        "interval": 1,
+        "trigger_only_on_change": true,
+        "description": "",
+        "topic": "sensors/room_015/temperature/room_front",
+        "unit": "K"
+      }
+    },
+    "on_connect": []
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "RE5NDsT+Tvien9tsZDOB1w==", "subType": "04" }
+    },
+    "date_created": { "$date": "2021-10-24T10:30:13.080Z" },
+    "date_modified": { "$date": "2023-05-29T21:15:22.089Z" },
+    "enabled": true,
+    "label": null,
+    "description": "",
+    "uid": 174546,
+    "config": {
+      "0": {
+        "interval": 60000,
+        "trigger_only_on_change": true,
+        "description": "",
+        "topic": "sensors/room_015/temperature/air_intake",
+        "unit": "K"
+      }
+    },
+    "on_connect": [
+      {
+        "function": "set_moving_average_configuration",
+        "args": [],
+        "kwargs": {
+          "moving_average_length_resistance": 1,
+          "moving_average_length_temperature": 500
+        },
+        "timeout": null
+      },
+      {
+        "function": "set_noise_rejection_filter",
+        "args": [],
+        "kwargs": { "line_filter": 0 },
+        "timeout": null
+      },
+      {
+        "function": "set_wire_mode",
+        "args": [],
+        "kwargs": { "mode": 4 },
+        "timeout": null
+      },
+      {
+        "function": "set_status_led_config",
+        "args": [],
+        "kwargs": { "config": 2 },
+        "timeout": null
+      }
+    ]
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "Falj32zTSf6LKgn99tgukw==", "subType": "04" }
+    },
+    "date_created": { "$date": "2021-10-24T10:30:13.080Z" },
+    "date_modified": { "$date": "2023-05-29T21:15:22.090Z" },
+    "enabled": true,
+    "label": null,
+    "description": "",
+    "uid": 155788,
+    "config": {
+      "0": {
+        "interval": 10000,
+        "trigger_only_on_change": true,
+        "description": "",
+        "topic": "sensors/room_015/temperature/table_chamber",
+        "unit": "K"
+      }
+    },
+    "on_connect": [
+      {
+        "function": "set_moving_average_configuration",
+        "args": [],
+        "kwargs": {
+          "moving_average_length_resistance": 1,
+          "moving_average_length_temperature": 500
+        },
+        "timeout": null
+      },
+      {
+        "function": "set_noise_rejection_filter",
+        "args": [],
+        "kwargs": { "line_filter": 0 },
+        "timeout": null
+      },
+      {
+        "function": "set_wire_mode",
+        "args": [],
+        "kwargs": { "mode": 4 },
+        "timeout": null
+      },
+      {
+        "function": "set_status_led_config",
+        "args": [],
+        "kwargs": { "config": 2 },
+        "timeout": null
+      }
+    ]
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "/zK8pJscQxeHi1PmcDaTSA==", "subType": "04" }
+    },
+    "date_created": { "$date": "2021-10-24T10:30:13.080Z" },
+    "date_modified": { "$date": "2023-05-29T21:15:22.090Z" },
+    "enabled": true,
+    "label": null,
+    "description": "",
+    "uid": 155641,
+    "config": {
+      "0": {
+        "interval": 10000,
+        "trigger_only_on_change": true,
+        "description": "",
+        "topic": "sensors/room_015/temperature/table_laser",
+        "unit": "K"
+      }
+    },
+    "on_connect": [
+      {
+        "function": "set_moving_average_configuration",
+        "args": [],
+        "kwargs": {
+          "moving_average_length_resistance": 1,
+          "moving_average_length_temperature": 500
+        },
+        "timeout": null
+      },
+      {
+        "function": "set_noise_rejection_filter",
+        "args": [],
+        "kwargs": { "line_filter": 0 },
+        "timeout": null
+      },
+      {
+        "function": "set_wire_mode",
+        "args": [],
+        "kwargs": { "mode": 4 },
+        "timeout": null
+      },
+      {
+        "function": "set_status_led_config",
+        "args": [],
+        "kwargs": { "config": 2 },
+        "timeout": null
+      }
+    ]
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "gX3uGkClQoKdAYx77sbMng==", "subType": "04" }
+    },
+    "date_created": { "$date": "2021-10-24T10:30:13.080Z" },
+    "date_modified": { "$date": "2023-05-29T21:15:22.090Z" },
+    "enabled": true,
+    "label": null,
+    "description": "",
+    "uid": 49923,
+    "config": {
+      "0": {
+        "interval": 10000,
+        "trigger_only_on_change": true,
+        "description": "",
+        "topic": "sensors/room_015/humidity/room",
+        "unit": "%rH"
+      }
+    },
+    "on_connect": []
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "xzAbVv40Scmxc07CcwpItg==", "subType": "04" }
+    },
+    "date_created": { "$date": "2021-10-24T10:30:13.080Z" },
+    "date_modified": { "$date": "2023-05-29T21:15:22.091Z" },
+    "enabled": true,
+    "label": null,
+    "description": "",
+    "uid": 155559,
+    "config": {
+      "0": {
+        "interval": 60000,
+        "trigger_only_on_change": true,
+        "description": "",
+        "topic": "sensors/room_011/temperature/air_intake",
+        "unit": "K"
+      }
+    },
+    "on_connect": []
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "uAuJxYzIQrKioZn/wMA10g==", "subType": "04" }
+    },
+    "date_created": { "$date": "2021-10-24T10:30:13.080Z" },
+    "date_modified": { "$date": "2023-05-29T21:15:22.091Z" },
+    "enabled": true,
+    "label": null,
+    "description": "",
+    "uid": 163244,
+    "config": {
+      "0": {
+        "interval": 1000,
+        "trigger_only_on_change": true,
+        "description": "",
+        "topic": "sensors/room_011/temperature/room",
+        "unit": "K"
+      }
+    },
+    "on_connect": []
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "SPOt67zhQUyE5wTtiuRh1w==", "subType": "04" }
+    },
+    "date_created": { "$date": "2021-10-24T10:30:13.080Z" },
+    "date_modified": { "$date": "2023-05-29T21:15:22.091Z" },
+    "enabled": true,
+    "label": null,
+    "description": "",
+    "uid": 45896,
+    "config": {
+      "0": {
+        "interval": 60000,
+        "trigger_only_on_change": true,
+        "description": "",
+        "topic": "sensors/room_011/humidity/room",
+        "unit": "%rH"
+      }
+    },
+    "on_connect": []
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "x4n2vidxReqLuUmJLa0PGA==", "subType": "04" }
+    },
+    "date_created": { "$date": "2021-10-24T10:30:13.080Z" },
+    "date_modified": { "$date": "2023-05-29T21:15:22.091Z" },
+    "enabled": true,
+    "label": null,
+    "description": "",
+    "uid": 112668,
+    "config": {
+      "0": {
+        "interval": 1000,
+        "trigger_only_on_change": true,
+        "description": "",
+        "topic": "sensors/room_011/temperature/room_back",
+        "unit": "K"
+      }
+    },
+    "on_connect": []
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "PyFozyIBQNSoXRvzUhyhwA==", "subType": "04" }
+    },
+    "date_created": { "$date": "2021-10-24T10:30:13.080Z" },
+    "date_modified": { "$date": "2023-05-29T21:15:22.087Z" },
+    "enabled": true,
+    "label": null,
+    "description": "",
+    "uid": 169138,
+    "config": {
+      "0": {
+        "interval": 60000,
+        "trigger_only_on_change": false,
+        "description": "",
+        "topic": "sensors/room_017/pressure/vacuum",
+        "unit": "V"
+      },
+      "1": {
+        "interval": 10000,
+        "trigger_only_on_change": false,
+        "description": "",
+        "topic": "sensors/room_017/laser/power_master",
+        "unit": "V"
+      }
+    },
+    "on_connect": [
+      {
+        "function": "set_status_led_config",
+        "args": [],
+        "kwargs": { "config": 2 },
+        "timeout": null
+      },
+      {
+        "function": "set_sample_rate",
+        "args": [],
+        "kwargs": { "rate": 7 },
+        "timeout": null
+      }
+    ]
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "nPFjdXHhTpmaIKq1tvrWQw==", "subType": "04" }
+    },
+    "date_created": { "$date": "2021-10-24T10:30:13.080Z" },
+    "date_modified": { "$date": "2023-05-29T21:15:22.092Z" },
+    "enabled": true,
+    "label": null,
+    "description": "",
+    "uid": 169226,
+    "config": {
+      "0": {
+        "interval": 1000,
+        "trigger_only_on_change": true,
+        "description": "",
+        "topic": "sensors/room_011/laser/power_tisa",
+        "unit": "V"
+      },
+      "1": {
+        "interval": 1000,
+        "trigger_only_on_change": true,
+        "description": "",
+        "topic": "sensors/room_011/laser/power_tisa_2",
+        "unit": "V"
+      }
+    },
+    "on_connect": [
+      {
+        "function": "set_sample_rate",
+        "args": [],
+        "kwargs": { "rate": 7 },
+        "timeout": null
+      },
+      {
+        "function": "set_status_led_config",
+        "args": [],
+        "kwargs": { "config": 2 },
+        "timeout": null
+      }
+    ]
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "vXPHZ61OSi6z32N+le2hhw==", "subType": "04" }
+    },
+    "date_created": { "$date": "2021-10-24T10:30:13.080Z" },
+    "date_modified": { "$date": "2023-05-29T21:15:22.092Z" },
+    "enabled": true,
+    "label": null,
+    "description": "",
+    "uid": 174524,
+    "config": {
+      "0": {
+        "interval": 60000,
+        "trigger_only_on_change": true,
+        "description": "",
+        "topic": "sensors/room_011/temperature/water_verdi",
+        "unit": "K"
+      }
+    },
+    "on_connect": [
+      {
+        "function": "set_moving_average_configuration",
+        "args": [],
+        "kwargs": {
+          "moving_average_length_resistance": 1,
+          "moving_average_length_temperature": 500
+        },
+        "timeout": null
+      },
+      {
+        "function": "set_noise_rejection_filter",
+        "args": [],
+        "kwargs": { "line_filter": 0 },
+        "timeout": null
+      },
+      {
+        "function": "set_wire_mode",
+        "args": [],
+        "kwargs": { "mode": 4 },
+        "timeout": null
+      },
+      {
+        "function": "set_status_led_config",
+        "args": [],
+        "kwargs": { "config": 2 },
+        "timeout": null
+      }
+    ]
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "bBhr5BxPSc6vUrQ7JN/lDg==", "subType": "04" }
+    },
+    "date_created": { "$date": "2021-10-24T10:30:13.080Z" },
+    "date_modified": { "$date": "2023-05-29T21:15:22.092Z" },
+    "enabled": true,
+    "label": null,
+    "description": "",
+    "uid": 113317,
+    "config": {
+      "0": {
+        "interval": 60000,
+        "trigger_only_on_change": true,
+        "description": "",
+        "topic": "sensors/room_K03/temperature/room",
+        "unit": "K"
+      }
+    },
+    "on_connect": []
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "OsvOkf+JRuuWI2FT0nSgPA==", "subType": "04" }
+    },
+    "date_created": { "$date": "2021-10-24T10:30:13.080Z" },
+    "date_modified": { "$date": "2023-05-29T21:15:22.093Z" },
+    "enabled": true,
+    "label": null,
+    "description": "",
+    "uid": 95194,
+    "config": {
+      "0": {
+        "interval": 60000,
+        "trigger_only_on_change": true,
+        "description": "",
+        "topic": "sensors/room_K03/humidity/room",
+        "unit": "K"
+      }
+    },
+    "on_connect": []
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "fKA9JrDrTRaCc+7zD3D24g==", "subType": "04" }
+    },
+    "date_created": { "$date": "2021-10-24T10:30:13.080Z" },
+    "date_modified": { "$date": "2023-05-29T21:15:22.093Z" },
+    "enabled": true,
+    "label": null,
+    "description": "",
+    "uid": 113331,
+    "config": {
+      "0": {
+        "interval": 60000,
+        "trigger_only_on_change": true,
+        "description": "",
+        "topic": "sensors/room_K01/temperature/room",
+        "unit": "K"
+      }
+    },
+    "on_connect": []
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "QjGtijeRR2Kk9pxqOuNw9w==", "subType": "04" }
+    },
+    "date_created": { "$date": "2021-10-24T10:30:13.080Z" },
+    "date_modified": { "$date": "2023-05-29T21:15:22.093Z" },
+    "enabled": true,
+    "label": null,
+    "description": "",
+    "uid": 149308,
+    "config": {
+      "0": {
+        "interval": 60000,
+        "trigger_only_on_change": true,
+        "description": "",
+        "topic": "sensors/room_K01/humidity/room",
+        "unit": "%rH"
+      }
+    },
+    "on_connect": []
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "A6LflSHwRfKBsfB8WXMF8A==", "subType": "04" }
+    },
+    "date_created": { "$date": "2021-10-24T10:30:13.080Z" },
+    "date_modified": { "$date": "2023-05-29T21:15:22.093Z" },
+    "enabled": true,
+    "label": null,
+    "description": "",
+    "uid": 43286,
+    "config": {
+      "0": {
+        "interval": 60000,
+        "trigger_only_on_change": true,
+        "description": "",
+        "topic": "sensors/outdoor/temperature/air",
+        "unit": "K"
+      }
+    },
+    "on_connect": []
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "GoPImcdbR/aSekR+XS2bVg==", "subType": "04" }
+    },
+    "date_created": { "$date": "2021-10-24T10:30:13.080Z" },
+    "date_modified": { "$date": "2023-05-29T21:15:22.093Z" },
+    "enabled": true,
+    "label": null,
+    "description": "",
+    "uid": 50490,
+    "config": {
+      "0": {
+        "interval": 60000,
+        "trigger_only_on_change": true,
+        "description": "",
+        "topic": "sensors/outdoor/pressure/air",
+        "unit": "Pa"
+      }
+    },
+    "on_connect": []
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "K6I26XcgQTObQn+xtjRDdQ==", "subType": "04" }
+    },
+    "date_created": { "$date": "2021-10-24T10:30:13.080Z" },
+    "date_modified": { "$date": "2023-05-29T21:15:22.094Z" },
+    "enabled": true,
+    "label": null,
+    "description": "",
+    "uid": 48448,
+    "config": {
+      "0": {
+        "interval": 60000,
+        "trigger_only_on_change": true,
+        "description": "",
+        "topic": "sensors/outdoor/temperature/air_pt100",
+        "unit": "K"
+      }
+    },
+    "on_connect": [
+      {
+        "function": "set_noise_rejection_filter",
+        "args": [],
+        "kwargs": { "line_filter": 0 },
+        "timeout": null
+      }
+    ]
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "qbnYqBItSgq/P3noOwVcig==", "subType": "04" }
+    },
+    "date_created": { "$date": "2021-10-24T10:30:13.080Z" },
+    "date_modified": { "$date": "2023-05-29T21:15:22.094Z" },
+    "enabled": true,
+    "label": null,
+    "description": "",
+    "uid": 50050,
+    "config": {
+      "0": {
+        "interval": 60000,
+        "trigger_only_on_change": true,
+        "description": "",
+        "topic": "sensors/outdoor/humidity/air",
+        "unit": "%rH"
+      }
+    },
+    "on_connect": []
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "F3m2+xL0TKmEgvAPxw7RQA==", "subType": "04" }
+    },
+    "date_created": { "$date": "2021-10-24T10:30:13.080Z" },
+    "date_modified": { "$date": "2023-05-29T21:15:22.094Z" },
+    "enabled": true,
+    "label": null,
+    "description": "",
+    "uid": 112121,
+    "config": {
+      "0": {
+        "interval": 60000,
+        "trigger_only_on_change": true,
+        "description": "",
+        "topic": "sensors/room_019/temperature/room",
+        "unit": "K"
+      }
+    },
+    "on_connect": []
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "L9dLuxbeTwGsBJkbYUPrkQ==", "subType": "04" }
+    },
+    "date_created": { "$date": "2021-10-24T10:30:13.080Z" },
+    "date_modified": { "$date": "2023-05-29T21:15:22.094Z" },
+    "enabled": true,
+    "label": null,
+    "description": "",
+    "uid": 121125,
+    "config": {
+      "0": {
+        "interval": 60000,
+        "trigger_only_on_change": true,
+        "description": "",
+        "topic": "sensors/room_019/humidity/room",
+        "unit": "%rH"
+      }
+    },
+    "on_connect": []
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "syBe7ph1TwiUTNXG8i5ecw==", "subType": "04" }
+    },
+    "date_created": { "$date": "2021-10-24T10:30:13.080Z" },
+    "date_modified": { "$date": "2023-05-29T21:15:22.095Z" },
+    "enabled": true,
+    "label": null,
+    "description": "",
+    "uid": 112013,
+    "config": {
+      "0": {
+        "interval": 60000,
+        "trigger_only_on_change": true,
+        "description": "",
+        "topic": "sensors/room_012/temperature/ceiling_front",
+        "unit": "K"
+      }
+    },
+    "on_connect": []
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "j4Wa+Nd1S0m6i9TMLB/aCQ==", "subType": "04" }
+    },
+    "date_created": { "$date": "2021-10-24T10:30:13.080Z" },
+    "date_modified": { "$date": "2023-05-29T21:15:22.095Z" },
+    "enabled": true,
+    "label": null,
+    "description": "",
+    "uid": 95266,
+    "config": {
+      "0": {
+        "interval": 60000,
+        "trigger_only_on_change": true,
+        "description": "",
+        "topic": "sensors/room_012/humidity/room",
+        "unit": "K"
+      }
+    },
+    "on_connect": []
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "oPrgp8k8SraF3g9omCNFjw==", "subType": "04" }
+    },
+    "date_created": { "$date": "2021-10-24T10:30:13.080Z" },
+    "date_modified": { "$date": "2023-05-29T21:15:22.095Z" },
+    "enabled": true,
+    "label": null,
+    "description": "",
+    "uid": 112512,
+    "config": {
+      "0": {
+        "interval": 60000,
+        "trigger_only_on_change": true,
+        "description": "",
+        "topic": "sensors/room_012/temperature/ceiling_back_left",
+        "unit": "K"
+      }
+    },
+    "on_connect": []
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "3gWrCw+VScOWzGZ0/llkBA==", "subType": "04" }
+    },
+    "date_created": { "$date": "2021-10-24T10:30:13.080Z" },
+    "date_modified": { "$date": "2023-05-29T21:15:22.095Z" },
+    "enabled": true,
+    "label": null,
+    "description": "",
+    "uid": 113312,
+    "config": {
+      "0": {
+        "interval": 60000,
+        "trigger_only_on_change": true,
+        "description": "",
+        "topic": "sensors/room_012/temperature/ceiling_front_left",
+        "unit": "K"
+      }
+    },
+    "on_connect": []
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "U9+kbV40Q0KKefirl/CtTg==", "subType": "04" }
+    },
+    "date_created": { "$date": "2021-10-24T10:30:13.080Z" },
+    "date_modified": { "$date": "2023-05-29T21:15:22.096Z" },
+    "enabled": true,
+    "label": null,
+    "description": "",
+    "uid": 112631,
+    "config": {
+      "0": {
+        "interval": 60000,
+        "trigger_only_on_change": true,
+        "description": "",
+        "topic": "sensors/room_012/temperature/ceiling_back_right",
+        "unit": "K"
+      }
+    },
+    "on_connect": []
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "J+ccmGiVSvCcMhj3DrkxFw==", "subType": "04" }
+    },
+    "date_created": { "$date": "2021-10-24T10:30:13.080Z" },
+    "date_modified": { "$date": "2023-05-29T21:15:22.096Z" },
+    "enabled": true,
+    "label": null,
+    "description": "",
+    "uid": 42400,
+    "config": {
+      "0": {
+        "interval": 60000,
+        "trigger_only_on_change": true,
+        "description": "",
+        "topic": "sensors/room_012/temperature/ceiling_front_right",
+        "unit": "K"
+      }
+    },
+    "on_connect": []
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "YcCiq1h3R7eRAhQQUEdt9w==", "subType": "04" }
+    },
+    "date_created": { "$date": "2021-10-24T10:30:13.080Z" },
+    "date_modified": { "$date": "2023-05-29T21:15:22.096Z" },
+    "enabled": true,
+    "label": null,
+    "description": "",
+    "uid": 112574,
+    "config": {
+      "0": {
+        "interval": 60000,
+        "trigger_only_on_change": true,
+        "description": "",
+        "topic": "sensors/room_012/temperature/floor_front_right",
+        "unit": "K"
+      }
+    },
+    "on_connect": []
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "wmMrXSTTQ626o8oo/SItNg==", "subType": "04" }
+    },
+    "date_created": { "$date": "2021-10-24T10:30:13.080Z" },
+    "date_modified": { "$date": "2023-05-29T21:15:22.096Z" },
+    "enabled": true,
+    "label": null,
+    "description": "",
+    "uid": 91900,
+    "config": {
+      "0": {
+        "interval": 60000,
+        "trigger_only_on_change": true,
+        "description": "",
+        "topic": "sensors/room_018/temperature/room",
+        "unit": "K"
+      }
+    },
+    "on_connect": []
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "M3lFZCz3TmeVY28VmpUIiw==", "subType": "04" }
+    },
+    "date_created": { "$date": "2021-10-24T10:30:13.080Z" },
+    "date_modified": { "$date": "2023-05-29T21:15:22.097Z" },
+    "enabled": true,
+    "label": null,
+    "description": "",
+    "uid": 140929,
+    "config": {
+      "0": {
+        "interval": 60000,
+        "trigger_only_on_change": true,
+        "description": "",
+        "topic": "sensors/room_018/pressure/sls_cavity",
+        "unit": "V"
+      },
+      "1": {
+        "interval": 60000,
+        "trigger_only_on_change": true,
+        "description": "",
+        "topic": "sensors/room_018/pressure/vacuum_chamber",
+        "unit": "V"
+      }
+    },
+    "on_connect": [
+      {
+        "function": "set_status_led_config",
+        "args": [],
+        "kwargs": { "config": 2 },
+        "timeout": null
+      },
+      {
+        "function": "set_sample_rate",
+        "args": [],
+        "kwargs": { "rate": 7 },
+        "timeout": null
+      }
+    ]
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "DH8DBpdPTgyxM34JLvZ2nQ==", "subType": "04" }
+    },
+    "date_created": { "$date": "2021-10-24T10:30:13.080Z" },
+    "date_modified": { "$date": "2023-05-29T21:15:22.097Z" },
+    "enabled": true,
+    "label": null,
+    "description": "",
+    "uid": 45880,
+    "config": {
+      "0": {
+        "interval": 60000,
+        "trigger_only_on_change": true,
+        "description": "",
+        "topic": "sensors/room_018/humidity/room",
+        "unit": "%rH"
+      }
+    },
+    "on_connect": []
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "cZrcj+/wQRirAcJJUutXCA==", "subType": "04" }
+    },
+    "date_created": { "$date": "2021-10-24T10:30:13.080Z" },
+    "date_modified": { "$date": "2023-05-29T21:15:22.097Z" },
+    "enabled": true,
+    "label": null,
+    "description": "",
+    "uid": 121094,
+    "config": {
+      "0": {
+        "interval": 60000,
+        "trigger_only_on_change": true,
+        "description": "",
+        "topic": "sensors/room_K01/humidity/brain42",
+        "unit": "%rH"
+      }
+    },
+    "on_connect": []
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "yNCjygE8QXmVfuHl+XWS0A==", "subType": "04" }
+    },
+    "date_created": { "$date": "2021-10-24T10:30:13.080Z" },
+    "date_modified": { "$date": "2023-05-29T21:15:22.097Z" },
+    "enabled": true,
+    "label": null,
+    "description": "",
+    "uid": 112014,
+    "config": {
+      "0": {
+        "interval": 60000,
+        "trigger_only_on_change": true,
+        "description": "",
+        "topic": "sensors/room_K01/temperature/brain42",
+        "unit": "%rH"
+      }
+    },
+    "on_connect": []
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "zYpJJT2ASS2o6ECDwZhzHA==", "subType": "04" }
+    },
+    "date_created": { "$date": "2021-10-24T10:30:13.080Z" },
+    "date_modified": { "$date": "2023-05-29T21:15:22.098Z" },
+    "enabled": true,
+    "label": null,
+    "description": "",
+    "uid": 137510,
+    "config": {
+      "0": {
+        "interval": 1000,
+        "trigger_only_on_change": true,
+        "description": "",
+        "topic": "sensors/room_016/temperature/room",
+        "unit": "K"
+      }
+    },
+    "on_connect": []
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "IQPd2M3hQIyzgmcxdxLbMw==", "subType": "04" }
+    },
+    "date_created": { "$date": "2021-10-24T10:30:13.080Z" },
+    "date_modified": { "$date": "2023-05-29T21:15:22.098Z" },
+    "enabled": true,
+    "label": null,
+    "description": "",
+    "uid": 148188,
+    "config": {
+      "0": {
+        "interval": 60000,
+        "trigger_only_on_change": true,
+        "description": "",
+        "topic": "sensors/room_K01/illuminance/brain42",
+        "unit": "lux"
+      }
+    },
+    "on_connect": []
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "5fwwS+pkQvab6e78Z6pXkw==", "subType": "04" }
+    },
+    "date_created": { "$date": "2021-10-24T10:30:13.080Z" },
+    "date_modified": { "$date": "2023-05-29T21:15:22.098Z" },
+    "enabled": true,
+    "label": null,
+    "description": "",
+    "uid": 72865,
+    "config": {
+      "0": {
+        "interval": 60000,
+        "trigger_only_on_change": true,
+        "description": "",
+        "topic": "sensors/room_016/humidity/room",
+        "unit": "%rH"
+      }
+    },
+    "on_connect": []
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "NbRlY8NcTkqXt1MKeiIrEw==", "subType": "04" }
+    },
+    "date_created": { "$date": "2021-10-24T10:30:13.080Z" },
+    "date_modified": { "$date": "2023-05-29T21:15:22.098Z" },
+    "enabled": true,
+    "label": null,
+    "description": "",
+    "uid": 112041,
+    "config": {
+      "0": {
+        "interval": 60000,
+        "trigger_only_on_change": true,
+        "description": "",
+        "topic": "sensors/room_016/temperature/flowbox",
+        "unit": "K"
+      }
+    },
+    "on_connect": []
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "a9VtEmoVQ4CL7QtKoRTOOg==", "subType": "04" }
+    },
+    "date_created": { "$date": "2021-10-24T10:30:13.080Z" },
+    "date_modified": { "$date": "2023-05-29T21:15:22.098Z" },
+    "enabled": true,
+    "label": null,
+    "description": "",
+    "uid": 48414,
+    "config": {
+      "0": {
+        "interval": 60000,
+        "trigger_only_on_change": true,
+        "description": "",
+        "topic": "sensors/room_016/temperature/water",
+        "unit": "K"
+      }
+    },
+    "on_connect": []
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "sNVa1V2qQqe0Ti8lnW3uvQ==", "subType": "04" }
+    },
+    "date_created": { "$date": "2021-10-24T10:30:13.080Z" },
+    "date_modified": { "$date": "2023-05-29T21:15:22.099Z" },
+    "enabled": true,
+    "label": null,
+    "description": "",
+    "uid": 163684,
+    "config": {
+      "0": {
+        "interval": 30000,
+        "trigger_only_on_change": false,
+        "description": "",
+        "topic": "sensors/room_015/water_sensor/room",
+        "unit": ""
+      },
+      "1": {
+        "interval": 60000,
+        "trigger_only_on_change": false,
+        "description": "",
+        "topic": "sensors/room_016/water_sensor/pumproom",
+        "unit": ""
+      },
+      "2": {
+        "interval": 60000,
+        "trigger_only_on_change": false,
+        "description": "",
+        "topic": "sensors/room_017/water_sensor/room",
+        "unit": ""
+      }
+    },
+    "on_connect": [
+      {
+        "function": "set_configuration",
+        "args": [],
+        "kwargs": { "channel": 0, "direction": "i", "value": true },
+        "timeout": null
+      },
+      {
+        "function": "set_configuration",
+        "args": [],
+        "kwargs": { "channel": 1, "direction": "i", "value": true },
+        "timeout": null
+      },
+      {
+        "function": "set_configuration",
+        "args": [],
+        "kwargs": { "channel": 2, "direction": "i", "value": true },
+        "timeout": null
+      },
+      {
+        "function": "set_configuration",
+        "args": [],
+        "kwargs": { "channel": 3, "direction": "i", "value": true },
+        "timeout": null
+      },
+      {
+        "function": "set_status_led_config",
+        "args": [],
+        "kwargs": { "config": 2 },
+        "timeout": null
+      }
+    ]
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "xJQpljAdS6O9X6v5TyXJ3g==", "subType": "04" }
+    },
+    "date_created": { "$date": "2021-10-24T10:30:13.080Z" },
+    "date_modified": { "$date": "2023-05-29T21:15:22.099Z" },
+    "enabled": true,
+    "label": null,
+    "description": "",
+    "uid": 169158,
+    "config": {
+      "0": {
+        "interval": 60000,
+        "trigger_only_on_change": false,
+        "description": "",
+        "topic": "sensors/room_016/laser/bragg_ta",
+        "unit": "V"
+      },
+      "1": {
+        "interval": 60000,
+        "trigger_only_on_change": true,
+        "description": "",
+        "topic": "sensors/room_016/laser/power_tisa",
+        "unit": "V"
+      }
+    },
+    "on_connect": [
+      {
+        "function": "set_status_led_config",
+        "args": [],
+        "kwargs": { "config": 2 },
+        "timeout": null
+      },
+      {
+        "function": "set_sample_rate",
+        "args": [],
+        "kwargs": { "rate": 6 },
+        "timeout": null
+      }
+    ]
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "EU5XrEItT0CvmpDYZK2lag==", "subType": "04" }
+    },
+    "date_created": { "$date": "2021-10-24T10:30:13.080Z" },
+    "date_modified": { "$date": "2023-05-29T21:15:22.100Z" },
+    "enabled": true,
+    "label": null,
+    "description": "",
+    "uid": 84077,
+    "config": {
+      "0": {
+        "interval": 60000,
+        "trigger_only_on_change": true,
+        "description": "",
+        "topic": "sensors/room_016/humidity/pumproom",
+        "unit": "%rH"
+      }
+    },
+    "on_connect": []
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "hj3w8015RlK1pU6tKuWsIA==", "subType": "04" }
+    },
+    "date_created": { "$date": "2021-10-24T10:30:13.080Z" },
+    "date_modified": { "$date": "2023-05-29T21:15:22.100Z" },
+    "enabled": true,
+    "label": null,
+    "description": "",
+    "uid": 113409,
+    "config": {
+      "0": {
+        "interval": 1000,
+        "trigger_only_on_change": true,
+        "description": "",
+        "topic": "sensors/room_016/temperature/pumproom",
+        "unit": "K"
+      }
+    },
+    "on_connect": []
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "GCwbTslmTeCGZw67F1a4IQ==", "subType": "04" }
+    },
+    "date_created": { "$date": "2022-02-14T13:28:07.309Z" },
+    "date_modified": { "$date": "2023-05-29T21:15:22.100Z" },
+    "enabled": true,
+    "label": null,
+    "description": "",
+    "uid": 156531,
+    "config": {
+      "0": {
+        "interval": 60000,
+        "trigger_only_on_change": true,
+        "description": "",
+        "topic": "sensors/room_018/temperature/aircon_table1",
+        "unit": "K"
+      }
+    },
+    "on_connect": []
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "U+TsZ+vVRZ+3z5AKxsZNTw==", "subType": "04" }
+    },
+    "date_created": { "$date": "2022-02-14T13:40:48.073Z" },
+    "date_modified": { "$date": "2023-05-29T21:15:22.100Z" },
+    "enabled": true,
+    "label": null,
+    "description": "",
+    "uid": 156494,
+    "config": {
+      "0": {
+        "interval": 1000,
+        "trigger_only_on_change": true,
+        "description": "",
+        "topic": "sensors/room_018/temperature/aircon_table2",
+        "unit": "K"
+      }
+    },
+    "on_connect": []
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "N6NmpUg8SHeCCCv/r7Tz1Q==", "subType": "04" }
+    },
+    "date_created": { "$date": "2022-02-14T16:30:25.309Z" },
+    "date_modified": { "$date": "2023-05-29T21:15:22.100Z" },
+    "enabled": true,
+    "label": null,
+    "description": "",
+    "uid": 113405,
+    "config": {
+      "0": {
+        "interval": 1000,
+        "trigger_only_on_change": true,
+        "description": "",
+        "topic": "sensors/room_012/temperature/aircon_table1",
+        "unit": "K"
+      }
+    },
+    "on_connect": []
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "OIvOqoPhTxuh70GqHzyMXA==", "subType": "04" }
+    },
+    "date_created": { "$date": "2022-02-15T09:53:52.021Z" },
+    "date_modified": { "$date": "2023-05-29T21:15:22.101Z" },
+    "enabled": true,
+    "label": null,
+    "description": "",
+    "uid": 48410,
+    "config": {
+      "0": {
+        "interval": 10000,
+        "trigger_only_on_change": true,
+        "description": "",
+        "topic": "sensors/room_011/temperature/cooling_water",
+        "unit": "K"
+      }
+    },
+    "on_connect": [
+      {
+        "function": "set_noise_rejection_filter",
+        "args": [],
+        "kwargs": { "line_filter": 0 },
+        "timeout": null
+      },
+      {
+        "function": "set_wire_mode",
+        "args": [],
+        "kwargs": { "mode": 4 },
+        "timeout": null
+      }
+    ]
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "ZwbNrKM3TYaxQEx8biVG3A==", "subType": "04" }
+    },
+    "date_created": { "$date": "2022-02-15T11:45:54.769Z" },
+    "date_modified": { "$date": "2023-05-29T21:15:22.101Z" },
+    "enabled": true,
+    "label": null,
+    "description": "",
+    "uid": 156646,
+    "config": {
+      "0": {
+        "interval": 60000,
+        "trigger_only_on_change": true,
+        "description": "",
+        "topic": "sensors/room_012/temperature/aircon_table2",
+        "unit": "K"
+      }
+    },
+    "on_connect": []
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "1Zyn6OwsTeiaGUlXPGppng==", "subType": "04" }
+    },
+    "date_created": { "$date": "2022-02-18T10:33:35.554Z" },
+    "date_modified": { "$date": "2023-05-29T21:15:22.101Z" },
+    "enabled": true,
+    "label": null,
+    "description": "",
+    "uid": 64051,
+    "config": {
+      "0": {
+        "interval": 4000,
+        "trigger_only_on_change": true,
+        "description": "",
+        "topic": "sensors/room_015/pressure/air",
+        "unit": "Pa"
+      }
+    },
+    "on_connect": []
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "LqoJ/61/QKmPu+e/BgiNQg==", "subType": "04" }
+    },
+    "date_created": { "$date": "2022-02-18T10:54:19.244Z" },
+    "date_modified": { "$date": "2023-05-29T21:15:22.101Z" },
+    "enabled": true,
+    "label": null,
+    "description": "",
+    "uid": 156811,
+    "config": {
+      "0": {
+        "interval": 2000,
+        "trigger_only_on_change": true,
+        "description": "",
+        "topic": "sensors/room_018/pressure/air",
+        "unit": "Pa"
+      }
+    },
+    "on_connect": [
+      {
+        "function": "set_status_led_config",
+        "args": [],
+        "kwargs": { "config": 2 },
+        "timeout": null
+      },
+      {
+        "function": "set_sensor_configuration",
+        "args": [],
+        "kwargs": { "data_rate": 4, "air_pressure_low_pass_filter": 1 },
+        "timeout": null
+      },
+      {
+        "function": "set_moving_average_configuration",
+        "args": [],
+        "kwargs": { "moving_average_length_air_pressure": 100 },
+        "timeout": null
+      }
+    ]
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "zWi3/kfqTpaeRxt/8UzQsw==", "subType": "04" }
+    },
+    "date_created": { "$date": "2022-02-22T18:11:21.385Z" },
+    "date_modified": { "$date": "2023-05-29T21:15:22.102Z" },
+    "enabled": true,
+    "label": null,
+    "description": "",
+    "uid": 156632,
+    "config": {
+      "0": {
+        "interval": 10000,
+        "trigger_only_on_change": true,
+        "description": "",
+        "topic": "sensors/room_015/temperature/aircon_table_back",
+        "unit": "K"
+      }
+    },
+    "on_connect": []
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "imcBhLCwTyis7L+gE6tGLQ==", "subType": "04" }
+    },
+    "date_created": { "$date": "2022-03-04T11:19:52.689Z" },
+    "date_modified": { "$date": "2023-05-29T21:15:22.102Z" },
+    "enabled": true,
+    "label": null,
+    "description": "",
+    "uid": 88470,
+    "config": {
+      "0": {
+        "interval": 60000,
+        "trigger_only_on_change": true,
+        "description": "",
+        "topic": "sensors/room_018/temperature/aircon_table_3",
+        "unit": "K"
+      }
+    },
+    "on_connect": []
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "4OvM8UbdR62rWCpJpeWG4A==", "subType": "04" }
+    },
+    "date_created": { "$date": "2022-03-04T11:32:23.377Z" },
+    "date_modified": { "$date": "2023-05-29T21:15:22.102Z" },
+    "enabled": true,
+    "label": null,
+    "description": "",
+    "uid": 85201,
+    "config": {
+      "0": {
+        "interval": 60000,
+        "trigger_only_on_change": true,
+        "description": "",
+        "topic": "sensors/room_018/temperature/table3",
+        "unit": "K"
+      }
+    },
+    "on_connect": [
+      {
+        "function": "set_noise_rejection_filter",
+        "args": [],
+        "kwargs": { "line_filter": 0 },
+        "timeout": null
+      },
+      {
+        "function": "set_wire_mode",
+        "args": [],
+        "kwargs": { "mode": 4 },
+        "timeout": null
+      }
+    ]
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "IeO6xPPzRQy+BjdeAI7aSg==", "subType": "04" }
+    },
+    "date_created": { "$date": "2022-03-04T20:20:05.930Z" },
+    "date_modified": { "$date": "2023-05-29T21:15:22.102Z" },
+    "enabled": true,
+    "label": null,
+    "description": "",
+    "uid": 42306,
+    "config": {
+      "0": {
+        "interval": 60000,
+        "trigger_only_on_change": true,
+        "description": "",
+        "topic": "sensors/room_018/temperature/aircon_front",
+        "unit": "K"
+      }
+    },
+    "on_connect": []
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "PGudVAIpQ+mWl1UOsKcscQ==", "subType": "04" }
+    },
+    "date_created": { "$date": "2022-03-04T20:21:59.100Z" },
+    "date_modified": { "$date": "2023-05-29T21:15:22.103Z" },
+    "enabled": true,
+    "label": null,
+    "description": "",
+    "uid": 174515,
+    "config": {
+      "0": {
+        "interval": 60000,
+        "trigger_only_on_change": true,
+        "description": "",
+        "topic": "sensors/room_018/temperature/table1",
+        "unit": "K"
+      }
+    },
+    "on_connect": [
+      {
+        "function": "set_moving_average_configuration",
+        "args": [],
+        "kwargs": {
+          "moving_average_length_resistance": 1,
+          "moving_average_length_temperature": 500
+        },
+        "timeout": null
+      },
+      {
+        "function": "set_noise_rejection_filter",
+        "args": [],
+        "kwargs": { "line_filter": 0 },
+        "timeout": null
+      },
+      {
+        "function": "set_wire_mode",
+        "args": [],
+        "kwargs": { "mode": 4 },
+        "timeout": null
+      },
+      {
+        "function": "set_status_led_config",
+        "args": [],
+        "kwargs": { "config": 2 },
+        "timeout": null
+      }
+    ]
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "yT5ybFqIR+2OnLmbACi9+Q==", "subType": "04" }
+    },
+    "date_created": { "$date": "2022-03-17T10:33:52.985Z" },
+    "date_modified": { "$date": "2023-05-29T21:15:22.103Z" },
+    "enabled": true,
+    "label": null,
+    "description": "",
+    "uid": 174166,
+    "config": {
+      "0": {
+        "interval": 10000,
+        "trigger_only_on_change": true,
+        "description": "",
+        "topic": "sensors/room_012/temperature/air_intake",
+        "unit": "K"
+      }
+    },
+    "on_connect": [
+      {
+        "function": "set_moving_average_configuration",
+        "args": [],
+        "kwargs": {
+          "moving_average_length_resistance": 1,
+          "moving_average_length_temperature": 500
+        },
+        "timeout": null
+      },
+      {
+        "function": "set_noise_rejection_filter",
+        "args": [],
+        "kwargs": { "line_filter": 0 },
+        "timeout": null
+      },
+      {
+        "function": "set_wire_mode",
+        "args": [],
+        "kwargs": { "mode": 4 },
+        "timeout": null
+      },
+      {
+        "function": "set_status_led_config",
+        "args": [],
+        "kwargs": { "config": 2 },
+        "timeout": null
+      }
+    ]
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "a4No+fzkTlenI/EDntqk1A==", "subType": "04" }
+    },
+    "date_created": { "$date": "2022-03-17T14:19:05.400Z" },
+    "date_modified": { "$date": "2023-05-29T21:15:22.104Z" },
+    "enabled": true,
+    "label": null,
+    "description": "",
+    "uid": 174191,
+    "config": {
+      "0": {
+        "interval": 10000,
+        "trigger_only_on_change": true,
+        "description": "",
+        "topic": "sensors/room_011/temperature/table1",
+        "unit": "K"
+      }
+    },
+    "on_connect": [
+      {
+        "function": "set_moving_average_configuration",
+        "args": [],
+        "kwargs": {
+          "moving_average_length_resistance": 1,
+          "moving_average_length_temperature": 500
+        },
+        "timeout": null
+      },
+      {
+        "function": "set_noise_rejection_filter",
+        "args": [],
+        "kwargs": { "line_filter": 0 },
+        "timeout": null
+      },
+      {
+        "function": "set_wire_mode",
+        "args": [],
+        "kwargs": { "mode": 4 },
+        "timeout": null
+      },
+      {
+        "function": "set_status_led_config",
+        "args": [],
+        "kwargs": { "config": 2 },
+        "timeout": null
+      }
+    ]
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "T5Qs0SFET4yzXz7pPXg/RQ==", "subType": "04" }
+    },
+    "date_created": { "$date": "2022-03-17T12:39:53.375Z" },
+    "date_modified": { "$date": "2023-05-29T21:15:22.104Z" },
+    "enabled": true,
+    "label": null,
+    "description": "",
+    "uid": 174416,
+    "config": {
+      "0": {
+        "interval": 10000,
+        "trigger_only_on_change": true,
+        "description": "",
+        "topic": "sensors/room_011/temperature/table_tisa",
+        "unit": "K"
+      }
+    },
+    "on_connect": [
+      {
+        "function": "set_moving_average_configuration",
+        "args": [],
+        "kwargs": {
+          "moving_average_length_resistance": 1,
+          "moving_average_length_temperature": 500
+        },
+        "timeout": null
+      },
+      {
+        "function": "set_noise_rejection_filter",
+        "args": [],
+        "kwargs": { "line_filter": 0 },
+        "timeout": null
+      },
+      {
+        "function": "set_wire_mode",
+        "args": [],
+        "kwargs": { "mode": 4 },
+        "timeout": null
+      },
+      {
+        "function": "set_status_led_config",
+        "args": [],
+        "kwargs": { "config": 2 },
+        "timeout": null
+      }
+    ]
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "YCfF7NgGSO6t6bC6Sunhjg==", "subType": "04" }
+    },
+    "date_created": { "$date": "2022-03-17T16:19:02.383Z" },
+    "date_modified": { "$date": "2023-05-29T21:15:22.104Z" },
+    "enabled": true,
+    "label": null,
+    "description": "",
+    "uid": 174187,
+    "config": {
+      "0": {
+        "interval": 10000,
+        "trigger_only_on_change": true,
+        "description": "",
+        "topic": "sensors/room_012/temperature/table1",
+        "unit": "K"
+      }
+    },
+    "on_connect": [
+      {
+        "function": "set_moving_average_configuration",
+        "args": [],
+        "kwargs": {
+          "moving_average_length_resistance": 1,
+          "moving_average_length_temperature": 250
+        },
+        "timeout": null
+      },
+      {
+        "function": "set_noise_rejection_filter",
+        "args": [],
+        "kwargs": { "line_filter": 0 },
+        "timeout": null
+      },
+      {
+        "function": "set_wire_mode",
+        "args": [],
+        "kwargs": { "mode": 4 },
+        "timeout": null
+      },
+      {
+        "function": "set_status_led_config",
+        "args": [],
+        "kwargs": { "config": 2 },
+        "timeout": null
+      }
+    ]
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "/f9wM2I8T2+3kKdJzIqG7A==", "subType": "04" }
+    },
+    "date_created": { "$date": "2022-03-18T08:11:34.208Z" },
+    "date_modified": { "$date": "2023-05-29T21:15:22.105Z" },
+    "enabled": true,
+    "label": null,
+    "description": "",
+    "uid": 174185,
+    "config": {
+      "0": {
+        "interval": 10000,
+        "trigger_only_on_change": true,
+        "description": "",
+        "topic": "sensors/room_012/temperature/table2",
+        "unit": "K"
+      }
+    },
+    "on_connect": [
+      {
+        "function": "set_moving_average_configuration",
+        "args": [],
+        "kwargs": {
+          "moving_average_length_resistance": 1,
+          "moving_average_length_temperature": 500
+        },
+        "timeout": null
+      },
+      {
+        "function": "set_noise_rejection_filter",
+        "args": [],
+        "kwargs": { "line_filter": 0 },
+        "timeout": null
+      },
+      {
+        "function": "set_wire_mode",
+        "args": [],
+        "kwargs": { "mode": 4 },
+        "timeout": null
+      },
+      {
+        "function": "set_status_led_config",
+        "args": [],
+        "kwargs": { "config": 2 },
+        "timeout": null
+      }
+    ]
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "fW6XBfr/SBS4X0Detrq7zA==", "subType": "04" }
+    },
+    "date_created": { "$date": "2022-03-24T09:09:21.532Z" },
+    "date_modified": { "$date": "2023-05-29T21:15:22.105Z" },
+    "enabled": true,
+    "label": null,
+    "description": "",
+    "uid": 146829,
+    "config": {
+      "0": {
+        "interval": 1000,
+        "trigger_only_on_change": true,
+        "description": "",
+        "topic": "sensors/room_017/temperature/room",
+        "unit": "K"
+      }
+    },
+    "on_connect": []
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "MM8i3204QlaM5UPaVIY2QA==", "subType": "04" }
+    },
+    "date_created": { "$date": "2022-03-24T14:48:44.473Z" },
+    "date_modified": { "$date": "2023-05-29T21:15:22.105Z" },
+    "enabled": true,
+    "label": null,
+    "description": "",
+    "uid": 174413,
+    "config": {
+      "0": {
+        "interval": 60000,
+        "trigger_only_on_change": true,
+        "description": "",
+        "topic": "sensors/room_017/temperature/air_intake",
+        "unit": "K"
+      }
+    },
+    "on_connect": [
+      {
+        "function": "set_moving_average_configuration",
+        "args": [],
+        "kwargs": {
+          "moving_average_length_resistance": 1,
+          "moving_average_length_temperature": 500
+        },
+        "timeout": null
+      },
+      {
+        "function": "set_noise_rejection_filter",
+        "args": [],
+        "kwargs": { "line_filter": 0 },
+        "timeout": null
+      },
+      {
+        "function": "set_wire_mode",
+        "args": [],
+        "kwargs": { "mode": 4 },
+        "timeout": null
+      },
+      {
+        "function": "set_status_led_config",
+        "args": [],
+        "kwargs": { "config": 2 },
+        "timeout": null
+      }
+    ]
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "Lipx+nP0Q8G28emMsQC/Fw==", "subType": "04" }
+    },
+    "date_created": { "$date": "2022-03-25T09:41:38.191Z" },
+    "date_modified": { "$date": "2023-05-29T21:15:22.106Z" },
+    "enabled": true,
+    "label": null,
+    "description": "",
+    "uid": 174151,
+    "config": {
+      "0": {
+        "interval": 60000,
+        "trigger_only_on_change": true,
+        "description": "",
+        "topic": "sensors/room_017/temperature/air_ceiling_radiator",
+        "unit": "K"
+      }
+    },
+    "on_connect": [
+      {
+        "function": "set_moving_average_configuration",
+        "args": [],
+        "kwargs": {
+          "moving_average_length_resistance": 1,
+          "moving_average_length_temperature": 500
+        },
+        "timeout": null
+      },
+      {
+        "function": "set_noise_rejection_filter",
+        "args": [],
+        "kwargs": { "line_filter": 0 },
+        "timeout": null
+      },
+      {
+        "function": "set_wire_mode",
+        "args": [],
+        "kwargs": { "mode": 4 },
+        "timeout": null
+      },
+      {
+        "function": "set_status_led_config",
+        "args": [],
+        "kwargs": { "config": 2 },
+        "timeout": null
+      }
+    ]
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "HSsuCC57QU6gMi16C8GRoQ==", "subType": "04" }
+    },
+    "date_created": { "$date": "2022-04-25T07:59:31.147Z" },
+    "date_modified": { "$date": "2023-05-29T21:15:22.106Z" },
+    "enabled": true,
+    "label": "018_table_2_io4",
+    "description": "",
+    "uid": 161750,
+    "config": {
+      "0": {
+        "interval": 30000,
+        "trigger_only_on_change": false,
+        "description": "",
+        "topic": "sensors/room_018/water_sensor/room",
+        "unit": ""
+      }
+    },
+    "on_connect": [
+      {
+        "function": "set_configuration",
+        "args": [],
+        "kwargs": { "channel": 0, "direction": "i", "value": true },
+        "timeout": null
+      },
+      {
+        "function": "set_configuration",
+        "args": [],
+        "kwargs": { "channel": 1, "direction": "i", "value": true },
+        "timeout": null
+      },
+      {
+        "function": "set_configuration",
+        "args": [],
+        "kwargs": { "channel": 2, "direction": "i", "value": true },
+        "timeout": null
+      },
+      {
+        "function": "set_configuration",
+        "args": [],
+        "kwargs": { "channel": 3, "direction": "i", "value": true },
+        "timeout": null
+      },
+      {
+        "function": "set_status_led_config",
+        "args": [],
+        "kwargs": { "config": 2 },
+        "timeout": null
+      }
+    ]
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "DkCf/JghSkOw+1wAT0vaCQ==", "subType": "04" }
+    },
+    "date_created": { "$date": "2022-04-27T11:20:31.574Z" },
+    "date_modified": { "$date": "2023-05-29T21:15:22.106Z" },
+    "enabled": true,
+    "label": "Industrial Dual Analog In Bricklet 2.0",
+    "description": "",
+    "uid": 169087,
+    "config": {
+      "0": {
+        "interval": 10000,
+        "trigger_only_on_change": false,
+        "description": "",
+        "topic": "sensors/room_018/laser/power_master",
+        "unit": "V"
+      },
+      "1": {
+        "interval": 10000,
+        "trigger_only_on_change": false,
+        "description": "",
+        "topic": "sensors/room_018/laser/795nm_beat",
+        "unit": "V"
+      }
+    },
+    "on_connect": [
+      {
+        "function": "set_status_led_config",
+        "args": [],
+        "kwargs": { "config": 2 },
+        "timeout": null
+      },
+      {
+        "function": "set_sample_rate",
+        "args": [],
+        "kwargs": { "rate": 7 },
+        "timeout": null
+      }
+    ]
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "s8Rmx2QVSAi5WncMAXOqdg==", "subType": "04" }
+    },
+    "date_created": { "$date": "2022-05-09T09:29:13.787Z" },
+    "date_modified": { "$date": "2023-05-29T21:15:22.107Z" },
+    "enabled": true,
+    "label": null,
+    "description": "",
+    "uid": 174308,
+    "config": {
+      "0": {
+        "interval": 60000,
+        "trigger_only_on_change": true,
+        "description": "",
+        "topic": "sensors/room_018/temperature/table_2",
+        "unit": "K"
+      }
+    },
+    "on_connect": [
+      {
+        "function": "set_moving_average_configuration",
+        "args": [],
+        "kwargs": {
+          "moving_average_length_resistance": 1,
+          "moving_average_length_temperature": 500
+        },
+        "timeout": null
+      },
+      {
+        "function": "set_noise_rejection_filter",
+        "args": [],
+        "kwargs": { "line_filter": 0 },
+        "timeout": null
+      },
+      {
+        "function": "set_wire_mode",
+        "args": [],
+        "kwargs": { "mode": 4 },
+        "timeout": null
+      },
+      {
+        "function": "set_status_led_config",
+        "args": [],
+        "kwargs": { "config": 2 },
+        "timeout": null
+      }
+    ]
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "Fso2AFU3TbKYZ2dEtlCe+g==", "subType": "04" }
+    },
+    "date_created": { "$date": "2022-05-09T09:40:16.268Z" },
+    "date_modified": { "$date": "2023-05-29T21:15:22.107Z" },
+    "enabled": true,
+    "label": null,
+    "description": "",
+    "uid": 174257,
+    "config": {
+      "0": {
+        "interval": 60000,
+        "trigger_only_on_change": true,
+        "description": "",
+        "topic": "sensors/room_018/temperature/air_intake",
+        "unit": "K"
+      }
+    },
+    "on_connect": [
+      {
+        "function": "set_moving_average_configuration",
+        "args": [],
+        "kwargs": {
+          "moving_average_length_resistance": 1,
+          "moving_average_length_temperature": 500
+        },
+        "timeout": null
+      },
+      {
+        "function": "set_noise_rejection_filter",
+        "args": [],
+        "kwargs": { "line_filter": 0 },
+        "timeout": null
+      },
+      {
+        "function": "set_wire_mode",
+        "args": [],
+        "kwargs": { "mode": 4 },
+        "timeout": null
+      },
+      {
+        "function": "set_status_led_config",
+        "args": [],
+        "kwargs": { "config": 2 },
+        "timeout": null
+      }
+    ]
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "/J4d06ZpSQ+TD4b2jlXCNA==", "subType": "04" }
+    },
+    "date_created": { "$date": "2022-05-13T08:44:51.255Z" },
+    "date_modified": { "$date": "2023-05-29T21:15:22.107Z" },
+    "enabled": true,
+    "label": null,
+    "description": "",
+    "uid": 174209,
+    "config": {
+      "0": {
+        "interval": 60000,
+        "trigger_only_on_change": true,
+        "description": "",
+        "topic": "sensors/room_016/temperature/cooling_water_machines",
+        "unit": "K"
+      }
+    },
+    "on_connect": [
+      {
+        "function": "set_moving_average_configuration",
+        "args": [],
+        "kwargs": {
+          "moving_average_length_resistance": 1,
+          "moving_average_length_temperature": 500
+        },
+        "timeout": null
+      },
+      {
+        "function": "set_noise_rejection_filter",
+        "args": [],
+        "kwargs": { "line_filter": 0 },
+        "timeout": null
+      },
+      {
+        "function": "set_wire_mode",
+        "args": [],
+        "kwargs": { "mode": 4 },
+        "timeout": null
+      },
+      {
+        "function": "set_status_led_config",
+        "args": [],
+        "kwargs": { "config": 2 },
+        "timeout": null
+      }
+    ]
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "FLRVQl6CQPyR27xqKRWw/g==", "subType": "04" }
+    },
+    "date_created": { "$date": "2022-05-13T09:52:21.307Z" },
+    "date_modified": { "$date": "2023-05-29T21:15:22.108Z" },
+    "enabled": true,
+    "label": "Temperature air intake 016",
+    "description": "",
+    "uid": 174189,
+    "config": {
+      "0": {
+        "interval": 60000,
+        "trigger_only_on_change": true,
+        "description": "",
+        "topic": "sensors/room_016/temperature/air_intake",
+        "unit": "K"
+      }
+    },
+    "on_connect": [
+      {
+        "function": "set_moving_average_configuration",
+        "args": [],
+        "kwargs": {
+          "moving_average_length_resistance": 1,
+          "moving_average_length_temperature": 500
+        },
+        "timeout": null
+      },
+      {
+        "function": "set_noise_rejection_filter",
+        "args": [],
+        "kwargs": { "line_filter": 0 },
+        "timeout": null
+      },
+      {
+        "function": "set_wire_mode",
+        "args": [],
+        "kwargs": { "mode": 4 },
+        "timeout": null
+      },
+      {
+        "function": "set_status_led_config",
+        "args": [],
+        "kwargs": { "config": 2 },
+        "timeout": null
+      }
+    ]
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "oj9AO11eQDyevriyNtfXcw==", "subType": "04" }
+    },
+    "date_created": { "$date": "2022-06-02T11:15:09.088Z" },
+    "date_modified": { "$date": "2023-05-29T21:15:22.108Z" },
+    "enabled": true,
+    "label": "Industrial Dual Analog In Bricklet 2.0",
+    "description": "",
+    "uid": 166383,
+    "config": {
+      "0": {
+        "interval": 10000,
+        "trigger_only_on_change": false,
+        "description": "",
+        "topic": "sensors/room_015/laser/power_fiber_laser_arm1",
+        "unit": "V"
+      },
+      "1": {
+        "interval": 1000,
+        "trigger_only_on_change": false,
+        "description": "",
+        "topic": "sensors/room_015/laser/power_master",
+        "unit": "V"
+      }
+    },
+    "on_connect": [
+      {
+        "function": "set_channel_led_config",
+        "args": [],
+        "kwargs": { "channel": 0, "config": 0 },
+        "timeout": null
+      },
+      {
+        "function": "set_channel_led_config",
+        "args": [],
+        "kwargs": { "channel": 1, "config": 1 },
+        "timeout": null
+      },
+      {
+        "function": "set_status_led_config",
+        "args": [],
+        "kwargs": { "config": 2 },
+        "timeout": null
+      },
+      {
+        "function": "set_sample_rate",
+        "args": [],
+        "kwargs": { "rate": 7 },
+        "timeout": null
+      }
+    ]
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "BGHImD/ISW2E30kZfEW6TQ==", "subType": "04" }
+    },
+    "date_created": { "$date": "2022-06-02T13:43:53.255Z" },
+    "date_modified": { "$date": "2023-05-29T21:15:22.108Z" },
+    "enabled": true,
+    "label": "Demo Temperature Bricklet",
+    "description": "",
+    "uid": 161085,
+    "config": {
+      "0": {
+        "interval": 1000,
+        "trigger_only_on_change": false,
+        "description": "",
+        "topic": "sensors/room_123/temperature/room",
+        "unit": "K"
+      }
+    },
+    "on_connect": [
+      {
+        "function": "set_status_led_config",
+        "args": [],
+        "kwargs": { "config": 2 },
+        "timeout": null
+      }
+    ]
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "27r+kJINSbOCqJ2CMnbE/w==", "subType": "04" }
+    },
+    "date_created": { "$date": "2022-06-10T14:21:00.986Z" },
+    "date_modified": { "$date": "2023-05-29T21:15:22.109Z" },
+    "enabled": true,
+    "label": null,
+    "description": "",
+    "uid": 43776,
+    "config": {
+      "0": {
+        "interval": 20000,
+        "trigger_only_on_change": true,
+        "description": "",
+        "topic": "sensors/room_017/temperature/backup",
+        "unit": "K"
+      }
+    },
+    "on_connect": []
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "yQ1feogLRjygpK8npGcwWg==", "subType": "04" }
+    },
+    "date_created": { "$date": "2022-06-10T14:21:00.986Z" },
+    "date_modified": { "$date": "2023-05-29T21:15:22.109Z" },
+    "enabled": true,
+    "label": null,
+    "description": "",
+    "uid": 91888,
+    "config": {
+      "0": {
+        "interval": 60000,
+        "trigger_only_on_change": true,
+        "description": "",
+        "topic": "sensors/room_018/temperature/table_2",
+        "unit": "K"
+      }
+    },
+    "on_connect": []
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "0LXWKa/eQQ2TjXE0DOzsxw==", "subType": "04" }
+    },
+    "date_created": { "$date": "2022-06-27T07:32:57.115Z" },
+    "date_modified": { "$date": "2023-05-29T21:15:22.109Z" },
+    "enabled": true,
+    "label": "Humidity Bricklet",
+    "description": "",
+    "uid": 179480,
+    "config": {
+      "0": {
+        "interval": 60000,
+        "trigger_only_on_change": true,
+        "description": "",
+        "topic": "sensors/room_109/humidity/room",
+        "unit": "%rH"
+      }
+    },
+    "on_connect": [
+      {
+        "function": "set_status_led_config",
+        "args": [],
+        "kwargs": { "config": 2 },
+        "timeout": null
+      }
+    ]
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "TvLq9vU7SCC0XIJWsFfk7w==", "subType": "04" }
+    },
+    "date_created": { "$date": "2022-06-27T07:35:09.373Z" },
+    "date_modified": { "$date": "2023-05-29T21:15:22.109Z" },
+    "enabled": true,
+    "label": "Temperature Bricklet",
+    "description": "",
+    "uid": 156486,
+    "config": {
+      "0": {
+        "interval": 1000,
+        "trigger_only_on_change": true,
+        "description": "",
+        "topic": "sensors/room_109/temperature/room",
+        "unit": "K"
+      }
+    },
+    "on_connect": [
+      {
+        "function": "set_status_led_config",
+        "args": [],
+        "kwargs": { "config": 2 },
+        "timeout": null
+      }
+    ]
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "ZrjC/8DTRGqz/wYIRhp73g==", "subType": "04" }
+    },
+    "date_created": { "$date": "2022-10-24T19:14:05.278Z" },
+    "date_modified": { "$date": "2023-05-29T21:15:22.109Z" },
+    "enabled": true,
+    "label": "Temperature Bricklet",
+    "description": "",
+    "uid": 147254,
+    "config": {
+      "0": {
+        "interval": 2000,
+        "trigger_only_on_change": true,
+        "description": "",
+        "topic": "sensors/room_011/temperature/aircon",
+        "unit": "K"
+      }
+    },
+    "on_connect": [
+      {
+        "function": "set_status_led_config",
+        "args": [],
+        "kwargs": { "config": 2 },
+        "timeout": null
+      }
+    ]
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "3CPpxveKTMC3NNeYLS/s0w==", "subType": "04" }
+    },
+    "date_created": { "$date": "2022-10-25T17:04:55.798Z" },
+    "date_modified": { "$date": "2023-05-29T21:15:22.110Z" },
+    "enabled": true,
+    "label": "Temperature Bricklet",
+    "description": "",
+    "uid": 43278,
+    "config": {
+      "0": {
+        "interval": 60000,
+        "trigger_only_on_change": true,
+        "description": "",
+        "topic": "sensors/room_151/temperature/room",
+        "unit": "K"
+      }
+    },
+    "on_connect": []
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "pALCgmsvQoa/287UmSjrwA==", "subType": "04" }
+    },
+    "date_created": { "$date": "2023-02-03T15:39:54.025Z" },
+    "date_modified": { "$date": "2023-05-29T21:15:22.110Z" },
+    "enabled": true,
+    "label": "Industrial Dual Analog In Bricklet 2.0",
+    "description": "",
+    "uid": 189020,
+    "config": {
+      "1": {
+        "interval": 10000,
+        "trigger_only_on_change": false,
+        "description": "",
+        "topic": "sensors/room_016/laser/power_lightsheet_ta",
+        "unit": "V"
+      }
+    },
+    "on_connect": [
+      {
+        "function": "set_channel_led_config",
+        "args": [],
+        "kwargs": { "channel": 0, "config": 0 },
+        "timeout": null
+      },
+      {
+        "function": "set_channel_led_config",
+        "args": [],
+        "kwargs": { "channel": 1, "config": 1 },
+        "timeout": null
+      },
+      {
+        "function": "set_status_led_config",
+        "args": [],
+        "kwargs": { "config": 2 },
+        "timeout": null
+      },
+      {
+        "function": "set_sample_rate",
+        "args": [],
+        "kwargs": { "rate": 7 },
+        "timeout": null
+      }
+    ]
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "UwvjGsUgTgWAtRjJkjn2OQ==", "subType": "04" }
+    },
+    "date_created": { "$date": "2023-03-14T10:27:37.963Z" },
+    "date_modified": { "$date": "2023-05-29T21:15:22.110Z" },
+    "enabled": true,
+    "label": "Temperature table 016",
+    "description": "",
+    "uid": 203380,
+    "config": {
+      "0": {
+        "interval": 60000,
+        "trigger_only_on_change": true,
+        "description": "",
+        "topic": "sensors/room_016/temperature/table",
+        "unit": "K"
+      }
+    },
+    "on_connect": [
+      {
+        "function": "set_moving_average_configuration",
+        "args": [],
+        "kwargs": {
+          "moving_average_length_resistance": 1,
+          "moving_average_length_temperature": 500
+        },
+        "timeout": null
+      },
+      {
+        "function": "set_noise_rejection_filter",
+        "args": [],
+        "kwargs": { "line_filter": 0 },
+        "timeout": null
+      },
+      {
+        "function": "set_wire_mode",
+        "args": [],
+        "kwargs": { "mode": 4 },
+        "timeout": null
+      },
+      {
+        "function": "set_status_led_config",
+        "args": [],
+        "kwargs": { "config": 2 },
+        "timeout": null
+      }
+    ]
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "7vHuX5+cSpagppYfDoGTgw==", "subType": "04" }
+    },
+    "date_created": { "$date": "2023-05-10T17:43:38.623Z" },
+    "date_modified": { "$date": "2023-05-29T21:15:22.111Z" },
+    "enabled": true,
+    "label": "Industrial Dual Analog In Bricklet 2.0",
+    "description": "",
+    "uid": 188992,
+    "config": {
+      "0": {
+        "interval": 10000,
+        "trigger_only_on_change": false,
+        "description": "",
+        "topic": "sensors/room_015/pressure/vaccum_chamber",
+        "unit": "V"
+      },
+      "1": {
+        "interval": 60000,
+        "trigger_only_on_change": false,
+        "description": "",
+        "topic": "sensors/room_015/laser/bragg_ta",
+        "unit": "V"
+      }
+    },
+    "on_connect": [
+      {
+        "function": "set_channel_led_config",
+        "args": [],
+        "kwargs": { "channel": 0, "config": 0 },
+        "timeout": null
+      },
+      {
+        "function": "set_channel_led_config",
+        "args": [],
+        "kwargs": { "channel": 1, "config": 1 },
+        "timeout": null
+      },
+      {
+        "function": "set_status_led_config",
+        "args": [],
+        "kwargs": { "config": 2 },
+        "timeout": null
+      },
+      {
+        "function": "set_sample_rate",
+        "args": [],
+        "kwargs": { "rate": 7 },
+        "timeout": null
+      }
+    ]
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "BhF6JgD+RcCHqIcmzGrO+A==", "subType": "04" }
+    },
+    "config": {
+      "0": {
+        "interval": 60000,
+        "trigger_only_on_change": true,
+        "description": "",
+        "topic": "sensors/gsi/temperature/laser_lab",
+        "unit": "K"
+      }
+    },
+    "date_created": { "$date": "2023-09-29T10:29:40.314Z" },
+    "date_modified": { "$date": "2023-09-29T10:29:40.314Z" },
+    "description": "",
+    "enabled": true,
+    "label": "Temperature Bricklet",
+    "on_connect": [],
+    "uid": 42720
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "J3J3aPuWS0meEWJ8mkacRw==", "subType": "04" }
+    },
+    "config": {
+      "0": {
+        "interval": 60000,
+        "trigger_only_on_change": true,
+        "description": "",
+        "topic": "sensors/gsi/pressure/laser_lab",
+        "unit": "Pa"
+      }
+    },
+    "date_created": { "$date": "2023-09-29T10:34:26.611Z" },
+    "date_modified": { "$date": "2023-09-29T10:34:26.611Z" },
+    "description": "",
+    "enabled": true,
+    "label": "Barometer Bricklet",
+    "on_connect": [],
+    "uid": 64090
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "XRm2AYhEQoerVsSiz8ihbg==", "subType": "04" }
+    },
+    "config": {
+      "0": {
+        "interval": 60000,
+        "trigger_only_on_change": true,
+        "description": "",
+        "topic": "sensors/gsi/humidty/laser_lab",
+        "unit": "%rH"
+      }
+    },
+    "date_created": { "$date": "2023-09-29T10:37:31.209Z" },
+    "date_modified": { "$date": "2023-09-29T10:37:31.209Z" },
+    "description": "",
+    "enabled": true,
+    "label": "Humidity Bricklet",
+    "on_connect": [],
+    "uid": 73042
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "uPozuj61RQewnA+dpqitqg==", "subType": "04" }
+    },
+    "config": {
+      "0": {
+        "interval": 10000,
+        "trigger_only_on_change": false,
+        "description": "",
+        "topic": "sensors/room_018/laser/power_rydberg_960nm_quibs_b",
+        "unit": "V"
+      },
+      "1": {
+        "interval": 10000,
+        "trigger_only_on_change": false,
+        "description": "",
+        "topic": "sensors/room_018/laser/power_rydberg_780nm_quibs_b",
+        "unit": "V"
+      }
+    },
+    "date_created": { "$date": "2024-05-27T20:38:24.239Z" },
+    "date_modified": { "$date": "2024-05-27T20:38:24.239Z" },
+    "description": "",
+    "enabled": true,
+    "label": "Industrial Dual Analog In Bricklet 2.0",
+    "on_connect": [
+      {
+        "function": "set_status_led_config",
+        "args": [],
+        "kwargs": { "config": 2 },
+        "timeout": 0.5
+      },
+      {
+        "function": "set_sample_rate",
+        "args": [],
+        "kwargs": { "rate": 7 },
+        "timeout": 0.5
+      }
+    ],
+    "uid": 169143
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "gtuQ51/tSme2qU/mXKAwJg==", "subType": "04" }
+    },
+    "config": {
+      "0": {
+        "interval": 1000,
+        "trigger_only_on_change": false,
+        "description": "",
+        "topic": "sensors/room_018/laser/piezo_rydberg_960nm_quibs_b",
+        "unit": "V"
+      },
+      "1": {
+        "interval": 1000,
+        "trigger_only_on_change": false,
+        "description": "",
+        "topic": "sensors/room_018/laser/pdh_servo_rydberg_960nm_quibs_b",
+        "unit": "V"
+      }
+    },
+    "date_created": { "$date": "2024-06-05T00:02:10.730Z" },
+    "date_modified": { "$date": "2024-06-05T00:02:10.730Z" },
+    "description": "",
+    "enabled": true,
+    "label": "Industrial Dual Analog In Bricklet 2.0",
+    "on_connect": [
+      {
+        "function": "set_status_led_config",
+        "args": [],
+        "kwargs": { "config": 2 },
+        "timeout": 0.5
+      },
+      {
+        "function": "set_sample_rate",
+        "args": [],
+        "kwargs": { "rate": 7 },
+        "timeout": 0.5
+      }
+    ],
+    "uid": 189027
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "0eE1AFp9Tg2Sjvpxkkr8BA==", "subType": "04" }
+    },
+    "config": {
+      "0": {
+        "interval": 60000,
+        "trigger_only_on_change": true,
+        "description": "",
+        "topic": "sensors/room_015/temperature/rb_oven_chamber",
+        "unit": "K"
+      }
+    },
+    "date_created": { "$date": "2024-06-20T15:51:21.118Z" },
+    "date_modified": { "$date": "2024-06-20T15:51:21.118Z" },
+    "description": "",
+    "enabled": true,
+    "label": "Thermocouple Bricklet 2.0",
+    "on_connect": [
+      {
+        "function": "set_configuration",
+        "args": [],
+        "kwargs": { "averaging": 16, "sensor_type": 3, "line_filter": 0 },
+        "timeout": 0.5
+      },
+      {
+        "function": "set_status_led_config",
+        "args": [],
+        "kwargs": { "config": 2 },
+        "timeout": 0.5
+      }
+    ],
+    "uid": 224618
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "QBnjm5nJQ5OAKRGaNqpUmQ==", "subType": "04" }
+    },
+    "config": {
+      "0": {
+        "interval": 60000,
+        "trigger_only_on_change": true,
+        "description": "",
+        "topic": "sensors/room_018/temperature/vacuum_chamber",
+        "unit": "K"
+      }
+    },
+    "date_created": { "$date": "2024-06-25T15:02:15.590Z" },
+    "date_modified": { "$date": "2024-06-25T15:02:15.590Z" },
+    "description": "",
+    "enabled": true,
+    "label": "Temperature vacuum chamber table 3 018",
+    "on_connect": [
+      {
+        "function": "set_moving_average_configuration",
+        "args": [],
+        "kwargs": {
+          "moving_average_length_resistance": 1,
+          "moving_average_length_temperature": 500
+        },
+        "timeout": 0.5
+      },
+      {
+        "function": "set_noise_rejection_filter",
+        "args": [],
+        "kwargs": { "line_filter": 0 },
+        "timeout": 0.5
+      },
+      {
+        "function": "set_wire_mode",
+        "args": [],
+        "kwargs": { "mode": 4 },
+        "timeout": 0.5
+      },
+      {
+        "function": "set_status_led_config",
+        "args": [],
+        "kwargs": { "config": 2 },
+        "timeout": 0.5
+      }
+    ],
+    "uid": 203279
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "10AcIXZKT4GMM+/6Yr7t4g==", "subType": "04" }
+    },
+    "config": {
+      "0": {
+        "interval": 60000,
+        "trigger_only_on_change": true,
+        "description": "",
+        "topic": "sensors/room_018/temperature/table4",
+        "unit": "K"
+      }
+    },
+    "date_created": { "$date": "2024-06-25T15:06:14.341Z" },
+    "date_modified": { "$date": "2024-06-25T15:06:14.341Z" },
+    "description": "",
+    "enabled": true,
+    "label": "Temperature table 4 018",
+    "on_connect": [
+      {
+        "function": "set_moving_average_configuration",
+        "args": [],
+        "kwargs": {
+          "moving_average_length_resistance": 1,
+          "moving_average_length_temperature": 500
+        },
+        "timeout": 0.5
+      },
+      {
+        "function": "set_noise_rejection_filter",
+        "args": [],
+        "kwargs": { "line_filter": 0 },
+        "timeout": 0.5
+      },
+      {
+        "function": "set_wire_mode",
+        "args": [],
+        "kwargs": { "mode": 4 },
+        "timeout": 0.5
+      },
+      {
+        "function": "set_status_led_config",
+        "args": [],
+        "kwargs": { "config": 2 },
+        "timeout": 0.5
+      }
+    ],
+    "uid": 203303
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "RQXT28tOQ2KZ1bFP83D8lg==", "subType": "04" }
+    },
+    "config": {
+      "0": {
+        "interval": 60000,
+        "trigger_only_on_change": true,
+        "description": "",
+        "topic": "sensors/room_015/temperature/rb_oven_nozzle",
+        "unit": "K"
+      }
+    },
+    "date_created": { "$date": "2024-06-28T10:09:45.012Z" },
+    "date_modified": { "$date": "2024-06-28T10:09:45.012Z" },
+    "description": "",
+    "enabled": true,
+    "label": "Temperature Rb oven nozzle ATOMICS",
+    "on_connect": [
+      {
+        "function": "set_configuration",
+        "args": [],
+        "kwargs": { "averaging": 16, "sensor_type": 3, "line_filter": 0 },
+        "timeout": 0.5
+      },
+      {
+        "function": "set_status_led_config",
+        "args": [],
+        "kwargs": { "config": 2 },
+        "timeout": 0.5
+      }
+    ],
+    "uid": 226769
+  },
+  {
+    "_id": {
+      "$binary": { "base64": "A+b0P/7mQCKHO3DeNPGvkg==", "subType": "04" }
+    },
+    "config": {
+      "0": {
+        "interval": 60000,
+        "trigger_only_on_change": true,
+        "description": "",
+        "topic": "sensors/room_015/temperature/rb_oven",
+        "unit": "K"
+      }
+    },
+    "date_created": { "$date": "2024-06-28T10:16:05.493Z" },
+    "date_modified": { "$date": "2024-06-28T10:16:05.493Z" },
+    "description": "",
+    "enabled": true,
+    "label": "Temperature Rb oven ATOMICS",
+    "on_connect": [
+      {
+        "function": "set_configuration",
+        "args": [],
+        "kwargs": { "averaging": 16, "sensor_type": 3, "line_filter": 0 },
+        "timeout": 0.5
+      },
+      {
+        "function": "set_status_led_config",
+        "args": [],
+        "kwargs": { "config": 2 },
+        "timeout": 0.5
+      }
+    ],
+    "uid": 226767
+  }
+]
