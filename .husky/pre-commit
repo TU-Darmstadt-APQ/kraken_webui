@@ -1,9 +1,9 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
- npx prettier --write . "tests/data/*.json"  
+ npx prettier --write .
 
- if ! npx prettier --check . "tests/data/*.json"; then
+ if ! npx prettier --check .; then
    echo "Formatting errors found. Please fix them before committing."
    exit 1
  fi
