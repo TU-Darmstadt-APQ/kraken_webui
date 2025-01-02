@@ -4,7 +4,7 @@
  npx prettier --write . "tests/data/*.json"  
 
  if ! npx prettier --check . "tests/data/*.json"; then
-   echo "Formatting errors found. Please fix them before committing anything."
+   echo "Formatting errors found. Please fix them before committing."
    exit 1
  fi
 
