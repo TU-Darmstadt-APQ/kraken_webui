@@ -4,6 +4,11 @@
  npm run lint
 
  npx prettier --write . 
+
+ if [ $? -ne 0 ]; then
+  echo "Linting or formatting errors found. Please fix them before committing."
+  exit 1
+ fi
  
  #Dont remove this, the tests are not done 
 # npm test
