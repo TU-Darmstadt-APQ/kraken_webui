@@ -1,14 +1,14 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
- npm run lint
-
- npx prettier --write . 
+ npx prettier --write . "tests/data/*.json"  
 
  if [ $? -ne 0 ]; then
   echo "Linting or formatting errors found. Please fix them before committing."
   exit 1
  fi
+
+  npm run lint
  
  #Dont remove this, the tests are not done 
 # npm test
