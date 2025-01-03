@@ -12,7 +12,7 @@ const tinkerforgeConfigSchema = z.record(
   }),
 );
 
-// Defines the schema for the Tinkerforge Sensor
+// Defines the schema for a Tinkerforge sensor
 const tinkerforgeSensorSchema = z.object({
   _id: z.string().uuid(),
   date_created: z.object({
