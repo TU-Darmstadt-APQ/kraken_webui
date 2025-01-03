@@ -1,7 +1,7 @@
 import { z } from "zod";
 
-// Defines the schema for the config object
-const configSchema = z.record(
+// Defines the schema for the sensor configuration used by the Tinkerforge sensors
+const tinkerforgeConfigSchema = z.record(
   z.string(),
   z.object({
     interval: z.number(),
