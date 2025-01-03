@@ -1,4 +1,3 @@
-[
   {
     "_id": {
       "$binary": { "base64": "sXrdA/6IS3SbJam0xY2k7g==", "subType": "04" }
@@ -34,4 +33,3 @@
       }
     ]
   }
-]

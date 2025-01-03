@@ -14,7 +14,12 @@ const tinkerforgeConfigSchema = z.record(
 
 // Defines the schema for a Tinkerforge sensor
 const tinkerforgeSensorSchema = z.object({
-  _id: z.string().uuid(),
+  _id: z.object({
+    $binary: z.object({
+      base64: z.string(),
+      subType: z.string(),
+    }),
+  }),
   date_created: z.object({
     $date: z.string().datetime(),
   }),
