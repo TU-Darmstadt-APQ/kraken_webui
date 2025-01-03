@@ -46,6 +46,7 @@ const PostFilter: React.FC<PostFilterProps> = ({filter, setFilter}) => {
           placeholder="Search for..." // Placeholder text for the input field
           tooltipPosition='bottom'
           error={error || undefined}
+          setError={setError}
         />
 
         <div className={styles['filter-options']}>
