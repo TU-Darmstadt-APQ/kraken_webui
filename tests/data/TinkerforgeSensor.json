@@ -1,35 +1,35 @@
-  {
-    "_id": {
-      "$binary": { "base64": "sXrdA/6IS3SbJam0xY2k7g==", "subType": "04" }
+{
+  "_id": {
+    "$binary": { "base64": "sXrdA/6IS3SbJam0xY2k7g==", "subType": "04" }
+  },
+  "date_created": { "$date": "2021-10-24T10:30:13.080Z" },
+  "date_modified": { "$date": "2023-05-29T21:15:22.086Z" },
+  "enabled": true,
+  "label": null,
+  "description": "",
+  "uid": 125633,
+  "config": {
+    "0": {
+      "interval": 2000,
+      "trigger_only_on_change": false,
+      "description": "",
+      "topic": "sensors/server/temperature",
+      "unit": "K"
     },
-    "date_created": { "$date": "2021-10-24T10:30:13.080Z" },
-    "date_modified": { "$date": "2023-05-29T21:15:22.086Z" },
-    "enabled": true,
-    "label": null,
-    "description": "",
-    "uid": 125633,
-    "config": {
-      "0": {
-        "interval": 2000,
-        "trigger_only_on_change": false,
-        "description": "",
-        "topic": "sensors/server/temperature",
-        "unit": "K"
-      },
-      "1": {
-        "interval": 1000,
-        "trigger_only_on_change": false,
-        "description": "",
-        "topic": "sensors/server/humidity",
-        "unit": "%rH"
-      }
-    },
-    "on_connect": [
-      {
-        "function": "set_status_led_config",
-        "args": [],
-        "kwargs": { "config": 2 },
-        "timeout": null
-      }
-    ]
-  }
+    "1": {
+      "interval": 1000,
+      "trigger_only_on_change": false,
+      "description": "",
+      "topic": "sensors/server/humidity",
+      "unit": "%rH"
+    }
+  },
+  "on_connect": [
+    {
+      "function": "set_status_led_config",
+      "args": [],
+      "kwargs": { "config": 2 },
+      "timeout": null
+    }
+  ]
+}

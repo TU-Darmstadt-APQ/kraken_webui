@@ -17,8 +17,7 @@ describe("TinkerforgeSensor Schema Validation", () => {
 
   it("should throw an error for invalid TinkerforgeSensor data", () => {
     // Create invalid data (e.g., missing required field, incorrect type)
-    const invalidTinkerforgeSensorData = {
-    };
+    const invalidTinkerforgeSensorData = {};
 
     // Use expect to assert that an error is thrown
     expect(() => {
