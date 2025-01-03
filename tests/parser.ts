@@ -5,7 +5,7 @@ import tinkerforgeSensorSchema from "@/app/schema/TinkerforgeSensor.schema";
 
 // Load dummy data for a TinkerforgeSensor from a file to test the schema validator
 const tinkerforgeSensorData = JSON.parse(
-  fs.readFileSync("./data/tinkerforgeSensorData.json", "utf8"), // Read the JSON data from the file and parse it into a JavaScript object
+  fs.readFileSync("./tests/data/TinkerforgeSensor.json", "utf8"), // Read the JSON data from the file and parse it into a JavaScript object
 );
 
 try {
