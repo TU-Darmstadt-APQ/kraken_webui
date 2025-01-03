@@ -17,7 +17,7 @@ import tooltipStyles from './../tooltip/MyTooltip.module.css';
 interface MyInputProps extends InputHTMLAttributes<HTMLInputElement> {
   error?: string; // Optional Text for Error Tooltip
   tooltipPosition?: 'top' | 'bottom' | 'left' | 'right'; // Optional Field for Tooltip orientation
-  setError: (value: string | null) => void; // Function to reset the error (or delete the text in state)
+  setError?: (value: string | null) => void; // Function to reset the error (or delete the text in state)
 }
 
 const MyInput = React.forwardRef(({ error, setError, tooltipPosition = 'bottom', ...props }: MyInputProps, ref: ForwardedRef<HTMLInputElement>) => {
@@ -32,7 +32,7 @@ const MyInput = React.forwardRef(({ error, setError, tooltipPosition = 'bottom',
           onFocus={() => setIsFocused(true)} // the input field is used
           onBlur={() => {
             setIsFocused(false) // the input field is no longer used
-            setError(null)
+            if(setError) setError(null)
           }} 
         />
         
