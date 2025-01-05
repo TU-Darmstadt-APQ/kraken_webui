@@ -1,3 +1,9 @@
+----
+
+**Please delete everthing below including this line before submitting your pull request!**
+
+Every pull request should follow the guidelines layed out below. There are requirements for formatting the [title](#title) and the contents of the [description](#description) box. Please see below for details and examples of the formatting.
+
 # Title
 
 ---
