@@ -1,3 +1,13 @@
+/**
+ * Unit tests for the `TableItem` component.
+ *
+ * The `TableItem` component represents a row in a table displaying post details and includes a "Delete" action.
+ *
+ * Tests include:
+ * - Verifying the `remove` callback is called with the correct post data when the "Delete" button is clicked.
+ * - Ensuring the component integrates properly within a table structure.
+ */
+
 import { render, screen, fireEvent } from "@testing-library/react";
 import TableItem from "@/app/components/TableItem";
 import { Post } from "@/app/types";
