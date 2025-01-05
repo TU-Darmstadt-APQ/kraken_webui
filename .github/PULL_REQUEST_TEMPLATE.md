@@ -21,7 +21,7 @@ Please make sure the title of the pull request follows the [Conventional Commits
 
 #### Breaking changes example
 
-`BREAKING CHANGE: use JavaScript features not available in Node 6`
+`BREAKING CHANGE: Requires JavaScript features not available in Node version 6`
 
 # Description
 
