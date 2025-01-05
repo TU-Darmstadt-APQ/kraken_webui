@@ -1,13 +1,13 @@
 .filter-container {
-  display: flex;            /* Arrange elements in a row */
-  flex-direction: row;      /* Ensure items are in a horizontal line */
-  align-items: center;      /* Vertically align items to the center */
-  gap: 10px;                /* Space between elements */
-  width: auto;              /* Set automatic width */
+  display: flex; /* Arrange elements in a row */
+  flex-direction: row; /* Ensure items are in a horizontal line */
+  align-items: center; /* Vertically align items to the center */
+  gap: 10px; /* Space between elements */
+  width: auto; /* Set automatic width */
 }
 
 .filter-container input {
-  width: auto;         
+  width: auto;
   padding: 4px 6px;
   font-size: 12px;
 }
