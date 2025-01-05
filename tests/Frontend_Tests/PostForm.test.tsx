@@ -1,7 +1,18 @@
+/**
+ * Unit tests for the `PostForm` component.
+ *
+ * The `PostForm` component provides a form for creating or editing posts.
+ *
+ * Tests include:
+ * - Rendering the form with the correct input fields and verifying user input changes.
+ * - Verifying the `create` function is called with the correct data when the form is submitted.
+ * - Ensuring proper cleanup after each test to avoid side effects.
+ */
+
 import React from "react";
 import { render, screen, fireEvent, cleanup } from "@testing-library/react";
-import PostForm from "@/app/components/PostForm"; // Adjust the import path accordingly
-import "@testing-library/jest-dom"; // Import jest-dom to enable matchers like `toBeInTheDocument`
+import PostForm from "@/app/components/PostForm";
+import "@testing-library/jest-dom";
 
 // Mocking the create and edit functions passed as props
 const mockCreate = jest.fn();
