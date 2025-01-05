@@ -95,7 +95,9 @@ const PostList: React.FC<PostListProps> = ({
               <MyToggle
                 key={columnKey} //key is used in the map call to give each element a unique identification. It is not passed on to MyToggle as a prop.
                 label={columnKey}
-                checked={selectedColumns[columnKey as keyof typeof selectedColumns]}
+                checked={
+                  selectedColumns[columnKey as keyof typeof selectedColumns]
+                }
                 onChange={(e) =>
                   setSelectedColumns((prev) => ({
                     ...prev,
