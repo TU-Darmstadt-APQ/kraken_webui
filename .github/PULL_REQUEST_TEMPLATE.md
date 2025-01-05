@@ -30,4 +30,4 @@ Please make sure the title of the pull request follows the [Conventional Commits
 What should this pull request do?
 
 - Adding a new feature?
-- A new library? Then also why a new library? What does benefits does it add?
+- A new library? Then explain what this particular library does and what benefits it adds?
