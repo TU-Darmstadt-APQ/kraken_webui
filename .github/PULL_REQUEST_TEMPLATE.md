@@ -17,7 +17,7 @@ Please make sure the title of the pull request follows the [Conventional Commits
 
 #### feat example
 
-`feat(backend): adding initial nextjs setup`
+`feat(backend): added initial nextjs setup`
 
 #### Breaking changes example
 
