@@ -11,7 +11,7 @@ const ConfigEditorModal: React.FC<ConfigEditorModalProps> = ({
   const [key, setKey] = useState<string>(""); // state for Key
   const [value, setValue] = useState<string>(""); // state for Value
 
-  const addConfigEntry = (e) => {
+  const addConfigEntry = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     if (key.trim() && value.trim()) {
       setConfig({ ...config, [key]: value });

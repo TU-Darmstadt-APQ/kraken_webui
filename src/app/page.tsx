@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { usePosts } from "./hooks/usePosts";
 
-import { Post } from "./types";
+import { Post, Filter } from "./types";
 import MyHeader from "./components/UI/header/MyHeader";
 import MyContent from "./components/MyContent";
 
@@ -125,11 +125,7 @@ function Page() {
    * @property {keyof Post | ''} sort - Specifies the field to sort the posts by (e.g., 'title', 'id').
    * @property {string} query - Text for searching/filtering posts.
    */
-  const [filter, setFilter] = useState<{
-    sort: keyof Post | "";
-    query: string;
-    searchField: keyof Post | "all"; //save the current searchfield
-  }>({ sort: "", query: "", searchField: "all" });
+  const [filter, setFilter] = useState<Filter>({ sort: "", query: "", searchField: "all" });
 
   /**
    * State to manage the visibility of the modal window.

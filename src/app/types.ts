@@ -31,7 +31,7 @@ export interface DateType {
 export interface Filter {
   sort: keyof Post | ""; // The 'sort' can be a key from Post or an empty string
   query: string; // Search keyword
-  searchField: keyof Post | ""; // Current Searchfield
+  searchField: keyof Post | "all"; // Current Searchfield
 }
 
 // Type the props of the PostFilter component
@@ -57,7 +57,7 @@ export interface MySelectProps {
 export interface PostFormProps {
   create: (post: Post) => void;
   edit: (post: Post) => void;
-  postToEdit: Post;
+  postToEdit: Post | null;
 }
 
 export interface ModalWindowProps {
@@ -100,7 +100,7 @@ export interface MyContentProps {
   removePost: (post: Post) => void;
   editPost: (post: Post) => void;
   handleEdit: (post: Post) => void;
-  postToEdit: Post;
+  postToEdit: Post | null;
   listTitle: string;
 }
 
@@ -111,12 +111,8 @@ export interface ConfigEditorModalProps {
 
 export interface MyHeaderProps {
   addingNewSensor: () => void;
-  filter: { sort: keyof Post | ""; query: string };
-  setFilter: (filter: {
-    sort: keyof Post | "";
-    query: string;
-    searchField: keyof Post | "";
-  }) => void;
+  filter: Filter;
+  setFilter: React.Dispatch<React.SetStateAction<Filter>>;
 }
 
 export interface ToggleProps {
