@@ -19,6 +19,7 @@ export interface Post {
   sad?: number;
   driver: string;
   sensor_type?: string;
+  host?: string;
 }
 export interface DateType {
   day?: number;
