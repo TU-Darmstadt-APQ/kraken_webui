@@ -1,4 +1,4 @@
-----
+---
 
 **Please delete everthing below including this line before submitting your pull request!**
 
@@ -7,6 +7,7 @@ Every pull request should follow the guidelines layed out below. There are requi
 # Title
 
 Please make sure the title of the pull request follows the [Conventional Commits](https://www.conventionalcommits.org) specification:<br>
+
 ```
 <type>[optional scope]: <description>
 ```
