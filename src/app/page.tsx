@@ -7,14 +7,13 @@ import { Post } from "./types";
 import MyHeader from "./components/UI/header/MyHeader";
 import MyContent from "./components/MyContent";
 
-
 function Page() {
   // Placeholder data for testing functionality
   const [posts, setPosts] = useState<Post[]>([
     {
       id: 1,
-      title: 'Lorem ispum',
-      description: 'Description',
+      title: "Lorem ispum",
+      description: "Description",
       date_created: {
         day: 21,
         month: 11,
@@ -28,24 +27,24 @@ function Page() {
         nanoseconds: 0.0,
       },
       enabled: true,
-      label: 'XXX',
-      uuid: '125633',
+      label: "XXX",
+      uuid: "125633",
       config: {
         theme: "dark",
         notifications: true,
       },
-      on_connect: 'etwas anderes',
+      on_connect: "etwas anderes",
       topic: "sensor",
       unit: "FB20",
       driver: "Tinkerforge",
       pad: 2,
       sad: 2,
-      port: 8
+      port: 8,
     },
     {
       id: 2,
-      title: 'A_Thinkpad',
-      description: 'Laptop-sensor',
+      title: "A_Thinkpad",
+      description: "Laptop-sensor",
       date_created: {
         day: 22,
         month: 12,
@@ -59,24 +58,24 @@ function Page() {
         nanoseconds: 0.0,
       },
       enabled: false,
-      label: 'YYY',
-      uuid: '63354645',
+      label: "YYY",
+      uuid: "63354645",
       config: {
         theme: "light",
         notifications: false,
       },
-      on_connect: 'etwas anderes',
+      on_connect: "etwas anderes",
       topic: "laptop_sensor",
       unit: "FB20",
       driver: "Tinkerforge",
       pad: 2,
       sad: 2,
-      port: 8
+      port: 8,
     },
     {
       id: 3,
-      title: 'Xiaomi',
-      description: 'none',
+      title: "Xiaomi",
+      description: "none",
       date_created: {
         day: 1,
         month: 1,
@@ -90,20 +89,20 @@ function Page() {
         nanoseconds: 0.0,
       },
       enabled: true,
-      label: 'ZZZ',
-      uuid: '3',
+      label: "ZZZ",
+      uuid: "3",
       config: {
         theme: "blue",
         notifications: true,
       },
-      on_connect: 'etwas anderes',
+      on_connect: "etwas anderes",
       topic: "smartphone_sensor",
       unit: "FB8",
       driver: "Tinkerforge",
       pad: 3,
       sad: 3,
-      port: 9
-    }
+      port: 9,
+    },
   ]);
 
   /**
@@ -126,12 +125,11 @@ function Page() {
    * @property {keyof Post | ''} sort - Specifies the field to sort the posts by (e.g., 'title', 'id').
    * @property {string} query - Text for searching/filtering posts.
    */
-  const [filter, setFilter] = useState<{ 
-    sort: keyof Post | '';
+  const [filter, setFilter] = useState<{
+    sort: keyof Post | "";
     query: string;
-    searchField: keyof Post | 'all' //save the current searchfield
-  }>({sort: '', query: '', searchField: 'all'});
-
+    searchField: keyof Post | "all"; //save the current searchfield
+  }>({ sort: "", query: "", searchField: "all" });
 
   /**
    * State to manage the visibility of the modal window.
@@ -144,7 +142,12 @@ function Page() {
    * `usePosts` returns a copy (!) of the posts array based on the filter criteria,
    * without modifying the original state.
    */
-  const sortedAndSearchedPosts = usePosts(posts, filter.sort, filter.query, filter.searchField);
+  const sortedAndSearchedPosts = usePosts(
+    posts,
+    filter.sort,
+    filter.query,
+    filter.searchField,
+  );
 
   const [postToEdit, setPostToEdit] = useState<Post | null>(null);
 
@@ -165,8 +168,8 @@ function Page() {
    * @param {Post} post - The post to be removed.
    */
   const removePost = (post: Post) => {
-    setPosts(posts.filter(p => p.id != post.id));
-  }
+    setPosts(posts.filter((p) => p.id != post.id));
+  };
 
   const editPost = (updatedPost: Post) => {
     setPosts(posts.map((p) => (p.id === updatedPost.id ? updatedPost : p)));
@@ -180,13 +183,16 @@ function Page() {
 
   return (
     <div className="App">
-      <MyHeader 
-        addingNewSensor={() => {setModal(true); setPostToEdit(null);}}
+      <MyHeader
+        addingNewSensor={() => {
+          setModal(true);
+          setPostToEdit(null);
+        }}
         filter={filter}
         setFilter={setFilter}
       />
 
-      <MyContent 
+      <MyContent
         modal={modal}
         setModal={setModal}
         sortedAndSearchedPosts={sortedAndSearchedPosts}
@@ -195,7 +201,7 @@ function Page() {
         editPost={editPost}
         handleEdit={handleEdit}
         postToEdit={postToEdit}
-        listTitle={"The list of all sensors"} 
+        listTitle={"The list of all sensors"}
       />
     </div>
   );

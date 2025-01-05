@@ -1,7 +1,6 @@
 import React, { ForwardedRef, InputHTMLAttributes } from "react";
-import classes from './MyInput.module.css';
-import tooltipStyles from './../tooltip/MyTooltip.module.css';
-
+import classes from "./MyInput.module.css";
+import tooltipStyles from "./../tooltip/MyTooltip.module.css";
 
 /**
  * Custom input component that supports all standard HTML input attributes.
@@ -16,23 +15,32 @@ import tooltipStyles from './../tooltip/MyTooltip.module.css';
  */
 interface MyInputProps extends InputHTMLAttributes<HTMLInputElement> {
   error?: string; // Optional Text for Error Tooltip
-  tooltipPosition?: 'top' | 'bottom' | 'left' | 'right'; // Optional Field for Tooltip orientation
+  tooltipPosition?: "top" | "bottom" | "left" | "right"; // Optional Field for Tooltip orientation
 }
 
-const MyInput = React.forwardRef(({ error, tooltipPosition = 'bottom', ...props }: MyInputProps, ref: ForwardedRef<HTMLInputElement>) => {
+const MyInput = React.forwardRef(
+  (
+    { error, tooltipPosition = "bottom", ...props }: MyInputProps,
+    ref: ForwardedRef<HTMLInputElement>,
+  ) => {
     return (
-      <div style={{ position: 'relative' }}>
+      <div style={{ position: "relative" }}>
         <input className={classes.myInput} ref={ref} {...props} />
-        
+
         {/* Toolttp for error */}
         {error && (
-          <div className={`${tooltipStyles.tooltip} ${tooltipStyles[tooltipPosition]}`}>
+          <div
+            className={`${tooltipStyles.tooltip} ${tooltipStyles[tooltipPosition]}`}
+          >
             {error}
-            <div className={`${tooltipStyles.arrow} ${tooltipStyles[`arrow-${tooltipPosition}`]}`} />
+            <div
+              className={`${tooltipStyles.arrow} ${tooltipStyles[`arrow-${tooltipPosition}`]}`}
+            />
           </div>
         )}
       </div>
     );
-  });
+  },
+);
 
 export default MyInput;

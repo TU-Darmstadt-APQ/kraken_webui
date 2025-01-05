@@ -1,6 +1,6 @@
 import React from "react";
 import MyButton from "./UI/button/MyButton";
-import styles from './../styles/PostItem.module.css';
+import styles from "./../styles/PostItem.module.css";
 
 import { PostItemProps } from "@/app/types";
 
@@ -14,41 +14,39 @@ import { PostItemProps } from "@/app/types";
  * @param {(post: object) => void} props.remove - Callback to handle post removal.
  */
 const PostItem: React.FC<PostItemProps> = (props) => {
-    return(
-        <div className={styles["post"]}>
-          {/* Post content: number, title, and description */}
-          <div className="post__content">
-            <strong>{props.number}. {props.post.title}</strong>
-            <div>
-                {props.post.description}
-            </div>
-          </div>
+  return (
+    <div className={styles["post"]}>
+      {/* Post content: number, title, and description */}
+      <div className="post__content">
+        <strong>
+          {props.number}. {props.post.title}
+        </strong>
+        <div>{props.post.description}</div>
+      </div>
 
-          {/* Action buttons: Edit and Delete */}
-          <div className="post__btns">
-            <MyButton onClick={() => props.edit(props.post)}>
-              <img 
-                src="/edit.png" 
-                alt="Edit" 
-                //className="icon-button" 
-                width={20} 
-                height={20} 
-              />
-            </MyButton>
-            <MyButton onClick={() => props.remove(props.post)}>
-              <img 
-                src="/trashCan.png" 
-                alt="Delete" 
-                //className="icon-button" 
-                width={20} 
-                height={20} 
-              />
-            </MyButton>
-          </div>
-
-
-        </div>
-    );
+      {/* Action buttons: Edit and Delete */}
+      <div className="post__btns">
+        <MyButton onClick={() => props.edit(props.post)}>
+          <img
+            src="/edit.png"
+            alt="Edit"
+            //className="icon-button"
+            width={20}
+            height={20}
+          />
+        </MyButton>
+        <MyButton onClick={() => props.remove(props.post)}>
+          <img
+            src="/trashCan.png"
+            alt="Delete"
+            //className="icon-button"
+            width={20}
+            height={20}
+          />
+        </MyButton>
+      </div>
+    </div>
+  );
 };
 
 export default PostItem;

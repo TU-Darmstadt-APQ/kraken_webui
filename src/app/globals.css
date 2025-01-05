@@ -15,5 +15,5 @@ body {
 
 ::selection {
   background-color: #35bfa4; /* Background color of selected text (Chrome, Firefox, Safari) */
-  color: #ffffff;           /* Example text color */
+  color: #ffffff; /* Example text color */
 }

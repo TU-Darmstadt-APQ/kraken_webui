@@ -2,23 +2,23 @@ import React from "react"; // Add import for React
 import { ReactNode } from "react";
 
 export interface Post {
-    id: number;
-    title?: string;
-    description?: string; // All lines marked with a question mark are optional (or do not have to be included when the object is created)
-    date_created: DateType;
-    date_modified: DateType;
-    enabled?: boolean;
-    label?: string;
-    uuid: string;
-    config?: Record<string, unknown>; // Flexible configuration (object with any values)
-    on_connect?: string;
-    topic: string;
-    unit: string;
-    port?: number;
-    pad?: number;
-    sad?: number;
-    driver: string;
-    sensor_type?: string;
+  id: number;
+  title?: string;
+  description?: string; // All lines marked with a question mark are optional (or do not have to be included when the object is created)
+  date_created: DateType;
+  date_modified: DateType;
+  enabled?: boolean;
+  label?: string;
+  uuid: string;
+  config?: Record<string, unknown>; // Flexible configuration (object with any values)
+  on_connect?: string;
+  topic: string;
+  unit: string;
+  port?: number;
+  pad?: number;
+  sad?: number;
+  driver: string;
+  sensor_type?: string;
 }
 export interface DateType {
   day?: number;
@@ -29,9 +29,9 @@ export interface DateType {
 
 // Define the interface for the filter
 interface Filter {
-  sort: keyof Post | ''; // The 'sort' can be a key from Post or an empty string
+  sort: keyof Post | ""; // The 'sort' can be a key from Post or an empty string
   query: string; // Search keyword
-  searchField: keyof Post | ''; // Current Searchfield
+  searchField: keyof Post | ""; // Current Searchfield
 }
 
 // Type the props of the PostFilter component
@@ -72,24 +72,24 @@ export interface MyButtonProps {
 }
 
 export interface PostListProps {
-  posts: Post[];               // Array of Posts
-  listTitle: string;           // Title of list
+  posts: Post[]; // Array of Posts
+  listTitle: string; // Title of list
   remove: (post: Post) => void; // Function that deletes the post
   edit: (post: Post) => void;
 }
 
 export interface TableItemProps {
-  post: Post;                   // Post object
+  post: Post; // Post object
   remove: (post: Post) => void; // Function that deletes the post
   edit: (post: Post) => void;
-  selectedColumns: {[key: string]: boolean};
+  selectedColumns: { [key: string]: boolean };
 }
 
 export interface PostItemProps {
-  post: Post;                   // Post object
+  post: Post; // Post object
   remove: (post: Post) => void; // Function that deletes the post
   edit: (post: Post) => void;
-  number: number;               // Order of the post (optional)
+  number: number; // Order of the post (optional)
 }
 
 export interface MyContentProps {
@@ -111,8 +111,12 @@ export interface ConfigEditorModalProps {
 
 export interface MyHeaderProps {
   addingNewSensor: () => void;
-  filter: { sort: keyof Post | ''; query: string }
-  setFilter: (filter: { sort: keyof Post | ''; query: string; searchField: keyof Post | '' }) => void;
+  filter: { sort: keyof Post | ""; query: string };
+  setFilter: (filter: {
+    sort: keyof Post | "";
+    query: string;
+    searchField: keyof Post | "";
+  }) => void;
 }
 
 export interface ToggleProps {
@@ -124,5 +128,5 @@ export interface ToggleProps {
 export interface MyTooltipProps {
   infoText: string;
   children: React.ReactNode;
-  position?: 'top' | 'bottom' | 'left' | 'right' | 'bottom-right' | 'top-right'; // possible direction for tooltip appereance
+  position?: "top" | "bottom" | "left" | "right" | "bottom-right" | "top-right"; // possible direction for tooltip appereance
 }
