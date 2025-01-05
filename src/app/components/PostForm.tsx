@@ -112,26 +112,25 @@ const PostForm: React.FC<PostFormProps> = ({ create, edit, postToEdit }) => {
 
     // Check for required fields
     if (!post.driver.trim()) {
-      alert("The `driver` cannot be empty.");
+      alert("The `driver` must not be empty.");
       return;
     }
     if (!post.topic.trim()) {
-      alert("The `topic` cannot be empty.");
+      alert("The `topic` must not be empty.");
       return;
     }
     if (!post.unit.trim()) {
-      alert("The `unit` cannot be empty.");
+      alert("The `unit` must not be empty.");
       return;
     }
 
-    // Generate a unique ID based on the current timestamp
+    
     // We change the state indirectly. We create a new array where we write our old one. And at the end comes the new element
 
     if (postToEdit) {
       edit({ ...post, date_modified: getCurrentDate() });
-      //create({...post, id: Date.now()});
     } else {
-      create({ ...post, id: Date.now() });
+      create({ ...post, id: Date.now() }); // Generate a unique ID based on the current timestamp
     }
 
     setPost({

@@ -28,7 +28,7 @@ function Page() {
       },
       enabled: true,
       label: "XXX",
-      uuid: "125633",
+      uuid: "82fcb871-3614-4d4f-bc8b-f54d61dbe872",
       config: {
         theme: "dark",
         notifications: true,
@@ -59,7 +59,7 @@ function Page() {
       },
       enabled: false,
       label: "YYY",
-      uuid: "63354645",
+      uuid: "df726eeb-1115-4a03-84d1-23f5e1ae37d7",
       config: {
         theme: "light",
         notifications: false,
@@ -90,7 +90,7 @@ function Page() {
       },
       enabled: true,
       label: "ZZZ",
-      uuid: "3",
+      uuid: "2919b938-b972-49f4-97f7-65e966a39293",
       config: {
         theme: "blue",
         notifications: true,
