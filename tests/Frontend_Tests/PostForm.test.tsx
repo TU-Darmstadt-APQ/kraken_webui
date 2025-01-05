@@ -102,8 +102,8 @@ describe("PostForm component", () => {
         year: expect.any(Number),
         nanoseconds: expect.any(Number),
       }),
-      config: {}, 
-      enabled: false, 
+      config: {},
+      enabled: false,
       label: "",
       on_connect: undefined,
       pad: 0,
@@ -113,6 +113,8 @@ describe("PostForm component", () => {
 
     // Check if the create function is called
     expect(mockCreate).toHaveBeenCalledTimes(1);
-    expect(mockCreate).toHaveBeenCalledWith(expect.objectContaining(expectedPost));
+    expect(mockCreate).toHaveBeenCalledWith(
+      expect.objectContaining(expectedPost),
+    );
   });
 });

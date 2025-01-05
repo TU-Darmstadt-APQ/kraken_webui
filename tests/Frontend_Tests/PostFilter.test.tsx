@@ -37,18 +37,30 @@ describe("PostFilter", () => {
 
   it("should update the query when typed into the input", () => {
     fireEvent.change(input, { target: { value: "test" } });
-    expect(setFilter).toHaveBeenCalledWith({ query: "test", sort: "title", searchField: "" });
+    expect(setFilter).toHaveBeenCalledWith({
+      query: "test",
+      sort: "title",
+      searchField: "",
+    });
   });
 
   it("should update the sort when a new option is selected", () => {
     fireEvent.change(select, { target: { value: "description" } });
-    expect(setFilter).toHaveBeenCalledWith({ query: "", sort: "description", searchField: "" });
+    expect(setFilter).toHaveBeenCalledWith({
+      query: "",
+      sort: "description",
+      searchField: "",
+    });
   });
 
   it("should update the searchField when a new option is selected", () => {
     fireEvent.change(searchFieldSelect, { target: { value: "title" } });
 
-    expect(setFilter).toHaveBeenCalledWith({ query: "", sort: "title", searchField: "title" });
+    expect(setFilter).toHaveBeenCalledWith({
+      query: "",
+      sort: "title",
+      searchField: "title",
+    });
   });
 
   it("should not call setFilter if no changes are made", () => {

@@ -29,7 +29,7 @@ const mockPost = {
   uuid: "uuid-1234",
   topic: "Topic",
   unit: "Unit",
-  driver: "Driver"
+  driver: "Driver",
 };
 
 const mockNumber = 1;
@@ -41,7 +41,12 @@ afterEach(() => {
 describe("PostItem component", () => {
   it("renders correctly with post data", () => {
     render(
-      <PostItem number={mockNumber} post={mockPost} remove={mockRemove} edit={mockEdit}/>,
+      <PostItem
+        number={mockNumber}
+        post={mockPost}
+        remove={mockRemove}
+        edit={mockEdit}
+      />,
     );
 
     // Check if title and description are displayed
@@ -51,7 +56,12 @@ describe("PostItem component", () => {
 
   it("calls remove function when delete button is clicked", () => {
     render(
-      <PostItem number={mockNumber} post={mockPost} remove={mockRemove} edit={mockEdit}/>,
+      <PostItem
+        number={mockNumber}
+        post={mockPost}
+        remove={mockRemove}
+        edit={mockEdit}
+      />,
     );
 
     const deleteButton = screen.getByAltText("Delete");
@@ -65,7 +75,12 @@ describe("PostItem component", () => {
   //  Check if Edit button is rendered
   it('renders the "Edit" button', () => {
     render(
-      <PostItem number={mockNumber} post={mockPost} remove={mockRemove} edit={mockEdit}/>,
+      <PostItem
+        number={mockNumber}
+        post={mockPost}
+        remove={mockRemove}
+        edit={mockEdit}
+      />,
     );
     const editButton = screen.getByAltText("Edit");
     expect(editButton).toBeInTheDocument(); // Ensure the "Edit" button is rendered
@@ -74,7 +89,12 @@ describe("PostItem component", () => {
   //  Check if Delete button is rendered
   it('renders the "Delete" button', () => {
     render(
-      <PostItem number={mockNumber} post={mockPost} remove={mockRemove} edit={mockEdit}/>,
+      <PostItem
+        number={mockNumber}
+        post={mockPost}
+        remove={mockRemove}
+        edit={mockEdit}
+      />,
     );
     const deleteButton = screen.getByAltText("Delete");
     expect(deleteButton).toBeInTheDocument(); // Ensure the "Delete" button is rendered
@@ -83,7 +103,12 @@ describe("PostItem component", () => {
   //  Check if title and description are inside the right elements
   it("renders post title and description inside the correct elements", () => {
     render(
-      <PostItem number={mockNumber} post={mockPost} remove={mockRemove} edit={mockEdit}/>,
+      <PostItem
+        number={mockNumber}
+        post={mockPost}
+        remove={mockRemove}
+        edit={mockEdit}
+      />,
     );
 
     const titleElement = screen.getByText("1. Test Post Title");
