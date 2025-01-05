@@ -47,7 +47,7 @@ jobs:
         run: npm ci
 
       - name: Run Prettier on changed files
-        run: npx prettier --check $(git diff --name-only HEAD^)
+        run: npx prettier --check $(git diff --name-only HEAD^ --diff-filter d)
 
   test:
     needs:
