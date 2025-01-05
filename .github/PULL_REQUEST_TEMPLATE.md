@@ -1,6 +1,6 @@
 # Title
 
-Please make sure the title of the pull request follows the semver convention.
+Please make sure the title of the pull request follows the [Conventional Commits](https://www.conventionalcommits.org) specification.
 
 ## fix
 
