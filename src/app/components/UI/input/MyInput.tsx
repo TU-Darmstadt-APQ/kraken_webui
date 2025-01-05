@@ -6,7 +6,7 @@ import tooltipStyles from './../tooltip/MyTooltip.module.css';
 /**
  * Custom input component that supports all standard HTML input attributes.
  *
- * This component enhances the native `<input>` element by adding custom styling 
+ * This component enhances the native `<input>` element by adding custom styling
  * and supports React's `ref` forwarding for easier DOM manipulation.
  *
  * @component

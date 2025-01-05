@@ -9,7 +9,6 @@ import MyContent from "./components/MyContent";
 
 
 function Page() {
-
   // Placeholder data for testing functionality
   const [posts, setPosts] = useState<Post[]>([
     {
@@ -107,7 +106,6 @@ function Page() {
     }
   ]);
 
-
   /**
    * In React, there are two main approaches to interact with DOM elements:
    * 1. Controlled components - State is fully managed by React.
@@ -115,12 +113,10 @@ function Page() {
    * Here, we use the "controlled component" approach.
    */
 
-
   /*
   we define individual states for different components such as: [current state, function for changing the state]
   by manipulating these states, the page is redisplayed (or individual parts of the website)
   */
-  
 
   /**
    * This state manages the filter settings.
@@ -141,12 +137,11 @@ function Page() {
    * State to manage the visibility of the modal window.
    * @param modal - `true` means the modal is visible, `false` means it is hidden.
    */
-  const [modal, setModal]  = useState(false)
-
+  const [modal, setModal] = useState(false);
 
   /**
    * A sorted and filtered version of the posts.
-   * `usePosts` returns a copy (!) of the posts array based on the filter criteria, 
+   * `usePosts` returns a copy (!) of the posts array based on the filter criteria,
    * without modifying the original state.
    */
   const sortedAndSearchedPosts = usePosts(posts, filter.sort, filter.query, filter.searchField);
@@ -162,7 +157,7 @@ function Page() {
   const createPost = (newPost: Post) => {
     setPosts([...posts, newPost]);
     setModal(false);
-  }
+  };
 
   /**
    * Removes a post from the list based on its `id`.

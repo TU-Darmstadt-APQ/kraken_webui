@@ -1,0 +1,66 @@
+name: Bug Report
+description: File a bug report.
+title: "[Bug]: "
+labels: ["bug"]
+projects: ["TU-Darmstadt-APQ/kraken_webui"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out this bug report!
+  - type: textarea
+    id: expected-behavior
+    attributes:
+      label: What is the expected behavior?
+      description: Please reference the code if possible. If someone would ask you for help it would be nice to have a neat overview right?
+      placeholder: What did you expect from the code/function? What was supposed to happen?
+      value: "What should have happened..."
+    validations:
+      required: true
+  - type: textarea
+    id: actual-behavior
+    attributes:
+      label: What is the actual behavior?
+      description: Please reference the code if possible. If someone would ask you for help it would be nice to have a neat overview right?
+      placeholder: Tell us what you see!
+      value: "What happened instead of the expected behavior..."
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant log output
+      value: "Relevant logs..."
+      description: Please copy and paste any relevant log output. This will be automatically formatted into code, so no need for backticks.
+      render: shell
+  - type: textarea
+    id: what-was-tried
+    attributes:
+      label: What did you try?
+      description: You probably did more than just trying the same thing again expecting a different behavior... right?
+      placeholder: Tell us what you did!
+      value: "I've tried..."
+    validations:
+      required: true
+  - type: textarea
+    id: my-environment
+    attributes:
+      label: What is your environment?
+      description: >
+        Tell us about your enviroment if you don't want to hear "well it works on my machine."
+
+        Post your .env file without credentials.
+        If it is a backend problem or your Webbrowser including version if it is a frontend problem.
+      placeholder: Tell us about your environment!
+      value: "I'm running the code with..."
+    validations:
+      required: true
+  - type: textarea
+    id: steps-to-reproduce
+    attributes:
+      label: How can we reproduce the bug?
+      description: Show us how you've got the bug so that we can try it out and help you!
+      placeholder: Tell us the steps to reproduce the bug!
+      value: "Steps to reproduce the bug..."
+    validations:
+      required: true

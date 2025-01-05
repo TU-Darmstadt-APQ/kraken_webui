@@ -5,7 +5,7 @@ import { TableItemProps } from '@/app/types';
 
 /**
  * A component representing a single table row with data and action buttons.
- * 
+ *
  * @component
  * @param {Post} post - The data object for the table row.
  * @param {(post: Post) => void} props.remove - Callback to handle the removal of a row.
@@ -91,4 +91,3 @@ const TableItem: React.FC<TableItemProps> = ({post, remove, edit, selectedColumn
 };
 
 export default TableItem;
-

@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import Image from "next/image";
-import PostItem from "./PostItem"
+import PostItem from "./PostItem";
 import TableItem from "./TableItem";
 import styles from './../styles/PostList.module.css';
 
@@ -27,8 +27,28 @@ const PostList: React.FC<PostListProps> = ({ posts, listTitle, remove, edit }) =
         );
     }
 
-    // State to toggle between table view and post view
-    const [isTableView, setIsTableView] = useState(false);
+  // State to toggle between table view and post view
+  const [isTableView, setIsTableView] = useState(false);
+
+    const [selectedColumns, setSelectedColumns] = useState({
+        id: true,
+        title: false,
+        description: true,
+        date_created: true,
+        date_modified: true,
+        enabled: true,
+        label: false,
+        uuid: true,
+        config: true,
+        on_connect: false,
+        topic: false,
+        unit: false,
+        port: false,
+        pad: false,
+        sad: false,
+        driver: false,
+        sensor_type: false
+      });
 
     const [selectedColumns, setSelectedColumns] = useState({
         id: true,

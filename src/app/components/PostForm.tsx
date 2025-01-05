@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 
 import MyButton from "./UI/button/MyButton";
 import MyInput from "./UI/input/MyInput";
@@ -14,12 +14,12 @@ const sensorTypes = [
 
 /**
  * A form component for creating and adding new posts.
- * 
+ *
  * @component
  * @param {PostFormProps} props - Props for the PostForm component.
- * @param {(post: { title: string, description: string, id: number }) => void}  
+ * @param {(post: { title: string, description: string, id: number }) => void}
  * props.create - Callback function to handle creating a new post.
- * 
+ *
  * @returns {JSX.Element} A form with controlled input fields for post creation.
  */
 const PostForm: React.FC<PostFormProps> = ({create, edit, postToEdit}) => {
@@ -252,4 +252,3 @@ const PostForm: React.FC<PostFormProps> = ({create, edit, postToEdit}) => {
 };
 
 export default PostForm;
-
