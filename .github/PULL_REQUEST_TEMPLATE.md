@@ -11,6 +11,9 @@ Every pull request should follow the guidelines layed out below. There are requi
 Please make sure the title of the pull request follows the [Conventional Commits](https://www.conventionalcommits.org) specification.
 `<type>[optional scope]: <description>`
 
+
+A few examples of common types are listed below. More examples can be found in the [Conventional Commits](https://www.conventionalcommits.org) specification.
+
 #### fix example
 
 `fix(db connector): added error handling`
