@@ -6,29 +6,32 @@ Every pull request should follow the guidelines layed out below. There are requi
 
 # Title
 
----
-
-Please make sure the title of the pull request follows the [Conventional Commits](https://www.conventionalcommits.org) specification.
-`<type>[optional scope]: <description>`
-
+Please make sure the title of the pull request follows the [Conventional Commits](https://www.conventionalcommits.org) specification:<br>
+```
+<type>[optional scope]: <description>
+```
 
 A few examples of common types are listed below. More examples can be found in the [Conventional Commits](https://www.conventionalcommits.org) specification.
 
 #### fix example
 
-`fix(db connector): added error handling`
+```
+fix(db connector): added error handling
+```
 
 #### feat example
 
-`feat(backend): added initial nextjs setup`
+```
+feat(backend): added initial nextjs setup
+```
 
 #### Breaking changes example
 
-`BREAKING CHANGE: Requires JavaScript features not available in Node version 6`
+```
+BREAKING CHANGE: Requires JavaScript features not available in Node version 6
+```
 
 # Description
-
----
 
 What should this pull request do?
 
