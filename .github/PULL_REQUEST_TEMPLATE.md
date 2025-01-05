@@ -1,32 +1,22 @@
 # Title
-
+---
 Please make sure the title of the pull request follows the [Conventional Commits](https://www.conventionalcommits.org) specification.
+`<type>[optional scope]: <description>`
 
-## fix
+#### fix example
 
-fix(SCOPE): VERB WHAT-WAS-DONE
+`fix(db connector): added error handling`
 
-### Example
+#### feat example
 
-fix(db connector): added error handling
+`feat(backend): adding initial nextjs setup`
 
-## feat
+#### Breaking changes example
 
-feat(SCOPE): VERB WHAT-WAS-DONE
-
-### Example
-
-feat(backend): adding initial nextjs setup
-
-## Breaking changes
-
-BREAKING CHANGE: VERB WHAT-WAS-DONE
-
-### Example
-
-BREAKING CHANGE: use JavaScript features not available in Node 6
+`BREAKING CHANGE: use JavaScript features not available in Node 6`
 
 # Description
-
+---
 What should this pull request do?
-Adding a new feature? A new library (then also why a new library? What does benefits does it add?)?
+- Adding a new feature?
+- A new library? Then also why a new library? What does benefits does it add?
