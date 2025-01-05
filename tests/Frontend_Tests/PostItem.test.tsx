@@ -17,12 +17,19 @@ import PostItem from "@/app/components/PostItem";
 import "@testing-library/jest-dom";
 // Mocking the remove function passed as props
 const mockRemove = jest.fn();
+const mockEdit = jest.fn();
 
 // Mock post data
 const mockPost = {
   id: 1,
   title: "Test Post Title",
   description: "Test post description",
+  date_created: { day: 1, month: 1, year: 2025, nanoseconds: 0 },
+  date_modified: { day: 1, month: 1, year: 2025, nanoseconds: 0 },
+  uuid: "uuid-1234",
+  topic: "Topic",
+  unit: "Unit",
+  driver: "Driver"
 };
 
 const mockNumber = 1;
@@ -34,7 +41,7 @@ afterEach(() => {
 describe("PostItem component", () => {
   it("renders correctly with post data", () => {
     render(
-      <PostItem number={mockNumber} post={mockPost} remove={mockRemove} />,
+      <PostItem number={mockNumber} post={mockPost} remove={mockRemove} edit={mockEdit}/>,
     );
 
     // Check if title and description are displayed
@@ -44,10 +51,10 @@ describe("PostItem component", () => {
 
   it("calls remove function when delete button is clicked", () => {
     render(
-      <PostItem number={mockNumber} post={mockPost} remove={mockRemove} />,
+      <PostItem number={mockNumber} post={mockPost} remove={mockRemove} edit={mockEdit}/>,
     );
 
-    const deleteButton = screen.getByText("Delete");
+    const deleteButton = screen.getByAltText("Delete");
     fireEvent.click(deleteButton);
 
     // Check if remove function is called once with the correct post
@@ -58,25 +65,25 @@ describe("PostItem component", () => {
   //  Check if Edit button is rendered
   it('renders the "Edit" button', () => {
     render(
-      <PostItem number={mockNumber} post={mockPost} remove={mockRemove} />,
+      <PostItem number={mockNumber} post={mockPost} remove={mockRemove} edit={mockEdit}/>,
     );
-    const editButton = screen.getByText("Edit");
+    const editButton = screen.getByAltText("Edit");
     expect(editButton).toBeInTheDocument(); // Ensure the "Edit" button is rendered
   });
 
   //  Check if Delete button is rendered
   it('renders the "Delete" button', () => {
     render(
-      <PostItem number={mockNumber} post={mockPost} remove={mockRemove} />,
+      <PostItem number={mockNumber} post={mockPost} remove={mockRemove} edit={mockEdit}/>,
     );
-    const deleteButton = screen.getByText("Delete");
+    const deleteButton = screen.getByAltText("Delete");
     expect(deleteButton).toBeInTheDocument(); // Ensure the "Delete" button is rendered
   });
 
   //  Check if title and description are inside the right elements
   it("renders post title and description inside the correct elements", () => {
     render(
-      <PostItem number={mockNumber} post={mockPost} remove={mockRemove} />,
+      <PostItem number={mockNumber} post={mockPost} remove={mockRemove} edit={mockEdit}/>,
     );
 
     const titleElement = screen.getByText("1. Test Post Title");

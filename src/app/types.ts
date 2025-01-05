@@ -28,7 +28,7 @@ export interface DateType {
 }
 
 // Define the interface for the filter
-interface Filter {
+export interface Filter {
   sort: keyof Post | ""; // The 'sort' can be a key from Post or an empty string
   query: string; // Search keyword
   searchField: keyof Post | ""; // Current Searchfield

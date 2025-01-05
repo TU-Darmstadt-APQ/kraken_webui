@@ -16,27 +16,39 @@ import { Filter } from "@/app/types";
 
 describe("PostFilter", () => {
   const setFilter = jest.fn();
-  const filter: Filter = { query: "", sort: "title" };
+  const filter: Filter = { query: "", sort: "title", searchField: "" };
 
   let input: HTMLInputElement;
   let select: HTMLSelectElement;
+  let searchFieldSelect: HTMLSelectElement;
 
   beforeEach(() => {
+    setFilter.mockClear(); // Reset previous calls to the mock function
+
     const { container } = render(
       <PostFilter filter={filter} setFilter={setFilter} />,
     );
     input = container.querySelector<HTMLInputElement>("input")!;
-    select = container.querySelector<HTMLSelectElement>("select")!;
+    const selects = container.querySelectorAll<HTMLSelectElement>("select");
+
+    select = selects[0]; // The first `<select>` is for `sort`
+    searchFieldSelect = selects[1]; // The second `<select>` is for `searchField`
   });
 
   it("should update the query when typed into the input", () => {
     fireEvent.change(input, { target: { value: "test" } });
-    expect(setFilter).toHaveBeenCalledWith({ query: "test", sort: "title" });
+    expect(setFilter).toHaveBeenCalledWith({ query: "test", sort: "title", searchField: "" });
   });
 
   it("should update the sort when a new option is selected", () => {
     fireEvent.change(select, { target: { value: "description" } });
-    expect(setFilter).toHaveBeenCalledWith({ query: "", sort: "description" });
+    expect(setFilter).toHaveBeenCalledWith({ query: "", sort: "description", searchField: "" });
+  });
+
+  it("should update the searchField when a new option is selected", () => {
+    fireEvent.change(searchFieldSelect, { target: { value: "title" } });
+
+    expect(setFilter).toHaveBeenCalledWith({ query: "", sort: "title", searchField: "title" });
   });
 
   it("should not call setFilter if no changes are made", () => {
