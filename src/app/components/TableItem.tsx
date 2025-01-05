@@ -111,7 +111,7 @@ const TableItem: React.FC<TableItemProps> = ({
 
         <MyButton onClick={() => remove(post)} className="list-button">
           <img
-            src="/trashCan.png"
+            src="/trashCan.svg"
             alt="Delete"
             //className="icon-button"
             width={20}
