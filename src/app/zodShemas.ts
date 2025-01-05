@@ -1,9 +1,9 @@
 import { z } from 'zod';
 
 export const textSchema = z.string()
-    .min(2, 'The field must contain minimum 2 characters')
+    //.min(2, 'The field must contain minimum 2 characters') // otherwise we cant write in inputField
     .max(30, 'The field must not exceed 30 characters')
-    .regex(/^[a-zA-Z0-9\s]+$/, 'The field can only contain letters and spaces');
+    .regex(/^[a-zA-Z0-9\s]*$/, 'The field can only contain letters and spaces');
 
 
 export const numberSchema = z

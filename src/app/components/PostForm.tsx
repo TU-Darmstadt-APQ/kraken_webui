@@ -4,7 +4,7 @@ import MyButton from "./UI/button/MyButton";
 import MyInput from "./UI/input/MyInput";
 import ConfigEditorModal from "./UI/ConfigEditorModal";
 
-import { validateNumber } from '../zodShemas';
+import { validateNumber, validateText } from '../zodShemas';
 
 import { PostFormProps, Post } from '@/app/types';
 
@@ -167,6 +167,21 @@ const PostForm: React.FC<PostFormProps> = ({create, edit, postToEdit}) => {
         setPost({ ...post, port: newValue });
       }
     };
+    const handleTextChange = (e: React.ChangeEvent<HTMLInputElement>, field: keyof Post) => {
+        const newValue = e.target.value;
+    
+        // Validate the new value using validateQuery
+        const result = validateText(newValue);
+    
+        if (!result.success) {
+          // If validation fails, set the error message
+          setError(result.error.errors[0].message);
+        } else {
+          // If validation passes, clear the error and update the filter
+          setError(null);
+          setPost({ ...post, [field]: newValue });
+        }
+    };
 
     return(
         <form>
@@ -188,47 +203,29 @@ const PostForm: React.FC<PostFormProps> = ({create, edit, postToEdit}) => {
             ))}
           </select>
 
-          {/* Sensor Host UUID 
-          <div style={{ width: "100%" }}>
-          {selectedSensorType === "Tinkerforge" ? (
-            <MyTooltip infoText="Host is auto-generated for selected type of sensors." position="right">
-              
-              <MyInput
-                value={post.uuid}
-                onChange={(e) => setPost({ ...post, uuid: e.target.value })}
-                type="text"
-                placeholder="Sensor Host UUID"
-                disabled = {true}
-              />
-              
-            </MyTooltip>
-          ) : (
-          <MyInput
-          value={post.uuid}
-          onChange={(e) => setPost({ ...post, uuid: e.target.value })}
-          type="text"
-          placeholder="Sensor Host UUID"
-        />
-          )}
-          </div> */}
           
-
           {/* Topic and Unit */}
           <div style={{ display: "flex", gap: "10px" }}>
           <div style={{ flex: 1 }}>
             <MyInput
               value={post.topic}
-              onChange={(e) => setPost({ ...post, topic: e.target.value })}
+              onChange={(e) => handleTextChange(e, 'topic')}
               type="text"
               placeholder="Topic"
+              error = {error || undefined}
+              setError={setError}
+              tooltipPosition="left"
             />
             </div>
             <div style={{ flex: 1 }}>
             <MyInput
               value={post.unit}
-              onChange={(e) => setPost({ ...post, unit: e.target.value })}
+              onChange={(e) => handleTextChange(e, 'unit')}
               type="text"
               placeholder="Unit"
+              error = {error || undefined}
+              setError={setError}
+              tooltipPosition="right"
             />
             </div>
           </div>
@@ -236,21 +233,25 @@ const PostForm: React.FC<PostFormProps> = ({create, edit, postToEdit}) => {
           {/* Description */}
           <MyInput
             value={post.description}
-            onChange={(e) =>
-              setPost({ ...post, description: e.target.value })
-            }
+            onChange={(e) => handleTextChange(e, 'description')}
             type="text"
             placeholder="Description"
+            error = {error || undefined}
+            setError={setError}
+            tooltipPosition="left"
           />
 
           {/* Host, Port, Driver */}
           <div style={{ display: "flex", gap: "10px" }}>
           <MyInput
               value={post.host}
-              onChange={(e) => setPost({ ...post, host: e.target.value })}
+              onChange={(e) => handleTextChange(e, 'host')}
               type="text"
               placeholder="Host"
               disabled = {selectedSensorType === "Tinkerforge"}
+              error = {error || undefined}
+              setError={setError}
+              tooltipPosition="left"
             />
             <MyInput
               value={post.port}
@@ -263,9 +264,12 @@ const PostForm: React.FC<PostFormProps> = ({create, edit, postToEdit}) => {
             />
             <MyInput
               value={post.driver}
-              onChange={(e) => setPost({ ...post, driver: e.target.value })}
+              onChange={(e) => handleTextChange(e, 'driver')}
               type="text"
               placeholder="Driver"
+              error = {error || undefined}
+              setError={setError}
+              tooltipPosition="right"
             />
           </div>
 
