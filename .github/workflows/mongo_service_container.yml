@@ -6,7 +6,6 @@ on:
     paths:
       - tests/mongo/*
 
-
 env:
   REGISTRY: ghcr.io # Using GitHub Container Registry
   IMAGE_NAME: ${{ github.repository }}/mongo-test-data
