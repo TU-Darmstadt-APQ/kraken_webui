@@ -8,6 +8,8 @@ import { PostListProps } from "@/app/types";
 import MyToggle from "./UI/toggle/MyToggle";
 import MyTooltip from "./UI/tooltip/MyTooltip";
 
+import { FixedSizeList as List } from 'react-window';
+
 /**
  * Component for rendering a list of posts with the ability to toggle between table view and post view.
  *
@@ -141,15 +143,24 @@ const PostList: React.FC<PostListProps> = ({
         </div>
       ) : (
         // Render posts in a card-like view
-        posts.map((post, index) => (
-          <PostItem
-            edit={edit}
-            remove={remove}
-            number={index + 1}
-            post={post}
-            key={post.id}
-          />
-        ))
+        <List
+          height={600}
+          itemCount={posts.length}
+          itemSize={90}
+          width="100%"
+        >
+          {({ index, style }) => (
+            <div style={style}>
+              <PostItem
+                edit={edit}
+                remove={remove}
+                number={index + 1}
+                post={posts[index]}
+                key={posts[index].id}
+              />
+            </div>
+          )}
+        </List>
       )}
     </div>
   );

@@ -105,6 +105,55 @@ function Page() {
     },
   ]);
 
+  function generatePosts(existingPosts: Post[], count: number): Post[] {
+    const newPosts: Post[] = [];
+    const startingId = existingPosts.length + 1;
+  
+    for (let i = 0; i < count; i++) {
+      const newPost: Post = {
+        id: startingId + i,
+        title: `Generated Title ${startingId + i}`,
+        description: `Generated Description for Post ${startingId + i}`,
+        date_created: {
+          day: Math.floor(Math.random() * 28) + 1,
+          month: Math.floor(Math.random() * 12) + 1,
+          year: Math.floor(Math.random() * 5) + 2024,
+          nanoseconds: Math.random(),
+        },
+        date_modified: {
+          day: Math.floor(Math.random() * 28) + 1,
+          month: Math.floor(Math.random() * 12) + 1,
+          year: Math.floor(Math.random() * 5) + 2025,
+          nanoseconds: Math.random(),
+        },
+        enabled: Math.random() > 0.5,
+        label: `Label-${String.fromCharCode(65 + (i % 26))}`,
+        uuid: `uuid-${Math.floor(Math.random() * 10000) + 2948}`,
+        config: {
+          theme: ["dark", "light", "blue", "red"][i % 4],
+          notifications: Math.random() > 0.5,
+        },
+        on_connect: `Generated connect message ${startingId + i}`,
+        topic: ["sensor", "laptop_sensor", "smartphone_sensor"][i % 3],
+        unit: ["FB20", "FB8", "FB12"][i % 3],
+        driver: "Tinkerforge",
+        pad: Math.floor(Math.random() * 10),
+        sad: Math.floor(Math.random() * 10),
+        port: Math.floor(Math.random() * 20),
+      };
+  
+      newPosts.push(newPost);
+    }
+  
+    return [...existingPosts, ...newPosts];
+  }
+
+  // Function for adding new 10,000 posts
+  const handleGeneratePosts = () => {
+    const newPosts = generatePosts(posts, 10000);
+    setPosts(newPosts);
+  };
+
   /**
    * In React, there are two main approaches to interact with DOM elements:
    * 1. Controlled components - State is fully managed by React.
@@ -203,6 +252,11 @@ function Page() {
         postToEdit={postToEdit}
         listTitle={"The list of all sensors"}
       />
+
+      <div>
+        <button onClick={handleGeneratePosts}>Generate 10,000 Posts</button>
+        <p>Total Posts: {posts.length}</p>
+      </div>
     </div>
   );
 }
