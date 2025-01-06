@@ -124,7 +124,6 @@ const PostForm: React.FC<PostFormProps> = ({ create, edit, postToEdit }) => {
       return;
     }
 
-    
     // We change the state indirectly. We create a new array where we write our old one. And at the end comes the new element
 
     if (postToEdit) {
@@ -156,15 +155,24 @@ const PostForm: React.FC<PostFormProps> = ({ create, edit, postToEdit }) => {
 
   return (
     <form>
-      <label htmlFor="sensorType">Sensor Type</label>
+      <label
+        htmlFor="sensorType"
+        style={{
+          display: "block",
+          marginBottom: "4px",
+        }}
+      >
+        Sensor Type
+      </label>
       <select
         id="sensorType"
         value={selectedSensorType}
         onChange={handleSensorTypeChange}
         style={{
           width: "100%",
-          padding: "8px",
+          padding: "5px",
           border: "1px solid teal",
+          marginBottom: "16px",
         }}
       >
         <option value="">Select Sensor Type</option>
