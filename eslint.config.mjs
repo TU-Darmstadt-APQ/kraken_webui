@@ -4,11 +4,19 @@ import tseslint from "@typescript-eslint/eslint-plugin";
 import tsParser from "@typescript-eslint/parser";
 import pluginReact from "eslint-plugin-react";
 import eslintConfigPrettier from "eslint-config-prettier";
+import { FlatCompat } from "@eslint/eslintrc";
 
-/**
- * @type {import('eslint').Linter.Config[]}
- */
-export default [
+// Create FlatCompat instance
+const compat = new FlatCompat({
+  baseDirectory: import.meta.dirname,
+});
+
+const eslintConfig = [
+  // Add the combined FlatCompat configuration
+  ...compat.config({
+    extends: ["next/core-web-vitals", "next/typescript", "next"], // Combined extends
+  }),
+
   {
     files: ["**/*.{js,mjs,cjs,ts,jsx,tsx}"],
     languageOptions: {
@@ -44,6 +52,9 @@ export default [
       "no-useless-escape": "error", // Prevent unnecessary escapes
     },
   },
+
   // Add prettier config last to ensure it overrides other settings
   eslintConfigPrettier,
 ];
+
+export default eslintConfig;
