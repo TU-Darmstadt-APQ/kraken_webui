@@ -1,0 +1,28 @@
+{
+  "_id": { "$uuid": "aa0af02c-9eb5-4b15-bca1-63aa057da848" },
+  "date_created": { "$date": "2025-01-01T00:00:00.00Z" },
+  "date_modified": { "$date": "2025-01-02T00:00:00.00Z" },
+  "enabled": true,
+  "label": null,
+  "description": "A dummy Tinkerforge sensor",
+  "uid": 123456,
+  "config": {
+    "0": {
+      "interval": 60000,
+      "trigger_only_on_change": true,
+      "description": "",
+      "topic": "sensors/dummy/temperature/ceiling",
+      "unit": "K"
+    }
+  },
+  "on_connect": [
+    {
+      "function": "set_status_led_config",
+      "args": [],
+      "kwargs": {
+        "config": 2
+      },
+      "timeout": null
+    }
+  ]
+}
