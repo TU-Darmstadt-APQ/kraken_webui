@@ -1,6 +1,6 @@
 import React from "react";
 import MyButton from "./UI/button/MyButton";
-import styles from "./../styles/PostItem.module.css";
+import styles from "@/app/styles/PostItem.module.css";
 
 import { PostItemProps } from "@/app/types";
 
@@ -12,6 +12,30 @@ import { PostItemProps } from "@/app/types";
  * @param {number} props.number - The position number of the post.
  * @param {object} props.post - The post data object containing title and description.
  * @param {(post: object) => void} props.remove - Callback to handle post removal.
+ *
+ * @example
+ * // Example usage of PostItem component
+ *
+ * import PostItem from "./PostItem";
+ *
+ * const removePost = (post) => {
+ *   setPosts(posts.filter((p) => p.uuid !== post.uuid));
+ * };
+ *
+ * const editPost = (post) => {
+ *   setPostToEdit(post);
+ *   setModal(true);
+ * };
+ *
+ * <PostItem
+ *   edit={editPost}
+ *   remove={removePost}
+ *   number={index}
+ *   post={{ title: "Post Title", description: "Post Description" }}
+ *   key={posts[index].uuid}
+ * />
+ *
+ * <PostItem edit={edit} remove={remove} number={index + 1} post={posts[index]} key={posts[index].id} />
  */
 const PostItem: React.FC<PostItemProps> = (props) => {
   return (

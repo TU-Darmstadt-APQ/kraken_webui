@@ -34,16 +34,32 @@ const sensorTypes = [
  * props.create - Callback function to handle creating a new post.
  *
  * @returns {JSX.Element} A form with controlled input fields for post creation.
+ * 
+ * @example
+ * // Example usage of PostForm component
+ * const [postToEdit, setPostToEdit] = useState<Post | null>(null);
+ * const createPost = (newPost: Post) => {
+     setPosts([...posts, newPost]);
+     setModal(false);
+   };
+   const editPost = (updatedPost: Post) => {
+       setPosts(posts.map((p) => (p.id === updatedPost.id ? updatedPost : p)));
+       setModal(false);
+       setPostToEdit(null);
+    };
+ * 
+ * <PostForm create={createPost} edit={editPost} postToEdit={postToEdit} />
+ * 
  */
 const PostForm: React.FC<PostFormProps> = ({ create, edit, postToEdit }) => {
   // Helper function to generate the current date
   const getCurrentDate = () => {
-    const now = new Date();
+    const currentDate = new Date();
     return {
-      day: now.getDate(),
-      month: now.getMonth() + 1, // Months are 0-indexed
-      year: now.getFullYear(),
-      nanoseconds: now.getMilliseconds() * 1e6, // Milliseconds to nanoseconds
+      day: currentDate.getDate(),
+      month: currentDate.getMonth() + 1, // Months are 0-indexed
+      year: currentDate.getFullYear(),
+      nanoseconds: currentDate.getMilliseconds() * 1e6, // Milliseconds to nanoseconds
     };
   };
 
@@ -83,9 +99,9 @@ const PostForm: React.FC<PostFormProps> = ({ create, edit, postToEdit }) => {
 
     // set fields of configuration
     const newConfig = selectedConfig.reduce(
-      (acc, field) => {
-        acc[field.key] = "";
-        return acc;
+      (configEntities, field) => {
+        configEntities[field.key] = "";
+        return configEntities;
       },
       {} as Record<string, string>,
     );
