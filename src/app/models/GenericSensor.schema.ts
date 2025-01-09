@@ -2,7 +2,7 @@
  * This schema defines the structure and validation rules for generic sensor data
  * stored in the MongoDB database.
  */
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 // Define the main schema for Generic sensor
 const genericSensorSchema = new mongoose.Schema({
@@ -14,7 +14,7 @@ const genericSensorSchema = new mongoose.Schema({
   description: { type: String }, // Description is not required
   host: {
     type: mongoose.Schema.Types.UUID,
-    ref: 'SensorHost',
+    ref: "SensorHost",
     required: true,
   },
   driver: { type: String, required: true },
@@ -50,6 +50,6 @@ const genericSensorSchema = new mongoose.Schema({
   unit: { type: String, required: true },
 });
 
-const GenericSensor = mongoose.model('GenericSensor', genericSensorSchema);
+const GenericSensor = mongoose.model("GenericSensor", genericSensorSchema);
 
 export default GenericSensor;

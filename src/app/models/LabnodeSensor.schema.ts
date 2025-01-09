@@ -2,7 +2,7 @@
  * This schema defines the structure and validation rules for Labnode sensor data
  * stored in the MongoDB database.
  */
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 // Define a schema for the configuration of a Labnode sensor
 const configSchema = new mongoose.Schema({
@@ -29,7 +29,7 @@ const labnodeSensorSchema = new mongoose.Schema({
     required: true,
     validate: {
       validator: Number.isInteger,
-      message: '{VALUE} is not an integer value',
+      message: "{VALUE} is not an integer value",
     },
     min: 0, // Ensures it's non-negative (unsigned)
     max: 4294967295, // (uint32_t)
@@ -38,6 +38,6 @@ const labnodeSensorSchema = new mongoose.Schema({
   on_connect: { type: Array, required: true },
 });
 
-const LabnodeSensor = mongoose.model('LabnodeSensor', labnodeSensorSchema);
+const LabnodeSensor = mongoose.model("LabnodeSensor", labnodeSensorSchema);
 
 export default LabnodeSensor;

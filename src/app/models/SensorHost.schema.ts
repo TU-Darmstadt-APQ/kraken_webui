@@ -3,7 +3,7 @@
  * stored in the MongoDB database. It represents a host device that manages and
  * communicates with one or more sensors.
  */
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 // Define the main schema for a SensorHost
 const sensorHostSchema = new mongoose.Schema({
   _id: { type: mongoose.Schema.Types.UUID, required: true },
@@ -25,6 +25,6 @@ const sensorHostSchema = new mongoose.Schema({
   description: { type: String },
 });
 
-const SensorHost = mongoose.model('SensorHost', sensorHostSchema);
+const SensorHost = mongoose.model("SensorHost", sensorHostSchema);
 
 export default SensorHost;
