@@ -21,6 +21,7 @@ const tinkerforgeSensorSchema = new mongoose.Schema({
   enabled: { type: Boolean, required: true },
   label: { type: String },
   description: { type: String, required: true },
+  // See https://www.tinkerforge.com/en/doc/Low_Level_Protocols/TCPIP.html
   uid: {
     type: Number,
     required: true,
