@@ -1,5 +1,5 @@
 /**
- * This schema defines the structure and validation rules for generic sensor data
+ * This schema defines the structure and validation rules for generic sensors stored in the Mongo DB
  * stored in the MongoDB database.
  */
 const mongoose = require("mongoose");
