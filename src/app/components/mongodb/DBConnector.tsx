@@ -1,6 +1,6 @@
 import { config } from "../../../../config";
 import mongoose from "mongoose";
-import TinkerforgeSensor from "@/app/models/tinkerforgeSensor";
+import TinkerforgeSensor from "@/app/models/Tinkerforgesensor.schema";
 
 /*
  * Creates a connection with MongoDB
