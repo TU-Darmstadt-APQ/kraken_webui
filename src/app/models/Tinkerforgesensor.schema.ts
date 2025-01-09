@@ -16,7 +16,7 @@ const configSchema = new mongoose.Schema({
 // Define the main schema for a Tinkerforge sensor
 const tinkerforgeSensorSchema = new mongoose.Schema({
   _id: { type: mongoose.Schema.Types.UUID, required: true },
-  date_created: { type: Date, required: true },
+  date_created: { type: Date, required: true, default: Date.now },
   date_modified: { type: Date, required: true },
   enabled: { type: Boolean, required: true },
   label: { type: String },
