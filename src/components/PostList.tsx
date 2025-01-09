@@ -3,7 +3,7 @@ import Image from "next/image";
 import PostItem from "./PostItem";
 import TableItem from "./TableItem";
 
-import { PostListProps } from "@/app/types";
+import { PostListProps } from "@/types";
 
 /**
  * Component for rendering a list of posts with the ability to toggle between table view and post view.

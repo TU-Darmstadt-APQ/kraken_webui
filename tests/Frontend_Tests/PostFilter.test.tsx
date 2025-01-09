@@ -12,7 +12,7 @@
 import React from "react";
 import { render, fireEvent } from "@testing-library/react";
 import PostFilter from "@/app/components/PostFilter";
-import { Filter } from "@/app/types";
+import { Filter } from "@/types";
 
 describe("PostFilter", () => {
   const setFilter = jest.fn();

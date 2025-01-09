@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import MyButton from "./UI/button/MyButton";
 import MyInput from "./UI/input/MyInput";
 
-import { PostFormProps } from "@/app/types";
+import { PostFormProps } from "@/types";
 
 /**
  * A form component for creating and adding new posts.

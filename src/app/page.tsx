@@ -9,7 +9,7 @@ import PostFilter from "./components/PostFilter";
 import ModalWindow from "./components/UI/ModalWindow/ModalWindow";
 import MyButton from "./components/UI/button/MyButton";
 
-import { Post } from "./types";
+import { Post } from "../types";
 import MyHeader from "./components/UI/header/MyHeader";
 
 function Page() {

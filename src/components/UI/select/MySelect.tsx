@@ -1,5 +1,5 @@
 import React from "react";
-import { MySelectProps, Post } from "@/app/types";
+import { MySelectProps, Post } from "@/types";
 
 /**
  * A reusable and customizable dropdown (select) component.
