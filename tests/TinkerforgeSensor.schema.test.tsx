@@ -141,7 +141,7 @@ describe("TinkerforgeSensor Model with Detailed Schema", () => {
 
     try {
       await sensor.save(); // Attempt to save invalid data
-    } catch (error) {
+    } catch (error:any) {
       expect(error).toBeDefined();
       expect(error.errors.uid).toBeDefined();
       expect(error.errors.uid.message).toBe('"not-a-number" is not an integer value');
