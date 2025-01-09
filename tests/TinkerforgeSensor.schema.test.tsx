@@ -23,7 +23,7 @@ jest.mock("mongoose", () => {
     Schema: class {
       static Types = {
         Mixed: jest.fn(), // Mock for Mixed type
-        Map: jest.fn(),   // Mock for Map type
+        Map: jest.fn(), // Mock for Map type
       };
     },
     model: jest.fn((name: string) => {
@@ -44,7 +44,14 @@ jest.mock("mongoose", () => {
               topic: "testTopic",
               unit: "Celsius",
             },
-            on_connect: [{ function: "connectFunction", args: [], kwargs: {}, timeout: 1000 }],
+            on_connect: [
+              {
+                function: "connectFunction",
+                args: [],
+                kwargs: {},
+                timeout: 1000,
+              },
+            ],
           });
           save = jest.fn().mockResolvedValue(true);
         }
@@ -141,11 +148,12 @@ describe("TinkerforgeSensor Model with Detailed Schema", () => {
 
     try {
       await sensor.save(); // Attempt to save invalid data
-    } catch (error:any) {
+    } catch (error: any) {
       expect(error).toBeDefined();
       expect(error.errors.uid).toBeDefined();
-      expect(error.errors.uid.message).toBe('"not-a-number" is not an integer value');
+      expect(error.errors.uid.message).toBe(
+        '"not-a-number" is not an integer value',
+      );
     }
   });
 });
-
