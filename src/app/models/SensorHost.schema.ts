@@ -1,5 +1,5 @@
 /**
- * This schema defines the structure and validation rules for sensor host data
+ * This schema defines the structure and validation rules for sensor hosts
  * stored in the MongoDB database. It represents a host device that manages and
  * communicates with one or more sensors.
  */
