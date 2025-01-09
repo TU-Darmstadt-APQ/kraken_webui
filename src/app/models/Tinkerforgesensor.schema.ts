@@ -54,4 +54,4 @@ const TinkerforgeSensor = mongoose.model(
 );
 
 // Export the model to be used in other parts of the application
-module.exports = TinkerforgeSensor;
+export default TinkerforgeSensor;
