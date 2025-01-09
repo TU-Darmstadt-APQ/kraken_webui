@@ -17,7 +17,7 @@ const configSchema = new mongoose.Schema({
 const tinkerforgeSensorSchema = new mongoose.Schema({
   _id: { type: mongoose.Schema.Types.UUID, required: true },
   date_created: { type: Date, required: true, default: Date.now },
-  date_modified: { type: Date, required: true },
+  date_modified: { type: Date, required: true, default: Date.now },
   enabled: { type: Boolean, required: true },
   label: { type: String },
   description: { type: String, required: true },
