@@ -21,7 +21,15 @@ const tinkerforgeSensorSchema = new mongoose.Schema({
   enabled: { type: Boolean, required: true },  
   label: { type: String },
   description: { type: String, required: true },  
-  uid: { type: Number, required: true },  
+  uid: {
+    type: Number,
+    required: true,
+    validate: {
+      validator: Number.isInteger,
+      message: '{VALUE} is not an integer value',
+    },
+    min: 0, // Ensures it's non-negative (unsigned)
+  }, 
   config: { type: Map, of: configSchema, required: true },  
   on_connect: [{  
     function: { type: String, required: true },  
