@@ -6,7 +6,11 @@ const mongoose = require("mongoose");
 
 // Define a schema for the configuration of a Tinkerforge sensor
 const configSchema = new mongoose.Schema({
-  interval: { type: Number, required: true },
+  interval: {
+    type: Number,
+    required: true,
+    min: 0, // Add this line to enforce the minimum value
+  },
   trigger_only_on_change: { type: Boolean, required: true },
   description: { type: String, required: true },
   topic: { type: String, required: true },
@@ -20,7 +24,7 @@ const tinkerforgeSensorSchema = new mongoose.Schema({
   date_modified: { type: Date, required: true, default: Date.now },
   enabled: { type: Boolean, required: true },
   label: { type: String },
-  description: { type: String, required: true },
+  description: { type: String },
   // See https://www.tinkerforge.com/en/doc/Low_Level_Protocols/TCPIP.html
   uid: {
     type: Number,
