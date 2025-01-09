@@ -108,7 +108,7 @@ function Page() {
   function generatePosts(existingPosts: Post[], count: number): Post[] {
     const newPosts: Post[] = [];
     const startingId = existingPosts.length + 1;
-  
+
     for (let i = 0; i < count; i++) {
       const newPost: Post = {
         id: startingId + i,
@@ -141,10 +141,10 @@ function Page() {
         sad: Math.floor(Math.random() * 10),
         port: Math.floor(Math.random() * 20),
       };
-  
+
       newPosts.push(newPost);
     }
-  
+
     return [...existingPosts, ...newPosts];
   }
 
