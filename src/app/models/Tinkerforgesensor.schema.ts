@@ -29,6 +29,7 @@ const tinkerforgeSensorSchema = new mongoose.Schema({
       message: "{VALUE} is not an integer value",
     },
     min: 0, // Ensures it's non-negative (unsigned)
+    max: 4294967295, // (uint32_t)
   },
   config: { type: Map, of: configSchema, required: true },
   on_connect: [
