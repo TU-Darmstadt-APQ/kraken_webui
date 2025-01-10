@@ -1,6 +1,6 @@
 import { z } from "zod";
 import * as fs from "fs";
-import tinkerforgeSensorSchema from "@/app/models/TinkerforgeSensor.schema";
+import tinkerforgeSensorSchema from "@/app/models/zTinkerforgeSensor.schema";
 
 describe("TinkerforgeSensor Schema Validation", () => {
   it("should validate valid TinkerforgeSensor data against the schema", () => {
