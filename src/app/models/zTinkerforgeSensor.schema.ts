@@ -24,7 +24,11 @@ const tinkerforgeSensorSchema = z.object({
   enabled: z.boolean(),
   label: z.union([z.string(), z.null()]),
   description: z.string(),
-  uid: z.number().int().nonnegative(),
+  uid: z
+    .number()
+    .int()
+    .min(0, { message: "Value must be non-negative" }) // Ensures it's non-negative (unsigned)
+    .max(4294967295, { message: "Value exceeds uint32_t limit" }), // (uint32_t)
   config: z.record(z.string(), tinkerforgeConfigSchema),
   on_connect: z.array(functionCallSchema),
 });
