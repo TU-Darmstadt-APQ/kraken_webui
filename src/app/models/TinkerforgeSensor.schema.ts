@@ -24,7 +24,7 @@ const tinkerforgeSensorSchema = z.object({
   label: z.union([z.string(), z.null()]),
   description: z.string(),
   uid: z.number().int().nonnegative(),
-  config: tinkerforgeConfigSchema,
+  config: z.record(z.string(), tinkerforgeConfigSchema),
   on_connect: z.array(
     z.object({
       function: z.string(),
