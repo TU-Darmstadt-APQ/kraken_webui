@@ -5,7 +5,7 @@ import functionCallSchema from "./FunctionCall.schema";
 const tinkerforgeConfigSchema = z.object({
   interval: z.number().int().nonnegative(),
   trigger_only_on_change: z.boolean(),
-  description: z.string(),
+  description: z.optional(z.string()),
   topic: z.string(),
   unit: z.string(),
 });
@@ -23,7 +23,7 @@ const tinkerforgeSensorSchema = z.object({
   }),
   enabled: z.boolean(),
   label: z.union([z.string(), z.null()]),
-  description: z.string(),
+  description: z.optional(z.string()),
   uid: z
     .number()
     .int()
