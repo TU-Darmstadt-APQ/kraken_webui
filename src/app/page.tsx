@@ -3,14 +3,9 @@
 import React, { useState } from "react";
 import { usePosts } from "./hooks/usePosts";
 
-import PostList from "./components/PostList";
-import PostForm from "./components/PostForm";
-import PostFilter from "./components/PostFilter";
-import ModalWindow from "./components/UI/ModalWindow/ModalWindow";
-import MyButton from "./components/UI/button/MyButton";
-
-import { Post } from "./types";
+import { Post, Filter } from "./types";
 import MyHeader from "./components/UI/header/MyHeader";
+import MyContent from "./components/MyContent";
 
 function Page() {
   // Placeholder data for testing functionality
@@ -19,16 +14,95 @@ function Page() {
       id: 1,
       title: "Lorem ispum",
       description: "Description",
-      date_created: "2012",
-      date_modified: "2012",
-      enabled: "true",
+      date_created: {
+        day: 21,
+        month: 11,
+        year: 2024,
+        nanoseconds: 123456789.0,
+      },
+      date_modified: {
+        day: 22,
+        month: 11,
+        year: 2024,
+        nanoseconds: 0.0,
+      },
+      enabled: true,
       label: "XXX",
-      uid: "125633",
-      config: "etwas",
+      uuid: "82fcb871-3614-4d4f-bc8b-f54d61dbe872",
+      config: {
+        theme: "dark",
+        notifications: true,
+      },
       on_connect: "etwas anderes",
+      topic: "sensor",
+      unit: "FB20",
+      driver: "Tinkerforge",
+      pad: 2,
+      sad: 2,
+      port: 8,
     },
-    { id: 2, title: "Sensor", description: "Description" },
-    { id: 3, title: "Sensor 2", description: "Description" },
+    {
+      id: 2,
+      title: "A_Thinkpad",
+      description: "Laptop-sensor",
+      date_created: {
+        day: 22,
+        month: 12,
+        year: 2023,
+        nanoseconds: 223456789.0,
+      },
+      date_modified: {
+        day: 22,
+        month: 12,
+        year: 2024,
+        nanoseconds: 0.0,
+      },
+      enabled: false,
+      label: "YYY",
+      uuid: "df726eeb-1115-4a03-84d1-23f5e1ae37d7",
+      config: {
+        theme: "light",
+        notifications: false,
+      },
+      on_connect: "etwas anderes",
+      topic: "laptop_sensor",
+      unit: "FB20",
+      driver: "Tinkerforge",
+      pad: 2,
+      sad: 2,
+      port: 8,
+    },
+    {
+      id: 3,
+      title: "Xiaomi",
+      description: "none",
+      date_created: {
+        day: 1,
+        month: 1,
+        year: 2022,
+        nanoseconds: 3456789.0,
+      },
+      date_modified: {
+        day: 2,
+        month: 1,
+        year: 2025,
+        nanoseconds: 0.0,
+      },
+      enabled: true,
+      label: "ZZZ",
+      uuid: "2919b938-b972-49f4-97f7-65e966a39293",
+      config: {
+        theme: "blue",
+        notifications: true,
+      },
+      on_connect: "etwas anderes",
+      topic: "smartphone_sensor",
+      unit: "FB8",
+      driver: "Tinkerforge",
+      pad: 3,
+      sad: 3,
+      port: 9,
+    },
   ]);
 
   /**
@@ -50,11 +124,21 @@ function Page() {
    * @param filter - Object containing the current state (filter configuration)
    * @property {keyof Post | ''} sort - Specifies the field to sort the posts by (e.g., 'title', 'id').
    * @property {string} query - Text for searching/filtering posts.
+   * @property {string} searchField - Specifies the field to search within (e.g., 'title', 'description', or 'all').
+   *
+   * @example
+   * // Updating the filter to sort by ID and search only in titles
+   * setFilter((prev) => ({
+   *   ...prev,
+   *   sort: "id",            // Sort posts by their ID
+   *   searchField: "title",  // Search only in the 'title' field
+   * }));
    */
-  const [filter, setFilter] = useState<{
-    sort: keyof Post | "";
-    query: string;
-  }>({ sort: "", query: "" });
+  const [filter, setFilter] = useState<Filter>({
+    sort: "",
+    query: "",
+    searchField: "all",
+  });
 
   /**
    * State to manage the visibility of the modal window.
@@ -67,7 +151,14 @@ function Page() {
    * `usePosts` returns a copy (!) of the posts array based on the filter criteria,
    * without modifying the original state.
    */
-  const sortedAndSearchedPosts = usePosts(posts, filter.sort, filter.query);
+  const sortedAndSearchedPosts = usePosts(
+    posts,
+    filter.sort,
+    filter.query,
+    filter.searchField,
+  );
+
+  const [postToEdit, setPostToEdit] = useState<Post | null>(null);
 
   /**
    * Adds a new post to the list.
@@ -81,56 +172,46 @@ function Page() {
   };
 
   /**
-   * Removes a post from the list based on its `id`.
+   * Removes a post from the list based on its `uuid`.
    *
    * @param {Post} post - The post to be removed.
    */
   const removePost = (post: Post) => {
-    setPosts(posts.filter((p) => p.id != post.id));
+    setPosts(posts.filter((p) => p.uuid != post.uuid));
+  };
+
+  const editPost = (updatedPost: Post) => {
+    setPosts(posts.map((p) => (p.uuid === updatedPost.uuid ? updatedPost : p)));
+    setModal(false);
+    setPostToEdit(null);
+  };
+  const handleEdit = (post: Post) => {
+    setPostToEdit(post);
+    setModal(true);
   };
 
   return (
     <div className="App">
-      <MyHeader addingNewSensor={() => setModal(true)} />
+      <MyHeader
+        addingNewSensor={() => {
+          setModal(true);
+          setPostToEdit(null);
+        }}
+        filter={filter}
+        setFilter={setFilter}
+      />
 
-      <div className="Content">
-        {/* Left Sidebar */}
-        <div className="Sidebar">
-          <MyButton>Option 1</MyButton>
-          <MyButton>Option 2</MyButton>
-          <MyButton>Option 3</MyButton>
-          <MyButton>Option 4</MyButton>
-          <MyButton>Option 5</MyButton>
-        </div>
-
-        {/* Right Main Content */}
-        <div className="MainContent">
-          <div>
-            {/* Modal window for adding a new sensor */}
-            <ModalWindow visible={modal} setVisible={setModal}>
-              <PostForm create={createPost} />
-              {/**
-               * The `create` prop is passed to the child component (`PostForm`)
-               * as a callback function. It allows the child to send data (the new post)
-               * back to the parent (`Page`).
-               * This unidirectional data flow follows React's tree structure:
-               * Parents can pass props to children, but children cannot directly modify parent data (!)
-               */}
-            </ModalWindow>
-
-            {/* Component responsible for managing the filter inputs */}
-            <PostFilter filter={filter} setFilter={setFilter} />
-
-            {/* Component responsible for displaying the list of sensors.
-          It supports two views: table view and post view. */}
-            <PostList
-              remove={removePost}
-              posts={sortedAndSearchedPosts}
-              listTitle={"Die Liste aller Sensoren"}
-            ></PostList>
-          </div>
-        </div>
-      </div>
+      <MyContent
+        modal={modal}
+        setModal={setModal}
+        sortedAndSearchedPosts={sortedAndSearchedPosts}
+        createPost={createPost}
+        removePost={removePost}
+        editPost={editPost}
+        handleEdit={handleEdit}
+        postToEdit={postToEdit}
+        listTitle={"The list of all sensors"}
+      />
     </div>
   );
 }

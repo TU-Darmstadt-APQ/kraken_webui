@@ -3,36 +3,50 @@ import { ReactNode } from "react";
 
 export interface Post {
   id: number;
-  title: string;
-  description?: string; //alle mit dem Fragezeichen gezeichnete Zeilen sind opitonal (bzw. müssen nicht bei der Erstellung des Objektes dabei sein)
-  date_created?: string;
-  date_modified?: string;
-  enabled?: string;
+  title?: string;
+  description?: string; // All lines marked with a question mark are optional (or do not have to be included when the object is created)
+  date_created: DateType;
+  date_modified: DateType;
+  enabled?: boolean;
   label?: string;
-  uid?: string;
-  config?: string;
+  uuid: string;
+  config?: Record<string, unknown>; // Flexible configuration (object with any values)
   on_connect?: string;
+  topic: string;
+  unit: string;
+  port?: number;
+  pad?: number;
+  sad?: number;
+  driver: string;
+  sensor_type?: string;
+}
+export interface DateType {
+  day?: number;
+  month?: number;
+  year?: number;
+  nanoseconds?: number;
 }
 
-// Definiere das Interface für den Filter
+// Define the interface for the filter
 export interface Filter {
-  sort: keyof Post | ""; // Das 'sort' kann ein Schlüssel von Post oder ein leerer String sein
-  query: string; // Suchbegriff
+  sort: keyof Post | ""; // The 'sort' can be a key from Post or an empty string
+  query: string; // Search keyword
+  searchField: keyof Post | "all"; // Current Searchfield
 }
 
-// Typisiere die Props der PostFilter-Komponente
+// Type the props of the PostFilter component
 export interface PostFilterProps {
   filter: Filter;
-  setFilter: React.Dispatch<React.SetStateAction<Filter>>; // setFilter ist eine Funktion, die den Filter-Zustand ändert
+  setFilter: React.Dispatch<React.SetStateAction<Filter>>; // setFilter is a function that changes the filter state
 }
 
-// Typisiere einzelne Select-Option
+// Type individual select option
 export interface MySelectOption {
   value: string;
   name: string;
 }
 
-// Typisiere die Props der FilterSelect-Komponente
+// Type the props of the FilterSelect component
 export interface MySelectProps {
   options: MySelectOption[];
   defaultValue: string;
@@ -42,12 +56,14 @@ export interface MySelectProps {
 
 export interface PostFormProps {
   create: (post: Post) => void;
+  edit: (post: Post) => void;
+  postToEdit: Post | null;
 }
 
 export interface ModalWindowProps {
-  children: React.ReactNode; // Inhalte zwischen den Tags
-  visible: boolean; // Sichtbarkeit des Fensters
-  setVisible: (visible: boolean) => void; // Funktion zur Änderung der Sichtbarkeit
+  children: React.ReactNode; // Contents between the tags
+  visible: boolean; // Visibility of the ModalWindow
+  setVisible: (visible: boolean) => void; // Funktion that changes the visibility
 }
 
 export interface MyButtonProps {
@@ -56,18 +72,57 @@ export interface MyButtonProps {
 }
 
 export interface PostListProps {
-  posts: Post[]; // Array von Posts
-  listTitle: string; // Titel der Liste
-  remove: (post: Post) => void; // Funktion zum Entfernen eines Posts
+  posts: Post[]; // Array of Posts
+  listTitle: string; // Title of list
+  remove: (post: Post) => void; // Function that deletes the post
+  edit: (post: Post) => void;
 }
 
 export interface TableItemProps {
-  post: Post; // Ein einzelner Post
-  remove: (post: Post) => void; // Funktion, die einen Post entfernt
+  post: Post; // Post object
+  remove: (post: Post) => void; // Function that deletes the post
+  edit: (post: Post) => void;
+  selectedColumns: { [key: string]: boolean };
 }
 
 export interface PostItemProps {
-  post: Post; // Einzelner Post
-  remove: (post: Post) => void; // Funktion, die einen Post entfernt
-  number: number; // Reihenfolge des Posts (optional)
+  post: Post; // Post object
+  remove: (post: Post) => void; // Function that deletes the post
+  edit: (post: Post) => void;
+  number: number; // Order of the post (optional)
+}
+
+export interface MyContentProps {
+  modal: boolean;
+  setModal: (value: boolean) => void;
+  sortedAndSearchedPosts: Post[];
+  createPost: (newPost: Post) => void;
+  removePost: (post: Post) => void;
+  editPost: (post: Post) => void;
+  handleEdit: (post: Post) => void;
+  postToEdit: Post | null;
+  listTitle: string;
+}
+
+export interface ConfigEditorModalProps {
+  config: Record<string, unknown>;
+  setConfig: (newConfig: Record<string, unknown>) => void;
+}
+
+export interface MyHeaderProps {
+  addingNewSensor: () => void;
+  filter: Filter;
+  setFilter: React.Dispatch<React.SetStateAction<Filter>>;
+}
+
+export interface ToggleProps {
+  label: string;
+  checked: boolean;
+  onChange: (checked: boolean) => void;
+}
+
+export interface MyTooltipProps {
+  infoText: string;
+  children: React.ReactNode;
+  position?: "top" | "bottom" | "left" | "right" | "bottom-right" | "top-right"; // possible direction for tooltip appereance
 }
