@@ -12,7 +12,7 @@ const configSchema = new mongoose.Schema({
     min: 0, // Add this line to enforce the minimum value
   },
   trigger_only_on_change: { type: Boolean, required: true },
-  description: { type: String, required: true },
+  description: { type: String },
   topic: { type: String, required: true },
   unit: { type: String, required: true },
 });
