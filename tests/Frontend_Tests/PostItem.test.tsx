@@ -13,7 +13,7 @@
 
 import React from "react";
 import { render, screen, fireEvent, cleanup } from "@testing-library/react";
-import PostItem from "@/app/components/PostItem";
+import PostItem from "@/components/PostItem";
 import "@testing-library/jest-dom";
 // Mocking the remove function passed as props
 const mockRemove = jest.fn();

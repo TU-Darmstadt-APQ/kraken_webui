@@ -11,7 +11,7 @@
 
 import React from "react";
 import { render, fireEvent } from "@testing-library/react";
-import PostFilter from "@/app/components/PostFilter";
+import PostFilter from "@/components/PostFilter";
 import { Filter } from "@/types";
 
 describe("PostFilter", () => {
