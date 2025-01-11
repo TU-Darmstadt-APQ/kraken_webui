@@ -51,6 +51,14 @@
   },
   "lint-staged": {
     "**/*": "prettier --write --ignore-unknown",
-    "*.ts": "npx tslint"
+    "*.ts": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.js": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "**/*.test.{js,ts,jsx,tsx}": "jest --bail --findRelatedTests"
   }
 }
