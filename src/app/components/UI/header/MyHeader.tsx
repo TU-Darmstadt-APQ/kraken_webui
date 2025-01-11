@@ -14,7 +14,7 @@ const MyHeader: React.FC<MyHeaderProps> = ({
     <header className={classes.header}>
       {/* Logo as image */}
       <div className={classes.logo}>
-        <img src="/krakenLogo.png" alt="Kraken Logo" />
+        <img src="/krakenLogo.svg" alt="Kraken Logo" />
         <h1>kraken</h1>
       </div>
 

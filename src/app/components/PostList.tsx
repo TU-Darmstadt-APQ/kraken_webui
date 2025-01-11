@@ -2,7 +2,7 @@ import React, { useState, useRef } from "react";
 import Image from "next/image";
 import PostItem from "./PostItem";
 import TableItem from "./TableItem";
-import styles from "./../styles/PostList.module.css";
+import styles from "@/app/styles/PostList.module.css";
 
 import { PostListProps } from "@/app/types";
 import MyToggle from "./UI/toggle/MyToggle";
@@ -17,6 +17,30 @@ import { FixedSizeList as List, VariableSizeList as Table } from "react-window";
  * @param {Array} posts - Array of post objects to display.
  * @param {string} listTitle - Title of the list.
  * @param {(post: object) => void} remove - Callback function to handle removing a post.
+ * @param {(post: Post) => void} edit - Callback function to edit a post.
+ * 
+ * @example 
+ * 
+ * const sortedAndSearchedPosts = usePosts(
+     posts,
+     filter.sort,
+     filter.query,
+     filter.searchField,
+   );
+ * const removePost = (post: Post) => {
+     setPosts(posts.filter((p) => p.uuid != post.uuid));
+   };
+ * const handleEdit = (post: Post) => {
+       setPostToEdit(post);
+       setModal(true);
+     };
+
+ * <PostList
+ *   posts={sortedAndSearchedPosts}
+ *   listTitle="Sensor List"
+ *   remove={removePost}
+ *   edit={handleEdit}
+ * />
  */
 const PostList: React.FC<PostListProps> = ({
   posts,

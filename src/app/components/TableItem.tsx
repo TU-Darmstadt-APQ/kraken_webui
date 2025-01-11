@@ -10,6 +10,40 @@ import { TableItemProps } from "@/app/types";
  * @component
  * @param {Post} post - The data object for the table row.
  * @param {(post: Post) => void} props.remove - Callback to handle the removal of a row.
+ * @param {(post: Post) => void} edit - Callback function to edit the post.
+ * @param {Object} selectedColumns - An object where keys represent column names, and values are booleans indicating if the column is visible.
+ *
+ * @example
+ * const post = {
+ *   title: "Lorem Post",
+ *   description: "This is a post.",
+ *   date_created: { day: 8, month: 1, year: 2025 },
+ *   date_modified: { day: 8, month: 1, year: 2025 },
+ *   enabled: true,
+ *   uuid: "1234-5678",
+ *   config: { theme: "dark", notifications: true },
+ *   on_connect: "Connect info",
+ * };
+ *
+ * const selectedColumns = {
+ *   id: true,
+ *   title: true,
+ *   description: true,
+ *   date_created: false,
+ *   date_modified: true,
+ *   enabled: true,
+ *   uuid: false,
+ *   config: true,
+ *   on_connect: false,
+ * };
+ *
+ * <TableItem
+ *   edit={edit}
+ *   remove={remove}
+ *   post={post}
+ *   selectedColumns={selectedColumns}
+ *   key={post.uuid}
+ * />
  */
 const TableItem: React.FC<TableItemProps> = ({
   post,

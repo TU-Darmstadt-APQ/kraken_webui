@@ -16,12 +16,17 @@ import { Filter } from "@/app/types";
 
 describe("PostFilter", () => {
   const setFilter = jest.fn();
-  const filter: Filter = { query: "", sort: "title", searchField: "" };
+  const filter: Filter = { query: "", sort: "title", searchField: "all" };
 
   let input: HTMLInputElement;
   let select: HTMLSelectElement;
   let searchFieldSelect: HTMLSelectElement;
 
+  /**
+   * Sets up the test environment for each test case.
+   * - Resets the mock function `setFilter` to ensure clean test results.
+   * - Renders the `PostFilter` component and queries DOM elements (`input`, `select` and `searchFieldSelect` elements).
+   */
   beforeEach(() => {
     setFilter.mockClear(); // Reset previous calls to the mock function
 
@@ -40,7 +45,7 @@ describe("PostFilter", () => {
     expect(setFilter).toHaveBeenCalledWith({
       query: "test",
       sort: "title",
-      searchField: "",
+      searchField: "all",
     });
   });
 
@@ -49,7 +54,7 @@ describe("PostFilter", () => {
     expect(setFilter).toHaveBeenCalledWith({
       query: "",
       sort: "description",
-      searchField: "",
+      searchField: "all",
     });
   });
 

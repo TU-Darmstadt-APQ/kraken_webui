@@ -173,6 +173,15 @@ function Page() {
    * @param filter - Object containing the current state (filter configuration)
    * @property {keyof Post | ''} sort - Specifies the field to sort the posts by (e.g., 'title', 'id').
    * @property {string} query - Text for searching/filtering posts.
+   * @property {string} searchField - Specifies the field to search within (e.g., 'title', 'description', or 'all').
+   *
+   * @example
+   * // Updating the filter to sort by ID and search only in titles
+   * setFilter((prev) => ({
+   *   ...prev,
+   *   sort: "id",            // Sort posts by their ID
+   *   searchField: "title",  // Search only in the 'title' field
+   * }));
    */
   const [filter, setFilter] = useState<Filter>({
     sort: "",
@@ -212,16 +221,16 @@ function Page() {
   };
 
   /**
-   * Removes a post from the list based on its `id`.
+   * Removes a post from the list based on its `uuid`.
    *
    * @param {Post} post - The post to be removed.
    */
   const removePost = (post: Post) => {
-    setPosts(posts.filter((p) => p.id != post.id));
+    setPosts(posts.filter((p) => p.uuid != post.uuid));
   };
 
   const editPost = (updatedPost: Post) => {
-    setPosts(posts.map((p) => (p.id === updatedPost.id ? updatedPost : p)));
+    setPosts(posts.map((p) => (p.uuid === updatedPost.uuid ? updatedPost : p)));
     setModal(false);
     setPostToEdit(null);
   };
