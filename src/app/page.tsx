@@ -105,26 +105,61 @@ function Page() {
     },
   ]);
 
+  /**
+   * Generates a specified number of mock posts and appends them to an existing list of posts.
+   *
+   * @function
+   * @param {Post[]} existingPosts - The array of existing posts to which new posts will be appended.
+   * @param {number} count - The number of new posts to generate.
+   * @returns {Post[]} - A new array containing both the existing posts and the newly generated posts.
+   *
+   * @example
+   * const existingPosts = [
+   *   {
+   *     id: 1,
+   *     title: "Existing Post 1",
+   *     description: "Description of existing post 1",
+   *     date_created: { day: 1, month: 1, year: 2024, nanoseconds: 0.123 },
+   *     date_modified: { day: 2, month: 1, year: 2024, nanoseconds: 0.456 },
+   *     enabled: true,
+   *     label: "Label-A",
+   *     uuid: "uuid-1000",
+   *     config: { theme: "dark", notifications: true },
+   *     on_connect: "Connect message 1",
+   *     topic: "sensor",
+   *     unit: "FB20",
+   *     driver: "Tinkerforge",
+   *     pad: 5,
+   *     sad: 3,
+   *     port: 8,
+   *   },
+   * ];
+   *
+   * const newPosts = generatePosts(existingPosts, 2);
+   * console.log(newPosts.length); // Output: 3 (1 existing + 2 generated)
+   */
   function generatePosts(existingPosts: Post[], count: number): Post[] {
     const newPosts: Post[] = [];
     const startingId = existingPosts.length + 1;
 
     for (let i = 0; i < count; i++) {
+      let date = new Date();
+
       const newPost: Post = {
         id: startingId + i,
         title: `Generated Title ${startingId + i}`,
         description: `Generated Description for Post ${startingId + i}`,
         date_created: {
-          day: Math.floor(Math.random() * 28) + 1,
-          month: Math.floor(Math.random() * 12) + 1,
-          year: Math.floor(Math.random() * 5) + 2024,
-          nanoseconds: Math.random(),
+          day: date.getDate(),
+          month: date.getMonth() + 1,
+          year: date.getFullYear(),
+          nanoseconds: date.getMilliseconds(),
         },
         date_modified: {
-          day: Math.floor(Math.random() * 28) + 1,
-          month: Math.floor(Math.random() * 12) + 1,
-          year: Math.floor(Math.random() * 5) + 2025,
-          nanoseconds: Math.random(),
+          day: date.getDate(),
+          month: date.getMonth() + 1,
+          year: date.getFullYear(),
+          nanoseconds: date.getMilliseconds(),
         },
         enabled: Math.random() > 0.5,
         label: `Label-${String.fromCharCode(65 + (i % 26))}`,
@@ -148,7 +183,16 @@ function Page() {
     return [...existingPosts, ...newPosts];
   }
 
-  // Function for adding new 10,000 posts
+  /**
+   * Handles the generation of 10,000 test posts and appends them to the current state.
+   * This method is purely for testing purposes to evaluate optimization performance !!!
+   * It should be removed once data from the database is successfully implemented.
+   *
+   * @function
+   * @example
+   * // Adds 10,000 new posts to the current list
+   * <button onClick={handleGeneratePosts}>Generate 10,000 Posts</button>
+   */
   const handleGeneratePosts = () => {
     const newPosts = generatePosts(posts, 10000);
     setPosts(newPosts);
