@@ -1,4 +1,4 @@
-import { ToggleProps } from "@/app/types";
+import { ToggleProps } from "@/types";
 import React from "react";
 import styles from "./MyToggle.module.css";
 

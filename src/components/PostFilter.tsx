@@ -1,9 +1,9 @@
 import React from "react";
 import MySelect from "./UI/select/MySelect";
 import MyInput from "./UI/input/MyInput";
-import styles from "@/app/styles/PostFilter.module.css";
+import styles from "@/styles/PostFilter.module.css";
 
-import { PostFilterProps, Post } from "@/app/types";
+import { PostFilterProps, Post } from "@/types";
 
 /**
  * A component for filtering posts based on a search query and a selected sorting option.

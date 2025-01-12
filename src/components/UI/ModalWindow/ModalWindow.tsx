@@ -1,7 +1,7 @@
 import React from "react";
 import cl from "./ModalWindow.module.css";
 
-import { ModalWindowProps } from "@/app/types";
+import { ModalWindowProps } from "@/types";
 
 /**
  * ModalWindow Component

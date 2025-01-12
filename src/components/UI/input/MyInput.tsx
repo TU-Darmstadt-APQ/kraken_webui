@@ -1,6 +1,6 @@
 import React, { ForwardedRef, InputHTMLAttributes } from "react";
 import classes from "./MyInput.module.css";
-import tooltipStyles from "./../tooltip/MyTooltip.module.css";
+import tooltipStyles from "@/components/UI/tooltip/MyTooltip.module.css";
 
 /**
  * Custom input component that supports all standard HTML input attributes.
