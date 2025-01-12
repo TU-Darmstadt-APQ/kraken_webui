@@ -1,9 +1,12 @@
 import { z } from "zod";
 import * as fs from "fs";
-import tinkerforgeSensorSchema from "@/app/models/zTinkerforgeSensor.schema";
+import {
+  tinkerforgeEntitySchema as tinkerforgeSensorSchema,
+  tinkerforgeDTO,
+} from "@/app/models/zTinkerforgeSensor.schema";
 
 describe("TinkerforgeSensor Schema Validation", () => {
-  it("should validate valid TinkerforgeSensor data against the schema", () => {
+  it("should validate valid TinkerforgeSensor data against the database schema", () => {
     // Load dummy data for a TinkerforgeSensor from a file to test the schema validator
     const tinkerforgeSensorData = JSON.parse(
       fs.readFileSync("./tests/mongo/data/TinkerforgeSensor.json", "utf8"),
@@ -11,7 +14,8 @@ describe("TinkerforgeSensor Schema Validation", () => {
 
     // Use expect to assert that the data is valid
     expect(() => {
-      tinkerforgeSensorSchema.parse(tinkerforgeSensorData);
+      var data = tinkerforgeSensorSchema.parse(tinkerforgeSensorData);
+      tinkerforgeDTO.convertFromEntity(data);
     }).not.toThrow();
   });
 
