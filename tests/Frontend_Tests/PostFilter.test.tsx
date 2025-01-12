@@ -11,8 +11,8 @@
 
 import React from "react";
 import { render, fireEvent } from "@testing-library/react";
-import PostFilter from "@/app/components/PostFilter";
-import { Filter } from "@/app/types";
+import PostFilter from "@/components/PostFilter";
+import { Filter } from "@/types";
 
 describe("PostFilter", () => {
   const setFilter = jest.fn();

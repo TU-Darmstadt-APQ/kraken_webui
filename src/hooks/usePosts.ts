@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 import { Post } from "../types";
-import { DateType } from "@/app/types";
+import { DateType } from "@/types";
 
 type SortKey = keyof Post;
 

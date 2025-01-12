@@ -1,9 +1,9 @@
 import React from "react";
 import MyButton from "../button/MyButton";
-import { MyHeaderProps } from "@/app/types";
-import PostFilter from "../../PostFilter";
+import { MyHeaderProps } from "@/types";
+import PostFilter from "@/components/PostFilter";
 import classes from "./MyHeader.module.css";
-import MyTooltip from "./../tooltip/MyTooltip";
+import MyTooltip from "@/components/UI/tooltip/MyTooltip";
 
 const MyHeader: React.FC<MyHeaderProps> = ({
   addingNewSensor,

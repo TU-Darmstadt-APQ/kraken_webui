@@ -9,8 +9,8 @@
  */
 
 import { render, screen, fireEvent } from "@testing-library/react";
-import TableItem from "@/app/components/TableItem";
-import { Post } from "@/app/types";
+import TableItem from "@/components/TableItem";
+import { Post } from "@/types";
 import "@testing-library/jest-dom";
 
 describe("TableItem Component", () => {

@@ -2,7 +2,7 @@ import React from "react";
 import MyButton from "./UI/button/MyButton";
 import styles from "@/app/styles/PostItem.module.css";
 
-import { PostItemProps } from "@/app/types";
+import { PostItemProps } from "@/types";
 
 /**
  * Contains minimal information about the sensor: Description, title.

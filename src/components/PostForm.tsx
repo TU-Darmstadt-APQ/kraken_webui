@@ -5,7 +5,7 @@ import MyInput from "./UI/input/MyInput";
 import ConfigEditorModal from "./UI/ConfigEditorModal";
 import MyTooltip from "./UI/tooltip/MyTooltip";
 
-import { PostFormProps, Post } from "@/app/types";
+import { PostFormProps, Post } from "@/types";
 
 const sensorTypes = [
   {
