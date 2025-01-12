@@ -1,6 +1,6 @@
 import React from "react";
 import MyButton from "./UI/button/MyButton";
-import styles from "@/app/styles/PostItem.module.css";
+import styles from "@/styles/PostItem.module.css";
 
 import { PostItemProps } from "@/types";
 
