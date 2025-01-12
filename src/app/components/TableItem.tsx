@@ -1,6 +1,6 @@
 import React from "react";
 import MyButton from "./UI/button/MyButton";
-import styles from "./../styles/TableItem.module.css";
+import styles from "@/app/styles/TableItem.module.css";
 
 import { TableItemProps } from "@/app/types";
 
