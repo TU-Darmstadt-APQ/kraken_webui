@@ -11,7 +11,7 @@ const tinkerforgeConfigSchema = z.object({
 });
 
 // Defines the schema for a Tinkerforge sensor
-const tinkerforgeSensorSchema = z.object({
+const tinkerforgeEntitySchema = z.object({
   _id: z.object({
     $uuid: z.string().uuid(),
   }),
@@ -33,4 +33,4 @@ const tinkerforgeSensorSchema = z.object({
   on_connect: z.array(functionCallSchema),
 });
 
-export default tinkerforgeSensorSchema;
+export default tinkerforgeEntitySchema;
