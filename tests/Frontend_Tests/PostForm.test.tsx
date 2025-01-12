@@ -92,21 +92,14 @@ describe("PostForm component", () => {
     renderPostForm({ create: mockCreate, edit: mockEdit });
 
     // Check if input fields are rendered with the correct placeholder text
-    expect(screen.getByPlaceholderText("Sensor Host UUID")).toBeInTheDocument();
     expect(screen.getByPlaceholderText("Description")).toBeInTheDocument();
 
     // Simulate user input
-    fireEvent.change(screen.getByPlaceholderText("Sensor Host UUID"), {
-      target: { value: "uuid-1234" },
-    });
     fireEvent.change(screen.getByPlaceholderText("Description"), {
       target: { value: "Topic 1" },
     });
 
     // Verify the input values
-    expect(screen.getByPlaceholderText("Sensor Host UUID")).toHaveValue(
-      "uuid-1234",
-    );
     expect(screen.getByPlaceholderText("Description")).toHaveValue("Topic 1");
   });
 
@@ -114,9 +107,6 @@ describe("PostForm component", () => {
     renderPostForm({ create: mockCreate, edit: mockEdit });
 
     // Fill the form with values
-    fireEvent.change(screen.getByPlaceholderText("Sensor Host UUID"), {
-      target: { value: "uuid-1234" },
-    });
     fireEvent.change(screen.getByPlaceholderText("Description"), {
       target: { value: "Topic 1" },
     });
@@ -137,7 +127,7 @@ describe("PostForm component", () => {
       id: expect.any(Number),
       title: "",
       description: "Topic 1",
-      uuid: "uuid-1234",
+      uuid: "",
       driver: "Driver 1",
       topic: "Topic 1",
       unit: "Unit 1",
