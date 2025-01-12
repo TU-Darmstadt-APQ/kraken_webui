@@ -60,3 +60,5 @@ export default [
   // Add prettier config last to ensure it overrides other settings
   eslintConfigPrettier,
 ];
+
+export default eslintConfig;
