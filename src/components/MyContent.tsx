@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
-import { MyContentProps } from "@/app/types";
-import styles from "@/app/styles/MyContent.module.css";
+import { MyContentProps } from "@/types";
+import styles from "@/styles/MyContent.module.css";
 
 import PostList from "./PostList";
 import PostForm from "./PostForm";

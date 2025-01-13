@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import MyButton from "./button/MyButton";
 import MyInput from "./input/MyInput";
 
-import { ConfigEditorModalProps } from "@/app/types";
+import { ConfigEditorModalProps } from "@/types";
 
 const ConfigEditorModal: React.FC<ConfigEditorModalProps> = ({
   config,

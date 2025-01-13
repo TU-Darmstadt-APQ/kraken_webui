@@ -4,7 +4,7 @@ import MyButton from "./UI/button/MyButton";
 import MyInput from "./UI/input/MyInput";
 import ConfigEditorModal from "./UI/ConfigEditorModal";
 
-import { PostFormProps, Post } from "@/app/types";
+import { PostFormProps, Post } from "@/types";
 
 const sensorTypes = [
   {

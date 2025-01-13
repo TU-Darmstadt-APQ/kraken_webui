@@ -1,11 +1,11 @@
 "use client";
 
 import React, { useState } from "react";
-import { usePosts } from "./hooks/usePosts";
+import { usePosts } from "@/hooks/usePosts";
 
-import { Post, Filter } from "./types";
-import MyHeader from "./components/UI/header/MyHeader";
-import MyContent from "./components/MyContent";
+import { Post, Filter } from "@/types";
+import MyHeader from "@/components/UI/header/MyHeader";
+import MyContent from "@/components/MyContent";
 
 function Page() {
   // Placeholder data for testing functionality

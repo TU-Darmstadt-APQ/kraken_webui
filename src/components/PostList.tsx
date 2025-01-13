@@ -2,9 +2,9 @@ import React, { useState, useRef } from "react";
 import Image from "next/image";
 import PostItem from "./PostItem";
 import TableItem from "./TableItem";
-import styles from "@/app/styles/PostList.module.css";
+import styles from "@/styles/PostList.module.css";
 
-import { PostListProps } from "@/app/types";
+import { PostListProps } from "@/types";
 import MyToggle from "./UI/toggle/MyToggle";
 import MyTooltip from "./UI/tooltip/MyTooltip";
 
