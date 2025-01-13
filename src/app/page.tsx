@@ -106,6 +106,99 @@ function Page() {
   ]);
 
   /**
+   * Generates a specified number of mock posts and appends them to an existing list of posts.
+   *
+   * @function
+   * @param {Post[]} existingPosts - The array of existing posts to which new posts will be appended.
+   * @param {number} count - The number of new posts to generate.
+   * @returns {Post[]} - A new array containing both the existing posts and the newly generated posts.
+   *
+   * @example
+   * const existingPosts = [
+   *   {
+   *     id: 1,
+   *     title: "Existing Post 1",
+   *     description: "Description of existing post 1",
+   *     date_created: { day: 1, month: 1, year: 2024, nanoseconds: 0.123 },
+   *     date_modified: { day: 2, month: 1, year: 2024, nanoseconds: 0.456 },
+   *     enabled: true,
+   *     label: "Label-A",
+   *     uuid: "uuid-1000",
+   *     config: { theme: "dark", notifications: true },
+   *     on_connect: "Connect message 1",
+   *     topic: "sensor",
+   *     unit: "FB20",
+   *     driver: "Tinkerforge",
+   *     pad: 5,
+   *     sad: 3,
+   *     port: 8,
+   *   },
+   * ];
+   *
+   * const newPosts = generatePosts(existingPosts, 2);
+   * console.log(newPosts.length); // Output: 3 (1 existing + 2 generated)
+   */
+  function generatePosts(existingPosts: Post[], count: number): Post[] {
+    const newPosts: Post[] = [];
+    const startingId = existingPosts.length + 1;
+
+    for (let i = 0; i < count; i++) {
+      let date = new Date();
+
+      const newPost: Post = {
+        id: startingId + i,
+        title: `Generated Title ${startingId + i}`,
+        description: `Generated Description for Post ${startingId + i}`,
+        date_created: {
+          day: date.getDate(),
+          month: date.getMonth() + 1,
+          year: date.getFullYear(),
+          nanoseconds: date.getMilliseconds(),
+        },
+        date_modified: {
+          day: date.getDate(),
+          month: date.getMonth() + 1,
+          year: date.getFullYear(),
+          nanoseconds: date.getMilliseconds(),
+        },
+        enabled: Math.random() > 0.5,
+        label: `Label-${String.fromCharCode(65 + (i % 26))}`,
+        uuid: `uuid-${Math.floor(Math.random() * 10000) + 2948}`,
+        config: {
+          theme: ["dark", "light", "blue", "red"][i % 4],
+          notifications: Math.random() > 0.5,
+        },
+        on_connect: `Generated connect message ${startingId + i}`,
+        topic: ["sensor", "laptop_sensor", "smartphone_sensor"][i % 3],
+        unit: ["FB20", "FB8", "FB12"][i % 3],
+        driver: "Tinkerforge",
+        pad: Math.floor(Math.random() * 10),
+        sad: Math.floor(Math.random() * 10),
+        port: Math.floor(Math.random() * 20),
+      };
+
+      newPosts.push(newPost);
+    }
+
+    return [...existingPosts, ...newPosts];
+  }
+
+  /**
+   * Handles the generation of 10,000 test posts and appends them to the current state.
+   * This method is purely for testing purposes to evaluate optimization performance !!!
+   * It should be removed once data from the database is successfully implemented.
+   *
+   * @function
+   * @example
+   * // Adds 10,000 new posts to the current list
+   * <button onClick={handleGeneratePosts}>Generate 10,000 Posts</button>
+   */
+  const handleGeneratePosts = () => {
+    const newPosts = generatePosts(posts, 10000);
+    setPosts(newPosts);
+  };
+
+  /**
    * In React, there are two main approaches to interact with DOM elements:
    * 1. Controlled components - State is fully managed by React.
    * 2. Uncontrolled components - State is managed by the DOM itself.
@@ -212,6 +305,11 @@ function Page() {
         postToEdit={postToEdit}
         listTitle={"The list of all sensors"}
       />
+
+      <div>
+        <button onClick={handleGeneratePosts}>Generate 10,000 Posts</button>
+        <p>Total Posts: {posts.length}</p>
+      </div>
     </div>
   );
 }

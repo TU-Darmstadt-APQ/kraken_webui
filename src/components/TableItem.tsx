@@ -1,5 +1,6 @@
 import React from "react";
 import MyButton from "./UI/button/MyButton";
+import styles from "@/styles/TableItem.module.css";
 
 import { TableItemProps } from "@/types";
 
@@ -55,30 +56,32 @@ const TableItem: React.FC<TableItemProps> = ({
   if (!isRowVisible) return null; // we check if minimum one is true
 
   return (
-    <tr>
+    <div className={`${styles.row}`}>
       {/* Displaying properties of the `post` object */}
-      {selectedColumns.id && <td>{post.id}</td>}
-      {selectedColumns.title && <td>{post.title}</td>}
-      {selectedColumns.description && <td>{post.description}</td>}
+      {selectedColumns.id && <div className={styles.cell}>{post.id}</div>}
+      {selectedColumns.title && <div className={styles.cell}>{post.title}</div>}
+      {selectedColumns.description && (
+        <div className={styles.cell}>{post.description}</div>
+      )}
 
       {selectedColumns.date_created && (
-        <td>
+        <div className={styles.cell}>
           {post.date_created
             ? `${post.date_created.day}.${post.date_created.month}.${post.date_created.year}`
             : "Date not given"}
-        </td>
+        </div>
       )}
 
       {selectedColumns.date_modified && (
-        <td>
+        <div className={styles.cell}>
           {post.date_modified
             ? `${post.date_modified.day}.${post.date_modified.month}.${post.date_modified.year}`
             : "Date not given"}
-        </td>
+        </div>
       )}
 
       {selectedColumns.enabled && (
-        <td>
+        <div className={styles.cell}>
           {post.enabled == true ? (
             <div
               style={{
@@ -98,13 +101,13 @@ const TableItem: React.FC<TableItemProps> = ({
               }}
             ></div>
           ) : null}
-        </td>
+        </div>
       )}
 
-      {selectedColumns.label && <td>{post.label}</td>}
-      {selectedColumns.uuid && <td>{post.uuid}</td>}
+      {selectedColumns.label && <div className={styles.cell}>{post.label}</div>}
+      {selectedColumns.uuid && <div className={styles.cell}>{post.uuid}</div>}
       {selectedColumns.config && (
-        <td>
+        <div className={styles.cell}>
           {post.config && Object.entries(post.config).length > 0 ? (
             <div>
               <p>config {"{"}</p>
@@ -120,19 +123,15 @@ const TableItem: React.FC<TableItemProps> = ({
           ) : (
             "No configuration given"
           )}
-        </td>
+        </div>
       )}
 
-      {selectedColumns.on_connect && <td>{post.on_connect}</td>}
+      {selectedColumns.on_connect && (
+        <div className={styles.cell}>{post.on_connect}</div>
+      )}
 
       {/* Edit button and delete button with callback */}
-      <td
-        style={{
-          borderBottomStyle: "hidden",
-          borderTopStyle: "hidden",
-          borderRightStyle: "hidden",
-        }}
-      >
+      <div className={`${styles.cell} ${styles.actions}`}>
         <MyButton className="list-button" onClick={() => edit(post)}>
           <img
             src="/edit.png"
@@ -145,15 +144,15 @@ const TableItem: React.FC<TableItemProps> = ({
 
         <MyButton onClick={() => remove(post)} className="list-button">
           <img
-            src="/trashCan.png"
+            src="/trashCan.svg"
             alt="Delete"
             //className="icon-button"
             width={20}
             height={20}
           />
         </MyButton>
-      </td>
-    </tr>
+      </div>
+    </div>
   );
 };
 

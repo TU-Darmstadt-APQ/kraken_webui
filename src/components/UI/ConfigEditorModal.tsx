@@ -30,20 +30,42 @@ const ConfigEditorModal: React.FC<ConfigEditorModalProps> = ({
     <div style={{ marginTop: "20px" }}>
       <span>Edit configuration</span>
       {/* Inputfields for Key and Value */}
-      <div style={{ display: "flex", gap: "10px", marginBottom: "20px" }}>
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          gap: "10px",
+        }}
+      >
         <MyInput
           value={key}
           onChange={(e) => setKey(e.target.value)}
           type="text"
           placeholder="Key"
+          style={{
+            flex: 1,
+          }}
         />
         <MyInput
           value={value}
           onChange={(e) => setValue(e.target.value)}
           type="text"
           placeholder="Value"
+          style={{
+            flex: 1,
+          }}
         />
-        <MyButton onClick={addConfigEntry}>Add</MyButton>
+        <MyButton
+          onClick={addConfigEntry}
+          style={{
+            width: "60px",
+            height: "30px",
+            backgroundColor: "teal",
+            color: "white",
+          }}
+        >
+          Add
+        </MyButton>
       </div>
 
       {/* List of the current configuration */}

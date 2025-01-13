@@ -61,7 +61,7 @@ const PostItem: React.FC<PostItemProps> = (props) => {
         </MyButton>
         <MyButton onClick={() => props.remove(props.post)}>
           <img
-            src="/trashCan.png"
+            src="/trashCan.svg"
             alt="Delete"
             //className="icon-button"
             width={20}

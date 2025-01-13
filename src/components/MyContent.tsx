@@ -25,8 +25,7 @@ const MyContent: React.FC<MyContentProps> = ({
 
   // Functions for switching the content
   const showList = () => setActiveContent("sensorList");
-  const showAnalysis = () => setActiveContent("analysis");
-  const showShare = () => setActiveContent("share");
+  const showTree = () => setActiveContent("treeView");
 
   return (
     <div className={styles["Content"]}>
@@ -36,7 +35,7 @@ const MyContent: React.FC<MyContentProps> = ({
           <MyButton onClick={showList}>
             <img
               src="/listIcon.png"
-              alt="Table View"
+              alt="List View"
               className="icon-button"
               width={25}
               height={25}
@@ -44,23 +43,11 @@ const MyContent: React.FC<MyContentProps> = ({
           </MyButton>
         </MyTooltip>
         <hr />
-        <MyTooltip infoText="Sensor data analysis" position="right">
-          <MyButton onClick={showAnalysis}>
+        <MyTooltip infoText="Tree view of sensors" position="right">
+          <MyButton onClick={showTree}>
             <img
               src="/diagrammIcon.png"
-              alt="Table View"
-              className="icon-button"
-              width={25}
-              height={25}
-            />
-          </MyButton>
-        </MyTooltip>
-        <hr />
-        <MyTooltip infoText="Sensor data share" position="right">
-          <MyButton onClick={showShare}>
-            <img
-              src="/shareIcon.png"
-              alt="Table View"
+              alt="Tree View"
               className="icon-button"
               width={25}
               height={25}
@@ -101,7 +88,7 @@ const MyContent: React.FC<MyContentProps> = ({
             ></PostList>
           )}
 
-          {activeContent === "analysis" && (
+          {activeContent === "treeView" && (
             <div
               style={{
                 display: "flex",
@@ -109,23 +96,7 @@ const MyContent: React.FC<MyContentProps> = ({
                 alignItems: "center",
               }}
             >
-              <h2>Sensor Data Analysis</h2>
-              <p>
-                Graphical data analysis for all inputs and outputs of sensors
-              </p>
-            </div>
-          )}
-
-          {activeContent === "share" && (
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-            >
-              <h2>Sensor Data Share</h2>
-              <p>Share the data with ???</p>
+              <h2>Tree View of sensors</h2>
             </div>
           )}
         </div>

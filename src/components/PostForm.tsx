@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import MyButton from "./UI/button/MyButton";
 import MyInput from "./UI/input/MyInput";
 import ConfigEditorModal from "./UI/ConfigEditorModal";
-import MyTooltip from "./UI/tooltip/MyTooltip";
 
 import { PostFormProps, Post } from "@/types";
 
@@ -80,6 +79,7 @@ const PostForm: React.FC<PostFormProps> = ({ create, edit, postToEdit }) => {
     port: 0,
     sad: 0,
     pad: 0,
+    host: "",
   };
 
   // State for managing the input values of the form
@@ -131,10 +131,6 @@ const PostForm: React.FC<PostFormProps> = ({ create, edit, postToEdit }) => {
       alert("The `driver` must not be empty.");
       return;
     }
-    if (!post.uuid.trim()) {
-      alert("The `UUID` must not be empty.");
-      return;
-    }
     if (!post.topic.trim()) {
       alert("The `topic` must not be empty.");
       return;
@@ -169,16 +165,31 @@ const PostForm: React.FC<PostFormProps> = ({ create, edit, postToEdit }) => {
       port: 0,
       sad: 0,
       pad: 0,
+      host: "",
     }); // After inserting Element, we empty InputFields
   };
 
   return (
     <form>
-      <label htmlFor="sensorType">Sensor Type</label>
+      <label
+        htmlFor="sensorType"
+        style={{
+          display: "block",
+          marginBottom: "4px",
+        }}
+      >
+        Sensor Type
+      </label>
       <select
         id="sensorType"
         value={selectedSensorType}
         onChange={handleSensorTypeChange}
+        style={{
+          width: "100%",
+          padding: "5px",
+          border: "1px solid teal",
+          marginBottom: "16px",
+        }}
       >
         <option value="">Select Sensor Type</option>
         {sensorTypes.map((type) => (
@@ -188,74 +199,24 @@ const PostForm: React.FC<PostFormProps> = ({ create, edit, postToEdit }) => {
         ))}
       </select>
 
-      <div style={{ width: "100%" }}>
-        {/* Sensor Host UUID */}
-        {selectedSensorType === "Tinkerforge" ? (
-          <MyTooltip
-            infoText="Host is auto-generated for selected type of sensors."
-            position="right"
-          >
-            <MyInput
-              value={post.uuid}
-              onChange={(e) => setPost({ ...post, uuid: e.target.value })}
-              type="text"
-              placeholder="Sensor Host UUID"
-              disabled={true}
-            />
-          </MyTooltip>
-        ) : (
-          <MyInput
-            value={post.uuid}
-            onChange={(e) => setPost({ ...post, uuid: e.target.value })}
-            type="text"
-            placeholder="Sensor Host UUID"
-          />
-        )}
-      </div>
-
       {/* Topic and Unit */}
       <div style={{ display: "flex", gap: "10px" }}>
-        <MyInput
-          value={post.topic}
-          onChange={(e) => setPost({ ...post, topic: e.target.value })}
-          type="text"
-          placeholder="Topic"
-        />
-        <MyInput
-          value={post.unit}
-          onChange={(e) => setPost({ ...post, unit: e.target.value })}
-          type="text"
-          placeholder="Unit"
-        />
-      </div>
-
-      {/* Port, Pad, Sad, Driver */}
-      <div style={{ display: "flex", gap: "10px" }}>
-        <MyInput
-          value={post.port}
-          onChange={(e) => setPost({ ...post, port: parseInt(e.target.value) })}
-          type="number"
-          placeholder="Port"
-          disabled={selectedSensorType === "Tinkerforge"}
-        />
-        <MyInput
-          value={post.pad}
-          onChange={(e) => setPost({ ...post, pad: parseInt(e.target.value) })}
-          type="number"
-          placeholder="Pad"
-        />
-        <MyInput
-          value={post.sad}
-          onChange={(e) => setPost({ ...post, sad: parseInt(e.target.value) })}
-          type="number"
-          placeholder="Sad"
-        />
-        <MyInput
-          value={post.driver}
-          onChange={(e) => setPost({ ...post, driver: e.target.value })}
-          type="text"
-          placeholder="Driver"
-        />
+        <div style={{ flex: 1 }}>
+          <MyInput
+            value={post.topic}
+            onChange={(e) => setPost({ ...post, topic: e.target.value })}
+            type="text"
+            placeholder="Topic"
+          />
+        </div>
+        <div style={{ flex: 1 }}>
+          <MyInput
+            value={post.unit}
+            onChange={(e) => setPost({ ...post, unit: e.target.value })}
+            type="text"
+            placeholder="Unit"
+          />
+        </div>
       </div>
 
       {/* Description */}
@@ -265,6 +226,30 @@ const PostForm: React.FC<PostFormProps> = ({ create, edit, postToEdit }) => {
         type="text"
         placeholder="Description"
       />
+
+      {/* Host, Port, Driver */}
+      <div style={{ display: "flex", gap: "10px" }}>
+        <MyInput
+          value={post.host}
+          onChange={(e) => setPost({ ...post, host: e.target.value })}
+          type="text"
+          placeholder="Host"
+          disabled={selectedSensorType === "Tinkerforge"}
+        />
+        <MyInput
+          value={post.port}
+          onChange={(e) => setPost({ ...post, port: parseInt(e.target.value) })}
+          type="number"
+          placeholder="Port"
+          disabled={selectedSensorType === "Tinkerforge"}
+        />
+        <MyInput
+          value={post.driver}
+          onChange={(e) => setPost({ ...post, driver: e.target.value })}
+          type="text"
+          placeholder="Driver"
+        />
+      </div>
 
       {/* For editing the configuration */}
       <ConfigEditorModal
