@@ -47,12 +47,8 @@
     }
   },
   "lint-staged": {
-    "**/*": "prettier --write --ignore-unknown",
-    "*.ts": [
-      "eslint",
-      "prettier --write"
-    ],
-    "*.js": [
+    "!(*.js|*.jsx|*.ts|*.tsx)": "prettier --write --ignore-unknown",
+    "*.{js,jsx,ts,tsx}": [
       "eslint",
       "prettier --write"
     ],
