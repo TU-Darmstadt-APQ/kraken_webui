@@ -23,8 +23,8 @@ export const tinkerforgeEntitySchema = z.object({
     $date: z.string().datetime(),
   }),
   enabled: z.boolean(),
-  label: z.union([z.string(), z.null()]),
-  description: z.optional(z.string()),
+  label:  z.optional(z.union([z.string(), z.null()])),
+  description: z.union([z.string(), z.null()]),
   uid: z
     .number()
     .int()
