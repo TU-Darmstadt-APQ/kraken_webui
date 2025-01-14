@@ -3,7 +3,7 @@ import * as fs from "fs";
 import {
   tinkerforgeEntitySchema as tinkerforgeSensorSchema,
   tinkerforgeDTO,
-} from "@/app/models/zTinkerforgeSensor.schema";
+} from "@/models/zTinkerforgeSensor.schema";
 
 describe("TinkerforgeSensor Schema Validation", () => {
   it("should validate valid TinkerforgeSensor data against the database schema", () => {
