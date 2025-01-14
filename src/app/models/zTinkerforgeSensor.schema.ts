@@ -5,7 +5,7 @@ import functionCallSchema from "./FunctionCall.schema";
 export const tinkerforgeConfigSchema = z.object({
   interval: z.number().int().nonnegative(),
   trigger_only_on_change: z.boolean(),
-  description: z.union([z.string(), z.null()]),,
+  description: z.union([z.string(), z.null()]),
   topic: z.string(),
   unit: z.string(),
 });
@@ -23,7 +23,7 @@ export const tinkerforgeEntitySchema = z.object({
     $date: z.string().datetime(),
   }),
   enabled: z.boolean(),
-  label:  z.optional(z.union([z.string(), z.null()])),
+  label: z.optional(z.union([z.string(), z.null()])),
   description: z.union([z.string(), z.null()]),
   uid: z
     .number()
