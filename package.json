@@ -11,7 +11,7 @@
     "test": "jest"
   },
   "dependencies": {
-    "mongoose": "^8.9.4",
+    "mongoose": "^8.9.5",
     "next": "15.1.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
@@ -24,13 +24,13 @@
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.1.0",
     "@types/jest": "^29.5.14",
-    "@types/node": "^22.10.5",
+    "@types/node": "^22.10.6",
     "@types/react": "^19.0.6",
     "@types/react-dom": "^19",
     "@types/react-window": "^1.8.8",
     "eslint": "^9.18.0",
     "eslint-config-next": "15.1.4",
-    "eslint-config-prettier": "^9.1.0",
+    "eslint-config-prettier": "^10.0.1",
     "eslint-plugin-jest": "^28.10.0",
     "eslint-plugin-react": "^7.37.4",
     "globals": "^15.14.0",
@@ -41,7 +41,7 @@
     "prettier": "3.4.2",
     "ts-node": "^10.9.2",
     "typescript": "^5.7.3",
-    "typescript-eslint": "^8.19.1"
+    "typescript-eslint": "^8.20.0"
   },
   "lint-staged": {
     "!(*.js|*.jsx|*.ts|*.tsx)": "prettier --write --ignore-unknown",
