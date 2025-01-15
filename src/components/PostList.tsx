@@ -66,7 +66,6 @@ const PostList: React.FC<PostListProps> = ({
   const [isTableView, setIsTableView] = useState(false);
 
   const [selectedColumns, setSelectedColumns] = useState({
-    id: true,
     title: false,
     description: true,
     date_created: true,
@@ -148,7 +147,6 @@ const PostList: React.FC<PostListProps> = ({
             <div className={styles["table"]}>
               {/* Header */}
               <div className={`${styles.heading}`}>
-                {selectedColumns.id && <div className={styles.cell}>ID</div>}
                 {selectedColumns.title && (
                   <div className={styles.cell}>Title</div>
                 )}
@@ -216,7 +214,7 @@ const PostList: React.FC<PostListProps> = ({
                 remove={remove}
                 number={index + 1}
                 post={posts[index]}
-                key={posts[index].id}
+                key={posts[index].uuid}
               />
             </div>
           )}
