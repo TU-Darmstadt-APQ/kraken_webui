@@ -63,7 +63,6 @@ const PostForm: React.FC<PostFormProps> = ({ create, edit, postToEdit }) => {
   };
 
   const defaultPost: Post = {
-    id: 0,
     title: "",
     description: "",
     date_created: getCurrentDate(),
@@ -145,11 +144,10 @@ const PostForm: React.FC<PostFormProps> = ({ create, edit, postToEdit }) => {
     if (postToEdit) {
       edit({ ...post, date_modified: getCurrentDate() });
     } else {
-      create({ ...post, id: Date.now() }); // Generate a unique ID based on the current timestamp
+      create({ ...post, uuid: Date.now().toString() }); // Generate a unique ID based on the current timestamp
     }
 
     setPost({
-      id: 0,
       title: "",
       description: "",
       date_created: getCurrentDate(),
