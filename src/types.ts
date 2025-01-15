@@ -2,24 +2,34 @@ import React from "react"; // Add import for React
 import { ReactNode } from "react";
 
 export interface Post {
+  // Basic information
   title?: string;
   description?: string; // All lines marked with a question mark are optional (or do not have to be included when the object is created)
+  uuid: string;
+  label?: string;
+
+  // Dates
   date_created: DateType;
   date_modified: DateType;
-  enabled?: boolean;
-  label?: string;
-  uuid: string;
+
+  // Configuration and connection
   config?: Record<string, unknown>; // Flexible configuration (object with any values)
   on_connect?: string;
+
+  // Sensor details
   topic: string;
   unit: string;
-  port?: number;
-  pad?: number;
-  sad?: number;
   driver: string;
   sensor_type?: string;
   host?: string;
+
+  // Optional fields
+  enabled?: boolean;
+  port?: number;
+  pad?: number;
+  sad?: number;
 }
+
 export interface DateType {
   day?: number;
   month?: number;
