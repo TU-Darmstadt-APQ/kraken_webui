@@ -21,7 +21,6 @@ const mockEdit = jest.fn();
 
 // Mock post data
 const mockPost = {
-  id: 1,
   title: "Test Post Title",
   description: "Test post description",
   date_created: { day: 1, month: 1, year: 2025, nanoseconds: 0 },
