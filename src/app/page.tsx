@@ -11,7 +11,6 @@ function Page() {
   // Placeholder data for testing functionality
   const [posts, setPosts] = useState<Post[]>([
     {
-      id: 1,
       title: "Lorem ispum",
       description: "Description",
       date_created: {
@@ -42,7 +41,6 @@ function Page() {
       port: 8,
     },
     {
-      id: 2,
       title: "A_Thinkpad",
       description: "Laptop-sensor",
       date_created: {
@@ -73,7 +71,6 @@ function Page() {
       port: 8,
     },
     {
-      id: 3,
       title: "Xiaomi",
       description: "none",
       date_created: {
@@ -146,7 +143,6 @@ function Page() {
       let date = new Date();
 
       const newPost: Post = {
-        id: startingId + i,
         title: `Generated Title ${startingId + i}`,
         description: `Generated Description for Post ${startingId + i}`,
         date_created: {
