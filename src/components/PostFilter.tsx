@@ -45,7 +45,6 @@ const PostFilter: React.FC<PostFilterProps> = ({ filter, setFilter }) => {
               // Sorting options
               { value: "title", name: "Name" },
               { value: "description", name: "Description" },
-              { value: "id", name: "ID" },
               { value: "date_created", name: "Creation date" },
               { value: "date_modified", name: "Last modified date" },
               { value: "enabled", name: "Enabled" },
@@ -69,7 +68,6 @@ const PostFilter: React.FC<PostFilterProps> = ({ filter, setFilter }) => {
               { value: "all", name: "All" },
               { value: "title", name: "Name" },
               { value: "description", name: "Description" },
-              { value: "id", name: "ID" },
               { value: "date_created", name: "Creation date" },
               { value: "date_modified", name: "Last modified date" },
               { value: "enabled", name: "Enabled" },
