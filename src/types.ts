@@ -34,6 +34,16 @@ export interface Filter {
   searchField: keyof Post | "all"; // Current Searchfield
 }
 
+// General type for post deletion and editing functions (in general - for all callback-functions)
+export type PostAction = (post: Post) => void;
+
+// Interface for common properties of a component with posts
+export interface PostComponentProps {
+  post: Post;
+  remove: PostAction;
+  edit: PostAction;
+}
+
 // Type the props of the PostFilter component
 export interface PostFilterProps {
   filter: Filter;
@@ -55,8 +65,8 @@ export interface MySelectProps {
 }
 
 export interface PostFormProps {
-  create: (post: Post) => void;
-  edit: (post: Post) => void;
+  create: PostAction;
+  edit: PostAction;
   postToEdit: Post | null;
 }
 
@@ -71,24 +81,16 @@ export interface MyButtonProps {
   [key: string]: any; // Catch-all for any additional props
 }
 
-export interface PostListProps {
+export interface PostListProps extends Omit<PostComponentProps, "post"> {
   posts: Post[]; // Array of Posts
   listTitle: string; // Title of list
-  remove: (post: Post) => void; // Function that deletes the post
-  edit: (post: Post) => void;
 }
 
-export interface TableItemProps {
-  post: Post; // Post object
-  remove: (post: Post) => void; // Function that deletes the post
-  edit: (post: Post) => void;
+export interface TableItemProps extends PostComponentProps {
   selectedColumns: { [key: string]: boolean };
 }
 
-export interface PostItemProps {
-  post: Post; // Post object
-  remove: (post: Post) => void; // Function that deletes the post
-  edit: (post: Post) => void;
+export interface PostItemProps extends PostComponentProps {
   number: number; // Order of the post (optional)
 }
 
@@ -96,10 +98,10 @@ export interface MyContentProps {
   modal: boolean;
   setModal: (value: boolean) => void;
   sortedAndSearchedPosts: Post[];
-  createPost: (newPost: Post) => void;
-  removePost: (post: Post) => void;
-  editPost: (post: Post) => void;
-  handleEdit: (post: Post) => void;
+  createPost: PostAction;
+  removePost: PostAction;
+  editPost: PostAction;
+  handleEdit: PostAction;
   postToEdit: Post | null;
   listTitle: string;
 }
