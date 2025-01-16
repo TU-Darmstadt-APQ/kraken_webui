@@ -27,7 +27,7 @@ jobs:
         run: npm ci
 
       - name: Run ESLint
-        run: npx eslint .
+        run: npx eslint $(git diff --name-only HEAD^ --diff-filter d)
 
   prettier:
     runs-on: ubuntu-latest
