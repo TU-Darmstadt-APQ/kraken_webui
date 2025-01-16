@@ -7,6 +7,8 @@ import { Post, Filter } from "@/types";
 import MyHeader from "@/components/UI/header/MyHeader";
 import MyContent from "@/components/MyContent";
 
+import { v4 as uuidv4 } from "uuid";
+
 function Page() {
   // Placeholder data for testing functionality
   const [posts, setPosts] = useState<Post[]>([
@@ -159,7 +161,7 @@ function Page() {
         },
         enabled: Math.random() > 0.5,
         label: `Label-${String.fromCharCode(65 + (i % 26))}`,
-        uuid: `uuid-${Math.floor(Math.random() * 10000) + 2948}`,
+        uuid: `uuid-${uuidv4()}`,
         config: {
           theme: ["dark", "light", "blue", "red"][i % 4],
           notifications: Math.random() > 0.5,
