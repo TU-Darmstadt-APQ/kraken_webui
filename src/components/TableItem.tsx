@@ -26,7 +26,6 @@ import { TableItemProps } from "@/types";
  * };
  *
  * const selectedColumns = {
- *   id: true,
  *   title: true,
  *   description: true,
  *   date_created: false,
@@ -58,7 +57,6 @@ const TableItem: React.FC<TableItemProps> = ({
   return (
     <div className={`${styles.row}`}>
       {/* Displaying properties of the `post` object */}
-      {selectedColumns.id && <div className={styles.cell}>{post.id}</div>}
       {selectedColumns.title && <div className={styles.cell}>{post.title}</div>}
       {selectedColumns.description && (
         <div className={styles.cell}>{post.description}</div>

@@ -2,7 +2,6 @@ import React from "react"; // Add import for React
 import { ReactNode } from "react";
 
 export interface Post {
-  id: number;
   title?: string;
   description?: string; // All lines marked with a question mark are optional (or do not have to be included when the object is created)
   date_created: DateType;
