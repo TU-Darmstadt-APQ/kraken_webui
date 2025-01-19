@@ -11,6 +11,7 @@
     "test": "jest"
   },
   "dependencies": {
+    "@next/swc-darwin-x64": "^15.1.5",
     "mongoose": "^8.9.5",
     "next": "15.1.5",
     "react": "^19.0.0",

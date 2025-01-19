@@ -1,3 +1,4 @@
+/* eslint-disable import/no-anonymous-default-export */
 import globals from "globals";
 import pluginJs from "@eslint/js";
 import tseslint from "@typescript-eslint/eslint-plugin";
@@ -11,7 +12,10 @@ const compat = new FlatCompat({
   baseDirectory: import.meta.dirname,
 });
 
-const eslintConfig = [
+/**
+ * @type {import('eslint').Linter.Config[]}
+ */
+export default [
   // Add the combined FlatCompat configuration
   ...compat.config({
     extends: ["next/core-web-vitals", "next/typescript", "next"], // Combined extends
@@ -56,5 +60,3 @@ const eslintConfig = [
   // Add prettier config last to ensure it overrides other settings
   eslintConfigPrettier,
 ];
-
-export default eslintConfig;
