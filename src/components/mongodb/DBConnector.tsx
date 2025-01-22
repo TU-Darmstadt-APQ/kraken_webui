@@ -1,4 +1,5 @@
 import { config } from "@/../config";
+import { Post, DateType } from "@/types";
 
 const { MongoClient } = require("mongodb");
 const uri = config.krakenConfigsMongodbConnectionString;
@@ -11,15 +12,45 @@ async function connectToDB() {
 /*
  * Queries all documents from TinkerforgeSensor collection
  */
-export async function getAllDocuments() {
+export async function getAllDocuments(): Promise<Post[]> {
   const database = await client.db("sensor_config");
   const sensors = await database.collection("TinkerforgeSensor");
   let allDocs = await sensors.find({}).toArray();
-  // Converting to plain values
-  // let sensorData = JSON.stringify(Object.values(allDocs), null, 2);
-  // let sensorData = Object.values(allDocs);
 
-  return allDocs;
+  // Convert data from MongoDB to Post[]
+  // (!!!) Otherwise the data will not be automatically converted
+  const posts: Post[] = allDocs.map((doc: any) => ({
+    uuid: doc.uuid,
+    title: doc.title || undefined,
+    description: doc.description || undefined,
+    label: doc.label || undefined,
+    date_created: convertToDateType(doc.date_created),
+    date_modified: convertToDateType(doc.date_modified),
+    config: doc.config || undefined,
+    on_connect: doc.on_connect || undefined,
+    topic: doc.topic,
+    unit: doc.unit,
+    driver: doc.driver,
+    sensor_type: doc.sensor_type || undefined,
+    host: doc.host || undefined,
+    enabled: doc.enabled || undefined,
+    port: doc.port || undefined,
+    pad: doc.pad || undefined,
+    sad: doc.sad || undefined,
+  }));
+
+  return posts;
+}
+
+function convertToDateType(date: any): DateType {
+  if (!date) return {};
+  const jsDate = new Date(date);
+  return {
+    day: jsDate.getUTCDate(),
+    month: jsDate.getUTCMonth() + 1, // Months in JS start from 0
+    year: jsDate.getUTCFullYear(),
+    nanoseconds: 0, // MongoDB does not support nano-seconds
+  };
 }
 
 export default async function DBConnector() {

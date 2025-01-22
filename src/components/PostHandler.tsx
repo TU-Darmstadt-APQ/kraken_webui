@@ -9,7 +9,11 @@ import MyContent from "@/components/MyContent";
 
 import { v4 as uuidv4 } from "uuid";
 
-function PostHandler(allDocs: Post[]) {
+interface PostHandlerProps {
+  allDocs: Post[];
+}
+
+const PostHandler: React.FC<PostHandlerProps> = ({ allDocs }) => {
   // Placeholder data for testing functionality
   const [posts, setPosts] = useState<Post[]>(allDocs);
 
@@ -47,6 +51,7 @@ function PostHandler(allDocs: Post[]) {
    * console.log(newPosts.length); // Output: 3 (1 existing + 2 generated)
    */
   function generatePosts(existingPosts: Post[], count: number): Post[] {
+    console.log("EXISTING POST IS AN ARRAY:", Array.isArray(existingPosts));
     const newPosts: Post[] = [];
     const startingId = existingPosts.length + 1;
 
@@ -219,6 +224,6 @@ function PostHandler(allDocs: Post[]) {
       </div>
     </div>
   );
-}
+};
 
 export default PostHandler;

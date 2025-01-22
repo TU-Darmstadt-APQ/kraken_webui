@@ -4,7 +4,7 @@ import { Post } from "@/types";
 
 async function Page() {
   let allDocs: Post[] = await getAllDocuments();
-  return <PostHandler {...allDocs} />;
+  return <PostHandler allDocs={allDocs} />;
 }
 
 export default Page;
