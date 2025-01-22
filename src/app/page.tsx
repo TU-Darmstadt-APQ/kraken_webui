@@ -8,6 +8,8 @@ import MyHeader from "@/components/UI/header/MyHeader";
 import MyContent from "@/components/MyContent";
 
 import { v4 as uuidv4 } from "uuid";
+import { NextUIProvider } from "@nextui-org/react";
+import { Button } from "@nextui-org/react";
 
 function Page() {
   // Placeholder data for testing functionality
@@ -246,7 +248,7 @@ function Page() {
     posts,
     filter.sort,
     filter.query,
-    filter.searchField,
+    filter.searchField
   );
 
   const [postToEdit, setPostToEdit] = useState<Post | null>(null);
@@ -282,33 +284,37 @@ function Page() {
   };
 
   return (
-    <div className="App">
-      <MyHeader
-        addingNewSensor={() => {
-          setModal(true);
-          setPostToEdit(null);
-        }}
-        filter={filter}
-        setFilter={setFilter}
-      />
+    <NextUIProvider>
+      <div className="App">
+        <MyHeader
+          addingNewSensor={() => {
+            setModal(true);
+            setPostToEdit(null);
+          }}
+          filter={filter}
+          setFilter={setFilter}
+        />
 
-      <MyContent
-        modal={modal}
-        setModal={setModal}
-        sortedAndSearchedPosts={sortedAndSearchedPosts}
-        createPost={createPost}
-        removePost={removePost}
-        editPost={editPost}
-        handleEdit={handleEdit}
-        postToEdit={postToEdit}
-        listTitle={"The list of all sensors"}
-      />
+        <MyContent
+          modal={modal}
+          setModal={setModal}
+          sortedAndSearchedPosts={sortedAndSearchedPosts}
+          createPost={createPost}
+          removePost={removePost}
+          editPost={editPost}
+          handleEdit={handleEdit}
+          postToEdit={postToEdit}
+          listTitle={"The list of all sensors"}
+        />
 
-      <div>
-        <button onClick={handleGeneratePosts}>Generate 10,000 Posts</button>
-        <p>Total Posts: {posts.length}</p>
+        <div>
+          <Button onClick={handleGeneratePosts} color="primary">
+            Generate 10,000 Posts
+          </Button>
+          <p>Total Posts: {posts.length}</p>
+        </div>
       </div>
-    </div>
+    </NextUIProvider>
   );
 }
 
