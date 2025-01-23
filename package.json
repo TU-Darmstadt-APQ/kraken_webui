@@ -45,11 +45,11 @@
     "typescript-eslint": "^8.21.0"
   },
   "lint-staged": {
-    "!(*.js|*.jsx|*.ts|*.tsx)": "prettier --write --ignore-unknown",
+    "!(*.js|*.jsx|*.ts|*.tsx|*.mjs)": "prettier --write --ignore-unknown",
     "*.{js,jsx,ts,tsx}": [
       "eslint",
       "prettier --write"
     ],
-    "**/*.test.{js,ts,jsx,tsx}": "jest --bail --findRelatedTests"
+    "**/*.test.{js,ts,jsx,tsx,mjs}": "jest --bail --findRelatedTests"
   }
 }
