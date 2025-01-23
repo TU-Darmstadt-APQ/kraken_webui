@@ -8,8 +8,9 @@ import MyHeader from "@/components/UI/header/MyHeader";
 import MyContent from "@/components/MyContent";
 
 import { v4 as uuidv4 } from "uuid";
+import dynamic from "next/dynamic";
 
-function PostHandler(allDocs: Post[]) {
+function PostHandlerNoSSR(allDocs: Post[]) {
   // Placeholder data for testing functionality
   const [posts, setPosts] = useState<Post[]>(allDocs);
 
@@ -220,5 +221,10 @@ function PostHandler(allDocs: Post[]) {
     </div>
   );
 }
+
+// export it with SSR disabled
+const PostHandler = dynamic(() => Promise.resolve(PostHandlerNoSSR), {
+  ssr: false,
+});
 
 export default PostHandler;
