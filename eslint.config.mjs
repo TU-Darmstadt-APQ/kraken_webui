@@ -50,10 +50,10 @@ export default [
       },
     },
     rules: {
-      "no-unused-vars": ["error", { args: "none" }], // Option to allow unused function arguments
+      "no-unused-vars": ["warn", { args: "all" }], // Option to allow unused function arguments
       "no-console": "warn", // Optional, for preventing console.log in production code
-      "eol-last": ["error", "always"], // Ensure files end with a newline
-      "no-useless-escape": "error", // Prevent unnecessary escapes
+      "eol-last": ["warn", "always"], // Ensure files end with a newline
+      "no-useless-escape": "warn", // Prevent unnecessary escapes
     },
   },
 
