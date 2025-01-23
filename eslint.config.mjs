@@ -1,5 +1,6 @@
 import globals from "globals";
 import pluginJs from "@eslint/js";
+import pluginNext from "@next/eslint-plugin-next";
 import tseslint from "@typescript-eslint/eslint-plugin";
 import tsParser from "@typescript-eslint/parser";
 import pluginReact from "eslint-plugin-react";
@@ -26,6 +27,7 @@ export default [
     plugins: {
       "@typescript-eslint": tseslint, // Changed to object format
       react: pluginReact, // Changed to object format
+      "@next/next": pluginNext,
     },
 
     ...pluginJs.configs.recommended[0],
