@@ -49,19 +49,19 @@
   "lint-staged": {
     "!(*.js|*.jsx|*.ts|*.tsx)": "prettier --write --ignore-unknown",
     "*.js": [
-      "eslint --quiet",
+      "eslint",
       "prettier --write"
     ],
     "*.jsx": [
-      "eslint --quiet",
+      "eslint",
       "prettier --write"
     ],
     "*.ts": [
-      "eslint --quiet",
+      "eslint",
       "prettier --write"
     ],
     "*.tsx": [
-      "eslint --quiet",
+      "eslint",
       "prettier --write"
     ],
     "**/*.test.{js,ts,jsx,tsx}": "jest --bail --findRelatedTests"
