@@ -2,6 +2,8 @@ import classes from "./MyButton.module.css";
 import { MyButtonProps } from "@/types";
 import React from "react"; // Add import for React
 
+import { Button } from "@nextui-org/react";
+
 /**
  * A customizable button component with specific CSS styling.
  *
@@ -17,9 +19,9 @@ import React from "react"; // Add import for React
 const MyButton: React.FC<MyButtonProps> = ({ children, ...props }) => {
   return (
     // Apply additional props and custom CSS styling to the <button> element
-    <button {...props} className={classes.myBtn}>
+    <Button {...props} className={classes.myBtn}>
       {children}
-    </button>
+    </Button>
   );
 };
 

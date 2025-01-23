@@ -5,13 +5,15 @@ import PostFilter from "@/components/PostFilter";
 import classes from "./MyHeader.module.css";
 import MyTooltip from "@/components/UI/tooltip/MyTooltip";
 
+import { Navbar } from "@nextui-org/react";
+
 const MyHeader: React.FC<MyHeaderProps> = ({
   addingNewSensor,
   filter,
   setFilter,
 }) => {
   return (
-    <header className={classes.header}>
+    <Navbar className={classes.header}>
       {/* Logo as image */}
       <div className={classes.logo}>
         <img src="/krakenLogo.svg" alt="Kraken Logo" />
@@ -38,7 +40,7 @@ const MyHeader: React.FC<MyHeaderProps> = ({
           </MyTooltip>
         </div>
       </div>
-    </header>
+    </Navbar>
   );
 };
 
