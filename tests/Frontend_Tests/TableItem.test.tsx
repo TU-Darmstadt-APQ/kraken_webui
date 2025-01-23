@@ -16,7 +16,6 @@ import "@testing-library/jest-dom";
 describe("TableItem Component", () => {
   // Mock data for the post object
   const mockPost: Post = {
-    id: 1,
     title: "Test Post",
     description: "Test Description",
     date_created: { day: 10, month: 12, year: 2024 }, // Format as "YYYY-MM-DD"
@@ -49,16 +48,12 @@ describe("TableItem Component", () => {
 
   it("calls remove callback when remove button is clicked", () => {
     render(
-      <table>
-        <tbody>
-          <TableItem
-            post={mockPost}
-            remove={mockRemove} // Only pass remove, since edit is no longer part of TableItemProps
-            edit={mockEdit}
-            selectedColumns={mockSelectedColumns}
-          />
-        </tbody>
-      </table>,
+      <TableItem
+        post={mockPost}
+        remove={mockRemove} // Only pass remove, since edit is no longer part of TableItemProps
+        edit={mockEdit}
+        selectedColumns={mockSelectedColumns}
+      />,
     );
 
     // Trigger the remove button click

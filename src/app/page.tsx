@@ -7,11 +7,12 @@ import { Post, Filter } from "@/types";
 import MyHeader from "@/components/UI/header/MyHeader";
 import MyContent from "@/components/MyContent";
 
+import { v4 as uuidv4 } from "uuid";
+
 function Page() {
   // Placeholder data for testing functionality
   const [posts, setPosts] = useState<Post[]>([
     {
-      id: 1,
       title: "Lorem ispum",
       description: "Description",
       date_created: {
@@ -42,7 +43,6 @@ function Page() {
       port: 8,
     },
     {
-      id: 2,
       title: "A_Thinkpad",
       description: "Laptop-sensor",
       date_created: {
@@ -73,7 +73,6 @@ function Page() {
       port: 8,
     },
     {
-      id: 3,
       title: "Xiaomi",
       description: "none",
       date_created: {
@@ -146,7 +145,6 @@ function Page() {
       let date = new Date();
 
       const newPost: Post = {
-        id: startingId + i,
         title: `Generated Title ${startingId + i}`,
         description: `Generated Description for Post ${startingId + i}`,
         date_created: {
@@ -163,7 +161,7 @@ function Page() {
         },
         enabled: Math.random() > 0.5,
         label: `Label-${String.fromCharCode(65 + (i % 26))}`,
-        uuid: `uuid-${Math.floor(Math.random() * 10000) + 2948}`,
+        uuid: `uuid-${uuidv4()}`,
         config: {
           theme: ["dark", "light", "blue", "red"][i % 4],
           notifications: Math.random() > 0.5,

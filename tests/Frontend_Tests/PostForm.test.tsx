@@ -124,10 +124,9 @@ describe("PostForm component", () => {
     fireEvent.click(screen.getByText("Add new sensor"));
 
     const expectedPost = {
-      id: expect.any(Number),
       title: "",
       description: "Topic 1",
-      uuid: "",
+      uuid: expect.any(String),
       driver: "Driver 1",
       topic: "Topic 1",
       unit: "Unit 1",
