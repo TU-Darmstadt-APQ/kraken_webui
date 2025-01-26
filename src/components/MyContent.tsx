@@ -81,6 +81,9 @@ const MyContent: React.FC<MyContentProps> = ({
           It supports two views: table view and post view. */}
           {activeContent === "sensorList" && (
             <PostList
+              createPost={createPost}
+              modal={modal}
+              setModal={setModal}
               remove={removePost}
               posts={sortedAndSearchedPosts}
               listTitle={listTitle}

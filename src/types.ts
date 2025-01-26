@@ -94,6 +94,9 @@ export interface MyButtonProps {
 export interface PostListProps extends Omit<PostComponentProps, "post"> {
   posts: Post[]; // Array of Posts
   listTitle: string; // Title of list
+  modal: boolean;
+  setModal: (value: boolean) => void;
+  createPost: PostAction;
 }
 
 export interface TableItemProps extends PostComponentProps {
@@ -137,4 +140,10 @@ export interface MyTooltipProps {
   infoText: string;
   children: React.ReactNode;
   position?: "top" | "bottom" | "left" | "right" | "bottom-right" | "top-right"; // possible direction for tooltip appereance
+}
+
+export interface InputRowProps {
+  selectedColumns: { [key: string]: boolean };
+  onCancel: () => void;
+  createPost: PostAction;
 }
