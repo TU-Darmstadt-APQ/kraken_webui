@@ -1,7 +1,10 @@
-import { config } from "@/../config";
+import { getDBConnectionString } from "@/../config";
+import { connection } from "next/server";
 
-const { MongoClient } = require("mongodb");
-const uri = config.krakenConfigsMongodbConnectionString;
+await connection();
+import { MongoClient } from "mongodb";
+const uri: any = getDBConnectionString();
+console.log(`connection string: ${uri}`);
 const client = new MongoClient(uri);
 
 async function connectToDB() {

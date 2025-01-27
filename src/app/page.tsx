@@ -1,3 +1,4 @@
+"use server";
 import { getAllDocuments } from "@/components/mongodb/DBConnector";
 import PostHandler from "@/components/PostHandler";
 import { Post } from "@/types";

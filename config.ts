@@ -1,17 +1,14 @@
-const getEnvironmentVariable = (environmentVariable: string): string => {
-  const unvalidatedEnvironmentVariable = process.env[environmentVariable];
+const getEnvironmentVariable = (envVar: string): string => {
+  const unvalidatedEnvVar = process.env[envVar];
   // Check if env var is set
-  if (!unvalidatedEnvironmentVariable) {
-    throw new Error(
-      `Couldn't find environment variable: ${environmentVariable}`,
-    );
+  if (!unvalidatedEnvVar) {
+    throw new Error(`Couldn't find environment variable: ${envVar}`);
   } else {
-    return unvalidatedEnvironmentVariable;
+    const validatedEnvVar = unvalidatedEnvVar;
+    return validatedEnvVar;
   }
 };
 
-export const config = {
-  get krakenConfigsMongodbConnectionString() {
-    return getEnvironmentVariable("KRAKEN_CONFIGS_MONGODB_CONNECTION_STRING");
-  },
-};
+export function getDBConnectionString(): string {
+  return getEnvironmentVariable("KRAKEN_CONFIGS_MONGODB_CONNECTION_STRING");
+}
