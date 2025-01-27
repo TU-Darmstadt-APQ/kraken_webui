@@ -1,4 +1,9 @@
-const getEnvironmentVariable = (environmentVariable: string): string => {
+import { connection } from "next/server";
+
+async function getEnvironmentVariable(
+  environmentVariable: string,
+): Promise<string> {
+  await connection();
   const unvalidatedEnvironmentVariable = process.env[environmentVariable];
   // Check if env var is set
   if (!unvalidatedEnvironmentVariable) {
@@ -8,7 +13,7 @@ const getEnvironmentVariable = (environmentVariable: string): string => {
   } else {
     return unvalidatedEnvironmentVariable;
   }
-};
+}
 
 export const config = {
   get krakenConfigsMongodbConnectionString() {
