@@ -14,9 +14,11 @@ export const sensorHostEntitySchema = z.object({
     $uuid: z.string().uuid(),
   }),
   reconnect_interval: z.union([z.number().int().nonnegative(), z.null()]),
-  revision_id: z.optional(z.object({
-    $uuid: z.string().uuid(),
-  })),
+  revision_id: z.optional(
+    z.object({
+      $uuid: z.string().uuid(),
+    }),
+  ),
   date_created: z.object({
     $date: z.string().datetime(),
   }),
