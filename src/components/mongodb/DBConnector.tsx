@@ -6,8 +6,10 @@ import {
   tinkerforgeDTO,
 } from "@/models/zTinkerforgeSensor.schema";
 
-// Cache the db client and promise (to create one) so that reloading will reuse the connection
+// Cache the db client and promise (to create one) so that (hot) reloading will reuse the connection
 // We use a global variable for this. See its type declaration below.
+// See https://github.com/vercel/next.js/issues/45483#discussioncomment-898067 for more details on this
+// issue.
 const globalWithMongo = global as typeof globalThis & {
   mongo: {
     client: MongoClient | null;
