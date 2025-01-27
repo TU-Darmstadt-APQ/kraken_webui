@@ -9,12 +9,12 @@ export interface Post {
   label?: string;
 
   // Dates
-  date_created: DateType;
-  date_modified: DateType;
+  date_created: string; // ISO string
+  date_modified: string; // ISO string
 
   // Configuration and connection
   config?: Record<string, unknown>; // Flexible configuration (object with any values)
-  on_connect?: string;
+  on_connect?: any[]; // Array of any values
 
   // Sensor details
   topic: string;
@@ -28,6 +28,7 @@ export interface Post {
   port?: number;
   pad?: number;
   sad?: number;
+  uid: number;
 }
 
 export interface DateType {
