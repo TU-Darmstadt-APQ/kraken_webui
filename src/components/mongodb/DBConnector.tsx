@@ -7,8 +7,16 @@ import {
 } from "@/models/zTinkerforgeSensor.schema";
 
 // Cache the db client and promise (to create one) so that reloading will reuse the connection
-let cached = global.mongo;
-if (!cached) cached = global.mongo = { client: null, promise: null };
+// We use a global variable for this. See its type declaration below.
+const globalWithMongo = global as typeof globalThis & {
+  mongo: {
+    client: MongoClient | null;
+    promise: Promise<MongoClient> | null;
+  };
+};
+
+let cached = globalWithMongo.mongo;
+if (!cached) cached = globalWithMongo.mongo = { client: null, promise: null };
 
 /**
  * Connect to the database if neccessary. If the database connection exists, returns
