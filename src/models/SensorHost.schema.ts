@@ -43,7 +43,6 @@ export const sensorHostDTOSchema = z.object({
   driver: z.string(),
   node_id: z.string().uuid(),
   reconnect_interval: z.union([z.number().int().nonnegative(), z.null()]),
-  revision_id: z.optional(z.string().uuid()),
   date_created: z.string().datetime(),
   date_modified: z.string().datetime(),
   enabled: z.boolean(),
