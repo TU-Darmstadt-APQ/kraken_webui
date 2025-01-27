@@ -63,7 +63,6 @@ export const sensorHostDTO = {
       driver: entity.driver,
       node_id: entity.node_id.$uuid,
       reconnect_interval: entity.reconnect_interval,
-      revision_id: entity.revision_id?.$uuid,
       date_created: entity.date_created.$date,
       date_modified: entity.date_modified.$date,
       enabled: entity.enabled,
