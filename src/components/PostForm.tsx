@@ -53,27 +53,16 @@ const sensorTypes = [
  * 
  */
 const PostForm: React.FC<PostFormProps> = ({ create, edit, postToEdit }) => {
-  // Helper function to generate the current date
-  const getCurrentDate = () => {
-    const currentDate = new Date();
-    return {
-      day: currentDate.getDate(),
-      month: currentDate.getMonth() + 1, // Months are 0-indexed
-      year: currentDate.getFullYear(),
-      nanoseconds: currentDate.getMilliseconds() * 1e6, // Milliseconds to nanoseconds
-    };
-  };
-
   const defaultPost: Post = {
     title: "",
     description: "",
-    date_created: getCurrentDate(),
-    date_modified: getCurrentDate(),
+    date_created: new Date().toISOString(),
+    date_modified: new Date().toISOString(),
     enabled: false,
     label: "",
-    uuid: "",
+    uuid: uuidv4(),
     config: {},
-    on_connect: undefined,
+    on_connect: [],
     topic: "",
     unit: "",
     driver: "",
@@ -81,6 +70,7 @@ const PostForm: React.FC<PostFormProps> = ({ create, edit, postToEdit }) => {
     sad: 0,
     pad: 0,
     host: "",
+    uid: 0,
   };
 
   // State for managing the input values of the form
@@ -144,29 +134,12 @@ const PostForm: React.FC<PostFormProps> = ({ create, edit, postToEdit }) => {
     // We change the state indirectly. We create a new array where we write our old one. And at the end comes the new element
 
     if (postToEdit) {
-      edit({ ...post, date_modified: getCurrentDate() });
+      edit({ ...post, date_modified: new Date().toISOString() });
     } else {
       create({ ...post, uuid: uuidv4() }); // Generate a unique ID based on the current timestamp
     }
 
-    setPost({
-      title: "",
-      description: "",
-      date_created: getCurrentDate(),
-      date_modified: getCurrentDate(),
-      enabled: false,
-      label: "",
-      uuid: "",
-      config: {},
-      on_connect: undefined,
-      topic: "",
-      unit: "",
-      driver: "",
-      port: 0,
-      sad: 0,
-      pad: 0,
-      host: "",
-    }); // After inserting Element, we empty InputFields
+    setPost(defaultPost); // After inserting Element, we empty InputFields
   };
 
   return (
