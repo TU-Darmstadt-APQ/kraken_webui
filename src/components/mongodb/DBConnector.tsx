@@ -58,6 +58,7 @@ export async function getAllDocuments(): Promise<Array<tinkerforgeDTO>> {
   const sensors =
     await database.collection<tinkerforgeEntity>("TinkerforgeSensor");
   let allDocs = await sensors.find({}).toArray();
+  console.log(allDocs);
 
   return allDocs.map(function (doc) {
     return tinkerforgeDTO.convertFromEntity(doc);
