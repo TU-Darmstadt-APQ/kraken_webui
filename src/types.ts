@@ -1,35 +1,9 @@
 import React from "react"; // Add import for React
 import { ReactNode } from "react";
+import { sensorHostDTOSchema } from "./models/SensorHost.schema";
+import { z } from "zod";
 
-export interface Post {
-  // Basic information
-  title?: string;
-  description?: string; // All lines marked with a question mark are optional (or do not have to be included when the object is created)
-  uuid: string;
-  label?: string;
-
-  // Dates
-  date_created: string; // ISO string
-  date_modified: string; // ISO string
-
-  // Configuration and connection
-  config?: Record<string, unknown>; // Flexible configuration (object with any values)
-  on_connect?: any[]; // Array of any values
-
-  // Sensor details
-  topic: string;
-  unit: string;
-  driver: string;
-  sensor_type?: string;
-  host?: string;
-
-  // Optional fields
-  enabled?: boolean;
-  port?: number;
-  pad?: number;
-  sad?: number;
-  uid: number;
-}
+export type Post = z.infer<typeof sensorHostDTOSchema>;
 
 export interface DateType {
   day?: number;
