@@ -69,7 +69,8 @@ export async function insertSensor(sensorDTO: tinkerforgeDTO): Promise<void> {
   try {
     const client = await connectToDB();
     const database = client.db("sensor_config");
-    const sensors = database.collection<tinkerforgeEntity>("TinkerforgeSensor");
+    const sensors =
+      database.collection<tinkerforgeEntity>("tinkerforgesensors");
 
     const sensorEntity: tinkerforgeEntity = {
       _id: { $uuid: sensorDTO.id },

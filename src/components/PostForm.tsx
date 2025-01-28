@@ -2,7 +2,6 @@ import React, { useState } from "react";
 
 import MyButton from "./UI/button/MyButton";
 import MyInput from "./UI/input/MyInput";
-import ConfigEditorModal from "./UI/ConfigEditorModal";
 
 import { PostFormProps, Post } from "@/types";
 
@@ -53,34 +52,20 @@ const sensorTypes = [
  * 
  */
 const PostForm: React.FC<PostFormProps> = ({ create, edit, postToEdit }) => {
-  // Helper function to generate the current date
-  const getCurrentDate = () => {
-    const currentDate = new Date();
-    return {
-      day: currentDate.getDate(),
-      month: currentDate.getMonth() + 1, // Months are 0-indexed
-      year: currentDate.getFullYear(),
-      nanoseconds: currentDate.getMilliseconds() * 1e6, // Milliseconds to nanoseconds
-    };
-  };
-
   const defaultPost: Post = {
-    title: "",
-    description: "",
-    date_created: getCurrentDate(),
-    date_modified: getCurrentDate(),
-    enabled: false,
-    label: "",
-    uuid: "",
-    config: {},
-    on_connect: undefined,
-    topic: "",
-    unit: "",
-    driver: "",
+    id: uuidv4(),
+    hostname: "",
     port: 0,
-    sad: 0,
-    pad: 0,
-    host: "",
+    pad: null,
+    sad: null,
+    driver: "",
+    node_id: uuidv4(),
+    reconnect_interval: null,
+    date_created: new Date().toISOString(),
+    date_modified: new Date().toISOString(),
+    enabled: false,
+    label: null,
+    description: null,
   };
 
   // State for managing the input values of the form
@@ -132,41 +117,20 @@ const PostForm: React.FC<PostFormProps> = ({ create, edit, postToEdit }) => {
       alert("The `driver` must not be empty.");
       return;
     }
-    if (!post.topic.trim()) {
-      alert("The `topic` must not be empty.");
-      return;
-    }
-    if (!post.unit.trim()) {
-      alert("The `unit` must not be empty.");
+    if (!post.hostname.trim()) {
+      alert("The `hostname` must not be empty.");
       return;
     }
 
     // We change the state indirectly. We create a new array where we write our old one. And at the end comes the new element
 
     if (postToEdit) {
-      edit({ ...post, date_modified: getCurrentDate() });
+      edit({ ...post, date_modified: new Date().toISOString() });
     } else {
-      create({ ...post, uuid: uuidv4() }); // Generate a unique ID based on the current timestamp
+      create({ ...post, id: uuidv4() }); // Generate a unique ID based on the current timestamp
     }
 
-    setPost({
-      title: "",
-      description: "",
-      date_created: getCurrentDate(),
-      date_modified: getCurrentDate(),
-      enabled: false,
-      label: "",
-      uuid: "",
-      config: {},
-      on_connect: undefined,
-      topic: "",
-      unit: "",
-      driver: "",
-      port: 0,
-      sad: 0,
-      pad: 0,
-      host: "",
-    }); // After inserting Element, we empty InputFields
+    setPost(defaultPost); // After inserting Element, we empty InputFields
   };
 
   return (
@@ -203,25 +167,17 @@ const PostForm: React.FC<PostFormProps> = ({ create, edit, postToEdit }) => {
       <div style={{ display: "flex", gap: "10px" }}>
         <div style={{ flex: 1 }}>
           <MyInput
-            value={post.topic}
-            onChange={(e) => setPost({ ...post, topic: e.target.value })}
+            value={post.label || ""}
+            onChange={(e) => setPost({ ...post, label: e.target.value })}
             type="text"
-            placeholder="Topic"
-          />
-        </div>
-        <div style={{ flex: 1 }}>
-          <MyInput
-            value={post.unit}
-            onChange={(e) => setPost({ ...post, unit: e.target.value })}
-            type="text"
-            placeholder="Unit"
+            placeholder="Label"
           />
         </div>
       </div>
 
       {/* Description */}
       <MyInput
-        value={post.description}
+        value={post.description || ""}
         onChange={(e) => setPost({ ...post, description: e.target.value })}
         type="text"
         placeholder="Description"
@@ -230,11 +186,10 @@ const PostForm: React.FC<PostFormProps> = ({ create, edit, postToEdit }) => {
       {/* Host, Port, Driver */}
       <div style={{ display: "flex", gap: "10px" }}>
         <MyInput
-          value={post.host}
-          onChange={(e) => setPost({ ...post, host: e.target.value })}
+          value={post.hostname}
+          onChange={(e) => setPost({ ...post, hostname: e.target.value })}
           type="text"
           placeholder="Host"
-          disabled={selectedSensorType === "Tinkerforge"}
         />
         <MyInput
           value={post.port}
@@ -250,12 +205,6 @@ const PostForm: React.FC<PostFormProps> = ({ create, edit, postToEdit }) => {
           placeholder="Driver"
         />
       </div>
-
-      {/* For editing the configuration */}
-      <ConfigEditorModal
-        config={post.config || {}} // If no Config exists, an empty object is provided
-        setConfig={(newConfig) => setPost({ ...post, config: newConfig })}
-      />
 
       <MyButton onClick={handleSubmit}>
         {postToEdit ? "Save changes" : "Add new sensor"}
