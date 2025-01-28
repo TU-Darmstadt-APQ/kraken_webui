@@ -65,6 +65,31 @@ export async function getAllDocuments(): Promise<Array<tinkerforgeDTO>> {
   });
 }
 
+export async function insertSensor(sensorDTO: tinkerforgeDTO): Promise<void> {
+  try {
+    const client = await connectToDB();
+    const database = client.db("sensor_config");
+    const sensors = database.collection<tinkerforgeEntity>("TinkerforgeSensor");
+
+    const sensorEntity: tinkerforgeEntity = {
+      _id: { $uuid: sensorDTO.id },
+      date_created: { $date: sensorDTO.date_created },
+      date_modified: { $date: sensorDTO.date_modified },
+      enabled: sensorDTO.enabled,
+      label: sensorDTO.label,
+      description: sensorDTO.description,
+      uid: sensorDTO.uid,
+      config: sensorDTO.config,
+      on_connect: sensorDTO.on_connect,
+    };
+
+    await sensors.insertOne(sensorEntity);
+  } catch (error) {
+    console.error("Error inserting document:", error);
+    throw error; // Re-throw the error if you want to handle it elsewhere
+  }
+}
+
 export default async function DBConnector() {
   try {
     let documents = await getAllDocuments();
