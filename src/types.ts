@@ -1,8 +1,8 @@
 import React from "react"; // Add import for React
 import { ReactNode } from "react";
-import { sensorHostDTO } from "./models/SensorHost.schema";
+import { tinkerforgeDTO } from "./models/zTinkerforgeSensor.schema";
 
-export type Post = sensorHostDTO;
+export type Post = tinkerforgeDTO;
 
 export interface DateType {
   day?: number;
