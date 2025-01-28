@@ -1,6 +1,7 @@
 import React from "react";
 import { v4 as uuidv4 } from "uuid";
 import { tinkerforgeDTO } from "../models/zTinkerforgeSensor.schema"; // Adjust the import path accordingly
+import { insertSensorAction } from "@/actions/action_createSensor";
 
 interface PostFormProps {
   create: (post: tinkerforgeDTO) => void;
@@ -25,12 +26,33 @@ const PostForm: React.FC<PostFormProps> = ({ create, edit, postToEdit }) => {
     postToEdit || defaultPost,
   );
 
-  const handleSubmit = (event: React.FormEvent) => {
+  const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-    if (postToEdit) {
-      edit(post);
+    const sensorDTO = {
+      id: post.id || uuidv4(), // Ensure `uuid` is a string (or convert it if necessary)
+      date_created: post.date_created, // Convert to string
+      date_modified: post.date_modified, // Convert to string
+      enabled: post.enabled || false, // Ensure `enabled` is a boolean
+      label: post.label || null, // Ensure `label` is `string | null`
+      description: post.description || null, // Ensure `description` is `string | null`
+      uid: post.uid || 0, // Ensure `uid` is a string (or convert it if necessary)
+      config: post.config || {}, // Ensure `config` is an object
+      on_connect: post.on_connect || [], // Ensure `on_connect` is an array
+    };
+
+    // Call the server action
+    const result = await insertSensorAction(sensorDTO);
+
+    if (result.success) {
+      if (postToEdit) {
+        edit({ ...post, date_modified: new Date().toISOString() });
+      } else {
+        create({ ...post, id: uuidv4() });
+      }
+
+      setPost(defaultPost);
     } else {
-      create(post);
+      alert(result.message);
     }
   };
 
