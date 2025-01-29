@@ -79,9 +79,10 @@ const ConfigEditorModal: React.FC<ConfigEditorModalProps> = ({
         style={{
           listStyleType: "none",
           padding: 0,
-          maxHeight: "75px", // Maximum height without scrolling
+          maxHeight: "288px", // Maximum height without scrolling
           overflowY: "auto", // Scrollbar for the list
           border: "1px solid teal",
+          borderRadius: "8px",
         }}
       >
         {Object.keys(config).length === 0 ? (
@@ -100,7 +101,7 @@ const ConfigEditorModal: React.FC<ConfigEditorModalProps> = ({
               }}
             >
               <span>
-                <b>{entryKey}</b>:
+                <b>{entryKey}</b>: {!selectedSensorType && String(entryValue)}
               </span>
               {selectedSensorType && (
                 <MyInput

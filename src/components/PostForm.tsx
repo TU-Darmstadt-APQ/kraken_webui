@@ -157,7 +157,12 @@ const PostForm: React.FC<PostFormProps> = ({ create, edit, postToEdit }) => {
   };
 
   return (
-    <form>
+    <form
+      style={{
+        width: "400px", // Fixed width for modal window
+        height: "600px", // Fixed height
+      }}
+    >
       <label
         htmlFor="sensorType"
         style={{
