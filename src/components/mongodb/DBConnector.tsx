@@ -3,8 +3,11 @@ import { MongoClient } from "mongodb";
 import { config } from "@/../config";
 import {
   tinkerforgeEntity,
+  tinkerforgeEntitySchema,
   tinkerforgeDTO,
 } from "@/models/zTinkerforgeSensor.schema";
+
+import { UUID } from "bson";
 
 // Cache the db client and promise (to create one) so that (hot) reloading will reuse the connection
 // We use a global variable for this. See its type declaration below.
@@ -65,26 +68,25 @@ export async function getAllDocuments(): Promise<Array<tinkerforgeDTO>> {
   });
 }
 
-export async function insertSensor(sensorDTO: tinkerforgeDTO): Promise<void> {
+export async function insertSensor(
+  dto: Omit<tinkerforgeDTO, "date_created" | "date_modified">,
+): Promise<void> {
   try {
     const client = await connectToDB();
     const database = client.db("sensor_config");
-    const sensors =
-      database.collection<tinkerforgeEntity>("tinkerforgesensors");
+    const sensors = database.collection<tinkerforgeEntity>("TinkerforgeSensor");
 
-    const sensorEntity: tinkerforgeEntity = {
-      _id: { $uuid: sensorDTO.id },
-      date_created: { $date: sensorDTO.date_created },
-      date_modified: { $date: sensorDTO.date_modified },
-      enabled: sensorDTO.enabled,
-      label: sensorDTO.label,
-      description: sensorDTO.description,
-      uid: sensorDTO.uid,
-      config: sensorDTO.config,
-      on_connect: sensorDTO.on_connect,
-    };
+    const currentDate = new Date();
+    const { id, ...noIdDto } = dto;
+    const candidate = tinkerforgeEntitySchema.parse({
+      _id: new UUID(id),
+      ...noIdDto,
+      date_created: currentDate,
+      date_modified: currentDate,
+    });
 
-    await sensors.insertOne(sensorEntity);
+    // Maybe return the canidate if insertion was succesful
+    await sensors.insertOne(candidate);
   } catch (error) {
     console.error("Error inserting document:", error);
     throw error; // Re-throw the error if you want to handle it elsewhere
