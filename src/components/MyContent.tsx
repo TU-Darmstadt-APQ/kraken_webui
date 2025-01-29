@@ -6,7 +6,7 @@ import styles from "@/styles/MyContent.module.css";
 import PostList from "./PostList";
 import PostForm from "./PostForm";
 import ModalWindow from "./UI/ModalWindow/ModalWindow";
-import MyButton from "./UI/button/MyButton";
+import { Button } from "@nextui-org/react";
 import MyTooltip from "./UI/tooltip/MyTooltip";
 
 const MyContent: React.FC<MyContentProps> = ({
@@ -32,7 +32,7 @@ const MyContent: React.FC<MyContentProps> = ({
       {/* Left Sidebar */}
       <div className={styles["Sidebar"]}>
         <MyTooltip infoText="List of sensors" position="right">
-          <MyButton onClick={showList}>
+          <Button onClick={showList}>
             <img
               src="/listIcon.png"
               alt="List View"
@@ -40,11 +40,11 @@ const MyContent: React.FC<MyContentProps> = ({
               width={25}
               height={25}
             />
-          </MyButton>
+          </Button>
         </MyTooltip>
         <hr />
         <MyTooltip infoText="Tree view of sensors" position="right">
-          <MyButton onClick={showTree}>
+          <Button onClick={showTree}>
             <img
               src="/diagrammIcon.png"
               alt="Tree View"
@@ -52,7 +52,7 @@ const MyContent: React.FC<MyContentProps> = ({
               width={25}
               height={25}
             />
-          </MyButton>
+          </Button>
         </MyTooltip>
       </div>
 

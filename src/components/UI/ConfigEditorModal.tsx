@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import MyButton from "./button/MyButton";
+import { Button } from "@nextui-org/react";
 import MyInput from "./input/MyInput";
 
 import { ConfigEditorModalProps } from "@/types";
@@ -55,7 +55,7 @@ const ConfigEditorModal: React.FC<ConfigEditorModalProps> = ({
             flex: 1,
           }}
         />
-        <MyButton
+        <Button
           onClick={addConfigEntry}
           style={{
             width: "60px",
@@ -65,7 +65,7 @@ const ConfigEditorModal: React.FC<ConfigEditorModalProps> = ({
           }}
         >
           Add
-        </MyButton>
+        </Button>
       </div>
 
       {/* List of the current configuration */}
@@ -96,12 +96,9 @@ const ConfigEditorModal: React.FC<ConfigEditorModalProps> = ({
               <span>
                 <b>{entryKey}</b>: {String(entryValue)}
               </span>
-              <MyButton
-                onClick={() => removeConfigEntry(entryKey)}
-                styles={{ margin: "5px 0" }}
-              >
+              <Button onClick={() => removeConfigEntry(entryKey)}>
                 Delete
-              </MyButton>
+              </Button>
             </li>
           ))
         )}

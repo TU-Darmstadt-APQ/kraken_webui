@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import MyButton from "./UI/button/MyButton";
+import { Button } from "@nextui-org/react";
 import MyInput from "./UI/input/MyInput";
 import ConfigEditorModal from "./UI/ConfigEditorModal";
 
@@ -257,9 +257,9 @@ const PostForm: React.FC<PostFormProps> = ({ create, edit, postToEdit }) => {
         setConfig={(newConfig) => setPost({ ...post, config: newConfig })}
       />
 
-      <MyButton onClick={handleSubmit}>
+      <Button onClick={handleSubmit}>
         {postToEdit ? "Save changes" : "Add new sensor"}
-      </MyButton>
+      </Button>
     </form>
   );
 };

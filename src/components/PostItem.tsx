@@ -1,5 +1,5 @@
 import React from "react";
-import MyButton from "./UI/button/MyButton";
+import { Button } from "@nextui-org/react";
 import styles from "@/styles/PostItem.module.css";
 
 import { PostItemProps } from "@/types";
@@ -50,7 +50,7 @@ const PostItem: React.FC<PostItemProps> = (props) => {
 
       {/* Action buttons: Edit and Delete */}
       <div className="post__btns">
-        <MyButton onClick={() => props.edit(props.post)}>
+        <Button onClick={() => props.edit(props.post)}>
           <img
             src="/edit.png"
             alt="Edit"
@@ -58,8 +58,8 @@ const PostItem: React.FC<PostItemProps> = (props) => {
             width={20}
             height={20}
           />
-        </MyButton>
-        <MyButton onClick={() => props.remove(props.post)}>
+        </Button>
+        <Button onClick={() => props.remove(props.post)}>
           <img
             src="/trashCan.svg"
             alt="Delete"
@@ -67,7 +67,7 @@ const PostItem: React.FC<PostItemProps> = (props) => {
             width={20}
             height={20}
           />
-        </MyButton>
+        </Button>
       </div>
     </div>
   );

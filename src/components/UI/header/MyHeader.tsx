@@ -1,5 +1,6 @@
 import React from "react";
-import MyButton from "../button/MyButton";
+import { Button } from "@nextui-org/react";
+
 import { MyHeaderProps } from "@/types";
 import PostFilter from "@/components/PostFilter";
 import classes from "./MyHeader.module.css";
@@ -29,14 +30,14 @@ const MyHeader: React.FC<MyHeaderProps> = ({
 
         <div className={classes["buttons-container"]}>
           <MyTooltip infoText="Add new Sensor" position="bottom-right">
-            <MyButton id={classes["icon-button"]} onClick={addingNewSensor}>
+            <Button id={classes["icon-button"]} onClick={addingNewSensor}>
               <img
                 src="/plusIcon.png"
                 alt="Add new Sensor"
                 width={30}
                 height={30}
               />
-            </MyButton>
+            </Button>
           </MyTooltip>
         </div>
       </div>

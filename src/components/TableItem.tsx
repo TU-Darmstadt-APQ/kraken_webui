@@ -1,5 +1,5 @@
 import React from "react";
-import MyButton from "./UI/button/MyButton";
+import { Button } from "@nextui-org/react";
 import styles from "@/styles/TableItem.module.css";
 
 import { TableItemProps } from "@/types";
@@ -130,7 +130,7 @@ const TableItem: React.FC<TableItemProps> = ({
 
       {/* Edit button and delete button with callback */}
       <div className={`${styles.cell} ${styles.actions}`}>
-        <MyButton className="list-button" onClick={() => edit(post)}>
+        <Button className="list-button" onClick={() => edit(post)}>
           <img
             src="/edit.png"
             alt="Edit"
@@ -138,9 +138,9 @@ const TableItem: React.FC<TableItemProps> = ({
             width={20}
             height={20}
           />
-        </MyButton>
+        </Button>
 
-        <MyButton onClick={() => remove(post)} className="list-button">
+        <Button onClick={() => remove(post)} className="list-button">
           <img
             src="/trashCan.svg"
             alt="Delete"
@@ -148,7 +148,7 @@ const TableItem: React.FC<TableItemProps> = ({
             width={20}
             height={20}
           />
-        </MyButton>
+        </Button>
       </div>
     </div>
   );
