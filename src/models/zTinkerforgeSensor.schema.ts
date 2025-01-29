@@ -1,4 +1,6 @@
 import { z } from "zod";
+import { UUID } from "bson";
+
 import functionCallSchema from "./FunctionCall.schema";
 
 // Defines the schema for the sensor configuration used by the Tinkerforge sensors
@@ -13,15 +15,9 @@ export const tinkerforgeConfigSchema = z.object({
 // Defines the schema for a Tinkerforge sensor as used by the Mongo
 // database
 export const tinkerforgeEntitySchema = z.object({
-  _id: z.object({
-    $uuid: z.string().uuid(),
-  }),
-  date_created: z.object({
-    $date: z.string().datetime(),
-  }),
-  date_modified: z.object({
-    $date: z.string().datetime(),
-  }),
+  _id: z.instanceof(UUID),
+  date_created: z.instanceof(Date),
+  date_modified: z.instanceof(Date),
   enabled: z.boolean(),
   label: z.optional(z.union([z.string(), z.null()])),
   description: z.union([z.string(), z.null()]),
@@ -55,9 +51,9 @@ export type tinkerforgeDTO = z.infer<typeof tinkerforgeDTOSchema>;
 export const tinkerforgeDTO = {
   convertFromEntity(entity: tinkerforgeEntity): tinkerforgeDTO {
     const candidate: tinkerforgeDTO = {
-      id: entity._id.$uuid,
-      date_created: entity.date_created.$date,
-      date_modified: entity.date_modified.$date,
+      id: entity._id.toString(),
+      date_created: entity.date_created.toISOString(),
+      date_modified: entity.date_modified.toISOString(),
       enabled: entity.enabled,
       label: entity.label,
       description: entity.description,
