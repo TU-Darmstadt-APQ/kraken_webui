@@ -1,3 +1,4 @@
+import { EJSON } from "bson";
 import { z } from "zod";
 import * as fs from "fs";
 import {
@@ -8,7 +9,7 @@ import {
 describe("TinkerforgeSensor Schema Validation", () => {
   it("should validate valid TinkerforgeSensor data against the database schema", () => {
     // Load dummy data for a TinkerforgeSensor from a file to test the schema validator
-    const tinkerforgeSensorData = JSON.parse(
+    const tinkerforgeSensorData = EJSON.parse(
       fs.readFileSync("./tests/mongo/data/TinkerforgeSensor.json", "utf8"),
     );
 
