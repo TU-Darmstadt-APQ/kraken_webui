@@ -1,5 +1,5 @@
-import React from "react";
 import { MySelectProps, Post } from "@/types";
+import React from "react";
 import styles from "./MySelect.module.css";
 
 /**

@@ -9,10 +9,10 @@
  * - Ensuring proper cleanup after each test to avoid side effects.
  */
 
-import React from "react";
-import { render, screen, fireEvent, cleanup } from "@testing-library/react";
-import PostForm from "@/components/PostForm";
 import "@testing-library/jest-dom";
+import { cleanup, fireEvent, render, screen } from "@testing-library/react";
+import PostForm from "@/components/PostForm";
+import React from "react";
 
 // Mocking the create and edit functions passed as props
 /**

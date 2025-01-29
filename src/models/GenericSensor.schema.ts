@@ -1,5 +1,5 @@
-import { z } from "zod";
 import functionCallSchema from "./FunctionCall.schema";
+import { z } from "zod";
 
 // Defines the schema for a Generic sensor as used by the Mongo database
 export const genericEntitySchema = z.object({

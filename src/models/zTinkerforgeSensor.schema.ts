@@ -1,7 +1,6 @@
-import { z } from "zod";
 import { UUID } from "bson";
-
 import functionCallSchema from "./FunctionCall.schema";
+import { z } from "zod";
 
 // Defines the schema for the sensor configuration used by the Tinkerforge sensors
 export const tinkerforgeConfigSchema = z.object({

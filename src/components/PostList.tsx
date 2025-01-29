@@ -1,14 +1,12 @@
-import React, { useState, useRef } from "react";
+import { FixedSizeList as List, VariableSizeList as Table } from "react-window";
+import React, { useRef, useState } from "react";
 import Image from "next/image";
-import PostItem from "./PostItem";
-import TableItem from "./TableItem";
-import styles from "@/styles/PostList.module.css";
-
-import { PostListProps } from "@/types";
 import MyToggle from "./UI/toggle/MyToggle";
 import MyTooltip from "./UI/tooltip/MyTooltip";
-
-import { FixedSizeList as List, VariableSizeList as Table } from "react-window";
+import PostItem from "./PostItem";
+import { PostListProps } from "@/types";
+import TableItem from "./TableItem";
+import styles from "@/styles/PostList.module.css";
 
 /**
  * Component for rendering a list of posts with the ability to toggle between table view and post view.
