@@ -1,10 +1,9 @@
-import { MongoClient } from "mongodb";
-
-import { config } from "@/../config";
 import {
-  tinkerforgeEntity,
   tinkerforgeDTO,
+  tinkerforgeEntity,
 } from "@/models/zTinkerforgeSensor.schema";
+import { MongoClient } from "mongodb";
+import { config } from "@/../config";
 
 // Cache the db client and promise (to create one) so that (hot) reloading will reuse the connection
 // We use a global variable for this. See its type declaration below.

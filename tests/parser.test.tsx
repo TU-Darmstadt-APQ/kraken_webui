@@ -1,10 +1,10 @@
-import { EJSON } from "bson";
-import { z } from "zod";
 import * as fs from "fs";
 import {
-  tinkerforgeEntitySchema as tinkerforgeSensorSchema,
   tinkerforgeDTO,
+  tinkerforgeEntitySchema as tinkerforgeSensorSchema,
 } from "@/models/zTinkerforgeSensor.schema";
+import { EJSON } from "bson";
+import { z } from "zod";
 
 describe("TinkerforgeSensor Schema Validation", () => {
   it("should validate valid TinkerforgeSensor data against the database schema", () => {

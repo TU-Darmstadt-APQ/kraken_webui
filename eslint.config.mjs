@@ -1,10 +1,10 @@
+import eslintConfigPrettier from "eslint-config-prettier";
 import globals from "globals";
 import pluginJs from "@eslint/js";
 import pluginNext from "@next/eslint-plugin-next";
-import tseslint from "@typescript-eslint/eslint-plugin";
-import tsParser from "@typescript-eslint/parser";
 import pluginReact from "eslint-plugin-react";
-import eslintConfigPrettier from "eslint-config-prettier";
+import tsParser from "@typescript-eslint/parser";
+import tseslint from "@typescript-eslint/eslint-plugin";
 
 /**
  * @type {import('eslint').Linter.Config[]}
@@ -44,6 +44,7 @@ export default [
       "no-console": "warn", // Optional, for preventing console.log in production code
       "eol-last": ["error", "always"], // Ensure files end with a newline
       "no-useless-escape": "error", // Prevent unnecessary escapes
+      "sort-imports": "error", // Sort imports alphabetically
     },
   },
   // Add prettier config last to ensure it overrides other settings

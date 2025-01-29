@@ -1,6 +1,6 @@
-import classes from "./MyButton.module.css";
 import { MyButtonProps } from "@/types";
 import React from "react"; // Add import for React
+import classes from "./MyButton.module.css";
 
 /**
  * A customizable button component with specific CSS styling.

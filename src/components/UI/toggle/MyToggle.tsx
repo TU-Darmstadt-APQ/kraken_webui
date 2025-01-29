@@ -1,5 +1,5 @@
-import { ToggleProps } from "@/types";
 import React from "react";
+import { ToggleProps } from "@/types";
 import styles from "./MyToggle.module.css";
 
 const MyToggle: React.FC<ToggleProps> = ({ label, checked, onChange }) => {

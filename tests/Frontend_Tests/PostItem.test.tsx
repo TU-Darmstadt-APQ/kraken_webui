@@ -11,10 +11,10 @@
  * - Cleaning up the DOM after each test to prevent side effects.
  */
 
-import React from "react";
-import { render, screen, fireEvent, cleanup } from "@testing-library/react";
-import PostItem from "@/components/PostItem";
 import "@testing-library/jest-dom";
+import { cleanup, fireEvent, render, screen } from "@testing-library/react";
+import PostItem from "@/components/PostItem";
+import React from "react";
 // Mocking the remove function passed as props
 const mockRemove = jest.fn();
 const mockEdit = jest.fn();

@@ -1,5 +1,5 @@
-import { z } from "zod";
 import functionCallSchema from "./FunctionCall.schema";
+import { z } from "zod";
 
 // Defines the schema for the sensor configuration used by the Labnode sensors
 export const labnodeConfigSchema = z.object({
