@@ -125,16 +125,8 @@ const PostForm: React.FC<PostFormProps> = ({ create, edit, postToEdit }) => {
     e.preventDefault(); // So that the page does not refresh after pressing the button
 
     // Check for required fields
-    if (!post.driver.trim()) {
-      alert("The `driver` must not be empty.");
-      return;
-    }
-    if (!post.topic.trim()) {
-      alert("The `topic` must not be empty.");
-      return;
-    }
-    if (!post.unit.trim()) {
-      alert("The `unit` must not be empty.");
+    if (post.label === undefined || post.label === null || !post.label.trim()) {
+      alert("The `label` must not be empty.");
       return;
     }
 
@@ -196,22 +188,14 @@ const PostForm: React.FC<PostFormProps> = ({ create, edit, postToEdit }) => {
         ))}
       </select>
 
-      {/* Topic and Unit */}
+      {/* Label and Unit */}
       <div style={{ display: "flex", gap: "10px" }}>
         <div style={{ flex: 1 }}>
           <MyInput
-            value={post.topic}
-            onChange={(e) => setPost({ ...post, topic: e.target.value })}
+            value={post.label}
+            onChange={(e) => setPost({ ...post, label: e.target.value })}
             type="text"
-            placeholder="Topic"
-          />
-        </div>
-        <div style={{ flex: 1 }}>
-          <MyInput
-            value={post.unit}
-            onChange={(e) => setPost({ ...post, unit: e.target.value })}
-            type="text"
-            placeholder="Unit"
+            placeholder="Label"
           />
         </div>
       </div>
@@ -223,30 +207,6 @@ const PostForm: React.FC<PostFormProps> = ({ create, edit, postToEdit }) => {
         type="text"
         placeholder="Description"
       />
-
-      {/* Host, Port, Driver */}
-      <div style={{ display: "flex", gap: "10px" }}>
-        <MyInput
-          value={post.host}
-          onChange={(e) => setPost({ ...post, host: e.target.value })}
-          type="text"
-          placeholder="Host"
-          disabled={selectedSensorType === "Tinkerforge"}
-        />
-        <MyInput
-          value={post.port}
-          onChange={(e) => setPost({ ...post, port: parseInt(e.target.value) })}
-          type="number"
-          placeholder="Port"
-          disabled={selectedSensorType === "Tinkerforge"}
-        />
-        <MyInput
-          value={post.driver}
-          onChange={(e) => setPost({ ...post, driver: e.target.value })}
-          type="text"
-          placeholder="Driver"
-        />
-      </div>
 
       {/* For editing the configuration */}
       <ConfigEditorModal
