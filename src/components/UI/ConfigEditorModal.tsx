@@ -6,6 +6,7 @@ import MyInput from "./input/MyInput";
 const ConfigEditorModal: React.FC<ConfigEditorModalProps> = ({
   config,
   setConfig,
+  selectedSensorType,
 }) => {
   const [key, setKey] = useState<string>(""); // state for Key
   const [value, setValue] = useState<string>(""); // state for Value
@@ -19,6 +20,10 @@ const ConfigEditorModal: React.FC<ConfigEditorModalProps> = ({
     }
   };
 
+  const handleValueChange = (key: string, value: string) => {
+    setConfig({ ...config, [key]: value });
+  };
+
   const removeConfigEntry = (entryKey: string) => {
     const updatedConfig = { ...config };
     delete updatedConfig[entryKey];
@@ -29,43 +34,45 @@ const ConfigEditorModal: React.FC<ConfigEditorModalProps> = ({
     <div style={{ marginTop: "20px" }}>
       <span>Edit configuration</span>
       {/* Inputfields for Key and Value */}
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          gap: "10px",
-        }}
-      >
-        <MyInput
-          value={key}
-          onChange={(e) => setKey(e.target.value)}
-          type="text"
-          placeholder="Key"
+      {!selectedSensorType && (
+        <div
           style={{
-            flex: 1,
-          }}
-        />
-        <MyInput
-          value={value}
-          onChange={(e) => setValue(e.target.value)}
-          type="text"
-          placeholder="Value"
-          style={{
-            flex: 1,
-          }}
-        />
-        <MyButton
-          onClick={addConfigEntry}
-          style={{
-            width: "60px",
-            height: "30px",
-            backgroundColor: "teal",
-            color: "white",
+            display: "flex",
+            alignItems: "center",
+            gap: "10px",
           }}
         >
-          Add
-        </MyButton>
-      </div>
+          <MyInput
+            value={key}
+            onChange={(e) => setKey(e.target.value)}
+            type="text"
+            placeholder="Key"
+            style={{
+              flex: 1,
+            }}
+          />
+          <MyInput
+            value={value}
+            onChange={(e) => setValue(e.target.value)}
+            type="text"
+            placeholder="Value"
+            style={{
+              flex: 1,
+            }}
+          />
+          <MyButton
+            onClick={addConfigEntry}
+            style={{
+              width: "60px",
+              height: "30px",
+              backgroundColor: "teal",
+              color: "white",
+            }}
+          >
+            Add
+          </MyButton>
+        </div>
+      )}
 
       {/* List of the current configuration */}
       <ul
@@ -93,14 +100,23 @@ const ConfigEditorModal: React.FC<ConfigEditorModalProps> = ({
               }}
             >
               <span>
-                <b>{entryKey}</b>: {String(entryValue)}
+                <b>{entryKey}</b>:
               </span>
-              <MyButton
-                onClick={() => removeConfigEntry(entryKey)}
-                styles={{ margin: "5px 0" }}
-              >
-                Delete
-              </MyButton>
+              {selectedSensorType && (
+                <MyInput
+                  value={String(entryValue)}
+                  onChange={(e) => handleValueChange(entryKey, e.target.value)}
+                  type="text"
+                />
+              )}
+              {!selectedSensorType && (
+                <MyButton
+                  onClick={() => removeConfigEntry(entryKey)}
+                  styles={{ margin: "5px 0" }}
+                >
+                  Delete
+                </MyButton>
+              )}
             </li>
           ))
         )}

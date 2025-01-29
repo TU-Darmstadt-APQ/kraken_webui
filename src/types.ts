@@ -119,6 +119,7 @@ export interface MyContentProps {
 export interface ConfigEditorModalProps {
   config: Record<string, unknown>;
   setConfig: (newConfig: Record<string, unknown>) => void;
+  selectedSensorType: string;
 }
 
 export interface MyHeaderProps {
