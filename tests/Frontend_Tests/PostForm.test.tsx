@@ -110,14 +110,8 @@ describe("PostForm component", () => {
     fireEvent.change(screen.getByPlaceholderText("Description"), {
       target: { value: "Topic 1" },
     });
-    fireEvent.change(screen.getByPlaceholderText("Driver"), {
-      target: { value: "Driver 1" },
-    });
-    fireEvent.change(screen.getByPlaceholderText("Topic"), {
-      target: { value: "Topic 1" },
-    });
-    fireEvent.change(screen.getByPlaceholderText("Unit"), {
-      target: { value: "Unit 1" },
+    fireEvent.change(screen.getByPlaceholderText("Label"), {
+      target: { value: "Label 1" },
     });
 
     // Submit the form (click the button)
@@ -127,9 +121,9 @@ describe("PostForm component", () => {
       title: "",
       description: "Topic 1",
       uuid: expect.any(String),
-      driver: "Driver 1",
-      topic: "Topic 1",
-      unit: "Unit 1",
+      driver: "",
+      topic: "",
+      unit: "",
       date_created: expect.objectContaining({
         day: expect.any(Number),
         month: expect.any(Number),
@@ -144,7 +138,7 @@ describe("PostForm component", () => {
       }),
       config: {},
       enabled: false,
-      label: "",
+      label: "Label 1",
       on_connect: undefined,
       pad: 0,
       port: 0,
