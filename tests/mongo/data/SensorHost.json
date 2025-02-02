@@ -1,0 +1,22 @@
+{
+  "_id": {
+    "$binary": { "base64": "Ko70k/0/Ts6cyyjF7oHRYw==", "subType": "04" }
+  },
+  "hostname": "192.168.120.112",
+  "port": 1234,
+  "pad": 27,
+  "sad": 0,
+  "driver": "prologix_gpib2",
+  "node_id": {
+    "$binary": { "base64": "62YJzZv5SL2IlEZjcDYeyw==", "subType": "04" }
+  },
+  "reconnect_interval": 10,
+  "revision_id": {
+    "$binary": { "base64": "8Cx1fOyjSImZgIjocTIl0g==", "subType": "04" }
+  },
+  "date_created": { "$date": "2022-04-19T12:54:12.092Z" },
+  "date_modified": { "$date": "2024-11-01T11:28:35.623Z" },
+  "enabled": true,
+  "label": "QUIPS C HP3478A (2520A20614) 840 nm Cavity Monitor",
+  "description": ""
+}
