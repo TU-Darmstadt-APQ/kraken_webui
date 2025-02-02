@@ -1,0 +1,35 @@
+{
+  "_id": {
+    "$binary": { "base64": "6TPjV2SUQl22FoogDYgXEA==", "subType": "04" }
+  },
+  "date_created": { "$date": "2021-10-24T12:50:39.241Z" },
+  "date_modified": { "$date": "2023-05-29T21:15:22.059Z" },
+  "enabled": true,
+  "label": null,
+  "description": "",
+  "uid": 8,
+  "config": {
+    "-11": {
+      "interval": 60,
+      "description": "",
+      "topic": "sensors/room_016/air_con/output_pumproom",
+      "unit": "bit",
+      "timeout": null
+    },
+    "-25": {
+      "interval": 60,
+      "description": "",
+      "topic": "sensors/room_016/temperature/labnode_pumproom",
+      "unit": "K",
+      "timeout": null
+    },
+    "-26": {
+      "interval": 60,
+      "description": "",
+      "topic": "sensors/room_016/humidity/labnode_pumproom",
+      "unit": "%rH",
+      "timeout": null
+    }
+  },
+  "on_connect": []
+}
