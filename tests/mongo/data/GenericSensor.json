@@ -1,0 +1,52 @@
+{
+  "_id": {
+    "$binary": { "base64": "zxFFkwz4SKa+1kUK+b6XXw==", "subType": "04" }
+  },
+  "date_created": { "$date": "2022-05-31T13:11:36.407Z" },
+  "date_modified": { "$date": "2023-05-29T21:15:22.041Z" },
+  "enabled": false,
+  "label": "Keithley DMM6500 ATOMICS master piezo",
+  "description": "",
+  "host": {
+    "$binary": { "base64": "lZjmKz3sS+mus6il5Pgg3Q==", "subType": "04" }
+  },
+  "driver": "generic_scpi2",
+  "interval": 2,
+  "on_connect": [
+    {
+      "function": "write",
+      "args": ["SYSTem:BEEPer 500, 0.2; :ABORt"],
+      "kwargs": {},
+      "timeout": null
+    },
+    { "function": "write", "args": ["*RST"], "kwargs": {}, "timeout": null },
+    { "function": "write", "args": ["*CLS"], "kwargs": {}, "timeout": null },
+    {
+      "function": "write",
+      "args": [
+        ":SENSe:FUNCtion \"VOLTage:DC\"; :SENSe:VOLTage:RANGe 10; :SENSe:VOLTage:AZERo ON; :SENSe:VOLTage:NPLC 10; :SENSe:VOLTage:INPutimpedance AUTO; :DISPlay:LIGHt:STATe OFF"
+      ],
+      "kwargs": {},
+      "timeout": null
+    },
+    { "function": "wait_for_opc", "args": [], "kwargs": {}, "timeout": null }
+  ],
+  "on_read": {
+    "function": "query_number",
+    "args": [":READ?"],
+    "kwargs": {},
+    "timeout": null
+  },
+  "on_after_read": [],
+  "on_disconnect": [
+    {
+      "function": "write",
+      "args": [":DISPlay:LIGHt:STATe ON100"],
+      "kwargs": {},
+      "timeout": null
+    },
+    { "function": "write", "args": ["logout"], "kwargs": {}, "timeout": null }
+  ],
+  "topic": "sensors/room_015/voltage/piezo_master",
+  "unit": "V"
+}
