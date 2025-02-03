@@ -9,6 +9,7 @@ import { Post } from "@/types";
 import { v4 as uuidv4 } from "uuid";
 import PostForm from "../PostForm";
 import ModalWindow from "../UI/ModalWindow/ModalWindow";
+import MyToggle from "../UI/toggle/MyToggle";
 
 const InputRow: React.FC<InputRowProps> = ({
   visible,
@@ -129,25 +130,11 @@ const InputRow: React.FC<InputRowProps> = ({
 
       {selectedColumns.enabled && (
         <div className={styles.cell}>
-          {post.enabled == true ? (
-            <div
-              style={{
-                width: "10px",
-                height: "10px",
-                backgroundColor: "green",
-                borderRadius: "50%",
-              }}
-            ></div>
-          ) : post.enabled == false ? (
-            <div
-              style={{
-                width: "10px",
-                height: "10px",
-                backgroundColor: "red",
-                borderRadius: "50%",
-              }}
-            ></div>
-          ) : null}
+          <MyToggle
+            label="Enabled"
+            checked={post.enabled}
+            onChange={(value) => setPost({ ...post, enabled: value })}
+          />
         </div>
       )}
 
