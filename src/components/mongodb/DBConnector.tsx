@@ -80,3 +80,41 @@ export default async function DBConnector() {
   }
   return <span>Connection successfully set up</span>;
 }
+
+// Function to delete a sensor by UUID
+export async function deleteSensor(sensorId: string): Promise<string> {
+  if (typeof sensorId !== "string") {
+    throw new Error("Sensor ID must be a string");
+  }
+
+  const client = await connectToDB();
+  const database = client.db("sensor_config");
+  const sensors = database.collection<tinkerforgeEntity>("TinkerforgeSensor");
+
+  try {
+    // Correct filter for UUID object structure
+    const filter = { "_id.$uuid": sensorId };
+
+    // Check existence
+    const existingSensor = await sensors.findOne(filter);
+    if (!existingSensor) {
+      return `No sensor found with ID: ${sensorId}`;
+    }
+
+    // Delete document
+    const result = await sensors.deleteOne(filter);
+
+    if (result.deletedCount === 0) {
+      throw new Error("Sensor exists but could not be deleted");
+    }
+
+    return `Sensor with ID: ${sensorId} deleted successfully`;
+  } catch (error) {
+    const errorMessage =
+      error instanceof Error ? error.message : "Unknown error";
+    console.error("Error deleting sensor:", errorMessage);
+    throw new Error(`Failed to delete sensor: ${errorMessage}`);
+  } finally {
+    await client.close();
+  }
+}
