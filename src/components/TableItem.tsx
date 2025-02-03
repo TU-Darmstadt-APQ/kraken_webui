@@ -2,6 +2,8 @@ import MyButton from "./UI/button/MyButton";
 import React from "react";
 import { TableItemProps } from "@/types";
 import styles from "@/styles/TableItem.module.css";
+// eslint-disable-next-line sort-imports
+import { deleteSensorAction } from "@/actions/action_deleteSensors";
 
 /**
  * A component representing a single table row with data and action buttons.
@@ -52,6 +54,16 @@ const TableItem: React.FC<TableItemProps> = ({
   const isRowVisible = Object.values(selectedColumns).some((value) => value);
 
   if (!isRowVisible) return null; // we check if minimum one is true
+
+  const deleteSensorHandler = async () => {
+    const result = await deleteSensorAction(post.uuid);
+    if (result.success) {
+      alert(result.message);
+      remove(post);
+    } else {
+      alert(`Error: ${result.message}`);
+    }
+  };
 
   return (
     <div className={`${styles.row}`}>
@@ -139,7 +151,7 @@ const TableItem: React.FC<TableItemProps> = ({
           />
         </MyButton>
 
-        <MyButton onClick={() => remove(post)} className="list-button">
+        <MyButton onClick={deleteSensorHandler} className="list-button">
           <img
             src="/trashCan.svg"
             alt="Delete"
