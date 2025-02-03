@@ -7,7 +7,7 @@ import MyHeader from "@/components/UI/header/MyHeader";
 import { usePosts } from "@/hooks/usePosts";
 import { v4 as uuidv4 } from "uuid";
 
-function Page() {
+function PostHandler() {
   // Placeholder data for testing functionality
   const [posts, setPosts] = useState<Post[]>([
     {
@@ -310,4 +310,4 @@ function Page() {
   );
 }
 
-export default Page;
+export default PostHandler;
