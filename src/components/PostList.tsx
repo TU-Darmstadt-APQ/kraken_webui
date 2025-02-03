@@ -45,8 +45,10 @@ import { FixedSizeList as List, VariableSizeList as Table } from "react-window";
  */
 const PostList: React.FC<PostListProps> = ({
   createPost,
-  modal,
-  setModal,
+  inputRow,
+  setInputRow,
+  editPost,
+  postToEdit,
   posts,
   listTitle,
   remove,
@@ -181,11 +183,14 @@ const PostList: React.FC<PostListProps> = ({
                 <div className={`${styles.cell} ${styles["no-borders"]}`}></div>
               </div>
 
-              {/* Новая строка для ввода */}
-              {modal && (
+              {/* New Row for editing and adding a new data */}
+              {inputRow && (
                 <InputRow
+                  visible={inputRow}
+                  setVisible={setInputRow}
                   createPost={createPost}
-                  onCancel={() => setModal(false)}
+                  edit={editPost}
+                  postToEdit={postToEdit}
                   selectedColumns={selectedColumns}
                 />
               )}

@@ -4,14 +4,14 @@ import { MyContentProps } from "@/types";
 import styles from "@/styles/MyContent.module.css";
 
 import PostList from "./PostList";
-import PostForm from "./PostForm";
-import ModalWindow from "./UI/ModalWindow/ModalWindow";
+//import PostForm from "./PostForm";
+//import ModalWindow from "./UI/ModalWindow/ModalWindow";
 import MyButton from "./UI/button/MyButton";
 import MyTooltip from "./UI/tooltip/MyTooltip";
 
 const MyContent: React.FC<MyContentProps> = ({
-  modal,
-  setModal,
+  inputRow,
+  setInputRow,
   sortedAndSearchedPosts,
   createPost,
   removePost,
@@ -59,35 +59,19 @@ const MyContent: React.FC<MyContentProps> = ({
       {/* Right Main Content */}
       <div className={styles["MainContent"]}>
         <div>
-          {/* Modal window for adding a new sensor */}
-          <ModalWindow visible={modal} setVisible={setModal}>
-            <PostForm
-              create={createPost}
-              edit={editPost}
-              postToEdit={postToEdit}
-            />
-            {/**
-             * The `create` prop is passed to the child component (`PostForm`)
-             * as a callback function. It allows the child to send data (the new post)
-             * back to the parent (`Page`).
-             * This unidirectional data flow follows React's tree structure:
-             * Parents can pass props to children, but children cannot directly modify parent data (!)
-             */}
-          </ModalWindow>
-
-          {/* Conditional Content Rendering */}
-
           {/* Component responsible for displaying the list of sensors.
           It supports two views: table view and post view. */}
           {activeContent === "sensorList" && (
             <PostList
               createPost={createPost}
-              modal={modal}
-              setModal={setModal}
+              inputRow={inputRow}
+              setInputRow={setInputRow}
               remove={removePost}
               posts={sortedAndSearchedPosts}
               listTitle={listTitle}
               edit={handleEdit}
+              editPost={editPost}
+              postToEdit={postToEdit}
             ></PostList>
           )}
 

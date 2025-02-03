@@ -235,7 +235,7 @@ function Page() {
    * State to manage the visibility of the modal window.
    * @param modal - `true` means the modal is visible, `false` means it is hidden.
    */
-  const [modal, setModal] = useState(false);
+  const [inputRow, setInputRow] = useState(false);
 
   /**
    * A sorted and filtered version of the posts.
@@ -259,7 +259,7 @@ function Page() {
    */
   const createPost = (newPost: Post) => {
     setPosts([...posts, newPost]);
-    setModal(false);
+    setInputRow(false);
   };
 
   /**
@@ -273,19 +273,19 @@ function Page() {
 
   const editPost = (updatedPost: Post) => {
     setPosts(posts.map((p) => (p.uuid === updatedPost.uuid ? updatedPost : p)));
-    setModal(false);
+    setInputRow(false);
     setPostToEdit(null);
   };
   const handleEdit = (post: Post) => {
     setPostToEdit(post);
-    setModal(true);
+    setInputRow(true);
   };
 
   return (
     <div className="App">
       <MyHeader
         addingNewSensor={() => {
-          setModal(true);
+          setInputRow(true);
           setPostToEdit(null);
         }}
         filter={filter}
@@ -293,8 +293,8 @@ function Page() {
       />
 
       <MyContent
-        modal={modal}
-        setModal={setModal}
+        inputRow={inputRow}
+        setInputRow={setInputRow}
         sortedAndSearchedPosts={sortedAndSearchedPosts}
         createPost={createPost}
         removePost={removePost}

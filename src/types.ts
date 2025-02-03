@@ -94,9 +94,11 @@ export interface MyButtonProps {
 export interface PostListProps extends Omit<PostComponentProps, "post"> {
   posts: Post[]; // Array of Posts
   listTitle: string; // Title of list
-  modal: boolean;
-  setModal: (value: boolean) => void;
+  inputRow: boolean;
+  setInputRow: (value: boolean) => void;
   createPost: PostAction;
+  editPost: PostAction;
+  postToEdit: Post | null;
 }
 
 export interface TableItemProps extends PostComponentProps {
@@ -108,8 +110,8 @@ export interface PostItemProps extends PostComponentProps {
 }
 
 export interface MyContentProps {
-  modal: boolean;
-  setModal: (value: boolean) => void;
+  inputRow: boolean;
+  setInputRow: (value: boolean) => void;
   sortedAndSearchedPosts: Post[];
   createPost: PostAction;
   removePost: PostAction;
@@ -143,7 +145,10 @@ export interface MyTooltipProps {
 }
 
 export interface InputRowProps {
+  visible: boolean; // Visibility of the ModalWindow
+  setVisible: (val: boolean) => void;
   selectedColumns: { [key: string]: boolean };
-  onCancel: () => void;
   createPost: PostAction;
+  edit: PostAction;
+  postToEdit: Post | null;
 }
