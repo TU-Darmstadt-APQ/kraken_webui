@@ -4,10 +4,11 @@ import { Filter, Post } from "@/types";
 import React, { useState } from "react";
 import MyContent from "@/components/MyContent";
 import MyHeader from "@/components/UI/header/MyHeader";
+import { tinkerforgeDTO } from "@/models/zTinkerforgeSensor.schema";
 import { usePosts } from "@/hooks/usePosts";
 import { v4 as uuidv4 } from "uuid";
 
-function PostHandler() {
+function PostHandler({ sensors }: { sensors: tinkerforgeDTO[] }) {
   // Placeholder data for testing functionality
   const [posts, setPosts] = useState<Post[]>([
     {
