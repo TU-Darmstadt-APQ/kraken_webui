@@ -6,7 +6,35 @@ import TableItem from "./TableItem";
 import styles from "@/styles/PostList.module.css";
 
 /**
- * Component for rendering a list of posts in table view.
+ * Component for rendering a list of posts with the ability to toggle between table view and post view.
+ *
+ * @component
+ * @param {Array} posts - Array of post objects to display.
+ * @param {string} listTitle - Title of the list.
+ * @param {(post: object) => void} remove - Callback function to handle removing a post.
+ * @param {(post: Post) => void} edit - Callback function to edit a post.
+ *
+ * @example
+ *
+ * const sortedAndSearchedPosts = usePosts(
+ *   posts,
+ *   filter.sort,
+ *   filter.query,
+ *   filter.searchField,
+ * );
+ * const removePost = (post: Post) => {
+ *   setPosts(posts.filter((p) => p.uuid != post.uuid));
+ * };
+ * const handleEdit = (post: Post) => {
+ *   setPostToEdit(post);
+ *   setModal(true);
+ * };
+ * <PostList
+ *   posts={sortedAndSearchedPosts}
+ *   listTitle="Sensor List"
+ *   remove={removePost}
+ *   edit={handleEdit}
+ * />
  */
 const PostList: React.FC<PostListProps> = ({
   posts,
