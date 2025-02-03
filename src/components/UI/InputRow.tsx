@@ -7,6 +7,8 @@ import styles from "@/styles/TableItem.module.css";
 import MyInput from "../UI/input/MyInput";
 import { Post } from "@/types";
 import { v4 as uuidv4 } from "uuid";
+import PostForm from "../PostForm";
+import ModalWindow from "../UI/ModalWindow/ModalWindow";
 
 const InputRow: React.FC<InputRowProps> = ({
   visible,
@@ -51,6 +53,8 @@ const InputRow: React.FC<InputRowProps> = ({
 
   // State for managing the input values of the form
   const [post, setPost] = useState<Post>(postToEdit || defaultPost);
+
+  const [modalVisible, setModalVisible] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     if (postToEdit) {
@@ -184,6 +188,9 @@ const InputRow: React.FC<InputRowProps> = ({
           ) : (
             "No configuration given"
           )}
+
+          {/* Button to edit config */}
+          <MyButton onClick={() => setModalVisible(true)}>Edit Config</MyButton>
         </div>
       )}
 
@@ -202,7 +209,7 @@ const InputRow: React.FC<InputRowProps> = ({
       <div className={`${styles.cell} ${styles.actions}`}>
         <MyButton className="list-button" onClick={handleSubmit}>
           <img
-            src="/edit.png"
+            src="/floppy-disk-pen.png"
             alt="Submit"
             //className="icon-button"
             width={20}
@@ -235,7 +242,7 @@ const InputRow: React.FC<InputRowProps> = ({
           className="list-button"
         >
           <img
-            src="/trashCan.svg"
+            src="/cross.png"
             alt="Cancel"
             //className="icon-button"
             width={20}
@@ -243,6 +250,23 @@ const InputRow: React.FC<InputRowProps> = ({
           />
         </MyButton>
       </div>
+
+      {/* Modal Window */}
+      {modalVisible && (
+        <ModalWindow visible={modalVisible} setVisible={setModalVisible}>
+          <PostForm
+            postToEdit={post}
+            edit={(updatedPost) => {
+              edit(updatedPost);
+              setModalVisible(false);
+            }}
+            create={(newPost) => {
+              createPost(newPost);
+              setModalVisible(false);
+            }}
+          />
+        </ModalWindow>
+      )}
     </div>
   );
 };
