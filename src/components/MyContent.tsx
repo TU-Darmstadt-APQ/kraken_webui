@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-
 import { MyContentProps } from "@/types";
 import styles from "@/styles/MyContent.module.css";
 
@@ -7,7 +6,11 @@ import PostList from "./PostList";
 //import PostForm from "./PostForm";
 //import ModalWindow from "./UI/ModalWindow/ModalWindow";
 import MyButton from "./UI/button/MyButton";
+import { MyContentProps } from "@/types";
 import MyTooltip from "./UI/tooltip/MyTooltip";
+import PostForm from "./PostForm";
+import PostList from "./PostList";
+import styles from "@/styles/MyContent.module.css";
 
 const MyContent: React.FC<MyContentProps> = ({
   inputRow,

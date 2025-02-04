@@ -8,10 +8,10 @@
  * - Ensuring the component integrates properly within a table structure.
  */
 
-import { render, screen, fireEvent } from "@testing-library/react";
-import TableItem from "@/components/TableItem";
-import { Post } from "@/types";
 import "@testing-library/jest-dom";
+import { fireEvent, render, screen } from "@testing-library/react";
+import { Post } from "@/types";
+import TableItem from "@/components/TableItem";
 
 describe("TableItem Component", () => {
   // Mock data for the post object

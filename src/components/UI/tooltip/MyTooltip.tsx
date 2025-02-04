@@ -1,7 +1,6 @@
-import React, { useState, useRef } from "react";
-import styles from "./MyTooltip.module.css";
-
+import React, { useRef, useState } from "react";
 import { MyTooltipProps } from "@/types";
+import styles from "./MyTooltip.module.css";
 
 const MyTooltip: React.FC<MyTooltipProps> = ({
   infoText,

@@ -1,56 +1,82 @@
+import {
+  tinkerforgeDTO,
+  tinkerforgeEntity,
+} from "@/models/zTinkerforgeSensor.schema";
+import { MongoClient } from "mongodb";
 import { config } from "@/../config";
-import mongoose from "mongoose";
-import TinkerforgeSensor from "@/models/Tinkerforgesensor.schema";
 
-/*
- * Creates a connection with MongoDB
- */
-async function StartSetup() {
-  console.log("Starting MongoDB connection...");
-  await mongoose.connect(`${config.krakenConfigsMongodbConnectionString}`);
-  console.log("Connection with MongoDB successfully established.");
-}
+// Cache the db client and promise (to create one) so that (hot) reloading will reuse the connection
+// We use a global variable for this. See its type declaration below.
+// See https://github.com/vercel/next.js/issues/45483#discussioncomment-898067 for more details on this
+// issue.
+const globalWithMongo = global as typeof globalThis & {
+  mongo: {
+    client: MongoClient | null;
+    promise: Promise<MongoClient> | null;
+  };
+};
 
-/*
- * Validates the MongoDB connection exists and is working
+let cached = globalWithMongo.mongo;
+if (!cached) cached = globalWithMongo.mongo = { client: null, promise: null };
+
+/**
+ * Connect to the database if neccessary. If the database connection exists, returns
+ * the cached client.
+ *
+ * @async
+ * @return {Promise<MongoClient>} The database client object.
+ *
+ * @example
+ *
+ *     const client = await connectToDB();
  */
-async function ValidateMongoDBConnection() {
-  console.log("MongoDB ping test - Starting...");
-  if (mongoose.connection.db === undefined) {
-    throw new Error(
-      "MongoDB connection is undefined. Please check the db connector and the MongoDB connection setup.",
-    );
-  } else {
-    await mongoose.connection.db.admin().command({ ping: 1 });
-    console.log("MongoDB ping test - successful");
+async function connectToDB(): Promise<MongoClient> {
+  if (cached.client) return cached.client;
+
+  async function createClient(): Promise<MongoClient> {
+    const url: string = await config.krakenConfigsMongodbConnectionString;
+    const opts = {
+      // Do we need options?
+    };
+    cached.client = await MongoClient.connect(url, opts);
+    return cached.client;
   }
+
+  if (!cached.promise) {
+    cached.promise = createClient();
+  }
+  return await cached.promise;
 }
 
 /*
  * Queries all documents from TinkerforgeSensor collection
  */
-async function getAllDocuments() {
-  return await TinkerforgeSensor.find({});
+export async function getAllDocuments(): Promise<Array<tinkerforgeDTO>> {
+  const client = await connectToDB();
+  const database = await client.db("sensor_config");
+  const sensors =
+    await database.collection<tinkerforgeEntity>("TinkerforgeSensor");
+  let allDocs = await sensors.find({}).toArray();
+  console.log(allDocs);
+
+  return allDocs.map(function (doc) {
+    return tinkerforgeDTO.convertFromEntity(doc);
+  });
 }
 
 export default async function DBConnector() {
-  let connectionFailed = false;
   try {
-    await StartSetup();
-    await ValidateMongoDBConnection();
+    let documents = await getAllDocuments();
+    console.log("\nprinting documents start\n");
+    console.log(documents);
+    console.log("\nprinting documents end\n");
   } catch (error) {
-    connectionFailed = true;
+    // Connection couldn't be established
     console.log("MongoDB Connection Setup Error:", error);
-    return <span>error2</span>;
-  }
-
-  let documents = await getAllDocuments();
-  console.log("\nprinting documents start\n");
-  console.log(documents);
-  console.log("\nprinting documents end\n");
-  if (connectionFailed) {
     return <span>error</span>;
-  } else {
-    return <span>Connection successfully set up</span>;
+  } finally {
+    // Ensures that the client will close when you finish/error
+    //await client.close();
   }
+  return <span>Connection successfully set up</span>;
 }

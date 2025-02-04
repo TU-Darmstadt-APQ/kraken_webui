@@ -1,8 +1,7 @@
-import React from "react";
 import MyButton from "./UI/button/MyButton";
-import styles from "@/styles/TableItem.module.css";
-
+import React from "react";
 import { TableItemProps } from "@/types";
+import styles from "@/styles/TableItem.module.css";
 
 /**
  * A component representing a single table row with data and action buttons.

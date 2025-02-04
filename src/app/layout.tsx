@@ -1,8 +1,7 @@
-import type { Metadata } from "next";
-import localFont from "next/font/local";
 import "@/globals.css";
-import DBConnector from "@/components/mongodb/DBConnector";
+import type { Metadata } from "next";
 import React from "react"; // Add import for React
+import localFont from "next/font/local";
 
 const geistSans = localFont({
   src: "../fonts/GeistVF.woff",
@@ -31,7 +30,6 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {children}
-        <DBConnector />
       </body>
     </html>
   );

@@ -1,11 +1,11 @@
+import { Post, PostFormProps } from "@/types";
 import React, { useState } from "react";
-
+import ConfigEditorModal from "./UI/ConfigEditorModal";
 import MyButton from "./UI/button/MyButton";
 //import MyInput from "./UI/input/MyInput";
 import ConfigEditorModal from "./UI/ConfigEditorModal";
 
 import { PostFormProps, Post } from "@/types";
-
 import { v4 as uuidv4 } from "uuid";
 
 const sensorTypes = [

@@ -9,10 +9,10 @@
  * - Ensuring `setFilter` is not called when no changes are made to the inputs.
  */
 
-import React from "react";
-import { render, fireEvent } from "@testing-library/react";
-import PostFilter from "@/components/PostFilter";
+import { fireEvent, render } from "@testing-library/react";
 import { Filter } from "@/types";
+import PostFilter from "@/components/PostFilter";
+import React from "react";
 
 describe("PostFilter", () => {
   const setFilter = jest.fn();
