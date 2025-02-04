@@ -64,6 +64,65 @@ export async function getAllDocuments(): Promise<Array<tinkerforgeDTO>> {
   });
 }
 
+export async function editSensorConfig(
+  sensorId: string,
+  updatedConfig: Partial<tinkerforgeDTO>,
+): Promise<string> {
+  if (typeof sensorId !== "string") {
+    throw new Error("Sensor ID must be a string");
+  }
+
+  if (!updatedConfig || Object.keys(updatedConfig).length === 0) {
+    throw new Error("Updated configuration cannot be empty");
+  }
+
+  const client = await connectToDB();
+  const database = client.db("sensor_config");
+  const sensors = database.collection<tinkerforgeEntity>("TinkerforgeSensor");
+
+  try {
+    // Define the filter to find the sensor
+    const filter = { "_id.$uuid": sensorId };
+
+    // Check if the sensor exists
+    const existingSensor = await sensors.findOne(filter);
+    if (!existingSensor) {
+      return `No sensor found with ID: ${sensorId}`;
+    }
+
+    // Apply the updates
+    const update = {
+      $set: {
+        ...Object.keys(updatedConfig).reduce(
+          (acc, key) => {
+            acc[key] = updatedConfig[key as keyof tinkerforgeDTO];
+            return acc;
+          },
+          {} as Record<string, unknown>,
+        ),
+        "date_modified.$date": new Date().toISOString(),
+      },
+    };
+
+    const result = await sensors.updateOne(filter, update);
+
+    if (result.matchedCount === 0) {
+      return `No sensor found with ID: ${sensorId}`;
+    }
+
+    if (result.modifiedCount === 0) {
+      return `Sensor with ID: ${sensorId} found but not modified`;
+    }
+
+    return `Sensor with ID: ${sensorId} updated successfully`;
+  } catch (error) {
+    console.error("Error updating sensor:", error);
+    throw new Error("Failed to update sensor configuration");
+  } finally {
+    await client.close();
+  }
+}
+
 export default async function DBConnector() {
   try {
     let documents = await getAllDocuments();

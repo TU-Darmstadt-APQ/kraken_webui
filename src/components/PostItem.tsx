@@ -2,6 +2,8 @@ import MyButton from "./UI/button/MyButton";
 import { PostItemProps } from "@/types";
 import React from "react";
 import styles from "@/styles/PostItem.module.css";
+// eslint-disable-next-line sort-imports
+import { editSensorConfigAction } from "@/actions/action_editSensor";
 
 /**
  * Contains minimal information about the sensor: Description, title.
@@ -37,6 +39,19 @@ import styles from "@/styles/PostItem.module.css";
  * <PostItem edit={edit} remove={remove} number={index + 1} post={posts[index]} key={posts[index].id} />
  */
 const PostItem: React.FC<PostItemProps> = (props) => {
+  const editSensorHandler = async () => {
+    const updatedConfig = {
+      /* Add logic to get updated values */
+    };
+    const result = await editSensorConfigAction(props.post.uuid, updatedConfig);
+    if (result.success) {
+      alert(result.message);
+      props.edit(props.post);
+    } else {
+      alert(`Error: ${result.message}`);
+    }
+  };
+
   return (
     <div className={styles["post"]}>
       {/* Post content: number, title, and description */}
@@ -49,7 +64,7 @@ const PostItem: React.FC<PostItemProps> = (props) => {
 
       {/* Action buttons: Edit and Delete */}
       <div className="post__btns">
-        <MyButton onClick={() => props.edit(props.post)}>
+        <MyButton onClick={editSensorHandler}>
           <img
             src="/edit.png"
             alt="Edit"
