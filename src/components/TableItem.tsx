@@ -129,7 +129,7 @@ const TableItem: React.FC<TableItemProps> = ({
       )}
 
       {/* Edit button and delete button with callback */}
-      <div className={`${styles.cell} ${styles.actions}`}>
+      <div className={styles.cell}>
         <MyButton className="list-button" onClick={() => edit(post)}>
           <img
             src="/edit.png"

@@ -90,6 +90,10 @@ const PostList: React.FC<PostListProps> = ({
     sensor_type: false,
   });
 
+  const isAnyColumnSelected = Object.values(selectedColumns).some(
+    (value) => value,
+  );
+
   return (
     <div>
       {/* Title for the list */}
@@ -180,7 +184,9 @@ const PostList: React.FC<PostListProps> = ({
                 {selectedColumns.on_connect && (
                   <div className={styles.cell}>On Connect</div>
                 )}
-                <div className={`${styles.cell} ${styles["no-borders"]}`}></div>
+                {isAnyColumnSelected && (
+                  <div className={styles.cell}>Actions</div>
+                )}
               </div>
 
               {/* New Row for editing and adding a new data */}

@@ -193,7 +193,7 @@ const InputRow: React.FC<InputRowProps> = ({
       )}
 
       {/* Edit button and delete button with callback */}
-      <div className={`${styles.cell} ${styles.actions}`}>
+      <div className={styles.cell}>
         <MyButton className="list-button" onClick={handleSubmit}>
           <img
             src="/floppy-disk-pen.png"
