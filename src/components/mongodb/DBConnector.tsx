@@ -4,6 +4,7 @@ import {
 } from "@/models/zTinkerforgeSensor.schema";
 import { MongoClient } from "mongodb";
 import { config } from "@/../config";
+import { genericDTO, genericEntity } from "@/models/GenericSensor.schema";
 
 // Cache the db client and promise (to create one) so that (hot) reloading will reuse the connection
 // We use a global variable for this. See its type declaration below.
@@ -46,6 +47,39 @@ async function connectToDB(): Promise<MongoClient> {
     cached.promise = createClient();
   }
   return await cached.promise;
+}
+
+export async function insertGenericSensor(sensorDTO: genericDTO): Promise<void> {
+  try {
+    const client = await connectToDB(); // Connect to the database
+    const database = client.db("sensor_config"); // Use the correct database
+    const sensors = database.collection<genericEntity>("GenericSensor"); // Target the correct collection
+
+    // Map the DTO to the Entity schema
+    const sensorEntity: genericEntity = {
+      _id: { $uuid: sensorDTO.id },
+      date_created: { $date: sensorDTO.date_created },
+      date_modified: { $date: sensorDTO.date_modified },
+      enabled: sensorDTO.enabled,
+      label: sensorDTO.label,
+      description: sensorDTO.description,
+      host: sensorDTO.host,
+      driver: sensorDTO.driver,
+      interval: sensorDTO.interval,
+      on_connect: sensorDTO.on_connect,
+      on_read: sensorDTO.on_read,
+      on_after_read: sensorDTO.on_after_read,
+      on_disconnect: sensorDTO.on_disconnect,
+      topic: sensorDTO.topic,
+      unit: sensorDTO.unit,
+    };
+
+    
+    await sensors.insertOne(sensorEntity);
+  } catch (error) {
+    console.error("Error inserting generic sensor document:", error);
+    throw error; 
+  }
 }
 
 /*
