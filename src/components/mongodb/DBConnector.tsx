@@ -4,6 +4,7 @@ import {
 } from "@/models/zTinkerforgeSensor.schema";
 import { MongoClient } from "mongodb";
 import { config } from "@/../config";
+// eslint-disable-next-line sort-imports
 import { genericDTO, genericEntity } from "@/models/GenericSensor.schema";
 
 // Cache the db client and promise (to create one) so that (hot) reloading will reuse the connection
@@ -49,7 +50,9 @@ async function connectToDB(): Promise<MongoClient> {
   return await cached.promise;
 }
 
-export async function insertGenericSensor(sensorDTO: genericDTO): Promise<void> {
+export async function insertGenericSensor(
+  sensorDTO: genericDTO,
+): Promise<void> {
   try {
     const client = await connectToDB(); // Connect to the database
     const database = client.db("sensor_config"); // Use the correct database
@@ -74,11 +77,10 @@ export async function insertGenericSensor(sensorDTO: genericDTO): Promise<void> 
       unit: sensorDTO.unit,
     };
 
-    
     await sensors.insertOne(sensorEntity);
   } catch (error) {
     console.error("Error inserting generic sensor document:", error);
-    throw error; 
+    throw error;
   }
 }
 
