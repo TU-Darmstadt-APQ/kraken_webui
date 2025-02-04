@@ -31,6 +31,8 @@ export interface Post {
   sad?: number;
 }
 
+// This is just a compatibility layer to convert tinkerforgeDTO -> Post. Remove this function when the transition
+// from Post -> tinkerforgeDTO in the frontend is complete
 export function convertDTOToPost(DTO: tinkerforgeDTO): Post {
   const dateCreated = new Date(DTO.date_created);
   const dateModified = new Date(DTO.date_modified);
