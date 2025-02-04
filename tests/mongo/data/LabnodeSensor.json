@@ -11,7 +11,7 @@
   "config": {
     "-11": {
       "interval": 60,
-      "description": "",
+      "description": null,
       "topic": "sensors/room_016/air_con/output_pumproom",
       "unit": "bit",
       "timeout": null
