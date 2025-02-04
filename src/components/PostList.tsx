@@ -1,12 +1,13 @@
 import { FixedSizeList as List, VariableSizeList as Table } from "react-window";
 import React, { useRef, useState } from "react";
 import Image from "next/image";
+import InputRow from "./UI/InputRow";
 import MyToggle from "./UI/toggle/MyToggle";
 import MyTooltip from "./UI/tooltip/MyTooltip";
 import PostItem from "./PostItem";
 import { PostListProps } from "@/types";
+
 import TableItem from "./TableItem";
-import InputRow from "./UI/InputRow";
 import styles from "@/styles/PostList.module.css";
 
 /**

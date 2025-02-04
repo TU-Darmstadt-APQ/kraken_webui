@@ -1,15 +1,15 @@
+import { InputRowProps, Post } from "@/types";
 import React, { useState } from "react";
-//import MyButton from "../UI/button/MyButton";
-//import styles from "./Table.module.css";
-import { InputRowProps } from "@/types";
-import MyButton from "../UI/button/MyButton";
-import styles from "@/styles/TableItem.module.css";
-import MyInput from "../UI/input/MyInput";
-import { Post } from "@/types";
-import { v4 as uuidv4 } from "uuid";
-import PostForm from "../PostForm";
+
 import ModalWindow from "../UI/ModalWindow/ModalWindow";
+import MyButton from "../UI/button/MyButton";
+
+import MyInput from "../UI/input/MyInput";
+
 import MyToggle from "../UI/toggle/MyToggle";
+import PostForm from "../PostForm";
+import styles from "@/styles/TableItem.module.css";
+import { v4 as uuidv4 } from "uuid";
 
 const InputRow: React.FC<InputRowProps> = ({
   visible,
