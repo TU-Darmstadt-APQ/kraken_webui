@@ -224,11 +224,11 @@ const InputRow: React.FC<InputRowProps> = ({
           <PostForm
             postToEdit={post}
             edit={(updatedPost) => {
-              edit(updatedPost);
+              setPost((prev) => ({ ...prev, config: updatedPost.config }));
               setModalVisible(false);
             }}
             create={(newPost) => {
-              createPost(newPost);
+              setPost((prev) => ({ ...prev, config: newPost.config }));
               setModalVisible(false);
             }}
           />
