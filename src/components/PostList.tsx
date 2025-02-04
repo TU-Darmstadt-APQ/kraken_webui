@@ -72,22 +72,13 @@ const PostList: React.FC<PostListProps> = ({
   const [isTableView, setIsTableView] = useState(false);
 
   const [selectedColumns, setSelectedColumns] = useState({
-    title: false,
-    description: true,
-    date_created: true,
-    date_modified: true,
-    enabled: true,
-    label: false,
     uuid: true,
+    label: false,
+    enabled: true,
+    topic: false,
+    driver: false,
     config: true,
     on_connect: false,
-    topic: false,
-    unit: false,
-    port: false,
-    pad: false,
-    sad: false,
-    driver: false,
-    sensor_type: false,
   });
 
   const isAnyColumnSelected = Object.values(selectedColumns).some(
@@ -157,26 +148,20 @@ const PostList: React.FC<PostListProps> = ({
             <div className={styles["table"]}>
               {/* Header */}
               <div className={`${styles.heading}`}>
-                {selectedColumns.title && (
-                  <div className={styles.cell}>Title</div>
-                )}
-                {selectedColumns.description && (
-                  <div className={styles.cell}>Description</div>
-                )}
-                {selectedColumns.date_created && (
-                  <div className={styles.cell}>Date Created</div>
-                )}
-                {selectedColumns.date_modified && (
-                  <div className={styles.cell}>Date Modified</div>
-                )}
-                {selectedColumns.enabled && (
-                  <div className={styles.cell}>Enabled</div>
+                {selectedColumns.uuid && (
+                  <div className={styles.cell}>UUID</div>
                 )}
                 {selectedColumns.label && (
                   <div className={styles.cell}>Label</div>
                 )}
-                {selectedColumns.uuid && (
-                  <div className={styles.cell}>UUID</div>
+                {selectedColumns.enabled && (
+                  <div className={styles.cell}>Enabled</div>
+                )}
+                {selectedColumns.topic && (
+                  <div className={styles.cell}>Topic</div>
+                )}
+                {selectedColumns.driver && (
+                  <div className={styles.cell}>Driver</div>
                 )}
                 {selectedColumns.config && (
                   <div className={styles.cell}>Config</div>

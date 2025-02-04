@@ -87,44 +87,24 @@ const InputRow: React.FC<InputRowProps> = ({
   return (
     <div className={`${styles.row}`}>
       {/* Displaying properties of the `post` object */}
-      {selectedColumns.title && (
+      {selectedColumns.uuid && (
         <div className={styles.cell}>
           <MyInput
-            value={post.title}
-            onChange={(e) => setPost({ ...post, title: e.target.value })}
+            value={post.uuid}
+            onChange={(e) => setPost({ ...post, uuid: e.target.value })}
             type="text"
-            placeholder="Title"
+            placeholder="UUID"
           />
         </div>
       )}
-      {selectedColumns.description && (
+      {selectedColumns.label && (
         <div className={styles.cell}>
-          {
-            <MyInput
-              value={post.description}
-              onChange={(e) =>
-                setPost({ ...post, description: e.target.value })
-              }
-              type="text"
-              placeholder="Description"
-            />
-          }
-        </div>
-      )}
-
-      {selectedColumns.date_created && (
-        <div className={styles.cell}>
-          {post.date_created
-            ? `${post.date_created.day}.${post.date_created.month}.${post.date_created.year}`
-            : "Date not given"}
-        </div>
-      )}
-
-      {selectedColumns.date_modified && (
-        <div className={styles.cell}>
-          {post.date_modified
-            ? `${post.date_modified.day}.${post.date_modified.month}.${post.date_modified.year}`
-            : "Date not given"}
+          <MyInput
+            value={post.label}
+            onChange={(e) => setPost({ ...post, label: e.target.value })}
+            type="text"
+            placeholder="Label"
+          />
         </div>
       )}
 
@@ -137,27 +117,27 @@ const InputRow: React.FC<InputRowProps> = ({
           />
         </div>
       )}
-
-      {selectedColumns.label && (
+      {selectedColumns.topic && (
         <div className={styles.cell}>
           <MyInput
-            value={post.label}
-            onChange={(e) => setPost({ ...post, label: e.target.value })}
+            value={post.topic}
+            onChange={(e) => setPost({ ...post, topic: e.target.value })}
             type="text"
             placeholder="Label"
           />
         </div>
       )}
-      {selectedColumns.uuid && (
+      {selectedColumns.driver && (
         <div className={styles.cell}>
           <MyInput
-            value={post.uuid}
-            onChange={(e) => setPost({ ...post, uuid: e.target.value })}
+            value={post.driver}
+            onChange={(e) => setPost({ ...post, driver: e.target.value })}
             type="text"
-            placeholder="UUID"
+            placeholder="Label"
           />
         </div>
       )}
+
       {selectedColumns.config && (
         <div className={styles.cell}>
           {post.config && Object.entries(post.config).length > 0 ? (
