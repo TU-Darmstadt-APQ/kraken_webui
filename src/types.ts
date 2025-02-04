@@ -24,7 +24,7 @@ export interface Post {
   host?: string;
 
   // Optional fields
-  enabled?: boolean;
+  enabled: boolean;
   port?: number;
   pad?: number;
   sad?: number;
