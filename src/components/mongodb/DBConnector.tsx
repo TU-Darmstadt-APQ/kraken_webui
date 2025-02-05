@@ -1,9 +1,8 @@
+import { MongoClient, UUID } from "mongodb";
 import {
   tinkerforgeDTO,
   tinkerforgeEntity,
 } from "@/models/zTinkerforgeSensor.schema";
-import { MongoClient } from "mongodb";
-import { UUID } from "crypto";
 import { config } from "@/../config";
 
 // Cache the db client and promise (to create one) so that (hot) reloading will reuse the connection
@@ -89,12 +88,14 @@ export async function deleteSensor(sensorUUID: UUID): Promise<string> {
   const sensors = database.collection<tinkerforgeEntity>("TinkerforgeSensor");
 
   try {
-    await sensors.deleteOne({ id: sensorUUID });
+    await sensors.deleteOne({ id: sensorUUID.toUUID });
 
     return `Sensor "${sensorUUID}" deleted successfully.`;
   } catch (error) {
     const errorMessage =
       error instanceof Error ? error.message : "Unknown error";
-    throw new Error(`Failed to delete sensor ${sensorUUID}: ${errorMessage}`);
+    throw new Error(
+      `Failed to delete sensor ${sensorUUID.toUUID}: ${errorMessage}`,
+    );
   }
 }
