@@ -1,12 +1,10 @@
-import { MongoClient, ObjectId } from "mongodb";
 import {
   tinkerforgeDTO,
   tinkerforgeEntity,
 } from "@/models/zTinkerforgeSensor.schema";
-// eslint-disable-next-line sort-imports
+import { MongoClient } from "mongodb";
 import { UUID } from "crypto";
 import { config } from "@/../config";
-import { parse } from "uuid";
 
 // Cache the db client and promise (to create one) so that (hot) reloading will reuse the connection
 // We use a global variable for this. See its type declaration below.
@@ -85,48 +83,18 @@ export default async function DBConnector() {
 }
 
 // Function to delete a sensor by UUID
-export async function deleteSensor(sensorId: UUID): Promise<string> {
-  console.log("Starting delete function ");
-  if (typeof sensorId !== "string") {
-    throw new Error("Sensor ID must be a string");
-  }
-
+export async function deleteSensor(sensorUUID: UUID): Promise<string> {
   const client = await connectToDB();
   const database = client.db("sensor_config");
   const sensors = database.collection<tinkerforgeEntity>("TinkerforgeSensor");
 
   try {
-    // Correct filter for UUID object structure
-    //const filter = { _id: sensorId };
+    await sensors.deleteOne({ id: sensorUUID });
 
-    // Check existence
-    const existingSensor = await sensors.findOne({
-      id: new ObjectId(sensorId),
-    });
-    if (!existingSensor) {
-      return `No sensor found with ID: ${sensorId}`;
-    }
-
-    // Delete document
-    const result = await sensors.deleteOne({ id: sensorId });
-
-    console.log("Before ");
-    await sensors.deleteOne({
-      id: parse("b17add03-fe88-4b74-9b25-a9b4c58da4ee"),
-    });
-    console.log("Starting delete function ");
-
-    if (result.deletedCount === 0) {
-      throw new Error("After");
-    }
-
-    return `Sensor with ID: ${sensorId} deleted successfully`;
+    return `Sensor "${sensorUUID}" deleted successfully.`;
   } catch (error) {
     const errorMessage =
       error instanceof Error ? error.message : "Unknown error";
-    console.error("Error deleting sensor:", errorMessage);
-    throw new Error(`Failed to delete sensor: ${errorMessage}`);
-  } finally {
-    await client.close();
+    throw new Error(`Failed to delete sensor ${sensorUUID}: ${errorMessage}`);
   }
 }
