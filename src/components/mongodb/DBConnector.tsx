@@ -1,9 +1,12 @@
+import { MongoClient, ObjectId } from "mongodb";
 import {
   tinkerforgeDTO,
   tinkerforgeEntity,
 } from "@/models/zTinkerforgeSensor.schema";
-import { MongoClient } from "mongodb";
+// eslint-disable-next-line sort-imports
+import { UUID } from "crypto";
 import { config } from "@/../config";
+import { parse } from "uuid";
 
 // Cache the db client and promise (to create one) so that (hot) reloading will reuse the connection
 // We use a global variable for this. See its type declaration below.
@@ -82,7 +85,8 @@ export default async function DBConnector() {
 }
 
 // Function to delete a sensor by UUID
-export async function deleteSensor(sensorId: string): Promise<string> {
+export async function deleteSensor(sensorId: UUID): Promise<string> {
+  console.log("Starting delete function ");
   if (typeof sensorId !== "string") {
     throw new Error("Sensor ID must be a string");
   }
@@ -93,19 +97,27 @@ export async function deleteSensor(sensorId: string): Promise<string> {
 
   try {
     // Correct filter for UUID object structure
-    const filter = { "_id.$uuid": sensorId };
+    //const filter = { _id: sensorId };
 
     // Check existence
-    const existingSensor = await sensors.findOne(filter);
+    const existingSensor = await sensors.findOne({
+      id: new ObjectId(sensorId),
+    });
     if (!existingSensor) {
       return `No sensor found with ID: ${sensorId}`;
     }
 
     // Delete document
-    const result = await sensors.deleteOne(filter);
+    const result = await sensors.deleteOne({ id: sensorId });
+
+    console.log("Before ");
+    await sensors.deleteOne({
+      id: parse("b17add03-fe88-4b74-9b25-a9b4c58da4ee"),
+    });
+    console.log("Starting delete function ");
 
     if (result.deletedCount === 0) {
-      throw new Error("Sensor exists but could not be deleted");
+      throw new Error("After");
     }
 
     return `Sensor with ID: ${sensorId} deleted successfully`;
