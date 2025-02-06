@@ -15,7 +15,7 @@ import styles from "@/styles/PostList.module.css";
  * @param {Array} posts - Array of post objects to display.
  * @param {string} listTitle - Title of the list.
  * @param {(post: object) => void} remove - Callback function to handle removing a post.
- * @param {(post: Post) => void} edit - Callback function to edit a post.
+ * @param {(post: tinkerforgeDTO) => void} edit - Callback function to edit a post.
  * 
  * @example 
  * 
@@ -64,13 +64,12 @@ const PostList: React.FC<PostListProps> = ({
   const [isTableView, setIsTableView] = useState(false);
 
   const [selectedColumns, setSelectedColumns] = useState({
-    title: false,
     description: true,
     date_created: true,
     date_modified: true,
     enabled: true,
     label: false,
-    uuid: true,
+    uid: true,
     config: true,
     on_connect: false,
     topic: false,
@@ -145,9 +144,6 @@ const PostList: React.FC<PostListProps> = ({
             <div className={styles["table"]}>
               {/* Header */}
               <div className={`${styles.heading}`}>
-                {selectedColumns.title && (
-                  <div className={styles.cell}>Title</div>
-                )}
                 {selectedColumns.description && (
                   <div className={styles.cell}>Description</div>
                 )}
@@ -163,9 +159,7 @@ const PostList: React.FC<PostListProps> = ({
                 {selectedColumns.label && (
                   <div className={styles.cell}>Label</div>
                 )}
-                {selectedColumns.uuid && (
-                  <div className={styles.cell}>UUID</div>
-                )}
+                {selectedColumns.uid && <div className={styles.cell}>UUID</div>}
                 {selectedColumns.config && (
                   <div className={styles.cell}>Config</div>
                 )}
@@ -212,7 +206,7 @@ const PostList: React.FC<PostListProps> = ({
                 remove={remove}
                 number={index + 1}
                 post={posts[index]}
-                key={posts[index].uuid}
+                key={posts[index].id}
               />
             </div>
           )}

@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import ConfigEditorModal from "./UI/ConfigEditorModal";
 import MyButton from "./UI/button/MyButton";
 import MyInput from "./UI/input/MyInput";
+import { tinkerforgeDTO } from "@/models/zTinkerforgeSensor.schema";
 import { v4 as uuidv4 } from "uuid";
 
 const sensorTypes = [
@@ -81,7 +82,7 @@ const PostForm: React.FC<PostFormProps> = ({ create, edit, postToEdit }) => {
   };
 
   // State for managing the input values of the form
-  const [post, setPost] = useState<Post>(postToEdit || defaultPost);
+  const [post, setPost] = useState<tinkerforgeDTO>(postToEdit || defaultPost);
 
   // State for managing the current type of sensor to be created
   const [selectedSensorType, setSelectedSensorType] = useState<string>("");

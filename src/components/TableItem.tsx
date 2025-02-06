@@ -7,9 +7,9 @@ import styles from "@/styles/TableItem.module.css";
  * A component representing a single table row with data and action buttons.
  *
  * @component
- * @param {Post} post - The data object for the table row.
- * @param {(post: Post) => void} props.remove - Callback to handle the removal of a row.
- * @param {(post: Post) => void} edit - Callback function to edit the post.
+ * @param {tinkerforgeDTO} post - The data object for the table row.
+ * @param {(post: tinkerforgeDTO) => void} props.remove - Callback to handle the removal of a row.
+ * @param {(post: tinkerforgeDTO) => void} edit - Callback function to edit the post.
  * @param {Object} selectedColumns - An object where keys represent column names, and values are booleans indicating if the column is visible.
  *
  * @example
@@ -56,25 +56,18 @@ const TableItem: React.FC<TableItemProps> = ({
   return (
     <div className={`${styles.row}`}>
       {/* Displaying properties of the `post` object */}
-      {selectedColumns.title && <div className={styles.cell}>{post.title}</div>}
       {selectedColumns.description && (
-        <div className={styles.cell}>{post.description}</div>
+        <div className={styles.cell}>
+          {post.description || "No description"}
+        </div>
       )}
 
       {selectedColumns.date_created && (
-        <div className={styles.cell}>
-          {post.date_created
-            ? `${post.date_created.day}.${post.date_created.month}.${post.date_created.year}`
-            : "Date not given"}
-        </div>
+        <div className={styles.cell}>{formatDate(post.date_created)}</div>
       )}
 
       {selectedColumns.date_modified && (
-        <div className={styles.cell}>
-          {post.date_modified
-            ? `${post.date_modified.day}.${post.date_modified.month}.${post.date_modified.year}`
-            : "Date not given"}
-        </div>
+        <div className={styles.cell}>{formatDate(post.date_modified)}</div>
       )}
 
       {selectedColumns.enabled && (
@@ -102,7 +95,7 @@ const TableItem: React.FC<TableItemProps> = ({
       )}
 
       {selectedColumns.label && <div className={styles.cell}>{post.label}</div>}
-      {selectedColumns.uuid && <div className={styles.cell}>{post.uuid}</div>}
+      {selectedColumns.uid && <div className={styles.cell}>{post.uid}</div>}
       {selectedColumns.config && (
         <div className={styles.cell}>
           {post.config && Object.entries(post.config).length > 0 ? (
@@ -124,7 +117,23 @@ const TableItem: React.FC<TableItemProps> = ({
       )}
 
       {selectedColumns.on_connect && (
-        <div className={styles.cell}>{post.on_connect}</div>
+        <div className={styles.cell}>
+          {post.on_connect.length > 0 ? (
+            <ul style={{ paddingLeft: "10px", margin: "5px 0" }}>
+              {post.on_connect.map((conn, index) => (
+                <li key={index} style={{ listStyleType: "none" }}>
+                  <strong>Function:</strong> {conn.function} <br />
+                  <strong>Args:</strong> {JSON.stringify(conn.args)} <br />
+                  <strong>Kwargs:</strong> {JSON.stringify(conn.kwargs)} <br />
+                  <strong>Timeout:</strong>{" "}
+                  {conn.timeout !== null ? conn.timeout : "None"}
+                </li>
+              ))}
+            </ul>
+          ) : (
+            "No connection settings"
+          )}
+        </div>
       )}
 
       {/* Edit button and delete button with callback */}
@@ -151,6 +160,13 @@ const TableItem: React.FC<TableItemProps> = ({
       </div>
     </div>
   );
+};
+
+// Bring string to the right format
+const formatDate = (isoString: string | null | undefined): string => {
+  if (!isoString) return "Date not given";
+  const date = new Date(isoString);
+  return `${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}`;
 };
 
 export default TableItem;

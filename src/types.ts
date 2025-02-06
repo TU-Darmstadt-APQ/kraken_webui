@@ -68,17 +68,17 @@ export interface DateType {
 
 // Define the interface for the filter
 export interface Filter {
-  sort: keyof Post | ""; // The 'sort' can be a key from Post or an empty string
+  sort: keyof tinkerforgeDTO | ""; // The 'sort' can be a key from Post or an empty string
   query: string; // Search keyword
-  searchField: keyof Post | "all"; // Current Searchfield
+  searchField: keyof tinkerforgeDTO | "all"; // Current Searchfield
 }
 
 // General type for post deletion and editing functions (in general - for all callback-functions)
-export type PostAction = (post: Post) => void;
+export type PostAction = (post: tinkerforgeDTO) => void;
 
 // Interface for common properties of a component with posts
 export interface PostComponentProps {
-  post: Post;
+  post: tinkerforgeDTO;
   remove: PostAction;
   edit: PostAction;
 }
@@ -100,13 +100,13 @@ export interface MySelectProps {
   options: MySelectOption[];
   defaultValue: string;
   value: string;
-  onChange: (value: keyof Post) => void;
+  onChange: (value: keyof tinkerforgeDTO) => void;
 }
 
 export interface PostFormProps {
   create: PostAction;
   edit: PostAction;
-  postToEdit: Post | null;
+  postToEdit: tinkerforgeDTO | null;
 }
 
 export interface ModalWindowProps {
@@ -121,7 +121,7 @@ export interface MyButtonProps {
 }
 
 export interface PostListProps extends Omit<PostComponentProps, "post"> {
-  posts: Post[]; // Array of Posts
+  posts: tinkerforgeDTO[]; // Array of DTOs
   listTitle: string; // Title of list
 }
 
@@ -136,12 +136,12 @@ export interface PostItemProps extends PostComponentProps {
 export interface MyContentProps {
   modal: boolean;
   setModal: (value: boolean) => void;
-  sortedAndSearchedPosts: Post[];
+  sortedAndSearchedPosts: tinkerforgeDTO[];
   createPost: PostAction;
   removePost: PostAction;
   editPost: PostAction;
   handleEdit: PostAction;
-  postToEdit: Post | null;
+  postToEdit: tinkerforgeDTO | null;
   listTitle: string;
 }
 

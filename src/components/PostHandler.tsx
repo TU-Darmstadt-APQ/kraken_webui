@@ -1,7 +1,7 @@
 "use client";
 
-import { Filter, Post } from "@/types";
 import React, { useState } from "react";
+import { Filter } from "@/types";
 import MyContent from "@/components/MyContent";
 import MyHeader from "@/components/UI/header/MyHeader";
 import { tinkerforgeDTO } from "@/models/zTinkerforgeSensor.schema";
@@ -152,34 +152,34 @@ function PostHandler({ sensors }: { sensors: tinkerforgeDTO[] }) {
     filter.searchField,
   );
 
-  const [postToEdit, setPostToEdit] = useState<Post | null>(null);
+  const [postToEdit, setPostToEdit] = useState<tinkerforgeDTO | null>(null);
 
   /**
    * Adds a new post to the list.
    * Also closes the modal window after the post is created.
    *
-   * @param {Post} newPost - The new post to add to the list.
+   * @param {tinkerforgeDTO} newPost - The new post to add to the list.
    */
-  const createPost = (newPost: Post) => {
+  const createPost = (newPost: tinkerforgeDTO) => {
     setPosts([...posts, newPost]);
     setModal(false);
   };
 
   /**
-   * Removes a post from the list based on its `uuid`.
+   * Removes a post from the list based on its `id`.
    *
-   * @param {Post} post - The post to be removed.
+   * @param {tinkerforgeDTO} post - The post to be removed.
    */
-  const removePost = (post: Post) => {
-    setPosts(posts.filter((p) => p.uuid != post.uuid));
+  const removePost = (post: tinkerforgeDTO) => {
+    setPosts(posts.filter((p) => p.id != post.id));
   };
 
-  const editPost = (updatedPost: Post) => {
-    setPosts(posts.map((p) => (p.uuid === updatedPost.uuid ? updatedPost : p)));
+  const editPost = (updatedPost: tinkerforgeDTO) => {
+    setPosts(posts.map((p) => (p.id === updatedPost.id ? updatedPost : p)));
     setModal(false);
     setPostToEdit(null);
   };
-  const handleEdit = (post: Post) => {
+  const handleEdit = (post: tinkerforgeDTO) => {
     setPostToEdit(post);
     setModal(true);
   };
