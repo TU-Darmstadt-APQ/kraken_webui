@@ -1,9 +1,8 @@
 import MyButton from "./UI/button/MyButton";
 import { PostItemProps } from "@/types";
 import React from "react";
-import styles from "@/styles/PostItem.module.css";
-// eslint-disable-next-line sort-imports
 import { deleteSensorAction } from "@/actions/action_deleteSensors";
+import styles from "@/styles/PostItem.module.css";
 
 /**
  * Contains minimal information about the sensor: Description, title.
