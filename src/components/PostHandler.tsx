@@ -4,86 +4,78 @@ import { Filter, Post } from "@/types";
 import React, { useState } from "react";
 import MyContent from "@/components/MyContent";
 import MyHeader from "@/components/UI/header/MyHeader";
-import { convertDTOToPost } from "@/types";
 import { tinkerforgeDTO } from "@/models/zTinkerforgeSensor.schema";
-import { usePosts } from "@/hooks/usePosts";
+import { useDTOs } from "@/hooks/usePosts";
 import { v4 as uuidv4 } from "uuid";
 
 function PostHandler({ sensors }: { sensors: tinkerforgeDTO[] }) {
   // Placeholder data for testing functionality
-  const [posts, setPosts] = useState<Post[]>(
-    sensors.map((sensor) => convertDTOToPost(sensor)),
-  );
+  const [posts, setPosts] = useState<tinkerforgeDTO[]>(sensors);
 
   /**
    * Generates a specified number of mock posts and appends them to an existing list of posts.
    *
    * @function
-   * @param {Post[]} existingPosts - The array of existing posts to which new posts will be appended.
+   * @param {tinkerforgeDTO[]} existingPosts - The array of existing posts to which new posts will be appended.
    * @param {number} count - The number of new posts to generate.
-   * @returns {Post[]} - A new array containing both the existing posts and the newly generated posts.
+   * @returns {tinkerforgeDTO[]} - A new array containing both the existing posts and the newly generated posts.
    *
    * @example
    * const existingPosts = [
    *   {
    *     id: 1,
-   *     title: "Existing Post 1",
    *     description: "Description of existing post 1",
    *     date_created: { day: 1, month: 1, year: 2024, nanoseconds: 0.123 },
    *     date_modified: { day: 2, month: 1, year: 2024, nanoseconds: 0.456 },
    *     enabled: true,
    *     label: "Label-A",
-   *     uuid: "uuid-1000",
+   *     uid: "uuid-1000",
    *     config: { theme: "dark", notifications: true },
    *     on_connect: "Connect message 1",
-   *     topic: "sensor",
-   *     unit: "FB20",
-   *     driver: "Tinkerforge",
-   *     pad: 5,
-   *     sad: 3,
-   *     port: 8,
    *   },
    * ];
    *
    * const newPosts = generatePosts(existingPosts, 2);
    * console.log(newPosts.length); // Output: 3 (1 existing + 2 generated)
    */
-  function generatePosts(existingPosts: Post[], count: number): Post[] {
-    const newPosts: Post[] = [];
+  function generatePosts(
+    existingPosts: tinkerforgeDTO[],
+    count: number,
+  ): tinkerforgeDTO[] {
+    const newPosts: tinkerforgeDTO[] = [];
     const startingId = existingPosts.length + 1;
 
     for (let i = 0; i < count; i++) {
-      let date = new Date();
+      let date = new Date().toISOString();
 
-      const newPost: Post = {
-        title: `Generated Title ${startingId + i}`,
-        description: `Generated Description for Post ${startingId + i}`,
-        date_created: {
-          day: date.getDate(),
-          month: date.getMonth() + 1,
-          year: date.getFullYear(),
-          nanoseconds: date.getMilliseconds(),
-        },
-        date_modified: {
-          day: date.getDate(),
-          month: date.getMonth() + 1,
-          year: date.getFullYear(),
-          nanoseconds: date.getMilliseconds(),
-        },
+      const newPost: tinkerforgeDTO = {
+        id: uuidv4(),
+        date_created: date,
+        date_modified: date,
         enabled: Math.random() > 0.5,
         label: `Label-${String.fromCharCode(65 + (i % 26))}`,
-        uuid: `uuid-${uuidv4()}`,
+        description: `Generated Description for DTO ${startingId + i}`,
+        uid: startingId + i,
         config: {
-          theme: ["dark", "light", "blue", "red"][i % 4],
-          notifications: Math.random() > 0.5,
+          [`config-${startingId + i}`]: {
+            // Key as string
+            description: Math.random() > 0.5 ? `Config Description ${i}` : null,
+            interval: Math.floor(Math.random() * 5000) + 1000, // numbers from 1000 to 6000
+            trigger_only_on_change: Math.random() > 0.5,
+            topic: ["sensor", "laptop_sensor", "smartphone_sensor"][i % 3],
+            unit: ["FB20", "FB8", "FB12"][i % 3],
+          },
         },
-        on_connect: `Generated connect message ${startingId + i}`,
-        topic: ["sensor", "laptop_sensor", "smartphone_sensor"][i % 3],
-        unit: ["FB20", "FB8", "FB12"][i % 3],
-        driver: "Tinkerforge",
-        pad: Math.floor(Math.random() * 10),
-        sad: Math.floor(Math.random() * 10),
-        port: Math.floor(Math.random() * 20),
+
+        on_connect: [
+          {
+            function: `initFunction${i}`,
+            args: [`arg${i}`, i * 2],
+            kwargs: { key1: `value${i}`, key2: i * 3 },
+            timeout:
+              Math.random() > 0.5 ? Math.floor(Math.random() * 1000) : null,
+          },
+        ],
       };
 
       newPosts.push(newPost);
@@ -124,7 +116,7 @@ function PostHandler({ sensors }: { sensors: tinkerforgeDTO[] }) {
    * When the state is updated, it triggers a re-render of the relevant components.
    *
    * @param filter - Object containing the current state (filter configuration)
-   * @property {keyof Post | ''} sort - Specifies the field to sort the posts by (e.g., 'title', 'id').
+   * @property {keyof tinkerforgeDTO | ''} sort - Specifies the field to sort the posts by (e.g., 'title', 'id').
    * @property {string} query - Text for searching/filtering posts.
    * @property {string} searchField - Specifies the field to search within (e.g., 'title', 'description', or 'all').
    *
@@ -153,7 +145,7 @@ function PostHandler({ sensors }: { sensors: tinkerforgeDTO[] }) {
    * `usePosts` returns a copy (!) of the posts array based on the filter criteria,
    * without modifying the original state.
    */
-  const sortedAndSearchedPosts = usePosts(
+  const sortedAndSearchedDTOs = useDTOs(
     posts,
     filter.sort,
     filter.query,
@@ -206,7 +198,7 @@ function PostHandler({ sensors }: { sensors: tinkerforgeDTO[] }) {
       <MyContent
         modal={modal}
         setModal={setModal}
-        sortedAndSearchedPosts={sortedAndSearchedPosts}
+        sortedAndSearchedPosts={sortedAndSearchedDTOs}
         createPost={createPost}
         removePost={removePost}
         editPost={editPost}
