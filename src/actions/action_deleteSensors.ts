@@ -1,8 +1,10 @@
 "use server";
+import { UUID } from "bson";
 import { deleteSensor } from "@/components/mongodb/DBConnector";
+
 export async function deleteSensorAction(uuid: string) {
   try {
-    const message = await deleteSensor(uuid);
+    const message = await deleteSensor(new UUID(uuid));
     return { success: true, message }; // Return success response
   } catch (error: unknown) {
     // Handle errors and provide a friendly message
