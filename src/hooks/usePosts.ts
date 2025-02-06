@@ -36,55 +36,14 @@ const compareBoolean = (
   return 0;
 };
 
-/** Compare function for DateType values */
+/** Compare function for dates (stored as stringISO) values */
 const compareDates = (
-  valueA: DateType | null | undefined,
-  valueB: DateType | null | undefined,
+  valueA: string | null | undefined,
+  valueB: string | null | undefined,
 ): number => {
-  const defaultDate: DateType = { year: 0, month: 0, day: 0, nanoseconds: 0 };
-
-  const dateA = valueA ?? defaultDate;
-  const dateB = valueB ?? defaultDate;
-
-  if (
-    typeof dateA === "object" &&
-    typeof dateB === "object" &&
-    "year" in dateA &&
-    "month" in dateA &&
-    "day" in dateA &&
-    "nanoseconds" in dateA
-  ) {
-    if (
-      typeof dateA.year === "number" &&
-      typeof dateB.year === "number" &&
-      dateA.year !== dateB.year
-    ) {
-      return dateA.year - dateB.year;
-    }
-    if (
-      typeof dateA.month === "number" &&
-      typeof dateB.month === "number" &&
-      dateA.month !== dateB.month
-    ) {
-      return dateA.month - dateB.month;
-    }
-    if (
-      typeof dateA.day === "number" &&
-      typeof dateB.day === "number" &&
-      dateA.day !== dateB.day
-    ) {
-      return dateA.day - dateB.day;
-    }
-    if (
-      typeof dateA.nanoseconds === "number" &&
-      typeof dateB.nanoseconds === "number" &&
-      dateA.nanoseconds !== dateB.nanoseconds
-    ) {
-      return dateA.nanoseconds - dateB.nanoseconds;
-    }
-  }
-
-  return 0;
+  const dateA = valueA ? new Date(valueA).getTime() : 0;
+  const dateB = valueB ? new Date(valueB).getTime() : 0;
+  return dateA - dateB;
 };
 
 // Custom Hook: All custom hooks use predefined hooks from React (useState, useMemo etc)
