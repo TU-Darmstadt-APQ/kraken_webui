@@ -5,6 +5,14 @@ import { useMemo } from "react";
 
 type SortKey = keyof tinkerforgeDTO;
 
+// Regular expression that checks, if the given string is a ISO-date
+const isISOString = (value: string): boolean => {
+  // complete version OR without milliseconds OR without seconds
+  return /(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d\.\d+([+-][0-2]\d:[0-5]\d|Z))|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d([+-][0-2]\d:[0-5]\d|Z))|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d([+-][0-2]\d:[0-5]\d|Z))/.test(
+    value,
+  );
+};
+
 // the method filter boolean
 const filterBoolean = (query: string, dto: tinkerforgeDTO): boolean => {
   const normalizedQuery = query.toLowerCase().trim();
@@ -47,7 +55,10 @@ const compareDates = (
 };
 
 // Custom Hook: All custom hooks use predefined hooks from React (useState, useMemo etc)
-export const useSortedPosts = (posts: Post[], sort: SortKey | ""): Post[] => {
+export const useSortedDTOs = (
+  posts: tinkerforgeDTO[],
+  sort: SortKey | "",
+): tinkerforgeDTO[] => {
   const sortedPosts = useMemo(() => {
     if (sort) {
       return [...posts].sort((a, b) => {
@@ -84,14 +95,19 @@ export const useSortedPosts = (posts: Post[], sort: SortKey | ""): Post[] => {
           return valueA - valueB;
         }
 
+        // Compare for Dates (check if both string are ISO strings)
+        if (typeof valueA === "string" && typeof valueB === "string") {
+          const isDateA = isISOString(valueA);
+          const isDateB = isISOString(valueB);
+
+          if (isDateA && isDateB) {
+            return compareDates(valueA, valueB);
+          }
+        }
+
         // Compare for Strings
         if (typeof valueA === "string" && typeof valueB === "string") {
           return valueA.localeCompare(valueB);
-        }
-
-        // Compare for DateType
-        if (typeof valueA === "object" && typeof valueB === "object") {
-          return compareDates(valueA as DateType, valueB as DateType);
         }
 
         // Edge case for unknown types
