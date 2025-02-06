@@ -1,5 +1,3 @@
-import { DateType } from "@/types";
-import { Post } from "../types";
 import { tinkerforgeDTO } from "../models/zTinkerforgeSensor.schema";
 import { useMemo } from "react";
 
@@ -120,40 +118,26 @@ export const useSortedDTOs = (
   return sortedPosts;
 };
 
-export const usePosts = (
-  posts: Post[],
+export const useDTOs = (
+  posts: tinkerforgeDTO[],
   sort: SortKey | "",
   query: string,
-  searchField: keyof Post | "all",
+  searchField: SortKey | "all",
 ) => {
-  const sortedPosts = useSortedPosts(posts, sort);
+  const sortedDTOs = useSortedDTOs(posts, sort);
 
   // To make the search register-independent, it was "toLowerCase" for titles implemented
-  const sortedAndSearchedPosts = useMemo(() => {
-    if (!query.trim()) return sortedPosts; // if query is empty - return the original list
+  const sortedAndSearchedDTOs = useMemo(() => {
+    if (!query.trim()) return sortedDTOs; // if query is empty - return the original list
 
-    return sortedPosts.filter((post) => {
-      // if we search in all fields of Post
+    return sortedDTOs.filter((post) => {
+      // if we search in all fields of DTO
       if (searchField === "all") {
         return Object.values(post).some((value) => {
           if (typeof value === "string" || typeof value === "number") {
             return value.toString().toLowerCase().includes(query.toLowerCase());
           }
-          // identificate DataType
-          if (
-            typeof value === "object" &&
-            value !== null &&
-            "year" in value &&
-            "month" in value &&
-            "day" in value
-          ) {
-            return formatDate(value as DateType)
-              .toLowerCase()
-              .includes(query.toLowerCase());
-          }
-          /*if(typeof value === 'object' && value !== null){
-              return isTextInConfig(value, query);
-            }*/
+
           // identificate Enabled-status
           if (typeof value === "boolean") {
             return filterBoolean(query, post);
@@ -163,22 +147,7 @@ export const usePosts = (
       }
 
       const fieldValue = post[searchField];
-      // If the fieldValue is of type DateType
-      if (
-        typeof fieldValue === "object" &&
-        fieldValue !== null &&
-        "year" in fieldValue &&
-        "month" in fieldValue &&
-        "day" in fieldValue
-      ) {
-        return formatDate(fieldValue as DateType)
-          .toLowerCase()
-          .includes(query.toLowerCase());
-      }
-      // If the fieldValue is of type Config
-      /*if(typeof fieldValue === 'object' && fieldValue !== null){
-          return isTextInConfig(fieldValue, query);
-        }*/
+
       if (typeof fieldValue === "boolean") {
         return filterBoolean(query, post);
       }
@@ -191,7 +160,7 @@ export const usePosts = (
 
       return false;
     });
-  }, [query, sortedPosts, searchField]);
+  }, [query, sortedDTOs, searchField]);
 
-  return sortedAndSearchedPosts;
+  return sortedAndSearchedDTOs;
 };
