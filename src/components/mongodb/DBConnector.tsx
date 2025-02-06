@@ -82,20 +82,21 @@ export default async function DBConnector() {
 }
 
 // Function to delete a sensor by UUID
-export async function deleteSensor(sensorUUID: UUID): Promise<string> {
+// Function to delete a sensor by passing the DTO
+export async function deleteSensor(sensorDTO: tinkerforgeDTO): Promise<string> {
   const client = await connectToDB();
   const database = client.db("sensor_config");
   const sensors = database.collection<tinkerforgeEntity>("TinkerforgeSensor");
 
   try {
-    await sensors.deleteOne({ id: sensorUUID.toUUID });
+    // Convert the DTO's id (string) to a UUID object for the query
+    const sensorUUID = new UUID(sensorDTO.id);
+    await sensors.deleteOne({ _id: sensorUUID });
 
-    return `Sensor "${sensorUUID}" deleted successfully.`;
+    return `Sensor "${sensorDTO.id}" deleted successfully.`;
   } catch (error) {
     const errorMessage =
       error instanceof Error ? error.message : "Unknown error";
-    throw new Error(
-      `Failed to delete sensor ${sensorUUID.toUUID}: ${errorMessage}`,
-    );
+    throw new Error(`Failed to delete sensor ${sensorDTO.id}: ${errorMessage}`);
   }
 }
