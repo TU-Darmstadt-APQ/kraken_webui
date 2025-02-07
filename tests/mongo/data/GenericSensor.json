@@ -19,8 +19,6 @@
       "kwargs": {},
       "timeout": null
     },
-    { "function": "write", "args": ["*RST"], "kwargs": {}, "timeout": null },
-    { "function": "write", "args": ["*CLS"], "kwargs": {}, "timeout": null },
     {
       "function": "write",
       "args": [
