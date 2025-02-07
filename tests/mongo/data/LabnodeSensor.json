@@ -12,7 +12,7 @@
     "-11": {
       "interval": 60,
       "description": null,
-      "topic": "sensors/room_016/air_con/output_pumproom",
+      "topic": "sensors/sensor_output",
       "unit": "bit",
       "timeout": null
     },
