@@ -1,5 +1,6 @@
 import React from "react"; // Add import for React
 import { ReactNode } from "react";
+import { tinkerforgeDTO } from "./models/zTinkerforgeSensor.schema";
 
 export interface Post {
   // Basic information
@@ -28,6 +29,34 @@ export interface Post {
   port?: number;
   pad?: number;
   sad?: number;
+}
+
+// This is just a compatibility layer to convert tinkerforgeDTO -> Post. Remove this function when the transition
+// from Post -> tinkerforgeDTO in the frontend is complete
+export function convertDTOToPost(DTO: tinkerforgeDTO): Post {
+  const dateCreated = new Date(DTO.date_created);
+  const dateModified = new Date(DTO.date_modified);
+  const post: Post = {
+    uuid: DTO.id,
+    date_created: {
+      day: dateCreated.getDate(),
+      month: dateCreated.getMonth(),
+      year: dateCreated.getFullYear(),
+    },
+    date_modified: {
+      day: dateModified.getDate(),
+      month: dateModified.getMonth(),
+      year: dateModified.getFullYear(),
+    },
+    enabled: DTO.enabled,
+    description: DTO.description?.toString(),
+    config: DTO.config,
+    on_connect: DTO.on_connect.map((value) => value.toString()).toString(),
+    topic: "",
+    unit: "",
+    driver: "",
+  };
+  return post;
 }
 
 export interface DateType {
