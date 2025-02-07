@@ -21,12 +21,10 @@
     },
     {
       "function": "write",
-      "args": [
-        ":SENSe:FUNCtion \"VOLTage:DC\""
-      ],
+      "args": [":SENSe:FUNCtion \"VOLTage:DC\""],
       "kwargs": {},
       "timeout": null
-    },
+    }
   ],
   "on_read": {
     "function": "query_number",
