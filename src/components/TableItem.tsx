@@ -1,9 +1,8 @@
 import MyButton from "./UI/button/MyButton";
 import React from "react";
 import { TableItemProps } from "@/types";
-import styles from "@/styles/TableItem.module.css";
-// eslint-disable-next-line sort-imports
 import { deleteSensorAction } from "@/actions/action_deleteSensors";
+import styles from "@/styles/TableItem.module.css";
 
 /**
  * A component representing a single table row with data and action buttons.
