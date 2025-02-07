@@ -24,7 +24,7 @@
     {
       "function": "write",
       "args": [
-        ":SENSe:FUNCtion \"VOLTage:DC\"; :SENSe:VOLTage:RANGe 10; :SENSe:VOLTage:AZERo ON; :SENSe:VOLTage:NPLC 10; :SENSe:VOLTage:INPutimpedance AUTO; :DISPlay:LIGHt:STATe OFF"
+        ":SENSe:FUNCtion \"VOLTage:DC\""
       ],
       "kwargs": {},
       "timeout": null
