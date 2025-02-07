@@ -15,7 +15,7 @@
     "$binary": { "base64": "8Cx1fOyjSImZgIjocTIl0g==", "subType": "04" }
   },
   "date_created": { "$date": "2025-01-01T00:00:0.000Z" },
-  "date_modified": { "$date": "2024-11-01T11:28:35.623Z" },
+  "date_modified": { "$date": "2025-01-01T00:00:0.000Z" },
   "enabled": true,
   "label": "QUIPS C HP3478A (2520A20614) 840 nm Cavity Monitor",
   "description": ""
