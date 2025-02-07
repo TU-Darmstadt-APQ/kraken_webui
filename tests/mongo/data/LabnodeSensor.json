@@ -19,7 +19,7 @@
     "-25": {
       "interval": 60,
       "description": "",
-      "topic": "sensors/room_016/temperature/labnode_pumproom",
+      "topic": "sensors/sensor_temperature",
       "unit": "K",
       "timeout": null
     },
