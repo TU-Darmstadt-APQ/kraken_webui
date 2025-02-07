@@ -47,6 +47,6 @@
     },
     { "function": "write", "args": ["logout"], "kwargs": {}, "timeout": null }
   ],
-  "topic": "sensors/room_015/voltage/piezo_master",
+  "topic": "sensors/voltage",
   "unit": "V"
 }
