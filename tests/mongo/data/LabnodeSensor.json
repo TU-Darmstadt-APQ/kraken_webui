@@ -18,7 +18,7 @@
     },
     "-25": {
       "interval": 60,
-      "description": "",
+      "description": null,
       "topic": "sensors/sensor_temperature",
       "unit": "K",
       "timeout": null
