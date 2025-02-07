@@ -6,7 +6,7 @@
   "date_modified": { "$date": "2025-01-01T00:00:0.000Z" },
   "enabled": true,
   "label": null,
-  "description": "",
+  "description": "This is a dummy LabNode that does not exist",
   "uid": 8,
   "config": {
     "-11": {
