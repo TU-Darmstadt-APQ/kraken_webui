@@ -27,7 +27,6 @@
       "kwargs": {},
       "timeout": null
     },
-    { "function": "wait_for_opc", "args": [], "kwargs": {}, "timeout": null }
   ],
   "on_read": {
     "function": "query_number",
