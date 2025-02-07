@@ -26,7 +26,7 @@
     "-26": {
       "interval": 60,
       "description": "",
-      "topic": "sensors/room_016/humidity/labnode_pumproom",
+      "topic": "sensors/sensor_humidity",
       "unit": "%rH",
       "timeout": null
     }
