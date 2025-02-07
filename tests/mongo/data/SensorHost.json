@@ -6,7 +6,7 @@
   "port": 1234,
   "pad": 27,
   "sad": 0,
-  "driver": "prologix_gpib2",
+  "driver": "dummy_driver",
   "node_id": {
     "$binary": { "base64": "62YJzZv5SL2IlEZjcDYeyw==", "subType": "04" }
   },
