@@ -66,7 +66,6 @@ const renderPostItem = () => {
 
 jest.mock("../../src/actions/action_deleteSensors", () => ({
   deleteSensorAction: jest.fn().mockImplementation(async (uuid) => {
-    console.log("Mock deleteSensorAction called with:", uuid);
     return { success: true, message: "Deleted successfully" };
   }),
 }));
