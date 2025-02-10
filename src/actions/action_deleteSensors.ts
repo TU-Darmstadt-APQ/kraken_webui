@@ -21,7 +21,6 @@ export async function deleteSensorAction(uuid: string) {
     return { success: true, message }; // Return success response
   } catch (error: unknown) {
     // Handle errors and provide a friendly message
-    console.error("Error deleting sensor:", error);
     if (error instanceof Error) {
       return { success: false, message: error.message };
     }
