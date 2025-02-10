@@ -51,7 +51,6 @@ const mockPost = {
 // Mock the `deleteSensorAction` function to prevent direct database calls
 jest.mock("../../src/actions/action_deleteSensors", () => ({
   deleteSensorAction: jest.fn().mockImplementation(async (uuid) => {
-    console.log("Mock deleteSensorAction called with:", uuid);
     return { success: true, message: "Deleted successfully" };
   }),
 }));
