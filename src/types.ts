@@ -7,7 +7,7 @@ export interface Post {
   title?: string;
   description?: string; // All lines marked with a question mark are optional (or do not have to be included when the object is created)
   uuid: string;
-  label?: string;
+  label?: string | null;
 
   // Dates
   date_created: DateType;
@@ -38,6 +38,7 @@ export function convertDTOToPost(DTO: tinkerforgeDTO): Post {
   const dateModified = new Date(DTO.date_modified);
   const post: Post = {
     uuid: DTO.id,
+    label: DTO.label,
     date_created: {
       day: dateCreated.getDate(),
       month: dateCreated.getMonth(),
