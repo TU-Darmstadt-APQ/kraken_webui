@@ -12,6 +12,7 @@ import "@testing-library/jest-dom";
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import React from "react";
 import TableItem from "@/components/TableItem";
+import { v4 as uuidv4 } from "uuid";
 
 // Mock functions for callbacks
 const mockRemove = jest.fn();
@@ -40,7 +41,7 @@ const mockPost = {
   date_modified: { day: 11, month: 12, year: 2024 },
   enabled: true,
   label: "Test Label",
-  uuid: "uuid-123",
+  uuid: uuidv4(),
   config: { key1: "value1" },
   on_connect: "test-connect",
   topic: "Test Topic",
