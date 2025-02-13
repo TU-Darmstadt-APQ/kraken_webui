@@ -75,24 +75,4 @@ describe("TableItem Component", () => {
       expect(mockRemove).toHaveBeenCalledWith(mockPost);
     });
   });
-
-  it("does not trigger a database call directly when delete button is clicked", async () => {
-    render(
-      <TableItem
-        post={mockPost}
-        remove={mockRemove}
-        edit={mockEdit}
-        selectedColumns={mockSelectedColumns}
-      />,
-    );
-
-    // Click the delete button
-    fireEvent.click(screen.getByAltText("Delete"));
-
-    // Ensure no direct database call is made by testing remove callback
-    await waitFor(() => {
-      expect(mockRemove).toHaveBeenCalledTimes(1);
-      expect(mockRemove).toHaveBeenCalledWith(mockPost);
-    });
-  });
 });
