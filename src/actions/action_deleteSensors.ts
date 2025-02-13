@@ -1,4 +1,5 @@
 "use server";
+import { ResponseType } from "@/types";
 import { deleteSensor } from "@/components/mongodb/DBConnector";
 import { tinkerforgeDTO } from "@/models/zTinkerforgeSensor.schema";
 
@@ -17,8 +18,8 @@ export async function deleteSensorAction(uuid: string) {
     };
 
     // Call deleteSensor with the tinkerforgeDTO object
-    const message = await deleteSensor(sensorDTO);
-    return { success: true, message }; // Return success response
+    const response: ResponseType = await deleteSensor(sensorDTO);
+    return { success: true, message: response.message }; // Return success response
   } catch (error: unknown) {
     // Handle errors and provide a friendly message
     if (error instanceof Error) {
