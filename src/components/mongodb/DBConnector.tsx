@@ -1,8 +1,9 @@
-import { MongoClient, UUID } from "mongodb";
 import {
+  convertToEntity,
   tinkerforgeDTO,
   tinkerforgeEntity,
 } from "@/models/zTinkerforgeSensor.schema";
+import { MongoClient } from "mongodb";
 import { ResponseType } from "@/types";
 import { config } from "@/../config";
 import { z } from "zod";
@@ -108,13 +109,14 @@ export async function deleteSensor(
     // Check if sensorDTO.id is a UUID
     const uuidSchema = z.string().uuid();
     uuidSchema.parse(sensorDTO.id);
-    // Convert the DTO's id (string) to a UUID object for the query
-    const sensorUUID = new UUID(sensorDTO.id);
-    await sensors.deleteOne({ _id: sensorUUID });
+    // Convert the DTOto entity
+    const entity = convertToEntity(sensorDTO);
+    // Attempt to delete sensor
+    await sensors.deleteOne({ _id: entity._id });
 
     return {
       status: 200,
-      message: `Sensor ${sensorUUID} deleted.`,
+      message: `Sensor ${entity._id} deleted.`,
     };
   } catch (error) {
     const errorMessage =
