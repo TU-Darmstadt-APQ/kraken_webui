@@ -81,8 +81,20 @@ export default async function DBConnector() {
   return <span>Connection successfully set up</span>;
 }
 
-// Function to delete a sensor by UUID
-// Function to delete a sensor by passing the DTO
+/**
+ * Deletes a sensor from the database.
+ *
+ * @param {tinkerforgeDTO} sensorDTO - The sensor data transfer object containing the ID of the sensor to be deleted.
+ * @returns {Promise<string>} A promise that resolves to a success message if the deletion is successful.
+ * @throws {Error} If the deletion fails, an error is thrown with details.
+ *
+ * Possible Errors:
+ * - `MongoWriteException`: If the write fails due to a specific write exception.
+ * - `MongoWriteConcernException`: If the write fails due to being unable to fulfill the write concern.
+ * - `MongoCommandException`: If the write fails due to a specific command exception.
+ * - `MongoException`: If the write fails due to some other failure.
+ * - `ZodIssue`: If the sensorDTO validation fails due to schema issues.
+ */
 export async function deleteSensor(sensorDTO: tinkerforgeDTO): Promise<string> {
   const client = await connectToDB();
   const database = client.db("sensor_config");
