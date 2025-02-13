@@ -15,6 +15,7 @@ import "@testing-library/jest-dom";
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import PostItem from "@/components/PostItem";
 import React from "react";
+import { v4 as uuidv4 } from "uuid";
 
 // Mock functions for edit and remove callbacks
 const mockEdit = jest.fn();
@@ -27,7 +28,7 @@ global.alert = jest.fn();
  * Sample post data to be used in tests.
  */
 const mockPost = {
-  uuid: expect.any(String),
+  uuid: uuidv4(),
   title: "Test Sensor",
   description: "This is a test sensor description",
   driver: "Test Driver",
@@ -102,21 +103,6 @@ describe("PostItem component", () => {
     fireEvent.click(screen.getByAltText("Delete"));
 
     // Ensure remove function was called asynchronously
-    await waitFor(() => {
-      expect(mockRemove).toHaveBeenCalledTimes(1);
-      expect(mockRemove).toHaveBeenCalledWith(
-        expect.objectContaining({ uuid: "uuid-1234" }),
-      );
-    });
-  });
-
-  it("does not trigger a database call directly when delete button is clicked", async () => {
-    renderPostItem();
-
-    // Click the delete button
-    fireEvent.click(screen.getByAltText("Delete"));
-
-    // Ensure no direct database function is being called
     await waitFor(() => {
       expect(mockRemove).toHaveBeenCalledTimes(1);
       expect(mockRemove).toHaveBeenCalledWith(mockPost);
