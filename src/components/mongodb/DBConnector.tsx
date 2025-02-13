@@ -4,6 +4,7 @@ import {
   tinkerforgeEntity,
 } from "@/models/zTinkerforgeSensor.schema";
 import { config } from "@/../config";
+import { z } from "zod";
 
 // Cache the db client and promise (to create one) so that (hot) reloading will reuse the connection
 // We use a global variable for this. See its type declaration below.
@@ -101,6 +102,9 @@ export async function deleteSensor(sensorDTO: tinkerforgeDTO): Promise<string> {
   const sensors = database.collection<tinkerforgeEntity>("TinkerforgeSensor");
 
   try {
+    // Check if sensorDTO.id is a UUID
+    const uuidSchema = z.string().uuid();
+    uuidSchema.parse(sensorDTO.id);
     // Convert the DTO's id (string) to a UUID object for the query
     const sensorUUID = new UUID(sensorDTO.id);
     await sensors.deleteOne({ _id: sensorUUID });
