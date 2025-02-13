@@ -3,6 +3,7 @@ import {
   tinkerforgeDTO,
   tinkerforgeEntity,
 } from "@/models/zTinkerforgeSensor.schema";
+import { ResponseType } from "@/types";
 import { config } from "@/../config";
 import { z } from "zod";
 
@@ -96,7 +97,9 @@ export default async function DBConnector() {
  * - `MongoException`: If the write fails due to some other failure.
  * - `ZodIssue`: If the sensorDTO validation fails due to schema issues.
  */
-export async function deleteSensor(sensorDTO: tinkerforgeDTO): Promise<string> {
+export async function deleteSensor(
+  sensorDTO: tinkerforgeDTO,
+): Promise<ResponseType> {
   const client = await connectToDB();
   const database = client.db("sensor_config");
   const sensors = database.collection<tinkerforgeEntity>("TinkerforgeSensor");
@@ -109,7 +112,10 @@ export async function deleteSensor(sensorDTO: tinkerforgeDTO): Promise<string> {
     const sensorUUID = new UUID(sensorDTO.id);
     await sensors.deleteOne({ _id: sensorUUID });
 
-    return `Sensor "${sensorDTO.id}" deleted successfully.`;
+    return {
+      status: 200,
+      message: `Sensor ${sensorUUID} deleted.`,
+    };
   } catch (error) {
     const errorMessage =
       error instanceof Error ? error.message : "Unknown error";
