@@ -92,7 +92,13 @@ export default async function DBConnector() {
       status: 200,
       message: `Sensor ${entity._id} deleted.`,
     };
-    if the deletion is successful.
+    if deletion is successful.
+
+    {
+        status: 500,
+        message: `No sensor with uuid  ${entity._id} could be found.`,
+    };
+    if deletion was not successful.
  *
  * @throws {Error} If the deletion fails, an error is thrown with details.
  * Possible Errors:
