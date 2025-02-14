@@ -1,7 +1,10 @@
 "use server";
+import {
+  tinkerforgeDTO,
+  tinkerforgeDTOSchema,
+} from "@/models/zTinkerforgeSensor.schema";
 import { ResponseType } from "@/types";
 import { deleteSensor } from "@/components/mongodb/DBConnector";
-import { tinkerforgeDTO } from "@/models/zTinkerforgeSensor.schema";
 
 export async function deleteSensorAction(sensorDTO: tinkerforgeDTO) {
   try {
