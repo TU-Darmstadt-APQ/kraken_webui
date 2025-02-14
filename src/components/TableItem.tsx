@@ -1,6 +1,6 @@
+import { TableItemProps, convertPostToDTO } from "@/types";
 import MyButton from "./UI/button/MyButton";
 import React from "react";
-import { TableItemProps } from "@/types";
 import { deleteSensorAction } from "@/actions/action_deleteSensors";
 import styles from "@/styles/TableItem.module.css";
 
@@ -30,7 +30,8 @@ import styles from "@/styles/TableItem.module.css";
  *   description: true,
  *   date_created: false,
  *   date_modified: true,
- *   enabled: true,
+ *   enabled: true,import { TableItemProps, convertPostToDTO } from "@/types";
+
  *   uuid: false,
  *   config: true,
  *   on_connect: false,
@@ -55,7 +56,7 @@ const TableItem: React.FC<TableItemProps> = ({
   if (!isRowVisible) return null; // we check if minimum one is true
 
   const deleteSensorHandler = async () => {
-    const result = await deleteSensorAction(post.uuid);
+    const result = await deleteSensorAction(convertPostToDTO(post));
     if (result.success) {
       alert(result.message);
       remove(post);

@@ -1,5 +1,5 @@
+import { PostItemProps, convertPostToDTO } from "@/types";
 import MyButton from "./UI/button/MyButton";
-import { PostItemProps } from "@/types";
 import React from "react";
 import { deleteSensorAction } from "@/actions/action_deleteSensors";
 import styles from "@/styles/PostItem.module.css";
@@ -39,7 +39,7 @@ import styles from "@/styles/PostItem.module.css";
  */
 const PostItem: React.FC<PostItemProps> = (props) => {
   const deleteSensorHandler = async () => {
-    const result = await deleteSensorAction(props.post.uuid);
+    const result = await deleteSensorAction(convertPostToDTO(props.post));
     if (result.success) {
       alert(result.message);
       props.remove(props.post);
