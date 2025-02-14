@@ -4,7 +4,6 @@ import {
   tinkerforgeEntity,
 } from "@/models/zTinkerforgeSensor.schema";
 import { MongoClient } from "mongodb";
-import { ResponseType } from "@/types";
 import { config } from "@/../config";
 
 // Cache the db client and promise (to create one) so that (hot) reloading will reuse the connection
@@ -87,18 +86,9 @@ export default async function DBConnector() {
  * Deletes a sensor from the database.
  *
  * @param {tinkerforgeDTO} sensorDTO - The sensor data transfer object containing the ID of the sensor to be deleted.
- * @returns {Promise<ResponseType>} A promise that resolves to an object
- * {
-      status: 200,
-      message: `Sensor ${entity._id} deleted.`,
-    };
-    if deletion is successful.
-
-    {
-        status: 500,
-        message: `No sensor with uuid  ${entity._id} could be found.`,
-    };
-    if deletion was not successful.
+ * @returns {Promise<Void>} A promise that resolves to nothing if deletion is successful.
+ *
+ * "No sensor with uuid  ${entity._id} could be found." if deletion was not successful.
  *
  * @throws {Error} If the deletion fails, an error is thrown with details.
  * Possible Errors:
@@ -108,9 +98,7 @@ export default async function DBConnector() {
  * - `MongoException`: If the write fails due to some other failure.
  * - `ZodIssue`: If the sensorDTO validation fails due to schema issues.
  */
-export async function deleteSensor(
-  sensorDTO: tinkerforgeDTO,
-): Promise<ResponseType> {
+export async function deleteSensor(sensorDTO: tinkerforgeDTO): Promise<void> {
   const client = await connectToDB();
   const database = client.db("sensor_config");
   const sensors = database.collection<tinkerforgeEntity>("TinkerforgeSensor");
@@ -121,16 +109,8 @@ export async function deleteSensor(
     // Attempt to delete sensor
     const response = await sensors.deleteOne({ _id: entity._id });
 
-    if (response.deletedCount == 1) {
-      return {
-        status: 200,
-        message: `Sensor ${entity._id} deleted.`,
-      };
-    } else {
-      return {
-        status: 500,
-        message: `No sensor with uuid  ${entity._id} could be found.`,
-      };
+    if (response.deletedCount != 1) {
+      throw new Error(`No sensor with uuid  ${entity._id} could be found.`);
     }
   } catch (error) {
     const errorMessage =

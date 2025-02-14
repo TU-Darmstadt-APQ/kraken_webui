@@ -231,8 +231,3 @@ export interface MyTooltipProps {
   children: React.ReactNode;
   position?: "top" | "bottom" | "left" | "right" | "bottom-right" | "top-right"; // possible direction for tooltip appereance
 }
-
-export type ResponseType = {
-  status: number;
-  message: string;
-};
