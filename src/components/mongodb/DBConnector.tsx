@@ -113,12 +113,19 @@ export async function deleteSensor(
     // Convert the DTOto entity
     const entity = convertToEntity(sensorDTO);
     // Attempt to delete sensor
-    await sensors.deleteOne({ _id: entity._id });
+    const response = await sensors.deleteOne({ _id: entity._id });
 
-    return {
-      status: 200,
-      message: `Sensor ${entity._id} deleted.`,
-    };
+    if (response.deletedCount == 1) {
+      return {
+        status: 200,
+        message: `Sensor ${entity._id} deleted.`,
+      };
+    } else {
+      return {
+        status: 500,
+        message: `No sensor with uuid  ${entity._id} could be found.`,
+      };
+    }
   } catch (error) {
     const errorMessage =
       error instanceof Error ? error.message : "Unknown error";
