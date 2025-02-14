@@ -110,7 +110,7 @@ export async function deleteSensor(sensorDTO: tinkerforgeDTO): Promise<void> {
     const response = await sensors.deleteOne({ _id: entity._id });
 
     if (response.deletedCount != 1) {
-      throw new Error(`No sensor with uuid  ${entity._id} could be found.`);
+      throw new Error(`No sensor with uuid ${entity._id} could be found.`);
     }
   } catch (error) {
     const errorMessage =
