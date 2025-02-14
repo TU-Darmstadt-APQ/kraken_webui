@@ -82,5 +82,6 @@ export function convertToEntity(DTO: tinkerforgeDTO): tinkerforgeEntity {
     config: DTO.config,
     on_connect: DTO.on_connect,
   };
+  tinkerforgeEntitySchema.parse(candidate);
   return candidate;
 }

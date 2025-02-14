@@ -6,7 +6,6 @@ import {
 import { MongoClient } from "mongodb";
 import { ResponseType } from "@/types";
 import { config } from "@/../config";
-import { z } from "zod";
 
 // Cache the db client and promise (to create one) so that (hot) reloading will reuse the connection
 // We use a global variable for this. See its type declaration below.
@@ -106,9 +105,6 @@ export async function deleteSensor(
   const sensors = database.collection<tinkerforgeEntity>("TinkerforgeSensor");
 
   try {
-    // Check if sensorDTO.id is a UUID
-    const uuidSchema = z.string().uuid();
-    uuidSchema.parse(sensorDTO.id);
     // Convert the DTOto entity
     const entity = convertToEntity(sensorDTO);
     // Attempt to delete sensor
