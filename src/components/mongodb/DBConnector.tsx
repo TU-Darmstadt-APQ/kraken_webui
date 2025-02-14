@@ -87,9 +87,14 @@ export default async function DBConnector() {
  * Deletes a sensor from the database.
  *
  * @param {tinkerforgeDTO} sensorDTO - The sensor data transfer object containing the ID of the sensor to be deleted.
- * @returns {Promise<string>} A promise that resolves to a success message if the deletion is successful.
- * @throws {Error} If the deletion fails, an error is thrown with details.
+ * @returns {Promise<ResponseType>} A promise that resolves to an object
+ * {
+      status: 200,
+      message: `Sensor ${entity._id} deleted.`,
+    };
+    if the deletion is successful.
  *
+ * @throws {Error} If the deletion fails, an error is thrown with details.
  * Possible Errors:
  * - `MongoWriteException`: If the write fails due to a specific write exception.
  * - `MongoWriteConcernException`: If the write fails due to being unable to fulfill the write concern.
