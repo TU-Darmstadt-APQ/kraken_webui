@@ -2,6 +2,7 @@ import { TableItemProps, convertPostToDTO } from "@/types";
 import MyButton from "./UI/button/MyButton";
 import React from "react";
 import { deleteSensorAction } from "@/actions/action_deleteSensors";
+import { editSensorAction } from "@/actions/action_editSensor";
 import styles from "@/styles/TableItem.module.css";
 
 /**
@@ -54,6 +55,29 @@ const TableItem: React.FC<TableItemProps> = ({
   const isRowVisible = Object.values(selectedColumns).some((value) => value);
 
   if (!isRowVisible) return null; // we check if minimum one is true
+
+  const editSensorHandler = async () => {
+    const newDescription = prompt("Enter the new description:"); // Prompt the user for a new description
+
+    // If the user cancels the prompt, do nothing
+    if (newDescription === null) {
+      return;
+    }
+
+    // Call the server action to update the description
+    const result = await editSensorAction(
+      convertPostToDTO(post),
+      newDescription,
+    );
+
+    // Handle the result
+    if (result.success) {
+      alert(result.message);
+      // Optionally, you can trigger a refresh or update the state to reflect the new description
+    } else {
+      alert(`Error: ${result.message}`);
+    }
+  };
 
   const deleteSensorHandler = async () => {
     const result = await deleteSensorAction(convertPostToDTO(post));
@@ -141,7 +165,7 @@ const TableItem: React.FC<TableItemProps> = ({
 
       {/* Edit button and delete button with callback */}
       <div className={`${styles.cell} ${styles.actions}`}>
-        <MyButton className="list-button" onClick={() => edit(post)}>
+        <MyButton className="list-button" onClick={editSensorHandler}>
           <img
             src="/edit.png"
             alt="Edit"
