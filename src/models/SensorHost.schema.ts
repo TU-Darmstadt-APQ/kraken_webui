@@ -30,23 +30,20 @@ export type sensorHostEntity = z.infer<typeof sensorHostEntitySchema>;
 // as used by the application
 export const sensorHostDTOSchema = z.object({
   id: z.string().uuid(),
-  hostname: z
-    .string()
-    .regex(
-      /^((?=.{1,255}$)[0-9A-Za-z](?:(?:[0-9A-Za-z]|-){0,61}[0-9A-Za-z])?(?:\.[0-9A-Za-z](?:(?:[0-9A-Za-z]|-){0,61}[0-9A-Za-z])?)*\.?)$/,
-      "Invalid hostname format",
-    ),
-  port: z.number().int().min(1).max(65535),
-  pad: z.union([z.number().int().nonnegative().max(30), z.null()]),
-  sad: z.union([z.literal(0), z.number().int().min(96).max(126), z.null()]),
-  driver: z.string(),
+  hostname: sensorHostEntitySchema.shape.hostname,
+  port: sensorHostEntitySchema.shape.port,
+  pad: sensorHostEntitySchema.shape.pad,
+  sad: sensorHostEntitySchema.shape.sad,
+  driver: sensorHostEntitySchema.shape.driver,
+  // node_id is converted from a UUID instance to a string
   node_id: z.string().uuid(),
-  reconnect_interval: z.union([z.number().int().nonnegative(), z.null()]),
+  reconnect_interval: sensorHostEntitySchema.shape.reconnect_interval,
+  // Dates converted to ISO strings
   date_created: z.string().datetime(),
   date_modified: z.string().datetime(),
-  enabled: z.boolean(),
-  label: z.optional(z.union([z.string(), z.null()])),
-  description: z.union([z.string(), z.null()]),
+  enabled: sensorHostEntitySchema.shape.enabled,
+  label: sensorHostEntitySchema.shape.label,
+  description: sensorHostEntitySchema.shape.description,
 });
 
 export type sensorHostDTO = z.infer<typeof sensorHostDTOSchema>;
