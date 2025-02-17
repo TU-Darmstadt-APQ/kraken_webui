@@ -2,8 +2,10 @@ import {
   convertToEntity,
   tinkerforgeDTO,
   tinkerforgeEntity,
+  tinkerforgeEntitySchema,
 } from "@/models/zTinkerforgeSensor.schema";
 import { MongoClient } from "mongodb";
+import { UUID } from "bson";
 import { config } from "@/../config";
 
 // Cache the db client and promise (to create one) so that (hot) reloading will reuse the connection
@@ -80,6 +82,43 @@ export default async function DBConnector() {
     //await client.close();
   }
   return <span>Connection successfully set up</span>;
+}
+/**
+ * Inserts a new sensor into the database.
+ *
+ * @param {Omit<tinkerforgeDTO, "date_created" | "date_modified">} dto - The sensor data transfer object to be inserted, excluding date_created and date_modified fields.
+ * @returns {Promise<void>} A promise that resolves to nothing if insertion is successful.
+ *
+ * @throws {Error} If the insertion fails, an error is thrown with details.
+ * Possible Errors:
+ * - `MongoWriteException`: If the write fails due to a specific write exception.
+ * - `MongoWriteConcernException`: If the write fails due to being unable to fulfill the write concern.
+ * - `MongoCommandException`: If the write fails due to a specific command exception.
+ * - `MongoException`: If the write fails due to some other failure.
+ * - `ZodIssue`: If the sensorDTO validation fails due to schema issues.
+ */
+export async function insertSensor(
+  dto: Omit<tinkerforgeDTO, "date_created" | "date_modified">,
+): Promise<void> {
+  try {
+    const client = await connectToDB();
+    const database = client.db("sensor_config");
+    const sensors = database.collection<tinkerforgeEntity>("TinkerforgeSensor");
+
+    const currentDate = new Date();
+    const { id, ...noIdDto } = dto;
+    const candidate = tinkerforgeEntitySchema.parse({
+      _id: new UUID(id),
+      ...noIdDto,
+      date_created: currentDate,
+      date_modified: currentDate,
+    });
+
+    await sensors.insertOne(candidate);
+  } catch (error) {
+    console.error("Error inserting document:", error);
+    throw error;
+  }
 }
 
 /**
