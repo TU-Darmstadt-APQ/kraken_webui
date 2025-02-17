@@ -7,7 +7,7 @@ export interface Post {
   title?: string;
   description?: string; // All lines marked with a question mark are optional (or do not have to be included when the object is created)
   uuid: string;
-  label?: string;
+  label?: string | null;
 
   // Dates
   date_created: DateType;
@@ -38,6 +38,7 @@ export function convertDTOToPost(DTO: tinkerforgeDTO): Post {
   const dateModified = new Date(DTO.date_modified);
   const post: Post = {
     uuid: DTO.id,
+    label: DTO.label,
     date_created: {
       day: dateCreated.getDate(),
       month: dateCreated.getMonth(),
@@ -57,6 +58,69 @@ export function convertDTOToPost(DTO: tinkerforgeDTO): Post {
     driver: "",
   };
   return post;
+}
+
+/**
+ * Converts a `Post` object into a `tinkerforgeDTO`.
+ *
+ * @param {Post} post - The `Post` object containing data to be transformed.
+ * @returns {tinkerforgeDTO} The converted `tinkerforgeDTO` object.
+ *
+ * @description
+ * This function extracts relevant data from a `Post` object and maps it to a `tinkerforgeDTO` format.
+ * - Converts `date_created` and `date_modified` fields from an object representation (day, month, year) to a string format "DD-MM-YYYY".
+ * - Ensures `enabled` is set to `false` if not explicitly defined.
+ * - Maps `uuid` to both `id` (string) and `uid` (numeric format).
+ * - Sets default values for `config` and initializes `on_connect` as an empty array.
+ *
+ * @warning
+ * The `config` and `on_connect` fields are not fully converted yet and require further implementation.
+ *
+ * @example
+ * const post: Post = {
+ *   uuid: "1234",
+ *   date_created: { day: 1, month: 2, year: 2023, nanoseconds: 3 },
+ *   date_modified: { day: 5, month: 6, year: 2024 },
+ *   enabled: true,
+ *   label: "Sensor A",
+ *   description: "Temperature sensor",
+ *   topic: "topic",
+ *   unit: "unit",
+ *   driver: "driver"
+ * };
+ * const DTO = convertPostToDTO(post);
+ */
+export function convertPostToDTO(post: Post): tinkerforgeDTO {
+  const dateCreated = [
+    post.date_modified.day,
+    post.date_modified.month,
+    post.date_modified.year,
+  ].join("-");
+  const dateModified = [
+    post.date_created.day,
+    post.date_created.month,
+    post.date_created.year,
+  ].join("-");
+  const DTO: tinkerforgeDTO = {
+    id: post.uuid,
+    date_created: dateCreated,
+    date_modified: dateModified,
+    enabled: post.enabled || false,
+    label: post.label,
+    description: post.description || null,
+    uid: 0,
+    config: {
+      "": {
+        description: "",
+        interval: 0,
+        trigger_only_on_change: false,
+        topic: "",
+        unit: "",
+      },
+    },
+    on_connect: [],
+  };
+  return DTO;
 }
 
 export interface DateType {

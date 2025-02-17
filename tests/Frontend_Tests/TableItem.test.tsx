@@ -9,58 +9,71 @@
  */
 
 import "@testing-library/jest-dom";
-import { fireEvent, render, screen } from "@testing-library/react";
-import { Post } from "@/types";
+import { fireEvent, render, screen, waitFor } from "@testing-library/react";
+import React from "react";
 import TableItem from "@/components/TableItem";
+import { v4 as uuidv4 } from "uuid";
+
+// Mock functions for callbacks
+const mockRemove = jest.fn();
+const mockEdit = jest.fn();
+const mockSelectedColumns = {
+  id: true,
+  title: true,
+  description: true,
+  date_created: true,
+  date_modified: true,
+  enabled: true,
+  label: true,
+  uuid: true,
+  config: true,
+  on_connect: true,
+};
+
+// Mock global alert to prevent JSDOM errors
+global.alert = jest.fn();
+
+// Sample mock post data
+const mockPost = {
+  title: "Test Post",
+  description: "Test Description",
+  date_created: { day: 10, month: 12, year: 2024 },
+  date_modified: { day: 11, month: 12, year: 2024 },
+  enabled: true,
+  label: "Test Label",
+  uuid: uuidv4(),
+  config: { key1: "value1" },
+  on_connect: "test-connect",
+  topic: "Test Topic",
+  unit: "Test Unit",
+  driver: "Test Driver",
+};
+
+// Mock the `deleteSensorAction` function to prevent direct database calls
+jest.mock("../../src/actions/action_deleteSensors", () => ({
+  deleteSensorAction: jest.fn().mockImplementation(async (uuid) => {
+    return { success: true, message: "Deleted successfully" };
+  }),
+}));
 
 describe("TableItem Component", () => {
-  // Mock data for the post object
-  const mockPost: Post = {
-    title: "Test Post",
-    description: "Test Description",
-    date_created: { day: 10, month: 12, year: 2024 }, // Format as "YYYY-MM-DD"
-    date_modified: { day: 11, month: 12, year: 2024 }, // Format as "YYYY-MM-DD"
-    enabled: true, // Convert the boolean to a string
-    label: "Test Label",
-    uuid: "uuid-123",
-    config: { key1: "value1" }, // Convert the object to a JSON string
-    on_connect: "test-connect",
-    topic: "Test Topic",
-    unit: "Test Unit",
-    driver: "Test Driver",
-  };
-
-  // Mock functions for callbacks
-  const mockRemove = jest.fn();
-  const mockEdit = jest.fn();
-  const mockSelectedColumns = {
-    id: true,
-    title: true,
-    description: true,
-    date_created: true,
-    date_modified: true,
-    enabled: true,
-    label: true,
-    uuid: true,
-    config: true,
-    on_connect: true,
-  };
-
-  it("calls remove callback when remove button is clicked", () => {
+  it("calls remove callback when delete button is clicked", async () => {
     render(
       <TableItem
         post={mockPost}
-        remove={mockRemove} // Only pass remove, since edit is no longer part of TableItemProps
+        remove={mockRemove}
         edit={mockEdit}
         selectedColumns={mockSelectedColumns}
       />,
     );
 
-    // Trigger the remove button click
-    const removeButton = screen.getByAltText("Delete");
-    fireEvent.click(removeButton);
+    // Click the delete button
+    fireEvent.click(screen.getByAltText("Delete"));
 
-    // Check if the remove function was called with the correct post
-    expect(mockRemove).toHaveBeenCalledWith(mockPost);
+    // Ensure deleteSensorAction was called and remove was called with correct post
+    await waitFor(() => {
+      expect(mockRemove).toHaveBeenCalledTimes(1);
+      expect(mockRemove).toHaveBeenCalledWith(mockPost);
+    });
   });
 });

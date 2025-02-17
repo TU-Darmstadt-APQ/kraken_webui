@@ -64,3 +64,24 @@ export const tinkerforgeDTO = {
     return tinkerforgeDTOSchema.parse(candidate);
   },
 };
+
+/**
+ *
+ * @param DTO to be converted to entity
+ * @returns entity of the given DTO
+ */
+export function convertToEntity(DTO: tinkerforgeDTO): tinkerforgeEntity {
+  const candidate: tinkerforgeEntity = {
+    _id: new UUID(DTO.id),
+    date_created: new Date(DTO.date_created),
+    date_modified: new Date(DTO.date_modified),
+    enabled: DTO.enabled,
+    label: DTO.description,
+    description: DTO.description,
+    uid: DTO.uid,
+    config: DTO.config,
+    on_connect: DTO.on_connect,
+  };
+  tinkerforgeEntitySchema.parse(candidate);
+  return candidate;
+}
