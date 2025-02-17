@@ -116,8 +116,9 @@ export async function insertSensor(
 
     await sensors.insertOne(candidate);
   } catch (error) {
-    console.error("Error inserting document:", error);
-    throw error;
+    const errorMessage =
+      error instanceof Error ? error.message : "Unknown error";
+    throw new Error(`Failed to insert sensor: ${errorMessage}`);
   }
 }
 
