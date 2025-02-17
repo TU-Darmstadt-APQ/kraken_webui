@@ -4,10 +4,15 @@ import { z } from "zod";
 // Defines the schema for a sensor host as used by the Mongo database
 export const sensorHostEntitySchema = z.object({
   _id: z.instanceof(UUID),
-  hostname: z.string(),
-  port: z.number().int().nonnegative(),
-  pad: z.union([z.number().int().nonnegative(), z.null()]),
-  sad: z.union([z.number().int().nonnegative(), z.null()]),
+  hostname: z
+    .string()
+    .regex(
+      /^((?=.{1,255}$)[0-9A-Za-z](?:(?:[0-9A-Za-z]|-){0,61}[0-9A-Za-z])?(?:\.[0-9A-Za-z](?:(?:[0-9A-Za-z]|-){0,61}[0-9A-Za-z])?)*\.?)$/,
+      "Invalid hostname format",
+    ),
+  port: z.number().int().min(1).max(65535),
+  pad: z.union([z.number().int().nonnegative().max(30), z.null()]),
+  sad: z.union([z.literal(0), z.number().int().min(96).max(126), z.null()]),
   driver: z.string(),
   node_id: z.instanceof(UUID),
   reconnect_interval: z.union([z.number().int().nonnegative(), z.null()]),
@@ -25,10 +30,15 @@ export type sensorHostEntity = z.infer<typeof sensorHostEntitySchema>;
 // as used by the application
 export const sensorHostDTOSchema = z.object({
   id: z.string().uuid(),
-  hostname: z.string(),
-  port: z.number().int().nonnegative(),
-  pad: z.union([z.number().int().nonnegative(), z.null()]),
-  sad: z.union([z.number().int().nonnegative(), z.null()]),
+  hostname: z
+    .string()
+    .regex(
+      /^((?=.{1,255}$)[0-9A-Za-z](?:(?:[0-9A-Za-z]|-){0,61}[0-9A-Za-z])?(?:\.[0-9A-Za-z](?:(?:[0-9A-Za-z]|-){0,61}[0-9A-Za-z])?)*\.?)$/,
+      "Invalid hostname format",
+    ),
+  port: z.number().int().min(1).max(65535),
+  pad: z.union([z.number().int().nonnegative().max(30), z.null()]),
+  sad: z.union([z.literal(0), z.number().int().min(96).max(126), z.null()]),
   driver: z.string(),
   node_id: z.string().uuid(),
   reconnect_interval: z.union([z.number().int().nonnegative(), z.null()]),
