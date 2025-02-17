@@ -28,3 +28,49 @@ describe("SensorHost Schema Validation", () => {
     }).toThrow(z.ZodError);
   });
 });
+
+describe("SensorHost Hostname Validation", () => {
+  const hostnameSchema = sensorHostEntitySchema.pick({ hostname: true });
+
+  it("should accept valid hostnames", () => {
+    const validHostnames = ["example.com", "sub-domain.example.com", "a.com"];
+
+    validHostnames.forEach((hn) => {
+      expect(() => hostnameSchema.parse({ hostname: hn })).not.toThrow();
+    });
+  });
+
+  it("should reject invalid hostnames", () => {
+    const invalidHostnames = [
+      "",
+      "invalid_hostname!",
+      "a".repeat(256) + ".com", // hostname too long
+      "-startdash.com", // hostname starting with a dash (check if rejected by regex)
+      "enddash-.com", // hostname ending with a dash (check if rejected by regex)
+    ];
+
+    invalidHostnames.forEach((hn) => {
+      expect(() => hostnameSchema.parse({ hostname: hn })).toThrow(z.ZodError);
+    });
+  });
+});
+
+describe("SensorHost SAD Validation", () => {
+  const sadSchema = sensorHostEntitySchema.pick({ sad: true });
+
+  it("should accept valid 'sad' values", () => {
+    const validSadValues = [0, 96, 100, 126, null];
+    validSadValues.forEach((val) => {
+      expect(() => sadSchema.parse({ sad: val })).not.toThrow();
+    });
+  });
+
+  it("should reject invalid 'sad' values", () => {
+    // Invalid values: negatives, numbers between 1 and 95 that are not 0, numbers above 126,
+    // decimals, and non-numeric types
+    const invalidSadValues = [-1, 50, 127, 95, 200, 3.14, "string", {}];
+    invalidSadValues.forEach((val) => {
+      expect(() => sadSchema.parse({ sad: val })).toThrow(z.ZodError);
+    });
+  });
+});
