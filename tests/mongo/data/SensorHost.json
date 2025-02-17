@@ -5,13 +5,9 @@
   "pad": 27,
   "sad": 0,
   "driver": "dummy_driver",
-  "node_id": {
-    "$binary": { "base64": "62YJzZv5SL2IlEZjcDYeyw==", "subType": "04" }
-  },
+  "node_id": { "$uuid": "aa0af02c-9ec5-4a15-bca1-63aa057da848" },
   "reconnect_interval": 10,
-  "revision_id": {
-    "$binary": { "base64": "8Cx1fOyjSImZgIjocTIl0g==", "subType": "04" }
-  },
+  "revision_id": { "$uuid": "aa0af02c-9ed5-4a15-bca1-63aa057da848" },
   "date_created": { "$date": "2025-01-01T00:00:00.000Z" },
   "date_modified": { "$date": "2025-01-01T00:00:00.000Z" },
   "enabled": true,
