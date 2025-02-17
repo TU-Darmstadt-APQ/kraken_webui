@@ -5,13 +5,13 @@ import { tinkerforgeDTO } from "@/models/zTinkerforgeSensor.schema";
 
 /**
  * Inserts a sensor using the provided sensor data transfer object (DTO).
- * 
+ *
  * @param {tinkerforgeDTO} sensorDTO - The sensor data to be inserted.
- * @returns {Promise<{ success: boolean; message: string }>} 
+ * @returns {Promise<{ success: boolean; message: string }>}
  *          A promise resolving to an object indicating success or failure.
  *          - On success: `{ success: true, message: "Sensor inserted successfully" }`
  *          - On failure: `{ success: false, message: "Failed to insert sensor" }`
- * 
+ *
  * @description
  * If the insertion fails, the function catches the error and logs it, returning a failure message instead of throwing an exception.
  * Possible failure reasons include:
