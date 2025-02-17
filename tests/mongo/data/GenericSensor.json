@@ -1,9 +1,7 @@
 {
-  "_id": {
-    "$binary": { "base64": "zxFFkwz4SKa+1kUK+b6XXw==", "subType": "04" }
-  },
-  "date_created": { "$date": "2025-01-01T00:00:0.000Z" },
-  "date_modified": { "$date": "2025-01-01T00:00:0.000Z" },
+  "_id": { "$uuid": "f47ac10b-58cc-4372-a567-0e02b2c3d479" },
+  "date_created": { "$date": "2025-01-01T00:00:00.000Z" },
+  "date_modified": { "$date": "2025-01-01T00:00:00.000Z" },
   "enabled": false,
   "label": "A dummy GPIB device",
   "description": "",

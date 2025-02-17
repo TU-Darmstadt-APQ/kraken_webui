@@ -14,8 +14,8 @@
   "revision_id": {
     "$binary": { "base64": "8Cx1fOyjSImZgIjocTIl0g==", "subType": "04" }
   },
-  "date_created": { "$date": "2025-01-01T00:00:0.000Z" },
-  "date_modified": { "$date": "2025-01-01T00:00:0.000Z" },
+  "date_created": { "$date": "2025-01-01T00:00:00.000Z" },
+  "date_modified": { "$date": "2025-01-01T00:00:00.000Z" },
   "enabled": true,
   "label": "This is a dummy sensor host",
   "description": null
