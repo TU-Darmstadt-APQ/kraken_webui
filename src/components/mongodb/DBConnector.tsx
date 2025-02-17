@@ -118,3 +118,51 @@ export async function deleteSensor(sensorDTO: tinkerforgeDTO): Promise<void> {
     throw new Error(`Failed to delete sensor ${sensorDTO.id}: ${errorMessage}`);
   }
 }
+
+/**
+ * Edits the description of a sensor in the database.
+ *
+ * @param {tinkerforgeDTO} sensorDTO - The sensor data transfer object containing the ID of the sensor to be edited.
+ * @param {string} newDescription - The new description to be set for the sensor.
+ * @returns {Promise<void>} A promise that resolves to nothing if the update is successful.
+ *
+ * @throws {Error} If the update fails, an error is thrown with details.
+ */
+export async function editSensor(
+  sensorDTO: tinkerforgeDTO,
+  newDescription: string,
+): Promise<void> {
+  const client = await connectToDB();
+  const database = client.db("sensor_config");
+  const sensors = database.collection<tinkerforgeEntity>("TinkerforgeSensor"); // Use the correct type
+
+  try {
+    // Convert the DTO to entity to get the `_id` field
+    const entity = convertToEntity(sensorDTO);
+
+    // Use updateOne() to update the description and the `date_modified` field
+    const result = await sensors.updateOne(
+      { _id: entity._id }, // Use `_id` directly (no conversion to ObjectId)
+      {
+        $set: { description: newDescription, date_modified: new Date() },
+      },
+    );
+
+    // Check if the update was successful
+    if (result.matchedCount === 0) {
+      throw new Error(`No sensor with uuid ${entity._id} could be found.`);
+    }
+
+    if (result.modifiedCount === 0) {
+      throw new Error(
+        `The description for sensor with uuid ${entity._id} was not modified.`,
+      );
+    }
+  } catch (error) {
+    const errorMessage =
+      error instanceof Error ? error.message : "Unknown error";
+    throw new Error(
+      `Failed to update sensor description for ${sensorDTO.id}: ${errorMessage}`,
+    );
+  }
+}
