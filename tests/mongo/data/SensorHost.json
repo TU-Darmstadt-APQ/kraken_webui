@@ -1,7 +1,5 @@
 {
-  "_id": {
-    "$binary": { "base64": "Ko70k/0/Ts6cyyjF7oHRYw==", "subType": "04" }
-  },
+  "_id": { "$uuid": "aa0af02c-9eb5-4a15-bca1-63aa057da848" },
   "hostname": "127.0.0.1",
   "port": 1234,
   "pad": 27,

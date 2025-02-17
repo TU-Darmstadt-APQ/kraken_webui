@@ -5,9 +5,7 @@
   "enabled": false,
   "label": "A dummy GPIB device",
   "description": "",
-  "host": {
-    "$binary": { "base64": "lZjmKz3sS+mus6il5Pgg3Q==", "subType": "04" }
-  },
+  "host": { "$uuid": "aa0af02c-9eb5-4d15-bca1-63aa057da848" },
   "driver": "generic_scpi2",
   "interval": 2,
   "on_connect": [

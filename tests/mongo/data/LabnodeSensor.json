@@ -1,7 +1,5 @@
 {
-  "_id": {
-    "$binary": { "base64": "6TPjV2SUQl22FoogDYgXEA==", "subType": "04" }
-  },
+  "_id": { "$uuid": "aa0af02c-9eb5-4c15-bca1-63aa057da848" },
   "date_created": { "$date": "2025-01-01T00:00:00.000Z" },
   "date_modified": { "$date": "2025-01-01T00:00:00.000Z" },
   "enabled": true,
