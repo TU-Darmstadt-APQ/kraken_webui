@@ -129,22 +129,6 @@ export async function upsertSensor(
 }
 
 /**
- * Inserts a new sensor into the database.
- *
- * This function wraps upsertSensor by automatically adding the date_created field.
- *
- * @param {Omit<tinkerforgeDTO, "date_created" | "date_modified">} sensorDTO -
- *        The sensor data transfer object to be inserted.
- * @returns {Promise<void>} A promise that resolves to nothing if insertion is successful.
- */
-export async function insertSensor(
-  sensorDTO: Omit<tinkerforgeDTO, "date_created" | "date_modified">,
-): Promise<void> {
-  const currentDate = new Date();
-  await upsertSensor({ ...sensorDTO, date_created: currentDate });
-}
-
-/**
  * Deletes a sensor from the database.
  *
  * @param {tinkerforgeDTO} sensorDTO - The sensor data transfer object containing the ID of the sensor to be deleted.
