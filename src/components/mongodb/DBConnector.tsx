@@ -123,7 +123,6 @@ export async function upsertSensor(
       upsert: true,
     });
   } catch (error) {
-    console.error("Error upserting document:", error);
     throw error;
   }
 }
