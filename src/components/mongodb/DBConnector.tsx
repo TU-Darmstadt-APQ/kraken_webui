@@ -114,6 +114,7 @@ export async function insertSensor(
       date_modified: currentDate,
     });
 
+    // No need to check the return value here, we already have the UUID
     await sensors.insertOne(candidate);
   } catch (error) {
     const errorMessage =
