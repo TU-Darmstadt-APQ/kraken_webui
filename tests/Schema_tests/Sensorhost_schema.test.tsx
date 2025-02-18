@@ -33,7 +33,12 @@ describe("SensorHost Hostname Validation", () => {
   const hostnameSchema = sensorHostEntitySchema.pick({ hostname: true });
 
   it("should accept valid hostnames", () => {
-    const validHostnames = ["example.com", "sub-domain.example.com", "a.com"];
+    const validHostnames = [
+      "example.com",
+      "sub-domain.example.com",
+      "a.com",
+      "192.168.1.1",  // IPs are OK too
+    ];
 
     validHostnames.forEach((hn) => {
       expect(() => hostnameSchema.parse({ hostname: hn })).not.toThrow();
