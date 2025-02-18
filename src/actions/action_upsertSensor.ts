@@ -18,7 +18,7 @@ import { upsertSensor } from "@/components/mongodb/DBConnector";
  *          - On failure: `{ success: false, message: "Failed to insert sensor" }`
  *
  * @description
- * If the insertion fails, the function catches the error and logs it, returning a failure message instead of throwing an exception.
+ * If the upsertion fails, the function catches the error and logs it, returning a failure message instead of throwing an exception.
  * Possible failure reasons include:
  * - `MongoWriteException`: Write failure due to a specific write exception.
  * - `MongoWriteConcernException`: Failure due to unmet write concern.
