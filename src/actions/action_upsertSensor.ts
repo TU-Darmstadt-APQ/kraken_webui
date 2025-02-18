@@ -14,8 +14,8 @@ import { upsertSensor } from "@/components/mongodb/DBConnector";
  * @param {tinkerforgeDTO} sensorDTO - The sensor data to be inserted.
  * @returns {Promise<{ success: boolean; message: string }>}
  *          A promise resolving to an object indicating success or failure.
- *          - On success: `{ success: true, message: "Sensor inserted successfully" }`
- *          - On failure: `{ success: false, message: "Failed to insert sensor" }`
+ *          - On success: `{ success: true, message: "Sensor upserted successfully" }`
+ *          - On failure: `{ success: false, message: "Failed to upsert sensor" }`
  *
  * @description
  * If the upsertion fails, the function catches the error and logs it, returning a failure message instead of throwing an exception.
