@@ -86,7 +86,7 @@ export default async function DBConnector() {
 /**
  * Inserts a new sensor into the database.
  *
- * @param {Omit<tinkerforgeDTO, "date_created" | "date_modified">} dto - The sensor data transfer object to be inserted, excluding date_created and date_modified fields.
+ * @param {Omit<tinkerforgeDTO, "date_created" | "date_modified">} dto - The sensor data transfer object to be inserted, excluding date_created and date_modified fields. The date_created and date_modified field will be filled by this function using the current date.
  * @returns {Promise<void>} A promise that resolves to nothing if insertion is successful.
  *
  * @throws {Error} If the insertion fails, an error is thrown with details.
