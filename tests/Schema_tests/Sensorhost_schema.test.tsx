@@ -47,6 +47,7 @@ describe("SensorHost Hostname Validation", () => {
       "a".repeat(256) + ".com", // hostname too long
       "-startdash.com", // hostname starting with a dash (check if rejected by regex)
       "enddash-.com", // hostname ending with a dash (check if rejected by regex)
+      "foo@bar.com",  // Emails are not hostnames
     ];
 
     invalidHostnames.forEach((hn) => {
