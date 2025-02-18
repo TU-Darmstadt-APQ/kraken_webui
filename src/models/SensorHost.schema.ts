@@ -4,12 +4,11 @@ import { z } from "zod";
 // Defines the schema for a sensor host as used by the Mongo database
 export const sensorHostEntitySchema = z.object({
   _id: z.instanceof(UUID),
-  hostname: z
-    .string()
-    .regex(  // TODO: This regex only validates hostnames. It does not validate IPv4 and fails for IPv6.
-      /^((?=.{1,255}$)[0-9A-Za-z](?:(?:[0-9A-Za-z]|-){0,61}[0-9A-Za-z])?(?:\.[0-9A-Za-z](?:(?:[0-9A-Za-z]|-){0,61}[0-9A-Za-z])?)*\.?)$/,
-      "Invalid hostname format",
-    ),
+  hostname: z.string().regex(
+    // TODO: This regex only validates hostnames. It does not validate IPv4 and fails for IPv6.
+    /^((?=.{1,255}$)[0-9A-Za-z](?:(?:[0-9A-Za-z]|-){0,61}[0-9A-Za-z])?(?:\.[0-9A-Za-z](?:(?:[0-9A-Za-z]|-){0,61}[0-9A-Za-z])?)*\.?)$/,
+    "Invalid hostname format",
+  ),
   port: z.number().int().min(1).max(65535),
   pad: z.union([z.number().int().min(1).max(30), z.null()]), // GPIB primary address see http://www.ni.com/pdf/manuals/370428c.pdf, p. A-2 for details
   sad: z.union([z.literal(0), z.number().int().min(0x60).max(0x7e), z.null()]), // GPIB secondary address
