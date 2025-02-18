@@ -83,13 +83,17 @@ export default async function DBConnector() {
   }
   return <span>Connection successfully set up</span>;
 }
+
 /**
- * Inserts a new sensor into the database.
+ * Upserts a sensor in the database using the provided sensor data transfer object (DTO).
+ * If a sensor with the given ID exists, it is updated; otherwise, a new sensor is inserted.
  *
- * @param {Omit<tinkerforgeDTO, "date_created" | "date_modified">} dto - The sensor data transfer object to be inserted, excluding date_created and date_modified fields. The date_created and date_modified field will be filled by this function using the current date.
- * @returns {Promise<void>} A promise that resolves to nothing if insertion is successful.
+ * @param {Omit<tinkerforgeDTO, "date_modified"> & Partial<{ date_created: string }>} dto -
+ *        The sensor data transfer object to be upserted. If dto.date_created is not provided, a new sensor insertion
+ *        is assumed.
+ * @returns {Promise<void>} A promise that resolves when the upsert is complete.
  *
- * @throws {Error} If the insertion fails, an error is thrown with details.
+ * @throws {Error} If the upsert fails, an error is thrown with details.
  * Possible Errors:
  * - `MongoWriteException`: If the write fails due to a specific write exception.
  * - `MongoWriteConcernException`: If the write fails due to being unable to fulfill the write concern.
@@ -97,8 +101,9 @@ export default async function DBConnector() {
  * - `MongoException`: If the write fails due to some other failure.
  * - `ZodIssue`: If the sensorDTO validation fails due to schema issues.
  */
-export async function insertSensor(
-  dto: Omit<tinkerforgeDTO, "date_created" | "date_modified">,
+export async function upsertSensor(
+  dto: Omit<tinkerforgeDTO, "date_modified"> &
+    Partial<{ date_created: string }>,
 ): Promise<void> {
   try {
     const client = await connectToDB();
@@ -110,17 +115,33 @@ export async function insertSensor(
     const candidate = tinkerforgeEntitySchema.parse({
       _id: new UUID(id),
       ...noIdDto,
-      date_created: currentDate,
+      date_created: dto.date_created || currentDate,
       date_modified: currentDate,
     });
 
-    // No need to check the return value here, we already have the UUID
-    await sensors.insertOne(candidate);
+    await sensors.replaceOne({ _id: candidate._id }, candidate, {
+      upsert: true,
+    });
   } catch (error) {
-    const errorMessage =
-      error instanceof Error ? error.message : "Unknown error";
-    throw new Error(`Failed to insert sensor: ${errorMessage}`);
+    console.error("Error upserting document:", error);
+    throw error;
   }
+}
+
+/**
+ * Inserts a new sensor into the database.
+ *
+ * This function wraps upsertSensor by automatically adding the date_created field.
+ *
+ * @param {Omit<tinkerforgeDTO, "date_created" | "date_modified">} sensorDTO -
+ *        The sensor data transfer object to be inserted.
+ * @returns {Promise<void>} A promise that resolves to nothing if insertion is successful.
+ */
+export async function insertSensor(
+  sensorDTO: Omit<tinkerforgeDTO, "date_created" | "date_modified">,
+): Promise<void> {
+  const currentDate = new Date();
+  await upsertSensor({ ...sensorDTO, date_created: currentDate });
 }
 
 /**
