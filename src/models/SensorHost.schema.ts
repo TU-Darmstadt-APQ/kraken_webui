@@ -6,7 +6,7 @@ export const sensorHostEntitySchema = z.object({
   _id: z.instanceof(UUID),
   hostname: z
     .string()
-    .regex(
+    .regex(  // TODO: This regex only validates hostnames. It does not validate IPv4 and fails for IPv6.
       /^((?=.{1,255}$)[0-9A-Za-z](?:(?:[0-9A-Za-z]|-){0,61}[0-9A-Za-z])?(?:\.[0-9A-Za-z](?:(?:[0-9A-Za-z]|-){0,61}[0-9A-Za-z])?)*\.?)$/,
       "Invalid hostname format",
     ),
