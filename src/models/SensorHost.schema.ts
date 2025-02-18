@@ -11,8 +11,8 @@ export const sensorHostEntitySchema = z.object({
       "Invalid hostname format",
     ),
   port: z.number().int().min(1).max(65535),
-  pad: z.union([z.number().int().min(1).max(30), z.null()]),  // GPIB primary address see http://www.ni.com/pdf/manuals/370428c.pdf, p. A-2 for details
-  sad: z.union([z.literal(0), z.number().int().min(0x60).max(0x7E), z.null()]),  // GPIB secondary address
+  pad: z.union([z.number().int().min(1).max(30), z.null()]), // GPIB primary address see http://www.ni.com/pdf/manuals/370428c.pdf, p. A-2 for details
+  sad: z.union([z.literal(0), z.number().int().min(0x60).max(0x7e), z.null()]), // GPIB secondary address
   driver: z.string(),
   node_id: z.instanceof(UUID),
   reconnect_interval: z.union([z.number().int().nonnegative(), z.null()]),

@@ -37,7 +37,7 @@ describe("SensorHost Hostname Validation", () => {
       "example.com",
       "sub-domain.example.com",
       "a.com",
-      "192.168.1.1",  // IPs are OK too
+      "192.168.1.1", // IPs are OK too
     ];
 
     validHostnames.forEach((hn) => {
@@ -52,7 +52,7 @@ describe("SensorHost Hostname Validation", () => {
       "a".repeat(256) + ".com", // hostname too long
       "-startdash.com", // hostname starting with a dash (check if rejected by regex)
       "enddash-.com", // hostname ending with a dash (check if rejected by regex)
-      "foo@bar.com",  // Emails are not hostnames
+      "foo@bar.com", // Emails are not hostnames
     ];
 
     invalidHostnames.forEach((hn) => {
