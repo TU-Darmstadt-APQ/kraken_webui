@@ -1,0 +1,49 @@
+# Basic information about the project
+site_name: Kraken Web UI Documentation
+site_description: Documentation for the Kraken Web UI project, built with Next.js.
+
+# Customizing the "Material" theme
+theme:
+  name: material
+  features:
+    - navigation.tabs # Tabs for top-level sections
+    - navigation.sections # Sections in the sidebar
+    - navigation.expand # Expand all navigation items by default
+    - navigation.top # "Back to top" button
+    - search.highlight # Highlight search results
+    - content.code.copy # "Copy code" button for code blocks
+    - content.code.annotate # Annotations for code comments
+    - toc.integrate # Integrate the table of contents into the content
+  palette:
+    scheme: slate # Dark theme by default
+    primary: teal # Primary color
+    accent: light blue # Accent color
+
+#️ Navigation
+nav:
+  - Overview:
+      - Documentation Overview: overview/index.md
+      - Installation: overview/installation.md
+      - Project Structure: overview/project_structure.md
+  - User Guide:
+      - Usage Instructions: user_guide/usage.md
+      - Troubleshooting: user_guide/troubleshooting.md
+  - Developer Guide:
+      - Application Architecture: developer_guide/architecture.md
+      - UI Components: developer_guide/components.md
+  - DevOps:
+      - CI/CD Process: devops/ci_cd.md
+      - Docker Setup: devops/docker.md
+  - License: license.md
+
+# Localization and Headers
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/TU-Darmstadt-APQ/kraken_webui
+  copyright:
+    text: "© 2025 Kraken Web UI Documentation"
+
+# Deployment Settings
+deploy:
+  github_pages: true
