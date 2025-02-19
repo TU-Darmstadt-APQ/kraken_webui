@@ -1,4 +1,5 @@
 import {
+  convertToEntity,
   tinkerforgeDTO,
   tinkerforgeEntity,
 } from "@/models/zTinkerforgeSensor.schema";
@@ -79,4 +80,41 @@ export default async function DBConnector() {
     //await client.close();
   }
   return <span>Connection successfully set up</span>;
+}
+
+/**
+ * Deletes a sensor from the database.
+ *
+ * @param {tinkerforgeDTO} sensorDTO - The sensor data transfer object containing the ID of the sensor to be deleted.
+ * @returns {Promise<Void>} A promise that resolves to nothing if deletion is successful.
+ *
+ * "No sensor with uuid  ${entity._id} could be found." if deletion was not successful.
+ *
+ * @throws {Error} If the deletion fails, an error is thrown with details.
+ * Possible Errors:
+ * - `MongoWriteException`: If the write fails due to a specific write exception.
+ * - `MongoWriteConcernException`: If the write fails due to being unable to fulfill the write concern.
+ * - `MongoCommandException`: If the write fails due to a specific command exception.
+ * - `MongoException`: If the write fails due to some other failure.
+ * - `ZodIssue`: If the sensorDTO validation fails due to schema issues.
+ */
+export async function deleteSensor(sensorDTO: tinkerforgeDTO): Promise<void> {
+  const client = await connectToDB();
+  const database = client.db("sensor_config");
+  const sensors = database.collection<tinkerforgeEntity>("TinkerforgeSensor");
+
+  try {
+    // Convert the DTOto entity
+    const entity = convertToEntity(sensorDTO);
+    // Attempt to delete sensor
+    const response = await sensors.deleteOne({ _id: entity._id });
+
+    if (response.deletedCount != 1) {
+      throw new Error(`No sensor with uuid ${entity._id} could be found.`);
+    }
+  } catch (error) {
+    const errorMessage =
+      error instanceof Error ? error.message : "Unknown error";
+    throw new Error(`Failed to delete sensor ${sensorDTO.id}: ${errorMessage}`);
+  }
 }

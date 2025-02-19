@@ -3,10 +3,8 @@ import React, { useRef, useState } from "react";
 import Image from "next/image";
 import InputRow from "./UI/InputRow";
 import MyToggle from "./UI/toggle/MyToggle";
-import MyTooltip from "./UI/tooltip/MyTooltip";
-import PostItem from "./PostItem";
 import { PostListProps } from "@/types";
-
+import { VariableSizeList as Table } from "react-window";
 import TableItem from "./TableItem";
 import styles from "@/styles/PostList.module.css";
 
@@ -18,23 +16,22 @@ import styles from "@/styles/PostList.module.css";
  * @param {string} listTitle - Title of the list.
  * @param {(post: object) => void} remove - Callback function to handle removing a post.
  * @param {(post: Post) => void} edit - Callback function to edit a post.
- * 
- * @example 
- * 
+ *
+ * @example
+ *
  * const sortedAndSearchedPosts = usePosts(
-     posts,
-     filter.sort,
-     filter.query,
-     filter.searchField,
-   );
+ *   posts,
+ *   filter.sort,
+ *   filter.query,
+ *   filter.searchField,
+ * );
  * const removePost = (post: Post) => {
-     setPosts(posts.filter((p) => p.uuid != post.uuid));
-   };
+ *   setPosts(posts.filter((p) => p.uuid != post.uuid));
+ * };
  * const handleEdit = (post: Post) => {
-       setPostToEdit(post);
-       setModal(true);
-     };
-
+ *   setPostToEdit(post);
+ *   setModal(true);
+ * };
  * <PostList
  *   posts={sortedAndSearchedPosts}
  *   listTitle="Sensor List"
@@ -53,18 +50,13 @@ const PostList: React.FC<PostListProps> = ({
   remove,
   edit,
 }) => {
-  // Display a message when no posts are available
-  if (!posts.length) {
-    return <h1 style={{ textAlign: "center" }}>No sensors found</h1>;
-  }
-
   // Reference for storing row heights in VariableSizeList
   const listRef = useRef<Table>(null);
 
   // Determining the height of a line
   const getRowHeight = (index: number) => {
     const post = posts[index];
-    return post.description && post.description.length > 100 ? 170 : 170; // later do it better (i want to achieve variable high for every row)
+    return post.description && post.description.length > 100 ? 170 : 170; // Adjust row height dynamically later
   };
 
   // State to toggle between table view and post view
@@ -89,58 +81,22 @@ const PostList: React.FC<PostListProps> = ({
       {/* Title for the list */}
       <h1 style={{ textAlign: "center" }}>{listTitle}</h1>
 
-      {/* Buttons to toggle view mode */}
-      <div className={styles["view-buttons"]}>
-        <MyTooltip infoText="Table view of sensors" position="top">
-          <button
-            onClick={() => setIsTableView(true)}
-            className={styles["list-button"]}
-          >
-            <Image
-              src="/tableIcon.png"
-              alt="Table View"
-              className="icon-button"
-              width={20}
-              height={20}
-            />
-          </button>
-        </MyTooltip>
-        <MyTooltip infoText="Post view of sensors" position="top-right">
-          <button
-            onClick={() => setIsTableView(false)}
-            className={styles["list-button"]}
-          >
-            <Image
-              src="/blogIcon.png"
-              alt="Posts View"
-              className="icon-button"
-              width={20}
-              height={20}
-            />
-          </button>
-        </MyTooltip>
+      {/* Column Visibility Toggles */}
+      <div className={styles["toggle-container"]}>
+        {Object.keys(selectedColumns).map((columnKey) => (
+          <MyToggle
+            key={columnKey}
+            label={columnKey}
+            checked={selectedColumns[columnKey as keyof typeof selectedColumns]}
+            onChange={(e) =>
+              setSelectedColumns((prev) => ({
+                ...prev,
+                [columnKey]: e,
+              }))
+            }
+          />
+        ))}
       </div>
-
-      {/* Conditional rendering for table view or post view */}
-      {isTableView ? (
-        <div>
-          <div className={styles["toggle-container"]}>
-            {Object.keys(selectedColumns).map((columnKey) => (
-              <MyToggle
-                key={columnKey} //key is used in the map call to give each element a unique identification. It is not passed on to MyToggle as a prop.
-                label={columnKey}
-                checked={
-                  selectedColumns[columnKey as keyof typeof selectedColumns]
-                }
-                onChange={(e) =>
-                  setSelectedColumns((prev) => ({
-                    ...prev,
-                    [columnKey]: e,
-                  }))
-                }
-              />
-            ))}
-          </div>
 
           {/* Render posts in table format */}
           <div className={styles["table-container"]}>

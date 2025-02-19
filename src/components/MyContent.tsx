@@ -3,6 +3,7 @@ import MyButton from "./UI/button/MyButton";
 import { MyContentProps } from "@/types";
 import MyTooltip from "./UI/tooltip/MyTooltip";
 import PostList from "./PostList";
+import React from "react";
 import styles from "@/styles/MyContent.module.css";
 
 const MyContent: React.FC<MyContentProps> = ({
@@ -16,40 +17,11 @@ const MyContent: React.FC<MyContentProps> = ({
   postToEdit,
   listTitle,
 }) => {
-  // State for actual content in MyContent
-  const [activeContent, setActiveContent] = useState<string>("sensorList");
-
-  // Functions for switching the content
-  const showList = () => setActiveContent("sensorList");
-  const showTree = () => setActiveContent("treeView");
-
   return (
     <div className={styles["Content"]}>
       {/* Left Sidebar */}
       <div className={styles["Sidebar"]}>
-        <MyTooltip infoText="List of sensors" position="right">
-          <MyButton onClick={showList}>
-            <img
-              src="/listIcon.png"
-              alt="List View"
-              className="icon-button"
-              width={25}
-              height={25}
-            />
-          </MyButton>
-        </MyTooltip>
-        <hr />
-        <MyTooltip infoText="Tree view of sensors" position="right">
-          <MyButton onClick={showTree}>
-            <img
-              src="/diagrammIcon.png"
-              alt="Tree View"
-              className="icon-button"
-              width={25}
-              height={25}
-            />
-          </MyButton>
-        </MyTooltip>
+        {/* Add any additional buttons or functionality here if needed */}
       </div>
 
       {/* Right Main Content */}
