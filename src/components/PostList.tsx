@@ -1,6 +1,4 @@
-import { FixedSizeList as List, VariableSizeList as Table } from "react-window";
 import React, { useRef, useState } from "react";
-import Image from "next/image";
 import InputRow from "./UI/InputRow";
 import MyToggle from "./UI/toggle/MyToggle";
 import { PostListProps } from "@/types";
@@ -59,9 +57,6 @@ const PostList: React.FC<PostListProps> = ({
     return post.description && post.description.length > 100 ? 170 : 170; // Adjust row height dynamically later
   };
 
-  // State to toggle between table view and post view
-  const [isTableView, setIsTableView] = useState(false);
-
   const [selectedColumns, setSelectedColumns] = useState({
     uuid: true,
     label: false,
@@ -98,92 +93,67 @@ const PostList: React.FC<PostListProps> = ({
         ))}
       </div>
 
-          {/* Render posts in table format */}
-          <div className={styles["table-container"]}>
-            <div className={styles["table"]}>
-              {/* Header */}
-              <div className={`${styles.heading}`}>
-                {selectedColumns.uuid && (
-                  <div className={styles.cell}>UUID</div>
-                )}
-                {selectedColumns.label && (
-                  <div className={styles.cell}>Label</div>
-                )}
-                {selectedColumns.enabled && (
-                  <div className={styles.cell}>Enabled</div>
-                )}
-                {selectedColumns.topic && (
-                  <div className={styles.cell}>Topic</div>
-                )}
-                {selectedColumns.driver && (
-                  <div className={styles.cell}>Driver</div>
-                )}
-                {selectedColumns.config && (
-                  <div className={styles.cell}>Config</div>
-                )}
-                {selectedColumns.on_connect && (
-                  <div className={styles.cell}>On Connect</div>
-                )}
-                {isAnyColumnSelected && (
-                  <div className={styles.cell}>Actions</div>
-                )}
-              </div>
+      {/* Render posts in table format */}
+      <div className={styles["table-container"]}>
+        <div className={styles["table"]}>
+          {/* Header */}
+          <div className={`${styles.heading}`}>
+            {selectedColumns.uuid && <div className={styles.cell}>UUID</div>}
+            {selectedColumns.label && <div className={styles.cell}>Label</div>}
+            {selectedColumns.enabled && (
+              <div className={styles.cell}>Enabled</div>
+            )}
+            {selectedColumns.topic && <div className={styles.cell}>Topic</div>}
+            {selectedColumns.driver && (
+              <div className={styles.cell}>Driver</div>
+            )}
+            {selectedColumns.config && (
+              <div className={styles.cell}>Config</div>
+            )}
+            {selectedColumns.on_connect && (
+              <div className={styles.cell}>On Connect</div>
+            )}
+            {isAnyColumnSelected && <div className={styles.cell}>Actions</div>}
+          </div>
 
-              {/* New Row for editing and adding a new data */}
-              {inputRow && (
-                <InputRow
-                  visible={inputRow}
-                  setVisible={setInputRow}
-                  createPost={createPost}
-                  edit={editPost}
-                  postToEdit={postToEdit}
+          {/* New Row for editing and adding a new data */}
+          {inputRow && (
+            <InputRow
+              visible={inputRow}
+              setVisible={setInputRow}
+              createPost={createPost}
+              edit={editPost}
+              postToEdit={postToEdit}
+              selectedColumns={selectedColumns}
+            />
+          )}
+          {/* Virtualized rows */}
+          <Table
+            height={600} // Height of the visible area of the list
+            itemCount={posts.length} // Number of rows
+            itemSize={getRowHeight} // Function for row height
+            width="100%" // Table width
+            ref={listRef} // Reference for the list
+          >
+            {({
+              index,
+              style,
+            }: {
+              index: number;
+              style: React.CSSProperties;
+            }) => (
+              <div style={style}>
+                <TableItem
+                  post={posts[index]}
+                  edit={edit}
+                  remove={remove}
                   selectedColumns={selectedColumns}
                 />
-              )}
-              {/* Virtualized rows */}
-              <Table
-                height={600} // Height of the visible area of the list
-                itemCount={posts.length} // Number of rows
-                itemSize={getRowHeight} // Function for row height
-                width="100%" // Table width
-                ref={listRef} // Reference for the list
-              >
-                {({
-                  index,
-                  style,
-                }: {
-                  index: number;
-                  style: React.CSSProperties;
-                }) => (
-                  <div style={style}>
-                    <TableItem
-                      post={posts[index]}
-                      edit={edit}
-                      remove={remove}
-                      selectedColumns={selectedColumns}
-                    />
-                  </div>
-                )}
-              </Table>
-            </div>
-          </div>
+              </div>
+            )}
+          </Table>
         </div>
-      ) : (
-        // Render posts in a card-like view
-        <List height={600} itemCount={posts.length} itemSize={90} width="100%">
-          {({ index, style }) => (
-            <div style={style}>
-              <PostItem
-                edit={edit}
-                remove={remove}
-                number={index + 1}
-                post={posts[index]}
-                key={posts[index].uuid}
-              />
-            </div>
-          )}
-        </List>
-      )}
+      </div>
     </div>
   );
 };
