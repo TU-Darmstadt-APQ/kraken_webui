@@ -100,7 +100,7 @@ const InputRow: React.FC<InputRowProps> = ({
       {selectedColumns.label && (
         <div className={styles.cell}>
           <MyInput
-            value={post.label}
+            value={post.label || ""}
             onChange={(e) => setPost({ ...post, label: e.target.value })}
             type="text"
             placeholder="Label"
