@@ -115,7 +115,7 @@ export async function upsertSensor(
     const candidate = tinkerforgeEntitySchema.parse({
       _id: new UUID(id),
       ...noIdDto,
-      date_created: dto.date_created || currentDate,
+      date_created: dto.date_created ? new Date(dto.date_created) : currentDate,
       date_modified: currentDate,
     });
 
