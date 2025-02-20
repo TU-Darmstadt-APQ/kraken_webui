@@ -51,34 +51,16 @@ const InputRow: React.FC<InputRowProps> = ({
   // if false - we will not render this object
   if (!visible) return null;
 
-  // Helper function to generate the current date
-  const getCurrentDate = () => {
-    const currentDate = new Date();
-    return {
-      day: currentDate.getDate(),
-      month: currentDate.getMonth() + 1, // Months are 0-indexed
-      year: currentDate.getFullYear(),
-      nanoseconds: currentDate.getMilliseconds() * 1e6, // Milliseconds to nanoseconds
-    };
-  };
-
   const defaultPost: Post = {
-    title: "",
+    id: "",
     description: "",
-    date_created: getCurrentDate(),
-    date_modified: getCurrentDate(),
-    enabled: false,
+    date_created: new Date().toISOString(),
+    date_modified: new Date().toISOString(),
+    enabled: true,
     label: "",
-    uuid: "",
+    uid: 0,
     config: {},
     on_connect: undefined,
-    topic: "",
-    unit: "",
-    driver: "",
-    port: 0,
-    sad: 0,
-    pad: 0,
-    host: "",
   };
 
   // State for managing the input values of the form
@@ -88,28 +70,21 @@ const InputRow: React.FC<InputRowProps> = ({
 
   const handleSubmit = (e: React.FormEvent) => {
     if (postToEdit) {
-      edit({ ...post, date_modified: getCurrentDate() });
+      edit({ ...post, date_modified: new Date().toISOString() });
     } else {
-      createPost({ ...post, uuid: uuidv4() }); // Generate a unique ID based on the current timestamp
+      createPost({ ...post, id: uuidv4() }); // Generate a unique ID based on the current timestamp
     }
 
     setPost({
-      title: "",
+      id: "",
       description: "",
-      date_created: getCurrentDate(),
-      date_modified: getCurrentDate(),
+      date_created: new Date().toISOString(),
+      date_modified: new Date().toISOString(),
       enabled: false,
       label: "",
-      uuid: "",
+      uid: 0,
       config: {},
       on_connect: undefined,
-      topic: "",
-      unit: "",
-      driver: "",
-      port: 0,
-      sad: 0,
-      pad: 0,
-      host: "",
     }); // After inserting Element, we empty InputFields
   };
 
@@ -119,8 +94,8 @@ const InputRow: React.FC<InputRowProps> = ({
       {selectedColumns.uuid && (
         <div className={styles.cell}>
           <MyInput
-            value={post.uuid}
-            onChange={(e) => setPost({ ...post, uuid: e.target.value })}
+            value={post.id}
+            onChange={(e) => setPost({ ...post, id: e.target.value })}
             type="text"
             placeholder="UUID"
           />
@@ -146,7 +121,7 @@ const InputRow: React.FC<InputRowProps> = ({
           />
         </div>
       )}
-      {selectedColumns.topic && (
+      {/* {selectedColumns.topic && (
         <div className={styles.cell}>
           <MyInput
             value={post.topic}
@@ -165,7 +140,7 @@ const InputRow: React.FC<InputRowProps> = ({
             placeholder="Driver"
           />
         </div>
-      )}
+      )} */}
 
       {selectedColumns.config && (
         <div className={styles.cell}>
@@ -217,22 +192,15 @@ const InputRow: React.FC<InputRowProps> = ({
           onClick={() => {
             setVisible(false);
             setPost({
-              title: "",
+              id: "",
               description: "",
-              date_created: getCurrentDate(),
-              date_modified: getCurrentDate(),
+              date_created: new Date().toISOString(),
+              date_modified: new Date().toISOString(),
               enabled: false,
               label: "",
-              uuid: "",
+              uid: 0,
               config: {},
               on_connect: undefined,
-              topic: "",
-              unit: "",
-              driver: "",
-              port: 0,
-              sad: 0,
-              pad: 0,
-              host: "",
             }); // After canceling the addition or editing - empty all the fields
           }}
           className="list-button"
