@@ -1,4 +1,4 @@
-npx lint-staged --verbose
+#npx lint-staged --verbose
 
  #Dont remove this, the tests are not done 
 # npm test

@@ -2,8 +2,9 @@ import {
   convertToEntity,
   tinkerforgeDTO,
   tinkerforgeEntity,
+  tinkerforgeEntitySchema,
 } from "@/models/zTinkerforgeSensor.schema";
-import { MongoClient } from "mongodb";
+import { MongoClient, UUID } from "mongodb";
 import { config } from "@/../config";
 
 // Cache the db client and promise (to create one) so that (hot) reloading will reuse the connection
@@ -80,6 +81,49 @@ export default async function DBConnector() {
     //await client.close();
   }
   return <span>Connection successfully set up</span>;
+}
+
+/**
+ * Upserts a sensor in the database using the provided sensor data transfer object (DTO).
+ * If a sensor with the given ID exists, it is updated; otherwise, a new sensor is inserted.
+ *
+ * @param {Omit<tinkerforgeDTO, "date_modified"> & Partial<{ date_created: string }>} dto -
+ *        The sensor data transfer object to be upserted. If dto.date_created is not provided, a new sensor insertion
+ *        is assumed.
+ * @returns {Promise<void>} A promise that resolves when the upsert is complete.
+ *
+ * @throws {Error} If the upsert fails, an error is thrown with details.
+ * Possible Errors:
+ * - `MongoWriteException`: If the write fails due to a specific write exception.
+ * - `MongoWriteConcernException`: If the write fails due to being unable to fulfill the write concern.
+ * - `MongoCommandException`: If the write fails due to a specific command exception.
+ * - `MongoException`: If the write fails due to some other failure.
+ * - `ZodIssue`: If the sensorDTO validation fails due to schema issues.
+ */
+export async function upsertSensor(
+  dto: Omit<tinkerforgeDTO, "date_modified"> &
+    Partial<{ date_created: string }>,
+): Promise<void> {
+  try {
+    const client = await connectToDB();
+    const database = client.db("sensor_config");
+    const sensors = database.collection<tinkerforgeEntity>("TinkerforgeSensor");
+
+    const currentDate = new Date();
+    const { id, ...noIdDto } = dto;
+    const candidate = tinkerforgeEntitySchema.parse({
+      _id: new UUID(id),
+      ...noIdDto,
+      date_created: dto.date_created || currentDate,
+      date_modified: currentDate,
+    });
+
+    await sensors.replaceOne({ _id: candidate._id }, candidate, {
+      upsert: true,
+    });
+  } catch (error) {
+    throw error;
+  }
 }
 
 /**
