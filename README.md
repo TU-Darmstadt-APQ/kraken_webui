@@ -23,6 +23,10 @@ An open source web ui to configure sensors with a gui and displaying the existin
 
 Coming soon...
 
+# Documentation
+
+For detailed documentation, please visit our Documentation website https://tu-darmstadt-apq.github.io/kraken_webui/
+
 # CI/CD
 
 This project uses GitHub Actions for CI/CD. The configuration is located in the [.github/workflows/ci.yml](.github/workflows/ci.yml) file. The CI pipeline includes the following steps:

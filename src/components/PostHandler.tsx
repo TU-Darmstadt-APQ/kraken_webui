@@ -204,8 +204,8 @@ function PostHandler({ sensors }: { sensors: tinkerforgeDTO[] }) {
       />
 
       <MyContent
-        modal={modal}
-        setModal={setModal}
+        inputRow={modal}
+        setInputRow={setModal}
         sortedAndSearchedPosts={sortedAndSearchedPosts}
         createPost={createPost}
         removePost={removePost}
