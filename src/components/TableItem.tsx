@@ -68,27 +68,8 @@ const TableItem: React.FC<TableItemProps> = ({
   return (
     <div className={`${styles.row}`}>
       {/* Displaying properties of the `post` object */}
-      {selectedColumns.title && <div className={styles.cell}>{post.title}</div>}
-      {selectedColumns.description && (
-        <div className={styles.cell}>{post.description}</div>
-      )}
-
-      {selectedColumns.date_created && (
-        <div className={styles.cell}>
-          {post.date_created
-            ? `${post.date_created.day}.${post.date_created.month}.${post.date_created.year}`
-            : "Date not given"}
-        </div>
-      )}
-
-      {selectedColumns.date_modified && (
-        <div className={styles.cell}>
-          {post.date_modified
-            ? `${post.date_modified.day}.${post.date_modified.month}.${post.date_modified.year}`
-            : "Date not given"}
-        </div>
-      )}
-
+      {selectedColumns.uuid && <div className={styles.cell}>{post.uuid}</div>}
+      {selectedColumns.label && <div className={styles.cell}>{post.label}</div>}
       {selectedColumns.enabled && (
         <div className={styles.cell}>
           {post.enabled == true ? (
@@ -112,9 +93,11 @@ const TableItem: React.FC<TableItemProps> = ({
           ) : null}
         </div>
       )}
+      {selectedColumns.topic && <div className={styles.cell}>{post.topic}</div>}
+      {selectedColumns.driver && (
+        <div className={styles.cell}>{post.driver}</div>
+      )}
 
-      {selectedColumns.label && <div className={styles.cell}>{post.label}</div>}
-      {selectedColumns.uuid && <div className={styles.cell}>{post.uuid}</div>}
       {selectedColumns.config && (
         <div className={styles.cell}>
           {post.config && Object.entries(post.config).length > 0 ? (
@@ -140,7 +123,7 @@ const TableItem: React.FC<TableItemProps> = ({
       )}
 
       {/* Edit button and delete button with callback */}
-      <div className={`${styles.cell} ${styles.actions}`}>
+      <div className={styles.cell}>
         <MyButton className="list-button" onClick={() => edit(post)}>
           <img
             src="/edit.png"
