@@ -29,7 +29,7 @@ jobs:
         working-directory: dev
         run: |
           pip install --upgrade pip
-          pip install mkdocs mkdocs-material  # Install MkDocs with Material theme
+          pip install mkdocs
       - name: Build and Deploy MkDocs
         working-directory: dev
         run: |
