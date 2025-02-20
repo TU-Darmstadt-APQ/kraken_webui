@@ -6,6 +6,7 @@ import {
 } from "@/models/zTinkerforgeSensor.schema";
 import { MongoClient, UUID } from "mongodb";
 import { config } from "@/../config";
+import { v4 as uuidv4 } from "uuid";
 
 // Cache the db client and promise (to create one) so that (hot) reloading will reuse the connection
 // We use a global variable for this. See its type declaration below.
@@ -111,10 +112,11 @@ export async function upsertSensor(
 
     const currentDate = new Date();
     const { id, ...noIdDto } = dto;
+    const validId = id && id !== "" ? id : uuidv4();
     const candidate = tinkerforgeEntitySchema.parse({
-      _id: new UUID(id),
+      _id: new UUID(validId),
       ...noIdDto,
-      date_created: dto.date_created || currentDate,
+      date_created: dto.date_created ? new Date(dto.date_created) : currentDate,
       date_modified: currentDate,
     });
 

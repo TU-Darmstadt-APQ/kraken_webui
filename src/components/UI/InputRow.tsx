@@ -59,7 +59,7 @@ const InputRow: React.FC<InputRowProps> = ({
     date_modified: new Date().toISOString(),
     enabled: true,
     label: "",
-    uid: 0,
+    uid: 1,
     config: {},
     on_connect: [],
   };
@@ -71,6 +71,11 @@ const InputRow: React.FC<InputRowProps> = ({
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (postToEdit) {
+      edit({ ...post, date_modified: new Date().toISOString() });
+    } else {
+      createPost({ ...post, id: uuidv4() });
+    }
     const sensorDTO = {
       id: uuidv4(), // Ensure `uuid` is a string (or convert it if necessary)
       date_created: post.date_created, // Convert to string
@@ -78,20 +83,14 @@ const InputRow: React.FC<InputRowProps> = ({
       enabled: post.enabled || false, // Ensure `enabled` is a boolean
       label: post.label || null, // Ensure `label` is `string | null`
       description: post.description || null, // Ensure `description` is `string | null`
-      uid: post.uid, // Ensure `uid` is a string (or convert it if necessary)
+      uid: post.uid, // Ensure `uid` is a number
       config: post.config || {}, // Ensure `config` is an object
       on_connect: post.on_connect || [], // Ensure `on_connect` is an array
     };
 
     const result = await upsertSensorAction(sensorDTO);
 
-    if (result.success) {
-      if (postToEdit) {
-        edit({ ...post, date_modified: new Date().toISOString() });
-      } else {
-        createPost({ ...post, id: uuidv4() });
-      }
-    }
+    
       setPost({
         id: "",
         description: "",
@@ -99,7 +98,7 @@ const InputRow: React.FC<InputRowProps> = ({
         date_modified: new Date().toISOString(),
         enabled: false,
         label: "",
-        uid: 0,
+        uid: 1,
         config: {},
         on_connect: [],
       }); // After inserting Element, we empty InputFields
@@ -164,7 +163,7 @@ const InputRow: React.FC<InputRowProps> = ({
             <MyInput
               value={post.uid}
               onChange={(e) =>
-                setPost({ ...post, uid: Number(e.target.value) || 0 })
+                setPost({ ...post, uid: Number(e.target.value) || 1 })
               }
               type="number"
               placeholder="UID"

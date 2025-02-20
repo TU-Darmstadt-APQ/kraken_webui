@@ -1,4 +1,4 @@
-import { UUID } from "bson";
+import { UUID } from "mongodb";
 import functionCallSchema from "./FunctionCall.schema";
 import { z } from "zod";
 
