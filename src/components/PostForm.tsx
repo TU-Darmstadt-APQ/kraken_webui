@@ -16,8 +16,11 @@ const sensorTypes = [
   {
     name: "Tinkerforge",
     configFields: [
-      { key: "freq", required: true },
-      { key: "cel", required: true },
+      { key: "interval", required: true },
+      { key: "trigger only on change", required: true },
+      { key: "description", required: true },
+      { key: "topic", required: true },
+      { key: "unit", required: true },
     ],
   },
 ];
