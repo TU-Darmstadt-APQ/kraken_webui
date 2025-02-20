@@ -4,7 +4,7 @@ The project contains built-in documentation written in Markdown and displayed us
 
 ---
 
-## 🛠️ How to run the documentation
+## 🛠️ How to run the documentation (development mode)
 
 1. **Go to the project root:**
 
