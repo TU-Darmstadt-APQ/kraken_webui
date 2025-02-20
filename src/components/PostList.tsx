@@ -1,4 +1,5 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
+import InputRow from "./UI/InputRow";
 import MyToggle from "./UI/toggle/MyToggle";
 import { PostListProps } from "@/types";
 import { VariableSizeList as Table } from "react-window";
@@ -37,6 +38,11 @@ import styles from "@/styles/PostList.module.css";
  * />
  */
 const PostList: React.FC<PostListProps> = ({
+  createPost,
+  inputRow,
+  setInputRow,
+  editPost,
+  postToEdit,
   posts,
   listTitle,
   remove,
@@ -51,30 +57,19 @@ const PostList: React.FC<PostListProps> = ({
     return post.description && post.description.length > 100 ? 170 : 170; // Adjust row height dynamically later
   };
 
-  // State for managing column visibility
-  const [selectedColumns, setSelectedColumns] = React.useState({
-    title: true,
-    description: true,
-    date_created: true,
-    date_modified: true,
-    enabled: true,
-    label: false,
+  const [selectedColumns, setSelectedColumns] = useState({
     uuid: true,
+    label: false,
+    enabled: true,
+    topic: false,
+    driver: false,
     config: true,
     on_connect: false,
-    topic: false,
-    unit: false,
-    port: false,
-    pad: false,
-    sad: false,
-    driver: false,
-    sensor_type: false,
   });
 
-  // Display a message when no posts are available
-  if (!posts.length) {
-    return <h1 style={{ textAlign: "center" }}>No sensors found</h1>;
-  }
+  const isAnyColumnSelected = Object.values(selectedColumns).some(
+    (value) => value,
+  );
 
   return (
     <div>
@@ -103,30 +98,35 @@ const PostList: React.FC<PostListProps> = ({
         <div className={styles["table"]}>
           {/* Header */}
           <div className={`${styles.heading}`}>
-            {selectedColumns.title && <div className={styles.cell}>Title</div>}
-            {selectedColumns.description && (
-              <div className={styles.cell}>Description</div>
-            )}
-            {selectedColumns.date_created && (
-              <div className={styles.cell}>Date Created</div>
-            )}
-            {selectedColumns.date_modified && (
-              <div className={styles.cell}>Date Modified</div>
-            )}
+            {selectedColumns.uuid && <div className={styles.cell}>UUID</div>}
+            {selectedColumns.label && <div className={styles.cell}>Label</div>}
             {selectedColumns.enabled && (
               <div className={styles.cell}>Enabled</div>
             )}
-            {selectedColumns.label && <div className={styles.cell}>Label</div>}
-            {selectedColumns.uuid && <div className={styles.cell}>UUID</div>}
+            {selectedColumns.topic && <div className={styles.cell}>Topic</div>}
+            {selectedColumns.driver && (
+              <div className={styles.cell}>Driver</div>
+            )}
             {selectedColumns.config && (
               <div className={styles.cell}>Config</div>
             )}
             {selectedColumns.on_connect && (
               <div className={styles.cell}>On Connect</div>
             )}
-            <div className={`${styles.cell} ${styles["no-borders"]}`}></div>
+            {isAnyColumnSelected && <div className={styles.cell}>Actions</div>}
           </div>
 
+          {/* New Row for editing and adding a new data */}
+          {inputRow && (
+            <InputRow
+              visible={inputRow}
+              setVisible={setInputRow}
+              createPost={createPost}
+              edit={editPost}
+              postToEdit={postToEdit}
+              selectedColumns={selectedColumns}
+            />
+          )}
           {/* Virtualized rows */}
           <Table
             height={600} // Height of the visible area of the list
@@ -135,7 +135,13 @@ const PostList: React.FC<PostListProps> = ({
             width="100%" // Table width
             ref={listRef} // Reference for the list
           >
-            {({ index, style }) => (
+            {({
+              index,
+              style,
+            }: {
+              index: number;
+              style: React.CSSProperties;
+            }) => (
               <div style={style}>
                 <TableItem
                   post={posts[index]}
