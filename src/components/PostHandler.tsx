@@ -56,6 +56,7 @@ function PostHandler({ sensors }: { sensors: tinkerforgeDTO[] }) {
       let date = new Date();
 
       const newPost: Post = {
+        uid: `uuid-${uuidv4()}`,
         title: `Generated Title ${startingId + i}`,
         description: `Generated Description for Post ${startingId + i}`,
         date_created: {
