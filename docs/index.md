@@ -13,7 +13,11 @@ The project contains built-in documentation written in Markdown and displayed us
 2. **Make sure `mkdocs-material` is installed:**  
    (install it in a virtual environment or with pipx)
 
-   `pip install mkdocs-material --break-system-packages`
+```bash
+python -m venv /env
+source env/bin/activate
+pip install -r requirements.txt
+```
 
 3. **Start the local documentation server:**
 
