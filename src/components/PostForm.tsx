@@ -199,6 +199,7 @@ const PostForm: React.FC<PostFormProps> = ({ create, edit, postToEdit }) => {
       <ConfigEditorModal
         config={post.config || {}} // If no Config exists, an empty object is provided
         setConfig={(newConfig) => setPost({ ...post, config: newConfig })}
+        selectedSensorType={selectedSensorType}
       />
 
       <MyButton onClick={handleSubmit}>
