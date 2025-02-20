@@ -22,7 +22,7 @@ theme:
 #️ Navigation
 nav:
   - Overview:
-      - Documentation Overview: overview/index.md
+      - Documentation Overview: index.md
       - Installation: overview/installation.md
       - Project Structure: overview/project_structure.md
   - User Guide:
