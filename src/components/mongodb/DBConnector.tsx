@@ -2,10 +2,8 @@ import {
   convertToEntity,
   tinkerforgeDTO,
   tinkerforgeEntity,
-  tinkerforgeEntitySchema,
 } from "@/models/zTinkerforgeSensor.schema";
 import { MongoClient } from "mongodb";
-import { UUID } from "bson";
 import { config } from "@/../config";
 
 // Cache the db client and promise (to create one) so that (hot) reloading will reuse the connection
@@ -110,14 +108,17 @@ export async function upsertSensor(
     const database = client.db("sensor_config");
     const sensors = database.collection<tinkerforgeEntity>("TinkerforgeSensor");
 
-    const currentDate = new Date();
-    const { id, ...noIdDto } = dto;
-    const candidate = tinkerforgeEntitySchema.parse({
-      _id: new UUID(id),
-      ...noIdDto,
-      date_created: dto.date_created ? new Date(dto.date_created) : currentDate,
-      date_modified: currentDate,
-    });
+    // Create a new DTO with today's date for date_created only if not already given,
+    // and always update date_modified.
+    const updatedDTO: tinkerforgeDTO = {
+      ...dto,
+      date_created: dto.date_created
+        ? dto.date_created
+        : new Date().toISOString(),
+      date_modified: new Date().toISOString(),
+    };
+    // Convert the DTO to an entity
+    const candidate = convertToEntity(updatedDTO);
 
     await sensors.replaceOne({ _id: candidate._id }, candidate, {
       upsert: true,
