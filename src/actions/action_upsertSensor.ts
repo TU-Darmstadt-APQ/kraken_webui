@@ -30,7 +30,7 @@ export async function upsertSensorAction(sensorDTO: tinkerforgeDTO) {
   try {
     await upsertSensor(sensorDTO);
     return { success: true, message: "Sensor upserted successfully" };
-  } catch (error) {
+  } catch {
     return { success: false, message: "Failed to upsert sensor" };
   }
 }
