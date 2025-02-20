@@ -72,13 +72,13 @@ const InputRow: React.FC<InputRowProps> = ({
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const sensorDTO = {
-      id: post.id || uuidv4(), // Ensure `uuid` is a string (or convert it if necessary)
+      id: uuidv4(), // Ensure `uuid` is a string (or convert it if necessary)
       date_created: post.date_created, // Convert to string
       date_modified: post.date_modified, // Convert to string
       enabled: post.enabled || false, // Ensure `enabled` is a boolean
       label: post.label || null, // Ensure `label` is `string | null`
       description: post.description || null, // Ensure `description` is `string | null`
-      uid: post.uid || 0, // Ensure `uid` is a string (or convert it if necessary)
+      uid: post.uid, // Ensure `uid` is a string (or convert it if necessary)
       config: post.config || {}, // Ensure `config` is an object
       on_connect: post.on_connect || [], // Ensure `on_connect` is an array
     };
