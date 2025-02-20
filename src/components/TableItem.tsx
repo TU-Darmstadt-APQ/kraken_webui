@@ -68,6 +68,7 @@ const TableItem: React.FC<TableItemProps> = ({
   return (
     <div className={`${styles.row}`}>
       {/* Displaying properties of the `post` object */}
+      {selectedColumns.uid && <div className={styles.cell}>{post.uid}</div>}
       {selectedColumns.uuid && <div className={styles.cell}>{post.uuid}</div>}
       {selectedColumns.label && <div className={styles.cell}>{post.label}</div>}
       {selectedColumns.enabled && (
