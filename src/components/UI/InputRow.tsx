@@ -91,7 +91,7 @@ const InputRow: React.FC<InputRowProps> = ({
       } else {
         createPost({ ...post, id: uuidv4() });
       }
-
+    }
       setPost({
         id: "",
         description: "",
@@ -266,5 +266,5 @@ const InputRow: React.FC<InputRowProps> = ({
       </div>
     );
   };
-};
+
 export default InputRow;
