@@ -65,7 +65,7 @@ const InputRow: React.FC<InputRowProps> = ({
   };
 
   // State for managing the input values of the form
-  const [post, setPost] = React.useState<Post>(postToEdit || defaultPost);
+  const [post, setPost] = useState<Post>(postToEdit || defaultPost);
 
   const [modalVisible, setModalVisible] = useState(false);
 
