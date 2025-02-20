@@ -25,7 +25,7 @@ Coming soon...
 
 # Documentation
 
-For detailed documentation, please visit our Documentation website http://127.0.0.1:8000/overview/
+For detailed documentation, please visit our Documentation website https://tu-darmstadt-apq.github.io/kraken_webui/
 
 # CI/CD
 
