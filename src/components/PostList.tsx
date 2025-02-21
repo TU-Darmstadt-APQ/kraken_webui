@@ -1,10 +1,8 @@
-import { FixedSizeList as List, VariableSizeList as Table } from "react-window";
 import React, { useRef, useState } from "react";
-import Image from "next/image";
+import InputRow from "./UI/InputRow";
 import MyToggle from "./UI/toggle/MyToggle";
-import MyTooltip from "./UI/tooltip/MyTooltip";
-import PostItem from "./PostItem";
 import { PostListProps } from "@/types";
+import { VariableSizeList as Table } from "react-window";
 import TableItem from "./TableItem";
 import styles from "@/styles/PostList.module.css";
 
@@ -20,19 +18,18 @@ import styles from "@/styles/PostList.module.css";
  * @example 
  * 
  * const sortedAndSearchedPosts = usePosts(
-     posts,
-     filter.sort,
-     filter.query,
-     filter.searchField,
-   );
+ *   posts,
+ *   filter.sort,
+ *   filter.query,
+ *   filter.searchField,
+ * );
  * const removePost = (post: Post) => {
-     setPosts(posts.filter((p) => p.uuid != post.uuid));
-   };
+ *   setPosts(posts.filter((p) => p.uuid != post.uuid));
+ * };
  * const handleEdit = (post: Post) => {
-       setPostToEdit(post);
-       setModal(true);
-     };
-
+ *   setPostToEdit(post);
+ *   setModal(true);
+ * };
  * <PostList
  *   posts={sortedAndSearchedPosts}
  *   listTitle="Sensor List"
@@ -41,177 +38,122 @@ import styles from "@/styles/PostList.module.css";
  * />
  */
 const PostList: React.FC<PostListProps> = ({
+  createPost,
+  inputRow,
+  setInputRow,
+  editPost,
+  postToEdit,
   posts,
   listTitle,
   remove,
   edit,
 }) => {
-  // Display a message when no posts are available
-  if (!posts.length) {
-    return <h1 style={{ textAlign: "center" }}>No sensors found</h1>;
-  }
-
   // Reference for storing row heights in VariableSizeList
   const listRef = useRef<Table>(null);
 
   // Determining the height of a line
   const getRowHeight = (index: number) => {
     const post = posts[index];
-    return post.description && post.description.length > 100 ? 170 : 170; // later do it better (i want to achieve variable high for every row)
+    return post.description && post.description.length > 100 ? 170 : 170; // Adjust row height dynamically later
   };
 
-  // State to toggle between table view and post view
-  const [isTableView, setIsTableView] = useState(false);
-
   const [selectedColumns, setSelectedColumns] = useState({
-    description: true,
-    date_created: true,
-    date_modified: true,
-    enabled: true,
+    uuid: true,
     label: false,
-    uid: true,
+    enabled: true,
+    topic: false,
+    driver: false,
     config: true,
     on_connect: false,
-    topic: false,
-    unit: false,
-    port: false,
-    pad: false,
-    sad: false,
-    driver: false,
-    sensor_type: false,
   });
+
+  const isAnyColumnSelected = Object.values(selectedColumns).some(
+    (value) => value,
+  );
 
   return (
     <div>
       {/* Title for the list */}
       <h1 style={{ textAlign: "center" }}>{listTitle}</h1>
 
-      {/* Buttons to toggle view mode */}
-      <div className={styles["view-buttons"]}>
-        <MyTooltip infoText="Table view of sensors" position="top">
-          <button
-            onClick={() => setIsTableView(true)}
-            className={styles["list-button"]}
-          >
-            <Image
-              src="/tableIcon.png"
-              alt="Table View"
-              className="icon-button"
-              width={20}
-              height={20}
-            />
-          </button>
-        </MyTooltip>
-        <MyTooltip infoText="Post view of sensors" position="top-right">
-          <button
-            onClick={() => setIsTableView(false)}
-            className={styles["list-button"]}
-          >
-            <Image
-              src="/blogIcon.png"
-              alt="Posts View"
-              className="icon-button"
-              width={20}
-              height={20}
-            />
-          </button>
-        </MyTooltip>
+      {/* Column Visibility Toggles */}
+      <div className={styles["toggle-container"]}>
+        {Object.keys(selectedColumns).map((columnKey) => (
+          <MyToggle
+            key={columnKey}
+            label={columnKey}
+            checked={selectedColumns[columnKey as keyof typeof selectedColumns]}
+            onChange={(e) =>
+              setSelectedColumns((prev) => ({
+                ...prev,
+                [columnKey]: e,
+              }))
+            }
+          />
+        ))}
       </div>
 
-      {/* Conditional rendering for table view or post view */}
-      {isTableView ? (
-        <div>
-          <div className={styles["toggle-container"]}>
-            {Object.keys(selectedColumns).map((columnKey) => (
-              <MyToggle
-                key={columnKey} //key is used in the map call to give each element a unique identification. It is not passed on to MyToggle as a prop.
-                label={columnKey}
-                checked={
-                  selectedColumns[columnKey as keyof typeof selectedColumns]
-                }
-                onChange={(e) =>
-                  setSelectedColumns((prev) => ({
-                    ...prev,
-                    [columnKey]: e,
-                  }))
-                }
-              />
-            ))}
+      {/* Render posts in table format */}
+      <div className={styles["table-container"]}>
+        <div className={styles["table"]}>
+          {/* Header */}
+          <div className={`${styles.heading}`}>
+            {selectedColumns.uuid && <div className={styles.cell}>UUID</div>}
+            {selectedColumns.label && <div className={styles.cell}>Label</div>}
+            {selectedColumns.enabled && (
+              <div className={styles.cell}>Enabled</div>
+            )}
+            {selectedColumns.topic && <div className={styles.cell}>Topic</div>}
+            {selectedColumns.driver && (
+              <div className={styles.cell}>Driver</div>
+            )}
+            {selectedColumns.config && (
+              <div className={styles.cell}>Config</div>
+            )}
+            {selectedColumns.on_connect && (
+              <div className={styles.cell}>On Connect</div>
+            )}
+            {isAnyColumnSelected && <div className={styles.cell}>Actions</div>}
           </div>
 
-          {/* Render posts in table format */}
-          <div className={styles["table-container"]}>
-            <div className={styles["table"]}>
-              {/* Header */}
-              <div className={`${styles.heading}`}>
-                {selectedColumns.description && (
-                  <div className={styles.cell}>Description</div>
-                )}
-                {selectedColumns.date_created && (
-                  <div className={styles.cell}>Date Created</div>
-                )}
-                {selectedColumns.date_modified && (
-                  <div className={styles.cell}>Date Modified</div>
-                )}
-                {selectedColumns.enabled && (
-                  <div className={styles.cell}>Enabled</div>
-                )}
-                {selectedColumns.label && (
-                  <div className={styles.cell}>Label</div>
-                )}
-                {selectedColumns.uid && <div className={styles.cell}>UUID</div>}
-                {selectedColumns.config && (
-                  <div className={styles.cell}>Config</div>
-                )}
-                {selectedColumns.on_connect && (
-                  <div className={styles.cell}>On Connect</div>
-                )}
-                <div className={`${styles.cell} ${styles["no-borders"]}`}></div>
-              </div>
-              {/* Virtualized rows */}
-              <Table
-                height={600} // Height of the visible area of the list
-                itemCount={posts.length} // Number of rows
-                itemSize={getRowHeight} // Function for row height
-                width="100%" // Table width
-                ref={listRef} // Reference for the list
-              >
-                {({
-                  index,
-                  style,
-                }: {
-                  index: number;
-                  style: React.CSSProperties;
-                }) => (
-                  <div style={style}>
-                    <TableItem
-                      post={posts[index]}
-                      edit={edit}
-                      remove={remove}
-                      selectedColumns={selectedColumns}
-                    />
-                  </div>
-                )}
-              </Table>
-            </div>
-          </div>
-        </div>
-      ) : (
-        // Render posts in a card-like view
-        <List height={600} itemCount={posts.length} itemSize={90} width="100%">
-          {({ index, style }) => (
-            <div style={style}>
-              <PostItem
-                edit={edit}
-                remove={remove}
-                number={index + 1}
-                post={posts[index]}
-                key={posts[index].id}
-              />
-            </div>
+          {/* New Row for editing and adding a new data */}
+          {inputRow && (
+            <InputRow
+              visible={inputRow}
+              setVisible={setInputRow}
+              createPost={createPost}
+              edit={editPost}
+              postToEdit={postToEdit}
+              selectedColumns={selectedColumns}
+            />
           )}
-        </List>
-      )}
+          {/* Virtualized rows */}
+          <Table
+            height={600} // Height of the visible area of the list
+            itemCount={posts.length} // Number of rows
+            itemSize={getRowHeight} // Function for row height
+            width="100%" // Table width
+            ref={listRef} // Reference for the list
+          >
+            {({
+              index,
+              style,
+            }: {
+              index: number;
+              style: React.CSSProperties;
+            }) => (
+              <div style={style}>
+                <TableItem
+                  post={posts[index]}
+                  edit={edit}
+                  remove={remove}
+                  selectedColumns={selectedColumns}
+                />
+              </div>
+            )}
+          </Table>
+        </div>
+      </div>
     </div>
   );
 };

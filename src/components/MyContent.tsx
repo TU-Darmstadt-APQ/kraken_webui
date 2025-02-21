@@ -1,15 +1,11 @@
-import React, { useState } from "react";
-import ModalWindow from "./UI/ModalWindow/ModalWindow";
-import MyButton from "./UI/button/MyButton";
 import { MyContentProps } from "@/types";
-import MyTooltip from "./UI/tooltip/MyTooltip";
-import PostForm from "./PostForm";
 import PostList from "./PostList";
+import React from "react";
 import styles from "@/styles/MyContent.module.css";
 
 const MyContent: React.FC<MyContentProps> = ({
-  modal,
-  setModal,
+  inputRow,
+  setInputRow,
   sortedAndSearchedPosts,
   createPost,
   removePost,
@@ -18,85 +14,28 @@ const MyContent: React.FC<MyContentProps> = ({
   postToEdit,
   listTitle,
 }) => {
-  // State for actual content in MyContent
-  const [activeContent, setActiveContent] = useState<string>("sensorList");
-
-  // Functions for switching the content
-  const showList = () => setActiveContent("sensorList");
-  const showTree = () => setActiveContent("treeView");
-
   return (
     <div className={styles["Content"]}>
       {/* Left Sidebar */}
       <div className={styles["Sidebar"]}>
-        <MyTooltip infoText="List of sensors" position="right">
-          <MyButton onClick={showList}>
-            <img
-              src="/listIcon.png"
-              alt="List View"
-              className="icon-button"
-              width={25}
-              height={25}
-            />
-          </MyButton>
-        </MyTooltip>
-        <hr />
-        <MyTooltip infoText="Tree view of sensors" position="right">
-          <MyButton onClick={showTree}>
-            <img
-              src="/diagrammIcon.png"
-              alt="Tree View"
-              className="icon-button"
-              width={25}
-              height={25}
-            />
-          </MyButton>
-        </MyTooltip>
+        {/* Add any additional buttons or functionality here if needed */}
       </div>
 
       {/* Right Main Content */}
       <div className={styles["MainContent"]}>
         <div>
-          {/* Modal window for adding a new sensor */}
-          <ModalWindow visible={modal} setVisible={setModal}>
-            <PostForm
-              create={createPost}
-              edit={editPost}
-              postToEdit={postToEdit}
-            />
-            {/**
-             * The `create` prop is passed to the child component (`PostForm`)
-             * as a callback function. It allows the child to send data (the new post)
-             * back to the parent (`Page`).
-             * This unidirectional data flow follows React's tree structure:
-             * Parents can pass props to children, but children cannot directly modify parent data (!)
-             */}
-          </ModalWindow>
-
-          {/* Conditional Content Rendering */}
-
-          {/* Component responsible for displaying the list of sensors.
-          It supports two views: table view and post view. */}
-          {activeContent === "sensorList" && (
-            <PostList
-              remove={removePost}
-              posts={sortedAndSearchedPosts}
-              listTitle={listTitle}
-              edit={handleEdit}
-            ></PostList>
-          )}
-
-          {activeContent === "treeView" && (
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-            >
-              <h2>Tree View of sensors</h2>
-            </div>
-          )}
+          {/* Component responsible for displaying the list of sensors.*/}
+          <PostList
+            createPost={createPost}
+            inputRow={inputRow}
+            setInputRow={setInputRow}
+            remove={removePost}
+            posts={sortedAndSearchedPosts}
+            listTitle={listTitle}
+            edit={handleEdit}
+            editPost={editPost}
+            postToEdit={postToEdit}
+          ></PostList>
         </div>
       </div>
     </div>

@@ -1,6 +1,7 @@
+import { TableItemProps, convertPostToDTO } from "@/types";
 import MyButton from "./UI/button/MyButton";
 import React from "react";
-import { TableItemProps } from "@/types";
+import { deleteSensorAction } from "@/actions/action_deleteSensors";
 import styles from "@/styles/TableItem.module.css";
 
 /**
@@ -29,7 +30,8 @@ import styles from "@/styles/TableItem.module.css";
  *   description: true,
  *   date_created: false,
  *   date_modified: true,
- *   enabled: true,
+ *   enabled: true,import { TableItemProps, convertPostToDTO } from "@/types";
+
  *   uuid: false,
  *   config: true,
  *   on_connect: false,
@@ -53,23 +55,21 @@ const TableItem: React.FC<TableItemProps> = ({
 
   if (!isRowVisible) return null; // we check if minimum one is true
 
+  const deleteSensorHandler = async () => {
+    const result = await deleteSensorAction(convertPostToDTO(post));
+    if (result.success) {
+      alert(result.message);
+      remove(post);
+    } else {
+      alert(`Error: ${result.message}`);
+    }
+  };
+
   return (
     <div className={`${styles.row}`}>
       {/* Displaying properties of the `post` object */}
-      {selectedColumns.description && (
-        <div className={styles.cell}>
-          {post.description || "No description"}
-        </div>
-      )}
-
-      {selectedColumns.date_created && (
-        <div className={styles.cell}>{formatDate(post.date_created)}</div>
-      )}
-
-      {selectedColumns.date_modified && (
-        <div className={styles.cell}>{formatDate(post.date_modified)}</div>
-      )}
-
+      {selectedColumns.uuid && <div className={styles.cell}>{post.uuid}</div>}
+      {selectedColumns.label && <div className={styles.cell}>{post.label}</div>}
       {selectedColumns.enabled && (
         <div className={styles.cell}>
           {post.enabled == true ? (
@@ -93,9 +93,11 @@ const TableItem: React.FC<TableItemProps> = ({
           ) : null}
         </div>
       )}
+      {selectedColumns.topic && <div className={styles.cell}>{post.topic}</div>}
+      {selectedColumns.driver && (
+        <div className={styles.cell}>{post.driver}</div>
+      )}
 
-      {selectedColumns.label && <div className={styles.cell}>{post.label}</div>}
-      {selectedColumns.uid && <div className={styles.cell}>{post.uid}</div>}
       {selectedColumns.config && (
         <div className={styles.cell}>
           {post.config && Object.entries(post.config).length > 0 ? (
@@ -137,7 +139,7 @@ const TableItem: React.FC<TableItemProps> = ({
       )}
 
       {/* Edit button and delete button with callback */}
-      <div className={`${styles.cell} ${styles.actions}`}>
+      <div className={styles.cell}>
         <MyButton className="list-button" onClick={() => edit(post)}>
           <img
             src="/edit.png"
@@ -148,7 +150,7 @@ const TableItem: React.FC<TableItemProps> = ({
           />
         </MyButton>
 
-        <MyButton onClick={() => remove(post)} className="list-button">
+        <MyButton onClick={deleteSensorHandler} className="list-button">
           <img
             src="/trashCan.svg"
             alt="Delete"

@@ -7,6 +7,7 @@
   flex: 1;
   padding: 8px;
   text-align: left;
+  align-items: stretch;
   overflow: hidden;
   text-overflow: ellipsis; /* Add ellipsis for overflowing text */
   white-space: nowrap; /* Prevent text wrapping */

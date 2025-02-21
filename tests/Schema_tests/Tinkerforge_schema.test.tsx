@@ -30,3 +30,30 @@ describe("TinkerforgeSensor Schema Validation", () => {
     }).toThrow(z.ZodError);
   });
 });
+
+describe("Tinkerforge UID Validation", () => {
+  const uidSchema = tinkerforgeSensorSchema.pick({ uid: true });
+
+  it("should accept valid uid values", () => {
+    const validUIDs = [0, 1, 12345, 4294967295];
+    validUIDs.forEach((uid) => {
+      expect(() => uidSchema.parse({ uid })).not.toThrow();
+    });
+  });
+
+  it("should reject invalid uid values", () => {
+    const invalidUIDs = [
+      -1,
+      4294967296,
+      3.14,
+      "string",
+      null,
+      undefined,
+      {},
+      [],
+    ];
+    invalidUIDs.forEach((uid) => {
+      expect(() => uidSchema.parse({ uid })).toThrow(z.ZodError);
+    });
+  });
+});
