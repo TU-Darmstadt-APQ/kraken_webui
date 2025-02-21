@@ -64,7 +64,7 @@ const PostForm: React.FC<PostFormProps> = ({ create, edit, postToEdit }) => {
   };
 
   const defaultPost: Post = {
-    uid: "",
+    uid: 0,
     title: "",
     description: "",
     date_created: getCurrentDate(),
@@ -150,7 +150,7 @@ const PostForm: React.FC<PostFormProps> = ({ create, edit, postToEdit }) => {
     }
 
     setPost({
-      uid: "",
+      uid: 0,
       title: "",
       description: "",
       date_created: getCurrentDate(),

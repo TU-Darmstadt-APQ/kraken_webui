@@ -63,7 +63,7 @@ const InputRow: React.FC<InputRowProps> = ({
   };
 
   const defaultPost: Post = {
-    uid: "",
+    uid: 0,
     title: "",
     description: "",
     date_created: getCurrentDate(),
@@ -95,7 +95,7 @@ const InputRow: React.FC<InputRowProps> = ({
     }
 
     setPost({
-      uid: "",
+      uid: 0,
       title: "",
       description: "",
       date_created: getCurrentDate(),
@@ -122,8 +122,8 @@ const InputRow: React.FC<InputRowProps> = ({
         <div className={styles.cell}>
           <MyInput
             value={post.uid}
-            onChange={(e) => setPost({ ...post, uid: e.target.value })}
-            type="text"
+            onChange={(e) => setPost({ ...post, uid: Number(e.target.value) })}
+            type="number"
             placeholder="UID"
           />
         </div>
@@ -229,7 +229,7 @@ const InputRow: React.FC<InputRowProps> = ({
           onClick={() => {
             setVisible(false);
             setPost({
-              uid: "",
+              uid: 0,
               title: "",
               description: "",
               date_created: getCurrentDate(),
