@@ -101,18 +101,10 @@ const TableItem: React.FC<TableItemProps> = ({
 
       {selectedColumns.config && (
         <div className={styles.cell}>
-          {post.config && Object.entries(post.config).length > 0 ? (
-            <div>
-              <p>config {"{"}</p>
-              <ul style={{ paddingLeft: "20px", margin: "5px 0" }}>
-                {Object.entries(post.config).map(([key, value]) => (
-                  <li key={key} style={{ listStyleType: "none" }}>
-                    - {key}: {JSON.stringify(value)}
-                  </li>
-                ))}
-              </ul>
-              <p>{"}"}</p>
-            </div>
+          {post.config && Object.keys(post.config).length > 0 ? (
+            <pre style={{ whiteSpace: "pre-wrap", wordWrap: "break-word" }}>
+              {JSON.stringify(post.config, null, 2)}
+            </pre>
           ) : (
             "No configuration given"
           )}
@@ -120,7 +112,15 @@ const TableItem: React.FC<TableItemProps> = ({
       )}
 
       {selectedColumns.on_connect && (
-        <div className={styles.cell}>{post.on_connect}</div>
+        <div className={styles.cell}>
+          {post.on_connect && post.on_connect.length > 0 ? (
+            <pre style={{ whiteSpace: "pre-wrap", wordWrap: "break-word" }}>
+              {JSON.stringify(post.on_connect, null, 2)}
+            </pre>
+          ) : (
+            "No connection data available"
+          )}
+        </div>
       )}
 
       {/* Edit button and delete button with callback */}

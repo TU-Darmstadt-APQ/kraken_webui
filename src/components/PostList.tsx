@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import InputRow from "./UI/InputRow";
 import MyToggle from "./UI/toggle/MyToggle";
 import { PostListProps } from "@/types";
@@ -51,12 +51,6 @@ const PostList: React.FC<PostListProps> = ({
   // Reference for storing row heights in VariableSizeList
   const listRef = useRef<Table>(null);
 
-  // Determining the height of a line
-  const getRowHeight = (index: number) => {
-    const post = posts[index];
-    return post.description && post.description.length > 100 ? 170 : 170; // Adjust row height dynamically later
-  };
-
   const [selectedColumns, setSelectedColumns] = useState({
     uid: true,
     uuid: true,
@@ -67,6 +61,28 @@ const PostList: React.FC<PostListProps> = ({
     config: true,
     on_connect: false,
   });
+
+  // Determining the height of a line
+  const getRowHeight = useCallback(
+    (index: number) => {
+      const post = posts[index];
+
+      if (!post || !post.config) return 170;
+
+      const jsonString = JSON.stringify(post.config, null, 2); // Convert JSON to a string
+      const commaCount = (jsonString.match(/,/g) || []).length; // Count the number of commas
+
+      return selectedColumns.config ? (commaCount + 1) * 40 + 50 : 170;
+    },
+    [selectedColumns],
+  ); // Recalculate height when `selectedColumns` changes
+
+  // Recalculate row height when `selectedColumns` changes
+  useEffect(() => {
+    if (listRef.current) {
+      listRef.current.resetAfterIndex(0, true); // Update the table
+    }
+  }, [selectedColumns]);
 
   const isAnyColumnSelected = Object.values(selectedColumns).some(
     (value) => value,
