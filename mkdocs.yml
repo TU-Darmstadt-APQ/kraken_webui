@@ -15,9 +15,19 @@ theme:
     - content.code.annotate # Annotations for code comments
     - toc.integrate # Integrate the table of contents into the content
   palette:
-    scheme: slate # Dark theme by default
-    primary: teal # Primary color
-    accent: light blue # Accent color
+    - scheme: default # Light theme by default
+      primary: ultramarine # Primary color ("blue" is better)
+      accent: light blue # Accent color
+      toggle:
+        icon: material/weather-night
+        name: "Switch to dark mode"
+
+    - scheme: slate # Dark theme
+      primary: ultramarine # Primary color ("blue" is better)
+      accent: light blue # Accent color
+      toggle:
+        icon: material/weather-sunny
+        name: "Switch to light mode"
 
 #️ Navigation
 nav:
@@ -41,8 +51,12 @@ extra:
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/TU-Darmstadt-APQ/kraken_webui
+  generator: false # Disable "Made with MkDocs" in bottom
   copyright:
     text: "© 2025 Kraken Web UI Documentation"
+
+repo_url: https://github.com/TU-Darmstadt-APQ/kraken_webui
+repo_name: TU-Darmstadt-APQ/kraken_webui
 
 # Deployment Settings
 deploy:
