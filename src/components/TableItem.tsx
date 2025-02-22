@@ -68,7 +68,6 @@ const TableItem: React.FC<TableItemProps> = ({
   return (
     <div className={`${styles.row}`}>
       {/* Displaying properties of the `post` object */}
-      {selectedColumns.uid && <div className={styles.cell}>{post.uid}</div>}
       {selectedColumns.uuid && <div className={styles.cell}>{post.uuid}</div>}
       {selectedColumns.label && <div className={styles.cell}>{post.label}</div>}
       {selectedColumns.enabled && (
@@ -122,6 +121,7 @@ const TableItem: React.FC<TableItemProps> = ({
           )}
         </div>
       )}
+      {selectedColumns.uid && <div className={styles.cell}>{post.uid}</div>}
 
       {/* Edit button and delete button with callback */}
       <div className={styles.cell}>

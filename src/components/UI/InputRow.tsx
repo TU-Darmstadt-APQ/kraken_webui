@@ -118,16 +118,6 @@ const InputRow: React.FC<InputRowProps> = ({
   return (
     <div className={`${styles.row}`}>
       {/* Displaying properties of the `post` object */}
-      {selectedColumns.uid && (
-        <div className={styles.cell}>
-          <MyInput
-            value={post.uid}
-            onChange={(e) => setPost({ ...post, uid: Number(e.target.value) })}
-            type="number"
-            placeholder="UID"
-          />
-        </div>
-      )}
       {selectedColumns.uuid && (
         <div className={styles.cell}>
           <MyInput
@@ -209,6 +199,16 @@ const InputRow: React.FC<InputRowProps> = ({
             onChange={(e) => setPost({ ...post, on_connect: e.target.value })}
             type="text"
             placeholder="On Connect"
+          />
+        </div>
+      )}
+      {selectedColumns.uid && (
+        <div className={styles.cell}>
+          <MyInput
+            value={post.uid}
+            onChange={(e) => setPost({ ...post, uid: Number(e.target.value) })}
+            type="number"
+            placeholder="UID"
           />
         </div>
       )}

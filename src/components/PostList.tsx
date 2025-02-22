@@ -52,7 +52,6 @@ const PostList: React.FC<PostListProps> = ({
   const listRef = useRef<Table>(null);
 
   const [selectedColumns, setSelectedColumns] = useState({
-    uid: true,
     uuid: true,
     label: false,
     enabled: true,
@@ -60,6 +59,7 @@ const PostList: React.FC<PostListProps> = ({
     driver: false,
     config: true,
     on_connect: false,
+    uid: true,
   });
 
   // Determining the height of a line
@@ -115,7 +115,6 @@ const PostList: React.FC<PostListProps> = ({
         <div className={styles["table"]}>
           {/* Header */}
           <div className={`${styles.heading}`}>
-            {selectedColumns.uid && <div className={styles.cell}>UID</div>}
             {selectedColumns.uuid && <div className={styles.cell}>UUID</div>}
             {selectedColumns.label && <div className={styles.cell}>Label</div>}
             {selectedColumns.enabled && (
@@ -131,6 +130,7 @@ const PostList: React.FC<PostListProps> = ({
             {selectedColumns.on_connect && (
               <div className={styles.cell}>On Connect</div>
             )}
+            {selectedColumns.uid && <div className={styles.cell}>UID</div>}
             {isAnyColumnSelected && <div className={styles.cell}>Actions</div>}
           </div>
 
