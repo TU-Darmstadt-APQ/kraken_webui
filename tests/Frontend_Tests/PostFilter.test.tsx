@@ -16,7 +16,7 @@ import React from "react";
 
 describe("PostFilter", () => {
   const setFilter = jest.fn();
-  const filter: Filter = { query: "", sort: "title", searchField: "all" };
+  const filter: Filter = { query: "", sort: "label", searchField: "all" };
 
   let input: HTMLInputElement;
   let select: HTMLSelectElement;
@@ -44,7 +44,7 @@ describe("PostFilter", () => {
     fireEvent.change(input, { target: { value: "test" } });
     expect(setFilter).toHaveBeenCalledWith({
       query: "test",
-      sort: "title",
+      sort: "label",
       searchField: "all",
     });
   });
@@ -59,12 +59,12 @@ describe("PostFilter", () => {
   });
 
   it("should update the searchField when a new option is selected", () => {
-    fireEvent.change(searchFieldSelect, { target: { value: "title" } });
+    fireEvent.change(searchFieldSelect, { target: { value: "all" } });
 
     expect(setFilter).toHaveBeenCalledWith({
       query: "",
-      sort: "title",
-      searchField: "title",
+      sort: "label",
+      searchField: "all",
     });
   });
 

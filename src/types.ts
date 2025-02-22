@@ -123,6 +123,53 @@ export function convertPostToDTO(post: Post): tinkerforgeDTO {
   return DTO;
 }
 
+export function postKeyToTinkerforgeDTKey<K extends keyof Post>(
+  key: K,
+): keyof tinkerforgeDTO | undefined {
+  const mapping: Record<keyof Post, keyof tinkerforgeDTO | undefined> = {
+    uuid: "id",
+    label: "label",
+    date_created: "date_created",
+    date_modified: "date_modified",
+    enabled: "enabled",
+    description: "description",
+    config: "config",
+    on_connect: "on_connect",
+    title: undefined,
+    topic: undefined,
+    unit: undefined,
+    driver: undefined,
+    sensor_type: undefined,
+    host: undefined,
+    port: undefined,
+    pad: undefined,
+    sad: undefined,
+  };
+  return mapping[key];
+}
+
+function tinkerforgeDTKeyToPostKey<K extends keyof tinkerforgeDTO>(
+  key: K,
+): keyof Post | undefined {
+  const mapping: Record<keyof tinkerforgeDTO, keyof Post | undefined> = {
+    id: "uuid",
+    label: "label",
+    uid: "uuid",
+    date_created: "date_created",
+    date_modified: "date_modified",
+    enabled: "enabled",
+    description: "description",
+    config: "config",
+    on_connect: "on_connect",
+  };
+  return mapping[key];
+}
+export function DTOtoPostKeys<K extends keyof tinkerforgeDTO>(key: K) {
+  const tmp = tinkerforgeDTKeyToPostKey(key);
+  if (tmp === undefined) return "all";
+  return tmp;
+}
+
 export interface DateType {
   day?: number;
   month?: number;
@@ -132,7 +179,7 @@ export interface DateType {
 
 // Define the interface for the filter
 export interface Filter {
-  sort: keyof Post | ""; // The 'sort' can be a key from Post or an empty string
+  sort: keyof tinkerforgeDTO | ""; // The 'sort' can be a key from Post or an empty string
   query: string; // Search keyword
   searchField: keyof Post | "all"; // Current Searchfield
 }
@@ -142,7 +189,7 @@ export type PostAction = (post: Post) => void;
 
 // Interface for common properties of a component with posts
 export interface PostComponentProps {
-  post: Post;
+  post: tinkerforgeDTO;
   remove: PostAction;
   edit: PostAction;
 }
@@ -164,7 +211,7 @@ export interface MySelectProps {
   options: MySelectOption[];
   defaultValue: string;
   value: string;
-  onChange: (value: keyof Post) => void;
+  onChange: (value: keyof tinkerforgeDTO) => void;
 }
 
 export interface PostFormProps {
@@ -185,7 +232,7 @@ export interface MyButtonProps {
 }
 
 export interface PostListProps extends Omit<PostComponentProps, "post"> {
-  posts: Post[]; // Array of Posts
+  posts: tinkerforgeDTO[]; // Array of Posts
   listTitle: string; // Title of list
   inputRow: boolean;
   setInputRow: (value: boolean) => void;
@@ -205,7 +252,7 @@ export interface PostItemProps extends PostComponentProps {
 export interface MyContentProps {
   inputRow: boolean;
   setInputRow: (value: boolean) => void;
-  sortedAndSearchedPosts: Post[];
+  sortedAndSearchedPosts: tinkerforgeDTO[];
   createPost: PostAction;
   removePost: PostAction;
   editPost: PostAction;
