@@ -170,7 +170,7 @@ function PostHandler({ sensors }: { sensors: tinkerforgeDTO[] }) {
    * @param {Post} newPost - The new post to add to the list.
    */
   const createPost = (newPost: Post) => {
-    setPosts([...posts, newPost]);
+    setPosts([newPost, ...posts]);
     setModal(false);
   };
 
