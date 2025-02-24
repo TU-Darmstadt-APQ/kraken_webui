@@ -8,6 +8,7 @@ export interface Post {
   description?: string; // All lines marked with a question mark are optional (or do not have to be included when the object is created)
   uuid: string;
   label?: string | null;
+  uid: number;
 
   // Dates
   date_created: DateType;
@@ -37,6 +38,7 @@ export function convertDTOToPost(DTO: tinkerforgeDTO): Post {
   const dateCreated = new Date(DTO.date_created);
   const dateModified = new Date(DTO.date_modified);
   const post: Post = {
+    uid: DTO.uid,
     uuid: DTO.id,
     label: DTO.label,
     date_created: {
@@ -217,6 +219,7 @@ export interface MyContentProps {
 export interface ConfigEditorModalProps {
   config: Record<string, unknown>;
   setConfig: (newConfig: Record<string, unknown>) => void;
+  selectedSensorType: string;
 }
 
 export interface MyHeaderProps {
