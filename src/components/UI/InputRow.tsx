@@ -63,6 +63,7 @@ const InputRow: React.FC<InputRowProps> = ({
   };
 
   const defaultPost: Post = {
+    uid: 0,
     title: "",
     description: "",
     date_created: getCurrentDate(),
@@ -94,6 +95,7 @@ const InputRow: React.FC<InputRowProps> = ({
     }
 
     setPost({
+      uid: 0,
       title: "",
       description: "",
       date_created: getCurrentDate(),
@@ -200,6 +202,16 @@ const InputRow: React.FC<InputRowProps> = ({
           />
         </div>
       )}
+      {selectedColumns.uid && (
+        <div className={styles.cell}>
+          <MyInput
+            value={post.uid}
+            onChange={(e) => setPost({ ...post, uid: Number(e.target.value) })}
+            type="number"
+            placeholder="UID"
+          />
+        </div>
+      )}
 
       {/* Edit button and delete button with callback */}
       <div className={styles.cell}>
@@ -217,6 +229,7 @@ const InputRow: React.FC<InputRowProps> = ({
           onClick={() => {
             setVisible(false);
             setPost({
+              uid: 0,
               title: "",
               description: "",
               date_created: getCurrentDate(),
