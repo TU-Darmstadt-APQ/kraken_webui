@@ -83,6 +83,52 @@ export default async function DBConnector() {
 }
 
 /**
+ * Upserts a sensor in the database using the provided sensor data transfer object (DTO).
+ * If a sensor with the given ID exists, it is updated; otherwise, a new sensor is inserted.
+ *
+ * @param {Omit<tinkerforgeDTO, "date_modified"> & Partial<{ date_created: string }>} dto -
+ *        The sensor data transfer object to be upserted. If dto.date_created is not provided, a new sensor insertion
+ *        is assumed.
+ * @returns {Promise<void>} A promise that resolves when the upsert is complete.
+ *
+ * @throws {Error} If the upsert fails, an error is thrown with details.
+ * Possible Errors:
+ * - `MongoWriteException`: If the write fails due to a specific write exception.
+ * - `MongoWriteConcernException`: If the write fails due to being unable to fulfill the write concern.
+ * - `MongoCommandException`: If the write fails due to a specific command exception.
+ * - `MongoException`: If the write fails due to some other failure.
+ * - `ZodIssue`: If the sensorDTO validation fails due to schema issues.
+ */
+export async function upsertSensor(
+  dto: Omit<tinkerforgeDTO, "date_modified"> &
+    Partial<{ date_created: string }>,
+): Promise<void> {
+  try {
+    const client = await connectToDB();
+    const database = client.db("sensor_config");
+    const sensors = database.collection<tinkerforgeEntity>("TinkerforgeSensor");
+
+    // Create a new DTO with today's date for date_created only if not already given,
+    // and always update date_modified.
+    const updatedDTO: tinkerforgeDTO = {
+      ...dto,
+      date_created: dto.date_created
+        ? dto.date_created
+        : new Date().toISOString(),
+      date_modified: new Date().toISOString(),
+    };
+    // Convert the DTO to an entity
+    const candidate = convertToEntity(updatedDTO);
+
+    await sensors.replaceOne({ _id: candidate._id }, candidate, {
+      upsert: true,
+    });
+  } catch (error) {
+    throw error;
+  }
+}
+
+/**
  * Deletes a sensor from the database.
  *
  * @param {tinkerforgeDTO} sensorDTO - The sensor data transfer object containing the ID of the sensor to be deleted.
