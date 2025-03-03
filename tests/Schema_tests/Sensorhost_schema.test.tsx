@@ -80,3 +80,68 @@ describe("SensorHost SAD Validation", () => {
     });
   });
 });
+
+describe("SensorHost IPv4 Validation", () => {
+  const hostnameSchema = sensorHostEntitySchema.pick({ hostname: true });
+
+  it("should accept valid IPv4 addresses", () => {
+    const validIPv4 = [
+      "192.168.1.1",
+      "10.0.0.1",
+      "172.16.0.1",
+      "0.0.0.0",
+      "255.255.255.255",
+    ];
+
+    validIPv4.forEach((ip) => {
+      expect(() => hostnameSchema.parse({ hostname: ip })).not.toThrow();
+    });
+  });
+
+  // it("should reject invalid IPv4 addresses", () => {
+  //   const invalidIPv4 = [
+  //     "192.168.1",         // Incomplete
+  //     "192.168.1.256",     // Component > 255
+  //     "192.168.01.1",      // Leading zero
+  //     "192.168.1.1.5",     // Too many segments
+  //     "192.168.1.a"        // Non-numeric component
+  //   ];
+
+  //   invalidIPv4.forEach((ip) => {
+  //     expect(() => hostnameSchema.parse({ hostname: ip })).toThrow(z.ZodError);
+  //   });
+  // });
+});
+
+describe("SensorHost IPv6 Validation", () => {
+  const hostnameSchema = sensorHostEntitySchema.pick({ hostname: true });
+
+  it("should accept valid IPv6 addresses", () => {
+    const validIPv6 = [
+      "2001:0db8:85a3:0000:0000:8a2e:0370:7334", // Full format
+      "2001:db8:85a3:0:0:8a2e:370:7334", // Shortened (leading zeros removed)
+      "2001:db8:85a3::8a2e:370:7334", // Shortened (using ::)
+      "::1", // Localhost
+      "::", // Unspecified address
+      "fe80::1ff:fe23:4567:890a", // Link-local address
+    ];
+
+    validIPv6.forEach((ip) => {
+      expect(() => hostnameSchema.parse({ hostname: ip })).not.toThrow();
+    });
+  });
+
+  it("should reject invalid IPv6 addresses", () => {
+    const invalidIPv6 = [
+      "2001:0db8:85a3:0000:0000:8a2e:0370:7334:7334", // Too many segments
+      "2001:0db8:85a3:0000:0000:8a2e:0370:", // Incomplete
+      "2001:0db8:85a3:0000:0000:8a2e:0370:gggg", // Invalid hex
+      "2001::85a3::7334", // Multiple :: operators
+      ":::1", // Invalid syntax
+    ];
+
+    invalidIPv6.forEach((ip) => {
+      expect(() => hostnameSchema.parse({ hostname: ip })).toThrow(z.ZodError);
+    });
+  });
+});
