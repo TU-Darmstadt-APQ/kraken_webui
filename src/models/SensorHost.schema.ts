@@ -4,11 +4,29 @@ import { z } from "zod";
 // Defines the schema for a sensor host as used by the Mongo database
 export const sensorHostEntitySchema = z.object({
   _id: z.instanceof(UUID),
-  hostname: z.string().regex(
-    // TODO: This regex only validates hostnames. It does not validate IPv4 and fails for IPv6.
-    /^((?=.{1,255}$)[0-9A-Za-z](?:(?:[0-9A-Za-z]|-){0,61}[0-9A-Za-z])?(?:\.[0-9A-Za-z](?:(?:[0-9A-Za-z]|-){0,61}[0-9A-Za-z])?)*\.?)$/,
-    "Invalid hostname format",
-  ),
+  hostname: z.union([
+    // Hostname validation
+    z
+      .string()
+      .regex(
+        /^(?=.{1,255}$)([0-9A-Za-z](?:(?:[0-9A-Za-z]|-){0,61}[0-9A-Za-z])?(?:\.[0-9A-Za-z](?:(?:[0-9A-Za-z]|-){0,61}[0-9A-Za-z])?)*\.?)$/,
+        "Invalid hostname format",
+      ),
+    // IPv4 validation
+    z
+      .string()
+      .regex(
+        /^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/,
+        "Invalid IPv4 address",
+      ),
+    // IPv6 validation
+    z
+      .string()
+      .regex(
+        /^(?:(?:[0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}|(?:[0-9a-fA-F]{1,4}:){1,7}:|(?:[0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|(?:[0-9a-fA-F]{1,4}:){1,5}(?::[0-9a-fA-F]{1,4}){1,2}|(?:[0-9a-fA-F]{1,4}:){1,4}(?::[0-9a-fA-F]{1,4}){1,3}|(?:[0-9a-fA-F]{1,4}:){1,3}(?::[0-9a-fA-F]{1,4}){1,4}|(?:[0-9a-fA-F]{1,4}:){1,2}(?::[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:(?::[0-9a-fA-F]{1,4}){1,6}|:(?:(?::[0-9a-fA-F]{1,4}){1,7}|:))$/,
+        "Invalid IPv6 address",
+      ),
+  ]),
   port: z.number().int().min(1).max(65535),
   pad: z.union([z.number().int().min(1).max(30), z.null()]), // GPIB primary address see http://www.ni.com/pdf/manuals/370428c.pdf, p. A-2 for details
   sad: z.union([z.literal(0), z.number().int().min(0x60).max(0x7e), z.null()]), // GPIB secondary address
