@@ -33,7 +33,7 @@
     "@types/react-window": "^1.8.8",
     "eslint": "^9.21.0",
     "eslint-config-next": "15.1.7",
-    "eslint-config-prettier": "^10.0.1",
+    "eslint-config-prettier": "^10.0.2",
     "eslint-plugin-jest": "^28.11.0",
     "eslint-plugin-react": "^7.37.4",
     "globals": "^16.0.0",
