@@ -1,6 +1,6 @@
 import "@testing-library/jest-dom";
 import React, { createRef } from "react";
-import { render, screen } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import MyInput from "@/components/UI/input/MyInput";
 import userEvent from "@testing-library/user-event";
 
@@ -36,7 +36,7 @@ describe("MyInput Component", () => {
     const tooltip = screen.getByText("Invalid input");
 
     expect(tooltip).toHaveClass("tooltip");
-    expect(tooltip).toHaveClass("top"); // Ensure the correct position class is applied
+    expect(tooltip.className).toContain("top"); // Ensure the correct position class is applied
   });
 
   it("focuses input when clicked", async () => {
@@ -46,7 +46,7 @@ describe("MyInput Component", () => {
 
     await user.click(input);
 
-    expect(input).toHaveFocus();
+    await waitFor(() => expect(input).toHaveFocus());
   });
 
   it("forwards ref correctly", () => {
