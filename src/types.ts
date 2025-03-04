@@ -110,7 +110,7 @@ export function convertPostToDTO(post: Post): tinkerforgeDTO {
     enabled: post.enabled || false,
     label: post.label,
     description: post.description || null,
-    uid: 0,
+    uid: post.uid,
     config: {
       "": {
         description: "",
