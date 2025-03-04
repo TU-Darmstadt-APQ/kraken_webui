@@ -110,7 +110,6 @@ const TableItem: React.FC<TableItemProps> = ({
         <div className={styles.cell}>{post.on_connect}</div>
       )} */}
 
-
       {/* Edit button and delete button with callback */}
       <div className={styles.cell}>
         <MyButton
