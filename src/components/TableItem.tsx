@@ -69,7 +69,12 @@ const TableItem: React.FC<TableItemProps> = ({
     <div className={`${styles.row}`}>
       {/* Displaying properties of the `post` object */}
       {selectedColumns.uuid && <div className={styles.cell}>{post.id}</div>}
-      {selectedColumns.label && <div className={styles.cell}>{post.label}</div>}
+      {selectedColumns.date_created && (
+        <div className={styles.cell}>{post.date_created}</div>
+      )}
+      {selectedColumns.date_modified && (
+        <div className={styles.cell}>{post.date_modified}</div>
+      )}
       {selectedColumns.enabled && (
         <div className={styles.cell}>
           {post.enabled == true ? (
@@ -93,7 +98,11 @@ const TableItem: React.FC<TableItemProps> = ({
           ) : null}
         </div>
       )}
-
+      {selectedColumns.label && <div className={styles.cell}>{post.label}</div>}
+      {selectedColumns.description && (
+        <div className={styles.cell}>{post.description}</div>
+      )}
+      {selectedColumns.uid && <div className={styles.cell}>{post.uid}</div>}
       {selectedColumns.config && (
         <div className={styles.cell}>
           {post.config && Object.keys(post.config).length > 0 ? (
@@ -106,9 +115,9 @@ const TableItem: React.FC<TableItemProps> = ({
         </div>
       )}
 
-      {/* {selectedColumns.on_connect && (
-        <div className={styles.cell}>{post.on_connect}</div>
-      )} */}
+      {selectedColumns.on_connect && (
+        <div className={styles.cell}>{post.on_connect.length}</div>
+      )}
 
       {/* Edit button and delete button with callback */}
       <div className={styles.cell}>
