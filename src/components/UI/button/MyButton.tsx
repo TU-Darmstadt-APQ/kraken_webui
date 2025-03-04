@@ -14,10 +14,17 @@ import classes from "./MyButton.module.css";
  * (e.g., event handlers, attributes).
  * @returns {JSX.Element} A styled `<button>` element.
  */
-const MyButton: React.FC<MyButtonProps> = ({ children, ...props }) => {
+const MyButton: React.FC<MyButtonProps> = ({
+  children,
+  className = "",
+  ...props
+}) => {
   return (
     // Apply additional props and custom CSS styling to the <button> element
-    <button {...props} className={classes.myBtn}>
+    <button
+      {...props}
+      className={[classes.myBtn, className].filter(Boolean).join(" ")} // This line combines the default CSS module class with any additional className prop, filtering out falsy values and joining them into a single string
+    >
       {children}
     </button>
   );
