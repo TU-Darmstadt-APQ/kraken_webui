@@ -1,25 +1,22 @@
+import { Button } from "@nextui-org/react";
 import { MyButtonProps } from "@/types";
 import React from "react"; // Add import for React
-import classes from "./MyButton.module.css";
-
 /**
- * A customizable button component with specific CSS styling.
+ * A customizable button component using NextUI.
  *
- * This component enhances the native HTML `<button>` element by applying custom styles
- * and supporting additional props, making it flexible for various use cases.
+ * This component wraps the NextUI `<Button>` to provide a consistent look
+ * and support additional props.
  *
  * @component
- * @param {ReactNode} children - The content to display inside the button (e.g., text or icons).
- * @param {...any} props - Additional props passed directly to the native `<button>` element
- * (e.g., event handlers, attributes).
- * @returns {JSX.Element} A styled `<button>` element.
+ * @param {ReactNode} children - The content inside the button (e.g., text or icons).
+ * @param {...any} props - Additional props for customization (e.g., `color`, `variant`).
+ * @returns {JSX.Element} A styled `<Button>` element from NextUI.
  */
 const MyButton: React.FC<MyButtonProps> = ({ children, ...props }) => {
   return (
-    // Apply additional props and custom CSS styling to the <button> element
-    <button {...props} className={classes.myBtn}>
+    <Button color="primary" variant="bordered" {...props}>
       {children}
-    </button>
+    </Button>
   );
 };
 

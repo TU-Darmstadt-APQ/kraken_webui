@@ -1,5 +1,6 @@
 import "@/globals.css";
 import type { Metadata } from "next";
+import { NextUIProvider } from "@nextui-org/react";
 import React from "react"; // Add import for React
 import localFont from "next/font/local";
 
@@ -29,7 +30,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <NextUIProvider>{children}</NextUIProvider>
       </body>
     </html>
   );

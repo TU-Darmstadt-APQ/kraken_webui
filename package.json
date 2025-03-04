@@ -11,6 +11,8 @@
     "test": "jest"
   },
   "dependencies": {
+    "@nextui-org/react": "^2.6.11",
+    "@react-aria/interactions": "^3.23.0",
     "bson": "^6.10.3",
     "mongodb": "^6.14.0",
     "next": "15.2.1",
