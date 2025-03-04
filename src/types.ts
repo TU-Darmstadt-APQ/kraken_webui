@@ -137,6 +137,7 @@ export function postKeyToTinkerforgeDTKey<K extends keyof Post>(
     description: "description",
     config: "config",
     on_connect: "on_connect",
+    uid: "uid",
     title: undefined,
     topic: undefined,
     unit: undefined,
