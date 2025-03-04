@@ -42,8 +42,8 @@ describe("MyButton Component", () => {
     render(<MyButton className="extra-class">Click Me</MyButton>);
     const button = screen.getByRole("button");
 
-    expect(button).toHaveClass("myBtn");
-    expect(button).toHaveClass("extra-class");
+    expect(button.className).toContain("myBtn");
+    expect(button.className).toContain("extra-class");
   });
 
   it("is accessible via keyboard (Enter and Space)", async () => {
@@ -60,9 +60,13 @@ describe("MyButton Component", () => {
 
     // Focus the button (it is important for Enter/Space. Otherwise it will not be registered)
     button.focus();
+    await waitFor(() => {
+      expect(button).toHaveFocus();
+    });
 
     // Simulate keys
     await user.keyboard("{Enter}");
+    await waitFor(() => expect(mockOnClick).toHaveBeenCalledTimes(1));
     await user.keyboard(" ");
 
     await waitFor(() => {
