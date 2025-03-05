@@ -35,6 +35,8 @@ const ModalWindow: React.FC<ModalWindowProps> = ({
     <div
       className={rootClasses.join(" ")} // Combine classes into a single string
       onClick={() => setVisible(false)} // Close modal when clicking on the background
+      role="dialog" // for accessibility
+      aria-modal="true" // was recommended for accessibility
     >
       {/* Modal content */}
       <div
