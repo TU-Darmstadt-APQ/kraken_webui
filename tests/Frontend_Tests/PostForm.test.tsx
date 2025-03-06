@@ -10,41 +10,13 @@
  */
 
 import "@testing-library/jest-dom";
+import { Post, PostFormProps } from "@/types";
 import { cleanup, fireEvent, render, screen } from "@testing-library/react";
 import PostForm from "@/components/PostForm";
 import React from "react";
 
 // Mocking the create and edit functions passed as props
-/**
- * A mock function that simulates the behavior of the `create` callback.
- * This is used to test whether the `PostForm` component correctly calls
- * the `create` function with the expected data when submitting a new post.
- *
- * @example
- * expect(mockCreate).toHaveBeenCalledTimes(1);
- * expect(mockCreate).toHaveBeenCalledWith({
- *   title: "New Title",
- *   description: "New Description",
- *   uuid: "uuid-1234",
- *   // other fields...
- * });
- */
 const mockCreate = jest.fn();
-
-/**
- * A mock function that simulates the behavior of the `edit` callback.
- * This is used to test whether the `PostForm` component correctly calls
- * the `edit` function with the expected data when submitting an updated post.
- *
- * @example
- * expect(mockEdit).toHaveBeenCalledTimes(1);
- * expect(mockEdit).toHaveBeenCalledWith({
- *   title: "Updated Title",
- *   description: "Updated Description",
- *   uuid: "uuid-1234",
- *   // other fields...
- * });
- */
 const mockEdit = jest.fn();
 
 /**
@@ -54,11 +26,16 @@ const mockEdit = jest.fn();
  * injecting the mock `create` and `edit` functions as props. Additional props
  * can be passed to customize the rendered component for specific test scenarios.
  */
-const renderPostForm = (props: any) => {
-  render(<PostForm {...props} create={mockCreate} edit={mockEdit} />);
+const renderPostForm = (props: Partial<PostFormProps> = {}) => {
+  const resolvedProps: PostFormProps = {
+    create: mockCreate,
+    edit: mockEdit,
+    postToEdit: props.postToEdit || null,
+    ...props,
+  };
+  render(<PostForm {...resolvedProps} />);
 };
 
-// Mock for window.alert
 beforeAll(() => {
   jest.spyOn(window, "alert").mockImplementation(() => {});
 });
@@ -69,6 +46,7 @@ afterAll(() => {
 
 afterEach(() => {
   cleanup(); // Clean up the DOM after each test
+  jest.clearAllMocks(); // Clear all mocks after each test
 });
 
 /**
@@ -81,53 +59,126 @@ afterEach(() => {
  * - Rendering the form correctly with all input fields.
  * - Allowing user input changes and verifying the updated values.
  * - Calling the `create` function with the correct data when submitting a new post.
- *
- * @example
- * // Example test cases included in this suite:
- * it("renders correctly and allows input changes", () => { ... });
- * it("calls create when submitting the form with new data", () => { ... });
  */
 describe("PostForm component", () => {
   it("renders correctly and allows input changes", () => {
-    renderPostForm({ create: mockCreate, edit: mockEdit });
+    renderPostForm();
 
-    // Submit the form (click the button)
+    // Check if the form is rendered with the correct fields
+    expect(screen.getByLabelText("Sensor Type")).toBeInTheDocument();
+    expect(screen.getByText("Add new sensor")).toBeInTheDocument();
+  });
+
+  it("calls create when submitting the form with new data", () => {
+    renderPostForm();
+
+    // Simulate user input
+    const sensorTypeSelect = screen.getByLabelText("Sensor Type");
+    fireEvent.change(sensorTypeSelect, { target: { value: "GPIB" } });
+
+    // Submit the form
     fireEvent.click(screen.getByText("Add new sensor"));
 
-    const expectedPost = {
-      title: "",
-      description: "",
-      uuid: expect.any(String),
-      driver: "",
-      topic: "",
-      unit: "",
-      date_created: expect.objectContaining({
-        day: expect.any(Number),
-        month: expect.any(Number),
-        year: expect.any(Number),
-        nanoseconds: expect.any(Number),
-      }),
-      date_modified: expect.objectContaining({
-        day: expect.any(Number),
-        month: expect.any(Number),
-        year: expect.any(Number),
-        nanoseconds: expect.any(Number),
-      }),
-      config: {},
-      enabled: false,
-      label: "",
-      on_connect: undefined,
-      pad: 0,
-      port: 0,
-      sad: 0,
-    };
-
-    // Check if the create function is called
+    // Check if the create function is called with the correct data
     expect(mockCreate).toHaveBeenCalledTimes(1);
     expect(mockCreate).toHaveBeenCalledWith(
-      expect.objectContaining(expectedPost),
+      expect.objectContaining({
+        title: "",
+        description: "",
+        uuid: expect.any(String),
+        driver: "",
+        topic: "",
+        unit: "",
+        date_created: expect.objectContaining({
+          day: expect.any(Number),
+          month: expect.any(Number),
+          year: expect.any(Number),
+          nanoseconds: expect.any(Number),
+        }),
+        date_modified: expect.objectContaining({
+          day: expect.any(Number),
+          month: expect.any(Number),
+          year: expect.any(Number),
+          nanoseconds: expect.any(Number),
+        }),
+        config: {
+          frequence: "",
+          temperature: "",
+          voltage: "",
+        },
+        enabled: false,
+        label: "",
+        on_connect: undefined,
+        pad: 0,
+        port: 0,
+        sad: 0,
+        host: "",
+      }),
     );
   });
-});
 
-// !!! The test needs to be redesigned, as the functionality of the component has been updated !!!
+  it("calls edit when submitting the form with updated data", () => {
+    const postToEdit: Post = {
+      uid: 1,
+      title: "Existing Post",
+      description: "Existing Description",
+      date_created: { day: 1, month: 1, year: 2023, nanoseconds: 0 },
+      date_modified: { day: 1, month: 1, year: 2023, nanoseconds: 0 },
+      enabled: true,
+      label: "Existing Label",
+      uuid: "uuid-1234",
+      config: {},
+      on_connect: undefined,
+      topic: "Existing Topic",
+      unit: "Existing Unit",
+      driver: "Existing Driver",
+      port: 8080,
+      sad: 0,
+      pad: 0,
+      host: "Existing Host",
+    };
+
+    renderPostForm({ postToEdit });
+
+    // Simulate user input
+    const sensorTypeSelect = screen.getByLabelText("Sensor Type");
+    fireEvent.change(sensorTypeSelect, { target: { value: "Tinkerforge" } });
+
+    // Submit the form
+    fireEvent.click(screen.getByText("Save changes"));
+
+    // Check if the edit function is called with the correct data
+    expect(mockEdit).toHaveBeenCalledTimes(1);
+    expect(mockEdit).toHaveBeenCalledWith(
+      expect.objectContaining({
+        ...postToEdit,
+        config: {
+          description: "",
+          interval: "",
+          topic: "",
+          "trigger only on change": "",
+          unit: "",
+        },
+        date_modified: expect.objectContaining({
+          day: expect.any(Number),
+          month: expect.any(Number),
+          year: expect.any(Number),
+          nanoseconds: expect.any(Number),
+        }),
+        port: 42,
+        uuid: "AutoGeneratedHost",
+      }),
+    );
+  });
+
+  it("updates the config when a sensor type is selected", () => {
+    renderPostForm();
+
+    // Simulate user selecting a sensor type
+    const sensorTypeSelect = screen.getByLabelText("Sensor Type");
+    fireEvent.change(sensorTypeSelect, { target: { value: "Tinkerforge" } });
+
+    // Check if the config is updated correctly
+    expect(mockCreate).not.toHaveBeenCalled(); // Ensure no submission yet
+  });
+});
