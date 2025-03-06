@@ -157,7 +157,7 @@ function tinkerforgeDTKeyToPostKey<K extends keyof tinkerforgeDTO>(
   const mapping: Record<keyof tinkerforgeDTO, keyof Post | undefined> = {
     id: "uuid",
     label: "label",
-    uid: "uuid",
+    uid: "uid",
     date_created: "date_created",
     date_modified: "date_modified",
     enabled: "enabled",
