@@ -112,7 +112,6 @@ export async function upsertSensor(
     const existingSensor = await sensors.findOne({ _id: new UUID(dto.id) });
     
     if (existingSensor) {
-      // UPDATING an existing sensor: don't modify date_created at all
       
       // Create DTO without date_created field (we don't want to touch it)
       const updatedDTO: tinkerforgeDTO = {
