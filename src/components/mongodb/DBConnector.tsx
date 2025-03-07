@@ -1,9 +1,9 @@
+import { MongoClient, UUID } from "mongodb";
 import {
   convertToEntity,
   tinkerforgeDTO,
   tinkerforgeEntity,
 } from "@/models/zTinkerforgeSensor.schema";
-import { MongoClient } from "mongodb";
 import { config } from "@/../config";
 
 // Cache the db client and promise (to create one) so that (hot) reloading will reuse the connection
