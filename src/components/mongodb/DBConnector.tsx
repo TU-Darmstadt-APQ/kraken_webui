@@ -108,21 +108,51 @@ export async function upsertSensor(
     const database = client.db("sensor_config");
     const sensors = database.collection<tinkerforgeEntity>("TinkerforgeSensor");
 
-    // Create a new DTO with today's date for date_created only if not already given,
-    // and always update date_modified.
-    const updatedDTO: tinkerforgeDTO = {
-      ...dto,
-      date_created: dto.date_created
-        ? dto.date_created
-        : new Date().toISOString(),
-      date_modified: new Date().toISOString(),
-    };
-    // Convert the DTO to an entity
-    const candidate = convertToEntity(updatedDTO);
+    // Check if the sensor already exists
+    const existingSensor = await sensors.findOne({ _id: new UUID(dto.id) });
 
-    await sensors.replaceOne({ _id: candidate._id }, candidate, {
-      upsert: true,
-    });
+    if (existingSensor) {
+      // Create DTO without date_created field (we don't want to touch it)
+      const updatedDTO: tinkerforgeDTO = {
+        ...dto,
+        date_created: existingSensor.date_created.toISOString(), // Use the one from DB
+        date_modified: new Date().toISOString(),
+      };
+
+      // Convert to entity
+      const candidate = convertToEntity(updatedDTO);
+
+      // When updating, use $set to avoid modifying fields we don't specify
+      await sensors.updateOne(
+        { _id: candidate._id },
+        {
+          $set: {
+            // List all fields except date_created
+            date_modified: candidate.date_modified,
+            enabled: candidate.enabled,
+            label: candidate.label,
+            description: candidate.description,
+            uid: candidate.uid,
+            config: candidate.config,
+            on_connect: candidate.on_connect,
+            // Intentionally omitting date_created
+          },
+        },
+      );
+    } else {
+      // CREATING a new sensor: set date_created
+      const newDTO: tinkerforgeDTO = {
+        ...dto,
+        date_created: new Date().toISOString(),
+        date_modified: new Date().toISOString(),
+      };
+
+      // Convert to entity
+      const candidate = convertToEntity(newDTO);
+
+      // Insert the new document
+      await sensors.insertOne(candidate);
+    }
   } catch (error) {
     throw error;
   }
