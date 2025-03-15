@@ -53,13 +53,14 @@ const PostList: React.FC<PostListProps> = ({
 
   const [selectedColumns, setSelectedColumns] = useState({
     uuid: true,
-    label: false,
+    date_created: true,
+    date_modified: true,
     enabled: true,
-    topic: false,
-    driver: false,
-    config: true,
-    on_connect: false,
+    label: true,
+    description: true,
     uid: true,
+    config: true,
+    on_connect: true,
   });
 
   // Determining the height of a line
@@ -116,21 +117,26 @@ const PostList: React.FC<PostListProps> = ({
           {/* Header */}
           <div className={`${styles.heading}`}>
             {selectedColumns.uuid && <div className={styles.cell}>UUID</div>}
-            {selectedColumns.label && <div className={styles.cell}>Label</div>}
+            {selectedColumns.date_created && (
+              <div className={styles.cell}>Date created</div>
+            )}
+            {selectedColumns.date_modified && (
+              <div className={styles.cell}>Date modified</div>
+            )}
             {selectedColumns.enabled && (
               <div className={styles.cell}>Enabled</div>
             )}
-            {selectedColumns.topic && <div className={styles.cell}>Topic</div>}
-            {selectedColumns.driver && (
-              <div className={styles.cell}>Driver</div>
+            {selectedColumns.label && <div className={styles.cell}>Label</div>}
+            {selectedColumns.description && (
+              <div className={styles.cell}>Description</div>
             )}
+            {selectedColumns.uid && <div className={styles.cell}>UID</div>}
             {selectedColumns.config && (
               <div className={styles.cell}>Config</div>
             )}
             {selectedColumns.on_connect && (
               <div className={styles.cell}>On Connect</div>
             )}
-            {selectedColumns.uid && <div className={styles.cell}>UID</div>}
             {isAnyColumnSelected && <div className={styles.cell}>Actions</div>}
           </div>
 
