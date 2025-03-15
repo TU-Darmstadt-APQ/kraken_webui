@@ -2,6 +2,10 @@
 
 An open source web ui to configure sensors with a gui and displaying the existing configuration. This project uses Next.js in order to leverage the advantages of React.
 
+# Documentation
+
+For detailed documentation—including project and Docker installation, usage, app architecture, and more—please visit our documentation website https://tu-darmstadt-apq.github.io/kraken_webui/.
+
 # How to Install and Run Kraken Web UI
 
 - Clone the repository
@@ -18,14 +22,6 @@ An open source web ui to configure sensors with a gui and displaying the existin
 
 - Open the app in your browser
   `http://localhost:3000`
-
-# How to Use Kraken Web UI
-
-Coming soon...
-
-# Documentation
-
-For detailed documentation, please visit our Documentation website https://tu-darmstadt-apq.github.io/kraken_webui/
 
 # CI/CD
 
