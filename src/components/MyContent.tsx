@@ -46,7 +46,7 @@ const MyContent: React.FC<MyContentProps> = ({
               postToEdit={postToEdit}
             ></PostList>
           ) : (
-            <TreeComponent />
+            <TreeComponent sensors={sortedAndSearchedPosts} />
           )}
         </div>
       </div>
