@@ -1,8 +1,8 @@
 import { DateType } from "@/types";
-import { Post } from "../types";
+import { tinkerforgeDTO } from "@/models/zTinkerforgeSensor.schema";
 import { useMemo } from "react";
 
-type SortKey = keyof Post;
+type SortKey = keyof tinkerforgeDTO;
 
 // the method converts DataType into a string
 export const formatDate = (date: DateType): string => {
@@ -11,7 +11,7 @@ export const formatDate = (date: DateType): string => {
 };
 
 // the method filter boolean
-export const filterBoolean = (query: string, post: Post): boolean => {
+const filterBoolean = (query: string, post: tinkerforgeDTO): boolean => {
   const normalizedQuery = query.toLowerCase().trim();
 
   if (["on", "enabled", "true"].includes(normalizedQuery)) {
@@ -90,7 +90,10 @@ export const compareDates = (
 };
 
 // Custom Hook: All custom hooks use predefined hooks from React (useState, useMemo etc)
-export const useSortedPosts = (posts: Post[], sort: SortKey | ""): Post[] => {
+export const useSortedPosts = (
+  posts: tinkerforgeDTO[],
+  sort: SortKey | "",
+): tinkerforgeDTO[] => {
   const sortedPosts = useMemo(() => {
     if (sort) {
       return [...posts].sort((a, b) => {
@@ -148,10 +151,10 @@ export const useSortedPosts = (posts: Post[], sort: SortKey | ""): Post[] => {
 };
 
 export const usePosts = (
-  posts: Post[],
+  posts: tinkerforgeDTO[],
   sort: SortKey | "",
   query: string,
-  searchField: keyof Post | "all",
+  searchField: keyof tinkerforgeDTO | "all",
 ) => {
   const sortedPosts = useSortedPosts(posts, sort);
 

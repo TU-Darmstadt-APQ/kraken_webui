@@ -12,8 +12,8 @@
 
 import { fireEvent, render, screen } from "@testing-library/react";
 import MyHeader from "@/components/UI/header/MyHeader";
-import { Post } from "@/types";
 import React from "react";
+import { tinkerforgeDTO } from "@/models/zTinkerforgeSensor.schema";
 
 describe("MyHeader Integration Test", () => {
   it("updates filter when typing in MyInput and selecting MySelect", () => {
@@ -23,8 +23,8 @@ describe("MyHeader Integration Test", () => {
     // Ensure the filter object matches the Filter interface
     const filter = {
       query: "",
-      sort: "title" as keyof Post, // Ensure sort is a valid key of Post
-      searchField: "all" as keyof Post | "all", // Ensure searchField is a valid key of Post or "all"
+      sort: "title" as keyof tinkerforgeDTO, // Ensure sort is a valid key of Post
+      searchField: "all" as keyof tinkerforgeDTO | "all", // Ensure searchField is a valid key of Post or "all"
     };
 
     render(

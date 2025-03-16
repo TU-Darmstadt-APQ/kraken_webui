@@ -1,6 +1,6 @@
-import { TableItemProps, convertPostToDTO } from "@/types";
 import MyButton from "./UI/button/MyButton";
 import React from "react";
+import { TableItemProps } from "@/types";
 import { deleteSensorAction } from "@/actions/action_deleteSensors";
 import styles from "@/styles/TableItem.module.css";
 
@@ -8,7 +8,7 @@ import styles from "@/styles/TableItem.module.css";
  * A component representing a single table row with data and action buttons.
  *
  * @component
- * @param {Post} post - The data object for the table row.
+ * @param {tinkerforgeDTO} post - The data object for the table row.
  * @param {(post: Post) => void} props.remove - Callback to handle the removal of a row.
  * @param {(post: Post) => void} edit - Callback function to edit the post.
  * @param {Object} selectedColumns - An object where keys represent column names, and values are booleans indicating if the column is visible.
@@ -56,7 +56,7 @@ const TableItem: React.FC<TableItemProps> = ({
   if (!isRowVisible) return null; // we check if minimum one is true
 
   const deleteSensorHandler = async () => {
-    const result = await deleteSensorAction(convertPostToDTO(post));
+    const result = await deleteSensorAction(post);
     if (result.success) {
       alert(result.message);
       remove(post);
@@ -68,8 +68,13 @@ const TableItem: React.FC<TableItemProps> = ({
   return (
     <div className={`${styles.row}`}>
       {/* Displaying properties of the `post` object */}
-      {selectedColumns.uuid && <div className={styles.cell}>{post.uuid}</div>}
-      {selectedColumns.label && <div className={styles.cell}>{post.label}</div>}
+      {selectedColumns.uuid && <div className={styles.cell}>{post.id}</div>}
+      {selectedColumns.date_created && (
+        <div className={styles.cell}>{post.date_created}</div>
+      )}
+      {selectedColumns.date_modified && (
+        <div className={styles.cell}>{post.date_modified}</div>
+      )}
       {selectedColumns.enabled && (
         <div className={styles.cell}>
           {post.enabled == true ? (
@@ -93,11 +98,11 @@ const TableItem: React.FC<TableItemProps> = ({
           ) : null}
         </div>
       )}
-      {selectedColumns.topic && <div className={styles.cell}>{post.topic}</div>}
-      {selectedColumns.driver && (
-        <div className={styles.cell}>{post.driver}</div>
+      {selectedColumns.label && <div className={styles.cell}>{post.label}</div>}
+      {selectedColumns.description && (
+        <div className={styles.cell}>{post.description}</div>
       )}
-
+      {selectedColumns.uid && <div className={styles.cell}>{post.uid}</div>}
       {selectedColumns.config && (
         <div className={styles.cell}>
           {post.config && Object.keys(post.config).length > 0 ? (
@@ -111,17 +116,8 @@ const TableItem: React.FC<TableItemProps> = ({
       )}
 
       {selectedColumns.on_connect && (
-        <div className={styles.cell}>
-          {post.on_connect && post.on_connect.length > 0 ? (
-            <pre style={{ whiteSpace: "pre-wrap", wordWrap: "break-word" }}>
-              {JSON.stringify(post.on_connect, null, 2)}
-            </pre>
-          ) : (
-            "No connection data available"
-          )}
-        </div>
+        <div className={styles.cell}>{post.on_connect.length}</div>
       )}
-      {selectedColumns.uid && <div className={styles.cell}>{post.uid}</div>}
 
       {/* Edit button and delete button with callback */}
       <div className={styles.cell}>
