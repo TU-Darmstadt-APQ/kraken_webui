@@ -1,5 +1,5 @@
-import { InputRowProps, Post } from "@/types";
 import React, { useState } from "react";
+import { InputRowProps } from "@/types";
 
 import ModalWindow from "../UI/ModalWindow/ModalWindow";
 import MyButton from "../UI/button/MyButton";
@@ -9,6 +9,7 @@ import MyInput from "../UI/input/MyInput";
 import MyToggle from "../UI/toggle/MyToggle";
 import PostForm from "../PostForm";
 import styles from "@/styles/TableItem.module.css";
+import { tinkerforgeDTO } from "@/models/zTinkerforgeSensor.schema";
 import { v4 as uuidv4 } from "uuid";
 
 /**
@@ -52,66 +53,44 @@ const InputRow: React.FC<InputRowProps> = ({
   if (!visible) return null;
 
   // Helper function to generate the current date
-  const getCurrentDate = () => {
-    const currentDate = new Date();
-    return {
-      day: currentDate.getDate(),
-      month: currentDate.getMonth() + 1, // Months are 0-indexed
-      year: currentDate.getFullYear(),
-      nanoseconds: currentDate.getMilliseconds() * 1e6, // Milliseconds to nanoseconds
-    };
+  const getCurrentDateISOString = (): string => {
+    return new Date().toISOString();
   };
 
-  const defaultPost: Post = {
+  const defaultPost: tinkerforgeDTO = {
+    id: "",
     uid: 0,
-    title: "",
     description: "",
-    date_created: getCurrentDate(),
-    date_modified: getCurrentDate(),
+    date_created: getCurrentDateISOString(),
+    date_modified: getCurrentDateISOString(),
     enabled: false,
     label: "",
-    uuid: "",
     config: {},
-    on_connect: undefined,
-    topic: "",
-    unit: "",
-    driver: "",
-    port: 0,
-    sad: 0,
-    pad: 0,
-    host: "",
+    on_connect: [],
   };
 
   // State for managing the input values of the form
-  const [post, setPost] = useState<Post>(postToEdit || defaultPost);
+  const [post, setPost] = useState<tinkerforgeDTO>(postToEdit || defaultPost);
 
   const [modalVisible, setModalVisible] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     if (postToEdit) {
-      edit({ ...post, date_modified: getCurrentDate() });
+      edit({ ...post, date_modified: getCurrentDateISOString() });
     } else {
-      createPost({ ...post, uuid: uuidv4() }); // Generate a unique ID based on the current timestamp
+      createPost({ ...post, id: uuidv4() }); // Generate a unique ID based on the current timestamp
     }
 
     setPost({
+      id: "",
       uid: 0,
-      title: "",
       description: "",
-      date_created: getCurrentDate(),
-      date_modified: getCurrentDate(),
+      date_created: getCurrentDateISOString(),
+      date_modified: getCurrentDateISOString(),
       enabled: false,
       label: "",
-      uuid: "",
       config: {},
-      on_connect: undefined,
-      topic: "",
-      unit: "",
-      driver: "",
-      port: 0,
-      sad: 0,
-      pad: 0,
-      host: "",
+      on_connect: [],
     }); // After inserting Element, we empty InputFields
   };
 
@@ -121,8 +100,8 @@ const InputRow: React.FC<InputRowProps> = ({
       {selectedColumns.uuid && (
         <div className={styles.cell}>
           <MyInput
-            value={post.uuid}
-            onChange={(e) => setPost({ ...post, uuid: e.target.value })}
+            value={post.id}
+            onChange={(e) => setPost({ ...post, id: e.target.value })}
             type="text"
             placeholder="UUID"
           />
@@ -176,26 +155,6 @@ const InputRow: React.FC<InputRowProps> = ({
           />
         </div>
       )}
-      {selectedColumns.topic && (
-        <div className={styles.cell}>
-          <MyInput
-            value={post.topic}
-            onChange={(e) => setPost({ ...post, topic: e.target.value })}
-            type="text"
-            placeholder="Topic"
-          />
-        </div>
-      )}
-      {selectedColumns.driver && (
-        <div className={styles.cell}>
-          <MyInput
-            value={post.driver}
-            onChange={(e) => setPost({ ...post, driver: e.target.value })}
-            type="text"
-            placeholder="Driver"
-          />
-        </div>
-      )}
 
       {selectedColumns.config && (
         <div className={styles.cell}>
@@ -223,8 +182,24 @@ const InputRow: React.FC<InputRowProps> = ({
       {selectedColumns.on_connect && (
         <div className={styles.cell}>
           <MyInput
-            value={post.on_connect}
-            onChange={(e) => setPost({ ...post, on_connect: e.target.value })}
+            value={
+              Array.isArray(post.on_connect)
+                ? JSON.stringify(post.on_connect)
+                : JSON.stringify([
+                    {
+                      function: post.on_connect,
+                      args: [],
+                      kwargs: {},
+                      timeout: null,
+                    },
+                  ])
+            }
+            onChange={(e) =>
+              setPost({
+                ...post,
+                on_connect: JSON.parse(e.target.value), // Convert String to array
+              })
+            }
             type="text"
             placeholder="On Connect"
           />
@@ -247,23 +222,15 @@ const InputRow: React.FC<InputRowProps> = ({
           onClick={() => {
             setVisible(false);
             setPost({
+              id: "",
               uid: 0,
-              title: "",
               description: "",
-              date_created: getCurrentDate(),
-              date_modified: getCurrentDate(),
+              date_created: getCurrentDateISOString(),
+              date_modified: getCurrentDateISOString(),
               enabled: false,
               label: "",
-              uuid: "",
               config: {},
-              on_connect: undefined,
-              topic: "",
-              unit: "",
-              driver: "",
-              port: 0,
-              sad: 0,
-              pad: 0,
-              host: "",
+              on_connect: [],
             }); // After canceling the addition or editing - empty all the fields
           }}
           className="list-button"

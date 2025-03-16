@@ -1,5 +1,4 @@
-import { DateType, convertDTOToPost, convertPostToDTO } from "@/types";
-import { Post } from "../types";
+import { DateType } from "@/types";
 import { tinkerforgeDTO } from "@/models/zTinkerforgeSensor.schema";
 import { useMemo } from "react";
 
@@ -12,7 +11,7 @@ const formatDate = (date: DateType): string => {
 };
 
 // the method filter boolean
-const filterBoolean = (query: string, post: Post): boolean => {
+const filterBoolean = (query: string, post: tinkerforgeDTO): boolean => {
   const normalizedQuery = query.toLowerCase().trim();
 
   if (["on", "enabled", "true"].includes(normalizedQuery)) {
@@ -155,12 +154,12 @@ export const useSortedPosts = (
 };
 
 export const usePosts = (
-  posts: Post[],
+  posts: tinkerforgeDTO[],
   sort: SortKey | "",
   query: string,
-  searchField: keyof Post | "all",
+  searchField: keyof tinkerforgeDTO | "all",
 ) => {
-  const sortedPosts = useSortedPosts(posts.map(convertPostToDTO), sort);
+  const sortedPosts = useSortedPosts(posts, sort);
 
   // To make the search register-independent, it was "toLowerCase" for titles implemented
   const sortedAndSearchedPosts = useMemo(() => {
@@ -190,13 +189,13 @@ export const usePosts = (
             }*/
           // identificate Enabled-status
           if (typeof value === "boolean") {
-            return filterBoolean(query, convertDTOToPost(post));
+            return filterBoolean(query, post);
           }
           return false;
         });
       }
 
-      const fieldValue = convertDTOToPost(post)[searchField];
+      const fieldValue = post[searchField];
       // If the fieldValue is of type DateType
       if (
         typeof fieldValue === "object" &&
@@ -214,7 +213,7 @@ export const usePosts = (
           return isTextInConfig(fieldValue, query);
         }*/
       if (typeof fieldValue === "boolean") {
-        return filterBoolean(query, convertDTOToPost(post));
+        return filterBoolean(query, post);
       }
       if (typeof fieldValue === "string" || typeof fieldValue === "number") {
         return fieldValue
