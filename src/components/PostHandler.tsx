@@ -56,6 +56,7 @@ function PostHandler({ sensors }: { sensors: tinkerforgeDTO[] }) {
       let date = new Date();
 
       const newPost: Post = {
+        uid: 0,
         title: `Generated Title ${startingId + i}`,
         description: `Generated Description for Post ${startingId + i}`,
         date_created: {
@@ -169,7 +170,7 @@ function PostHandler({ sensors }: { sensors: tinkerforgeDTO[] }) {
    * @param {Post} newPost - The new post to add to the list.
    */
   const createPost = (newPost: Post) => {
-    setPosts([...posts, newPost]);
+    setPosts([newPost, ...posts]);
     setModal(false);
   };
 
@@ -204,8 +205,8 @@ function PostHandler({ sensors }: { sensors: tinkerforgeDTO[] }) {
       />
 
       <MyContent
-        modal={modal}
-        setModal={setModal}
+        inputRow={modal}
+        setInputRow={setModal}
         sortedAndSearchedPosts={sortedAndSearchedPosts}
         createPost={createPost}
         removePost={removePost}

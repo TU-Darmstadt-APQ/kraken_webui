@@ -1,0 +1,43 @@
+{
+  "_id": { "$uuid": "f47ac10b-58cc-4372-a567-0e02b2c3d479" },
+  "date_created": { "$date": "2025-01-01T00:00:00.000Z" },
+  "date_modified": { "$date": "2025-01-01T00:00:00.000Z" },
+  "enabled": false,
+  "label": "A dummy GPIB device",
+  "description": "",
+  "host": { "$uuid": "aa0af02c-9eb5-4d15-bca1-63aa057da848" },
+  "driver": "generic_scpi2",
+  "interval": 2,
+  "on_connect": [
+    {
+      "function": "write",
+      "args": ["SYSTem:BEEPer"],
+      "kwargs": {},
+      "timeout": null
+    },
+    {
+      "function": "write",
+      "args": [":SENSe:FUNCtion \"VOLTage:DC\""],
+      "kwargs": {},
+      "timeout": null
+    }
+  ],
+  "on_read": {
+    "function": "query_number",
+    "args": [":READ?"],
+    "kwargs": {},
+    "timeout": null
+  },
+  "on_after_read": [],
+  "on_disconnect": [
+    {
+      "function": "write",
+      "args": [":DISPlay:LIGHt:STATe ON100"],
+      "kwargs": {},
+      "timeout": null
+    },
+    { "function": "write", "args": ["logout"], "kwargs": {}, "timeout": null }
+  ],
+  "topic": "sensors/voltage",
+  "unit": "V"
+}

@@ -2,7 +2,6 @@ import { Post, PostFormProps } from "@/types";
 import React, { useState } from "react";
 import ConfigEditorModal from "./UI/ConfigEditorModal";
 import MyButton from "./UI/button/MyButton";
-import MyInput from "./UI/input/MyInput";
 import { v4 as uuidv4 } from "uuid";
 
 const sensorTypes = [
@@ -17,8 +16,11 @@ const sensorTypes = [
   {
     name: "Tinkerforge",
     configFields: [
-      { key: "freq", required: true },
-      { key: "cel", required: true },
+      { key: "interval", required: true },
+      { key: "trigger only on change", required: true },
+      { key: "description", required: true },
+      { key: "topic", required: true },
+      { key: "unit", required: true },
     ],
   },
 ];
@@ -62,6 +64,7 @@ const PostForm: React.FC<PostFormProps> = ({ create, edit, postToEdit }) => {
   };
 
   const defaultPost: Post = {
+    uid: 0,
     title: "",
     description: "",
     date_created: getCurrentDate(),
@@ -125,7 +128,7 @@ const PostForm: React.FC<PostFormProps> = ({ create, edit, postToEdit }) => {
     e.preventDefault(); // So that the page does not refresh after pressing the button
 
     // Check for required fields
-    if (!post.driver.trim()) {
+    /*if (!post.driver.trim()) {
       alert("The `driver` must not be empty.");
       return;
     }
@@ -136,7 +139,7 @@ const PostForm: React.FC<PostFormProps> = ({ create, edit, postToEdit }) => {
     if (!post.unit.trim()) {
       alert("The `unit` must not be empty.");
       return;
-    }
+    }*/
 
     // We change the state indirectly. We create a new array where we write our old one. And at the end comes the new element
 
@@ -147,6 +150,7 @@ const PostForm: React.FC<PostFormProps> = ({ create, edit, postToEdit }) => {
     }
 
     setPost({
+      uid: 0,
       title: "",
       description: "",
       date_created: getCurrentDate(),
@@ -196,62 +200,11 @@ const PostForm: React.FC<PostFormProps> = ({ create, edit, postToEdit }) => {
         ))}
       </select>
 
-      {/* Topic and Unit */}
-      <div style={{ display: "flex", gap: "10px" }}>
-        <div style={{ flex: 1 }}>
-          <MyInput
-            value={post.topic}
-            onChange={(e) => setPost({ ...post, topic: e.target.value })}
-            type="text"
-            placeholder="Topic"
-          />
-        </div>
-        <div style={{ flex: 1 }}>
-          <MyInput
-            value={post.unit}
-            onChange={(e) => setPost({ ...post, unit: e.target.value })}
-            type="text"
-            placeholder="Unit"
-          />
-        </div>
-      </div>
-
-      {/* Description */}
-      <MyInput
-        value={post.description}
-        onChange={(e) => setPost({ ...post, description: e.target.value })}
-        type="text"
-        placeholder="Description"
-      />
-
-      {/* Host, Port, Driver */}
-      <div style={{ display: "flex", gap: "10px" }}>
-        <MyInput
-          value={post.host}
-          onChange={(e) => setPost({ ...post, host: e.target.value })}
-          type="text"
-          placeholder="Host"
-          disabled={selectedSensorType === "Tinkerforge"}
-        />
-        <MyInput
-          value={post.port}
-          onChange={(e) => setPost({ ...post, port: parseInt(e.target.value) })}
-          type="number"
-          placeholder="Port"
-          disabled={selectedSensorType === "Tinkerforge"}
-        />
-        <MyInput
-          value={post.driver}
-          onChange={(e) => setPost({ ...post, driver: e.target.value })}
-          type="text"
-          placeholder="Driver"
-        />
-      </div>
-
       {/* For editing the configuration */}
       <ConfigEditorModal
         config={post.config || {}} // If no Config exists, an empty object is provided
         setConfig={(newConfig) => setPost({ ...post, config: newConfig })}
+        selectedSensorType={selectedSensorType}
       />
 
       <MyButton onClick={handleSubmit}>

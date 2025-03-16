@@ -1,23 +1,16 @@
+import { UUID } from "bson";
 import functionCallSchema from "./FunctionCall.schema";
 import { z } from "zod";
 
 // Defines the schema for a Generic sensor as used by the Mongo database
 export const genericEntitySchema = z.object({
-  _id: z.object({
-    $uuid: z.string().uuid(),
-  }),
-  date_created: z.object({
-    $date: z.string().datetime(),
-  }),
-  date_modified: z.object({
-    $date: z.string().datetime(),
-  }),
+  _id: z.instanceof(UUID),
+  date_created: z.instanceof(Date),
+  date_modified: z.instanceof(Date),
   enabled: z.boolean(),
   label: z.optional(z.union([z.string(), z.null()])),
   description: z.union([z.string(), z.null()]),
-  host: z.object({
-    $uuid: z.string().uuid(),
-  }),
+  host: z.instanceof(UUID),
   driver: z.string(),
   interval: z.number().int().nonnegative(),
   on_connect: z.array(functionCallSchema),
@@ -39,7 +32,7 @@ export const genericDTOSchema = z.object({
   enabled: genericEntitySchema.shape.enabled,
   label: genericEntitySchema.shape.label,
   description: genericEntitySchema.shape.description,
-  host: genericEntitySchema.shape.host,
+  host: z.string().uuid(),
   driver: genericEntitySchema.shape.driver,
   interval: genericEntitySchema.shape.interval,
   on_connect: genericEntitySchema.shape.on_connect,
@@ -55,13 +48,13 @@ export type genericDTO = z.infer<typeof genericDTOSchema>;
 export const genericDTO = {
   convertFromEntity(entity: genericEntity): genericDTO {
     const candidate: genericDTO = {
-      id: entity._id.$uuid,
-      date_created: entity.date_created.$date,
-      date_modified: entity.date_modified.$date,
+      id: entity._id.toString(),
+      date_created: entity.date_created.toISOString(),
+      date_modified: entity.date_modified.toISOString(),
       enabled: entity.enabled,
       label: entity.label,
       description: entity.description,
-      host: entity.host,
+      host: entity.host.toString(),
       driver: entity.driver,
       interval: entity.interval,
       on_connect: entity.on_connect,
@@ -71,7 +64,6 @@ export const genericDTO = {
       topic: entity.topic,
       unit: entity.unit,
     };
-
     return genericDTOSchema.parse(candidate);
   },
 };

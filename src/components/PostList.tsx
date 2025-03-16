@@ -1,4 +1,5 @@
-import React, { useRef } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
+import InputRow from "./UI/InputRow";
 import MyToggle from "./UI/toggle/MyToggle";
 import { PostListProps } from "@/types";
 import { VariableSizeList as Table } from "react-window";
@@ -37,6 +38,11 @@ import styles from "@/styles/PostList.module.css";
  * />
  */
 const PostList: React.FC<PostListProps> = ({
+  createPost,
+  inputRow,
+  setInputRow,
+  editPost,
+  postToEdit,
   posts,
   listTitle,
   remove,
@@ -45,36 +51,43 @@ const PostList: React.FC<PostListProps> = ({
   // Reference for storing row heights in VariableSizeList
   const listRef = useRef<Table>(null);
 
-  // Determining the height of a line
-  const getRowHeight = (index: number) => {
-    const post = posts[index];
-    return post.description && post.description.length > 100 ? 170 : 170; // Adjust row height dynamically later
-  };
-
-  // State for managing column visibility
-  const [selectedColumns, setSelectedColumns] = React.useState({
-    title: true,
-    description: true,
+  const [selectedColumns, setSelectedColumns] = useState({
+    uuid: true,
     date_created: true,
     date_modified: true,
     enabled: true,
-    label: false,
-    uuid: true,
+    label: true,
+    description: true,
+    uid: true,
     config: true,
-    on_connect: false,
-    topic: false,
-    unit: false,
-    port: false,
-    pad: false,
-    sad: false,
-    driver: false,
-    sensor_type: false,
+    on_connect: true,
   });
 
-  // Display a message when no posts are available
-  if (!posts.length) {
-    return <h1 style={{ textAlign: "center" }}>No sensors found</h1>;
-  }
+  // Determining the height of a line
+  const getRowHeight = useCallback(
+    (index: number) => {
+      const post = posts[index];
+
+      if (!post || !post.config) return 170;
+
+      const jsonString = JSON.stringify(post.config, null, 2); // Convert JSON to a string
+      const commaCount = (jsonString.match(/,/g) || []).length; // Count the number of commas
+
+      return selectedColumns.config ? (commaCount + 1) * 40 + 50 : 170;
+    },
+    [selectedColumns],
+  ); // Recalculate height when `selectedColumns` changes
+
+  // Recalculate row height when `selectedColumns` changes
+  useEffect(() => {
+    if (listRef.current) {
+      listRef.current.resetAfterIndex(0, true); // Update the table
+    }
+  }, [selectedColumns]);
+
+  const isAnyColumnSelected = Object.values(selectedColumns).some(
+    (value) => value,
+  );
 
   return (
     <div>
@@ -103,30 +116,41 @@ const PostList: React.FC<PostListProps> = ({
         <div className={styles["table"]}>
           {/* Header */}
           <div className={`${styles.heading}`}>
-            {selectedColumns.title && <div className={styles.cell}>Title</div>}
-            {selectedColumns.description && (
-              <div className={styles.cell}>Description</div>
-            )}
+            {selectedColumns.uuid && <div className={styles.cell}>UUID</div>}
             {selectedColumns.date_created && (
-              <div className={styles.cell}>Date Created</div>
+              <div className={styles.cell}>Date created</div>
             )}
             {selectedColumns.date_modified && (
-              <div className={styles.cell}>Date Modified</div>
+              <div className={styles.cell}>Date modified</div>
             )}
             {selectedColumns.enabled && (
               <div className={styles.cell}>Enabled</div>
             )}
             {selectedColumns.label && <div className={styles.cell}>Label</div>}
-            {selectedColumns.uuid && <div className={styles.cell}>UUID</div>}
+            {selectedColumns.description && (
+              <div className={styles.cell}>Description</div>
+            )}
+            {selectedColumns.uid && <div className={styles.cell}>UID</div>}
             {selectedColumns.config && (
               <div className={styles.cell}>Config</div>
             )}
             {selectedColumns.on_connect && (
               <div className={styles.cell}>On Connect</div>
             )}
-            <div className={`${styles.cell} ${styles["no-borders"]}`}></div>
+            {isAnyColumnSelected && <div className={styles.cell}>Actions</div>}
           </div>
 
+          {/* New Row for editing and adding a new data */}
+          {inputRow && (
+            <InputRow
+              visible={inputRow}
+              setVisible={setInputRow}
+              createPost={createPost}
+              edit={editPost}
+              postToEdit={postToEdit}
+              selectedColumns={selectedColumns}
+            />
+          )}
           {/* Virtualized rows */}
           <Table
             height={600} // Height of the visible area of the list
@@ -135,7 +159,13 @@ const PostList: React.FC<PostListProps> = ({
             width="100%" // Table width
             ref={listRef} // Reference for the list
           >
-            {({ index, style }) => (
+            {({
+              index,
+              style,
+            }: {
+              index: number;
+              style: React.CSSProperties;
+            }) => (
               <div style={style}>
                 <TableItem
                   post={posts[index]}

@@ -1,8 +1,9 @@
-import { Post, PostFilterProps } from "@/types";
+import { DTOtoPostKeys, PostFilterProps } from "@/types";
 import MyInput from "./UI/input/MyInput";
 import MySelect from "./UI/select/MySelect";
 import React from "react";
 import styles from "@/styles/PostFilter.module.css";
+import { tinkerforgeDTO } from "@/models/zTinkerforgeSensor.schema";
 
 /**
  * A component for filtering posts based on a search query and a selected sorting option.
@@ -36,7 +37,7 @@ const PostFilter: React.FC<PostFilterProps> = ({ filter, setFilter }) => {
 
           <MySelect
             value={filter.sort}
-            onChange={(selectedSort: keyof Post) =>
+            onChange={(selectedSort: keyof tinkerforgeDTO) =>
               setFilter({ ...filter, sort: selectedSort })
             } // Update the `sort` property in the filter state when a new option is selected
             defaultValue="Sort by:" // Placeholder text for the dropdown menu
@@ -58,8 +59,11 @@ const PostFilter: React.FC<PostFilterProps> = ({ filter, setFilter }) => {
 
           <MySelect
             value={filter.searchField}
-            onChange={(selectedSearchField: keyof Post) =>
-              setFilter({ ...filter, searchField: selectedSearchField })
+            onChange={(selectedSearchField: keyof tinkerforgeDTO) =>
+              setFilter({
+                ...filter,
+                searchField: DTOtoPostKeys(selectedSearchField),
+              })
             } // Update the `searchField` property in the search state when a new option is selected
             defaultValue="Search by:" // Placeholder text for the dropdown menu
             options={[

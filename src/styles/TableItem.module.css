@@ -1,15 +1,17 @@
 .row {
   display: flex;
   flex-direction: row;
+  height: 100%;
 }
 
 .cell {
   flex: 1;
   padding: 8px;
   text-align: left;
+  align-items: stretch;
   overflow: hidden;
   text-overflow: ellipsis; /* Add ellipsis for overflowing text */
-  white-space: nowrap; /* Prevent text wrapping */
+  white-space: normal; /* Prevent text wrapping */
   border: 1px solid teal; /* Only top border */
   box-sizing: border-box; /* Include borders and padding in the element's size */
 }

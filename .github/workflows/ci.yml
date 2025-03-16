@@ -4,7 +4,11 @@ on:
   push:
     branches: ["master", "dev"]
     tags: ["*.*.*"]
+    paths-ignore:
+      - "docs/**"
   pull_request:
+    paths-ignore:
+      - "docs/**"
 
 env:
   REGISTRY: ghcr.io # Using GitHub Container Registry

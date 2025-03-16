@@ -12,6 +12,7 @@ import "@testing-library/jest-dom";
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import React from "react";
 import TableItem from "@/components/TableItem";
+import { convertPostToDTO } from "@/types";
 import { v4 as uuidv4 } from "uuid";
 
 // Mock functions for callbacks
@@ -60,7 +61,7 @@ describe("TableItem Component", () => {
   it("calls remove callback when delete button is clicked", async () => {
     render(
       <TableItem
-        post={mockPost}
+        post={convertPostToDTO(mockPost)}
         remove={mockRemove}
         edit={mockEdit}
         selectedColumns={mockSelectedColumns}
@@ -73,7 +74,13 @@ describe("TableItem Component", () => {
     // Ensure deleteSensorAction was called and remove was called with correct post
     await waitFor(() => {
       expect(mockRemove).toHaveBeenCalledTimes(1);
-      expect(mockRemove).toHaveBeenCalledWith(mockPost);
+      expect(mockRemove).toHaveBeenCalledWith(
+        expect.objectContaining({
+          uuid: mockPost.uuid,
+          description: mockPost.description,
+          label: mockPost.label,
+        }),
+      );
     });
   });
 });

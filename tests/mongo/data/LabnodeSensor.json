@@ -1,0 +1,33 @@
+{
+  "_id": { "$uuid": "aa0af02c-9eb5-4c15-bca1-63aa057da848" },
+  "date_created": { "$date": "2025-01-01T00:00:00.000Z" },
+  "date_modified": { "$date": "2025-01-01T00:00:00.000Z" },
+  "enabled": true,
+  "label": null,
+  "description": "This is a dummy LabNode that does not exist",
+  "uid": 8,
+  "config": {
+    "-11": {
+      "interval": 60,
+      "description": null,
+      "topic": "sensors/sensor_output",
+      "unit": "bit",
+      "timeout": null
+    },
+    "-25": {
+      "interval": 60,
+      "description": null,
+      "topic": "sensors/sensor_temperature",
+      "unit": "K",
+      "timeout": null
+    },
+    "-26": {
+      "interval": 60,
+      "description": "",
+      "topic": "sensors/sensor_humidity",
+      "unit": "%rH",
+      "timeout": null
+    }
+  },
+  "on_connect": []
+}
