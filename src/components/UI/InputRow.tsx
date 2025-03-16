@@ -128,6 +128,22 @@ const InputRow: React.FC<InputRowProps> = ({
           />
         </div>
       )}
+      {selectedColumns.date_created && (
+        <div className={styles.cell}>{post.date_created}</div>
+      )}
+      {selectedColumns.date_modified && (
+        <div className={styles.cell}>{post.date_modified}</div>
+      )}
+
+      {selectedColumns.enabled && (
+        <div className={styles.cell}>
+          <MyToggle
+            label="Enabled"
+            checked={post.enabled}
+            onChange={(value) => setPost({ ...post, enabled: value })}
+          />
+        </div>
+      )}
       {selectedColumns.label && (
         <div className={styles.cell}>
           <MyInput
@@ -139,12 +155,24 @@ const InputRow: React.FC<InputRowProps> = ({
         </div>
       )}
 
-      {selectedColumns.enabled && (
+      {selectedColumns.description && (
         <div className={styles.cell}>
-          <MyToggle
-            label="Enabled"
-            checked={post.enabled}
-            onChange={(value) => setPost({ ...post, enabled: value })}
+          <MyInput
+            value={post.description || ""}
+            onChange={(e) => setPost({ ...post, description: e.target.value })}
+            type="text"
+            placeholder="Description"
+          />
+        </div>
+      )}
+
+      {selectedColumns.uid && (
+        <div className={styles.cell}>
+          <MyInput
+            value={post.uid}
+            onChange={(e) => setPost({ ...post, uid: Number(e.target.value) })}
+            type="number"
+            placeholder="UID"
           />
         </div>
       )}
@@ -199,16 +227,6 @@ const InputRow: React.FC<InputRowProps> = ({
             onChange={(e) => setPost({ ...post, on_connect: e.target.value })}
             type="text"
             placeholder="On Connect"
-          />
-        </div>
-      )}
-      {selectedColumns.uid && (
-        <div className={styles.cell}>
-          <MyInput
-            value={post.uid}
-            onChange={(e) => setPost({ ...post, uid: Number(e.target.value) })}
-            type="number"
-            placeholder="UID"
           />
         </div>
       )}
