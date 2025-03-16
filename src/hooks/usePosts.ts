@@ -1,8 +1,9 @@
-import { DateType } from "@/types";
+import { DateType, convertDTOToPost, convertPostToDTO } from "@/types";
 import { Post } from "../types";
+import { tinkerforgeDTO } from "@/models/zTinkerforgeSensor.schema";
 import { useMemo } from "react";
 
-type SortKey = keyof Post;
+type SortKey = keyof tinkerforgeDTO;
 
 // the method converts DataType into a string
 const formatDate = (date: DateType): string => {
@@ -93,7 +94,10 @@ const compareDates = (
 };
 
 // Custom Hook: All custom hooks use predefined hooks from React (useState, useMemo etc)
-export const useSortedPosts = (posts: Post[], sort: SortKey | ""): Post[] => {
+export const useSortedPosts = (
+  posts: tinkerforgeDTO[],
+  sort: SortKey | "",
+): tinkerforgeDTO[] => {
   const sortedPosts = useMemo(() => {
     if (sort) {
       return [...posts].sort((a, b) => {
@@ -156,7 +160,7 @@ export const usePosts = (
   query: string,
   searchField: keyof Post | "all",
 ) => {
-  const sortedPosts = useSortedPosts(posts, sort);
+  const sortedPosts = useSortedPosts(posts.map(convertPostToDTO), sort);
 
   // To make the search register-independent, it was "toLowerCase" for titles implemented
   const sortedAndSearchedPosts = useMemo(() => {
@@ -186,13 +190,13 @@ export const usePosts = (
             }*/
           // identificate Enabled-status
           if (typeof value === "boolean") {
-            return filterBoolean(query, post);
+            return filterBoolean(query, convertDTOToPost(post));
           }
           return false;
         });
       }
 
-      const fieldValue = post[searchField];
+      const fieldValue = convertDTOToPost(post)[searchField];
       // If the fieldValue is of type DateType
       if (
         typeof fieldValue === "object" &&
@@ -210,7 +214,7 @@ export const usePosts = (
           return isTextInConfig(fieldValue, query);
         }*/
       if (typeof fieldValue === "boolean") {
-        return filterBoolean(query, post);
+        return filterBoolean(query, convertDTOToPost(post));
       }
       if (typeof fieldValue === "string" || typeof fieldValue === "number") {
         return fieldValue
