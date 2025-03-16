@@ -5,13 +5,13 @@ import { useMemo } from "react";
 type SortKey = keyof Post;
 
 // the method converts DataType into a string
-const formatDate = (date: DateType): string => {
+export const formatDate = (date: DateType): string => {
   const { day, month, year, nanoseconds } = date;
   return `${day ?? ""}.${month ?? ""}.${year ?? ""} ${nanoseconds ?? ""}`;
 };
 
 // the method filter boolean
-const filterBoolean = (query: string, post: Post): boolean => {
+export const filterBoolean = (query: string, post: Post): boolean => {
   const normalizedQuery = query.toLowerCase().trim();
 
   if (["on", "enabled", "true"].includes(normalizedQuery)) {
@@ -20,13 +20,10 @@ const filterBoolean = (query: string, post: Post): boolean => {
   if (["off", "disabled", "false"].includes(normalizedQuery)) {
     return post.enabled === false;
   }
-  if (["undefined", "offline"].includes(normalizedQuery)) {
-    return post.enabled === undefined || post.enabled === null;
-  }
   return false;
 };
 
-const compareBoolean = (
+export const compareBoolean = (
   valueA: boolean | null | undefined,
   valueB: boolean | null | undefined,
 ): number => {
@@ -42,7 +39,7 @@ const compareBoolean = (
 };
 
 /** Compare function for DateType values */
-const compareDates = (
+export const compareDates = (
   valueA: DateType | null | undefined,
   valueB: DateType | null | undefined,
 ): number => {
