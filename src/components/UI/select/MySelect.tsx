@@ -6,17 +6,32 @@ import { tinkerforgeDTO } from "@/models/zTinkerforgeSensor.schema";
 /**
  * A reusable and customizable dropdown (select) component.
  *
- * This component allows rendering a list of options with a default placeholder and the ability
- * to handle changes in the selected value. It is designed to work with objects of type `Post`.
+ * This component provides:
+ * - Dynamic option rendering: Accepts an array of objects containing `value` and `name` properties.
+ * - Controlled state management: The `value` prop determines the currently selected option.
+ * - Callback function: Calls `onChange` when the user selects a different option.
  *
  * @component
- * @param {MySelectProps} props - The properties for the `MySelect` component.
- * @param {Array<{value: keyof Post, name: string}>} props.options - An array of selectable options, where each option has a `value` (field in `Post`) and a `name` (display text).
- * @param {string} props.defaultValue - The placeholder text shown when no value is selected.
- * @param {keyof tinkerforgeDTO | ''} props.value - The currently selected value, which should match one of the options.
- * @param {(newValue: keyof tinkerforgeDTO) => void} props.onChange - Callback function triggered when the selected value changes.
+ * @param {Array<{value: keyof tinkerforgeDTO, name: string}>} options - An array of selectable options, where each option has a `value` (field in `tinkerforgeDTO`) and a `name` (display text).
+ * @param {string} defaultValue - Placeholder text shown when no value is selected.
+ * @param {keyof tinkerforgeDTO | ''} value - The currently selected value.
+ * @param {(newValue: keyof tinkerforgeDTO) => void} onChange - Callback function triggered when the selected value changes.
  *
- * @returns {JSX.Element} A `<select>` dropdown element with options.
+ * @example
+ * const options = [
+ *   { value: "title", name: "Name" },
+ *   { value: "description", name: "Description" },
+ *   { value: "enabled", name: "Enabled" }
+ * ];
+ *
+ * <MySelect
+ *   options={options}
+ *   defaultValue="Select a field"
+ *   value={selectedField}
+ *   onChange={setSelectedField}
+ * />
+ *
+ * @returns {JSX.Element} A `<select>` dropdown element.
  */
 const MySelect: React.FC<MySelectProps> = ({
   options,
@@ -31,15 +46,14 @@ const MySelect: React.FC<MySelectProps> = ({
         value={value}
         onChange={(event) =>
           onChange(event.target.value as keyof tinkerforgeDTO)
-        } // Converts selected value to a key of `Post`
+        } // Converts selected value to a key of `tinkerforgeDTO`
       >
-        {" "}
-        {/* Questionable. We have to adapt the type better */}
-        {/* Default option, disabled to act as a placeholder */}
+        {/* Default disabled option, acting as a placeholder */}
         <option disabled value="">
           {defaultValue}
         </option>
-        {/* Dynamically generate options based on the `options` array */}
+
+        {/* Generate dropdown options dynamically, based on the `options` array */}
         {options.map((option) => (
           <option key={option.value} value={option.value}>
             {option.name}
