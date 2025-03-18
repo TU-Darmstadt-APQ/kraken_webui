@@ -8,6 +8,12 @@ import { tinkerforgeDTO } from "@/models/zTinkerforgeSensor.schema";
 /**
  * A component for filtering posts based on a search query and a selected sorting option.
  *
+ * This component provides:
+ * - A text input field for searching posts by a query.
+ * - Two dropdowns (`MySelect`):
+ *   - One for sorting posts by a selected property (e.g., name, date, enabled status).
+ *   - One for defining the search field scope (e.g., all fields, specific sensor attributes).
+ *
  * @component
  * @param {PostFilterProps} props - The props for the PostFilter component.
  * @param {{ query: string, sort: keyof Post }} props.filter - The current filter state containing the search query and sort option.
