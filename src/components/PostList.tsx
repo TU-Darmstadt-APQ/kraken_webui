@@ -9,14 +9,26 @@ import styles from "@/styles/PostList.module.css";
 /**
  * Component for rendering a list of posts with the ability to toggle between table view and post view.
  *
+ * This component provides:
+ * - Virtualized Table Rendering: Uses `react-window` to efficiently render large datasets.
+ * - Column Visibility Management: Users can toggle which columns are displayed.
+ * - Dynamic Row Heights: Rows automatically adjust based on the complexity of their configuration fields.
+ * - Inline Editing & Creation: New posts can be added and existing ones edited directly within the table.
+ *
+ *
  * @component
- * @param {Array} posts - Array of post objects to display.
- * @param {string} listTitle - Title of the list.
- * @param {(post: object) => void} remove - Callback function to handle removing a post.
- * @param {(post: Post) => void} edit - Callback function to edit a post.
+ * @param {tinkerforgeDTO[]} posts - The array of sensor posts to be displayed.
+ * @param {string} listTitle - The title displayed above the post list.
+ * @param {boolean} inputRow - Controls the visibility of the input row for adding/editing posts.
+ * @param {(value: boolean) => void} setInputRow - Callback function to toggle the visibility of the input row.
+ * @param {(post: tinkerforgeDTO) => void} createPost - Callback function for adding a new post.
+ * @param {(post: tinkerforgeDTO) => void} editPost - Callback function for saving edits to an existing post.
+ * @param {tinkerforgeDTO | null} postToEdit - The post currently being edited (if any).
+ * @param {(post: tinkerforgeDTO) => void} remove - Callback function for deleting a post.
+ * @param {(post: tinkerforgeDTO) => void} edit - Callback function for initiating the edit mode on a post.
+ *
  *
  * @example
- *
  * const sortedAndSearchedPosts = usePosts(
  *   posts,
  *   filter.sort,
@@ -35,7 +47,13 @@ import styles from "@/styles/PostList.module.css";
  *   listTitle="Sensor List"
  *   remove={removePost}
  *   edit={handleEdit}
+ *   createPost={createPost}
+ *   inputRow={modal}
+ *   setInputRow={setModal}
+ *   editPost={editPost}
+ *   postToEdit={postToEdit}
  * />
+ *
  */
 const PostList: React.FC<PostListProps> = ({
   createPost,
@@ -63,28 +81,42 @@ const PostList: React.FC<PostListProps> = ({
     on_connect: true,
   });
 
-  // Determining the height of a line
+  /**
+   * Calculates the row height dynamically based on the presence of configuration fields.
+   * Expands rows that contain large JSON objects for better readability.
+   *
+   * @param {number} index - The index of the row in the dataset.
+   * @returns {number} The computed height of the row.
+   */
   const getRowHeight = useCallback(
     (index: number) => {
       const post = posts[index];
 
-      if (!post || !post.config) return 170;
+      if (!post || !post.config) return 170; // Default row height if no config
 
-      const jsonString = JSON.stringify(post.config, null, 2); // Convert JSON to a string
-      const commaCount = (jsonString.match(/,/g) || []).length; // Count the number of commas
+      // Convert the config object to a JSON string
+      const jsonString = JSON.stringify(post.config, null, 2);
 
+      // Count the number of commas in the JSON string to estimate complexity
+      const commaCount = (jsonString.match(/,/g) || []).length;
+
+      // Adjust row height based on the number of fields in the config column
       return selectedColumns.config ? (commaCount + 1) * 40 + 50 : 170;
     },
     [selectedColumns],
   ); // Recalculate height when `selectedColumns` changes
 
-  // Recalculate row height when `selectedColumns` changes
+  /**
+   * Ensures the virtualized table recalculates row heights when `selectedColumns` changes.
+   * This prevents layout glitches when toggling column visibility.
+   */
   useEffect(() => {
     if (listRef.current) {
-      listRef.current.resetAfterIndex(0, true); // Update the table
+      listRef.current.resetAfterIndex(0, true); // Reset row heights
     }
   }, [selectedColumns]);
 
+  // Check if at least one column is selected
   const isAnyColumnSelected = Object.values(selectedColumns).some(
     (value) => value,
   );
