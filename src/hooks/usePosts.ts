@@ -17,7 +17,14 @@ const formatDate = (date: DateType): string => {
   const { day, month, year, nanoseconds } = date;
 
   // Return "Invalid date" if any required field is missing or undefined
-  if (day == null || month == null || year == null || isNaN(day) || isNaN(month) || isNaN(year)) {
+  if (
+    day == null ||
+    month == null ||
+    year == null ||
+    isNaN(day) ||
+    isNaN(month) ||
+    isNaN(year)
+  ) {
     return "Invalid date";
   }
 
