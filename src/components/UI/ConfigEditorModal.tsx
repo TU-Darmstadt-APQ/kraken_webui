@@ -77,7 +77,7 @@ const ConfigEditorModal: React.FC<ConfigEditorModalProps> = ({
 
   return (
     <div style={{ marginTop: "20px" }}>
-      <span>Edit Configuration</span>
+      <span>Edit configuration</span>
 
       {/* Input fields for new key-value pairs (if no specific sensor type is selected) */}
       {!selectedSensorType && (
