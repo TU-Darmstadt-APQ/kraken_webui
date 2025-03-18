@@ -5,34 +5,39 @@ import { deleteSensorAction } from "@/actions/action_deleteSensors";
 import styles from "@/styles/TableItem.module.css";
 
 /**
- * A component representing a single table row with data and action buttons.
+ * This component represents a single row in the table, displaying sensor data and providing action buttons.
+ *
+ * This component provides:
+ * - Conditional Rendering: Only renders if at least one column is selected.
+ * - Dynamic Column Visibility: Displays only the columns that are enabled in `selectedColumns`.
+ * - Edit & Delete Actions:
+ *   - Edit: Triggers the `edit` function to modify a post.
+ *   - Delete: Calls an async function to remove a sensor and updates UI upon success.
  *
  * @component
- * @param {tinkerforgeDTO} post - The data object for the table row.
- * @param {(post: Post) => void} props.remove - Callback to handle the removal of a row.
- * @param {(post: Post) => void} edit - Callback function to edit the post.
- * @param {Object} selectedColumns - An object where keys represent column names, and values are booleans indicating if the column is visible.
+ * @param {tinkerforgeDTO} post - The sensor data for this row.
+ * @param {(post: tinkerforgeDTO) => void} remove - Callback function to remove a sensor from the list.
+ * @param {(post: tinkerforgeDTO) => void} edit - Callback function to open edit mode for a post.
+ * @param {Record<string, boolean>} selectedColumns - Object where keys represent column names and values indicate whether they are visible.
  *
  * @example
  * const post = {
- *   title: "Lorem Post",
+ *   id: "1234-5678",
  *   description: "This is a post.",
- *   date_created: { day: 8, month: 1, year: 2025 },
- *   date_modified: { day: 8, month: 1, year: 2025 },
+ *   date_created: "2025-01-08",
+ *   date_modified: "2025-01-08",
  *   enabled: true,
- *   uuid: "1234-5678",
+ *   label: "UG",
+ *   uid: "1234-4578",
  *   config: { theme: "dark", notifications: true },
- *   on_connect: "Connect info",
+ *   on_connect: ["action1", "action2"],
  * };
  *
  * const selectedColumns = {
- *   title: true,
  *   description: true,
  *   date_created: false,
  *   date_modified: true,
- *   enabled: true,import { TableItemProps, convertPostToDTO } from "@/types";
-
- *   uuid: false,
+ *   enabled: true,
  *   config: true,
  *   on_connect: false,
  * };
@@ -42,8 +47,10 @@ import styles from "@/styles/TableItem.module.css";
  *   remove={remove}
  *   post={post}
  *   selectedColumns={selectedColumns}
- *   key={post.uuid}
+ *   key={post.id}
  * />
+ *
+ * @returns {JSX.Element | null} A table row with data or `null` if no columns are selected.
  */
 const TableItem: React.FC<TableItemProps> = ({
   post,
@@ -51,15 +58,19 @@ const TableItem: React.FC<TableItemProps> = ({
   edit,
   selectedColumns,
 }) => {
+  // Check if at least one column is selected before rendering
   const isRowVisible = Object.values(selectedColumns).some((value) => value);
+  if (!isRowVisible) return null;
 
-  if (!isRowVisible) return null; // we check if minimum one is true
-
+  /**
+   * Handles the deletion of a sensor post.
+   * Calls the async `deleteSensorAction` and updates UI based on the result.
+   */
   const deleteSensorHandler = async () => {
     const result = await deleteSensorAction(post);
     if (result.success) {
       alert(result.message);
-      remove(post);
+      remove(post); // Remove the post from UI upon successful deletion
     } else {
       alert(`Error: ${result.message}`);
     }
@@ -67,7 +78,7 @@ const TableItem: React.FC<TableItemProps> = ({
 
   return (
     <div className={`${styles.row}`}>
-      {/* Displaying properties of the `post` object */}
+      {/* Conditionally rendering table cells based on `selectedColumns` */}
       {selectedColumns.uuid && <div className={styles.cell}>{post.id}</div>}
       {selectedColumns.date_created && (
         <div className={styles.cell}>{post.date_created}</div>
@@ -77,7 +88,8 @@ const TableItem: React.FC<TableItemProps> = ({
       )}
       {selectedColumns.enabled && (
         <div className={styles.cell}>
-          {post.enabled == true ? (
+          {/* Display colored indicators for enabled/disabled state */}
+          {post.enabled === true ? (
             <div
               style={{
                 width: "10px",
@@ -86,7 +98,7 @@ const TableItem: React.FC<TableItemProps> = ({
                 borderRadius: "50%",
               }}
             ></div>
-          ) : post.enabled == false ? (
+          ) : post.enabled === false ? (
             <div
               style={{
                 width: "10px",
@@ -105,6 +117,7 @@ const TableItem: React.FC<TableItemProps> = ({
       {selectedColumns.uid && <div className={styles.cell}>{post.uid}</div>}
       {selectedColumns.config && (
         <div className={styles.cell}>
+          {/* Display configuration object if available, otherwise show a default message */}
           {post.config && Object.keys(post.config).length > 0 ? (
             <pre style={{ whiteSpace: "pre-wrap", wordWrap: "break-word" }}>
               {JSON.stringify(post.config, null, 2)}
@@ -119,26 +132,14 @@ const TableItem: React.FC<TableItemProps> = ({
         <div className={styles.cell}>{post.on_connect.length}</div>
       )}
 
-      {/* Edit button and delete button with callback */}
+      {/* Action buttons for editing and deleting the post */}
       <div className={styles.cell}>
         <MyButton className="list-button" onClick={() => edit(post)}>
-          <img
-            src="/edit.png"
-            alt="Edit"
-            //className="icon-button"
-            width={20}
-            height={20}
-          />
+          <img src="/edit.png" alt="Edit" width={20} height={20} />
         </MyButton>
 
         <MyButton onClick={deleteSensorHandler} className="list-button">
-          <img
-            src="/trashCan.svg"
-            alt="Delete"
-            //className="icon-button"
-            width={20}
-            height={20}
-          />
+          <img src="/trashCan.svg" alt="Delete" width={20} height={20} />
         </MyButton>
       </div>
     </div>
