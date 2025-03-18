@@ -26,19 +26,32 @@ const filterBoolean = (query: string, post: tinkerforgeDTO): boolean => {
   return false;
 };
 
+/**
+ * Compares two boolean values for sorting sensor data.
+ *
+ * Sorting order:
+ * - `true` values come first
+ * - `false` values come next
+ * - `null` or `undefined` values come last
+ *
+ * @param {boolean | null | undefined} valueA - First boolean value.
+ * @param {boolean | null | undefined} valueB - Second boolean value.
+ * @returns {number} - Comparison result: -1, 0, or 1.
+ */
 const compareBoolean = (
   valueA: boolean | null | undefined,
   valueB: boolean | null | undefined,
 ): number => {
-  if (valueA === true && valueB !== true) return -1; // `a` comes before `b
-  if (valueB === true && valueA !== true) return 1; // `b` comes before `a`
-  if (valueA === false && valueB !== false) return -1;
+  if (valueA === true && valueB !== true) return -1; // `true` comes first
+  if (valueB === true && valueA !== true) return 1;
+
+  if (valueA === false && valueB !== false) return -1; // `false` comes before `null/undefined`
   if (valueB === false && valueA !== false) return 1;
 
-  // `undefined` or `null` come last
-  if (valueA == null && valueB != null) return 1; // `a` after `b`
-  if (valueB == null && valueA != null) return -1; // `b` after `a`
-  return 0;
+  if (valueA == null && valueB != null) return 1; // `null/undefined` comes last
+  if (valueB == null && valueA != null) return -1;
+
+  return 0; // Both values are the same
 };
 
 /** Compare function for DateType values */
