@@ -153,26 +153,48 @@ export const useSortedPosts = (
   return sortedPosts;
 };
 
+/**
+ * Custom React Hook for searching and sorting sensor data.
+ *
+ * This hook provides a filtered and sorted list of sensors based on:
+ * - Sorting (sort): Uses `useSortedPosts` to sort data by the specified field.
+ * - Searching (query): Filters sensors based on a case-insensitive search.
+ * - Search Scope (searchField):
+ *   - "all": Searches across all fields of a sensor.
+ *   - Specific field: Searches only within the selected field.
+ *
+ * The search considers different data types:
+ * - Strings & Numbers: Directly checked using `.toLowerCase().includes(query)`.
+ * - DateType: Converted into a formatted string (formatDate) before searching.
+ * - Boolean (enabled): Uses `filterBoolean` to match "true"/"false"-like values.
+ *
+ * @param {tinkerforgeDTO[]} posts - Array of sensor data objects.
+ * @param {SortKey | ""} sort - Field to sort by (empty string means no sorting).
+ * @param {string} query - Search term for filtering sensors.
+ * @param {keyof tinkerforgeDTO | "all"} searchField - Field to search in ("all" means all fields).
+ * @returns {tinkerforgeDTO[]} - Sorted and filtered list of sensors.
+ */
 export const usePosts = (
   posts: tinkerforgeDTO[],
   sort: SortKey | "",
   query: string,
   searchField: keyof tinkerforgeDTO | "all",
 ) => {
+  // Apply sorting first before filtering
   const sortedPosts = useSortedPosts(posts, sort);
 
-  // To make the search register-independent, it was "toLowerCase" for titles implemented
+  // Memoize the filtered results to optimize performance
   const sortedAndSearchedPosts = useMemo(() => {
-    if (!query.trim()) return sortedPosts; // if query is empty - return the original list
+    if (!query.trim()) return sortedPosts; // If query is empty, return sorted list without filtering
 
     return sortedPosts.filter((post) => {
-      // if we search in all fields of Post
+      // If searching across all fields
       if (searchField === "all") {
         return Object.values(post).some((value) => {
           if (typeof value === "string" || typeof value === "number") {
             return value.toString().toLowerCase().includes(query.toLowerCase());
           }
-          // identificate DataType
+          // Identify DateType and check formatted date string
           if (
             typeof value === "object" &&
             value !== null &&
@@ -184,10 +206,7 @@ export const usePosts = (
               .toLowerCase()
               .includes(query.toLowerCase());
           }
-          /*if(typeof value === 'object' && value !== null){
-              return isTextInConfig(value, query);
-            }*/
-          // identificate Enabled-status
+          // Identify and filter boolean `enabled` status
           if (typeof value === "boolean") {
             return filterBoolean(query, post);
           }
@@ -196,7 +215,8 @@ export const usePosts = (
       }
 
       const fieldValue = post[searchField];
-      // If the fieldValue is of type DateType
+
+      // If the searched field is of type DateType
       if (
         typeof fieldValue === "object" &&
         fieldValue !== null &&
@@ -208,13 +228,13 @@ export const usePosts = (
           .toLowerCase()
           .includes(query.toLowerCase());
       }
-      // If the fieldValue is of type Config
-      /*if(typeof fieldValue === 'object' && fieldValue !== null){
-          return isTextInConfig(fieldValue, query);
-        }*/
+
+      // If the searched field is of type Boolean
       if (typeof fieldValue === "boolean") {
         return filterBoolean(query, post);
       }
+
+      // If the searched field is of type String or Number
       if (typeof fieldValue === "string" || typeof fieldValue === "number") {
         return fieldValue
           .toString()
@@ -222,7 +242,7 @@ export const usePosts = (
           .includes(query.toLowerCase());
       }
 
-      return false;
+      return false; // If the field type is unsupported, do not include it in the results
     });
   }, [query, sortedPosts, searchField]);
 
