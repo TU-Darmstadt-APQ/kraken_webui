@@ -41,7 +41,17 @@ const compareBoolean = (
   return 0;
 };
 
-/** Compare function for DateType values */
+/**
+ * Compares two `DateType` values for sorting sensor data.
+ *
+ * Sorting order:
+ * - Earlier dates come first
+ * - If two dates are equal, nanoseconds are used as a tiebreaker
+ *
+ * @param {DateType | null | undefined} valueA - First date value.
+ * @param {DateType | null | undefined} valueB - Second date value.
+ * @returns {number} - Comparison result: -1, 0, or 1.
+ */
 const compareDates = (
   valueA: DateType | null | undefined,
   valueB: DateType | null | undefined,
