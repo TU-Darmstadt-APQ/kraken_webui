@@ -4,9 +4,23 @@ import { useMemo } from "react";
 
 type SortKey = keyof tinkerforgeDTO;
 
-// the method converts DataType into a string
+/**
+ * Converts a `DateType` object into a formatted string.
+ *
+ * @param {DateType} date - The date object containing day, month, year, and optional nanoseconds.
+ * @returns {string} A formatted string representation of the date in the format `DD.MM.YYYY nanoseconds`.
+ *
+ * If any of the fields (`day`, `month`, `year`) are missing, they are replaced with an empty string.
+ * Nanoseconds are appended at the end if present.
+ */
 const formatDate = (date: DateType): string => {
   const { day, month, year, nanoseconds } = date;
+
+  // Return "Invalid date" if any required field is missing or undefined
+  if (day == null || month == null || year == null) {
+    return "Invalid date";
+  }
+
   return `${day ?? ""}.${month ?? ""}.${year ?? ""} ${nanoseconds ?? ""}`;
 };
 
