@@ -125,3 +125,8 @@ export interface InputRowProps {
   edit: PostAction;
   postToEdit: tinkerforgeDTO | null;
 }
+
+export interface TreeNode {
+  name: string;
+  children: TreeNode[];
+}
