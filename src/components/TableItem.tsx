@@ -1,6 +1,6 @@
-import { TableItemProps, convertDTOToPost } from "@/types";
 import MyButton from "./UI/button/MyButton";
 import React from "react";
+import { TableItemProps } from "@/types";
 import { deleteSensorAction } from "@/actions/action_deleteSensors";
 import styles from "@/styles/TableItem.module.css";
 
@@ -59,7 +59,7 @@ const TableItem: React.FC<TableItemProps> = ({
     const result = await deleteSensorAction(post);
     if (result.success) {
       alert(result.message);
-      remove(convertDTOToPost(post));
+      remove(post);
     } else {
       alert(`Error: ${result.message}`);
     }
@@ -121,10 +121,7 @@ const TableItem: React.FC<TableItemProps> = ({
 
       {/* Edit button and delete button with callback */}
       <div className={styles.cell}>
-        <MyButton
-          className="list-button"
-          onClick={() => edit(convertDTOToPost(post))}
-        >
+        <MyButton className="list-button" onClick={() => edit(post)}>
           <img
             src="/edit.png"
             alt="Edit"

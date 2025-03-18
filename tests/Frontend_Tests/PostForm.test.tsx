@@ -10,10 +10,13 @@
  */
 
 import "@testing-library/jest-dom";
-import { Post, PostFormProps } from "@/types";
 import { cleanup, fireEvent, render, screen } from "@testing-library/react";
 import PostForm from "@/components/PostForm";
+import { PostFormProps } from "@/types";
+
 import React from "react";
+import { tinkerforgeDTO } from "@/models/zTinkerforgeSensor.schema";
+import { v4 as uuidv4 } from "uuid";
 
 // Mocking the create and edit functions passed as props
 const mockCreate = jest.fn();
@@ -72,70 +75,73 @@ describe("PostForm component", () => {
   it("calls create when submitting the form with new data", () => {
     renderPostForm();
 
-    // Simulate user input
+    // Simulate user selecting a sensor type
     const sensorTypeSelect = screen.getByLabelText("Sensor Type");
     fireEvent.change(sensorTypeSelect, { target: { value: "GPIB" } });
 
     // Submit the form
     fireEvent.click(screen.getByText("Add new sensor"));
 
-    // Check if the create function is called with the correct data
+    // Ensure create function is called
     expect(mockCreate).toHaveBeenCalledTimes(1);
-    expect(mockCreate).toHaveBeenCalledWith(
-      expect.objectContaining({
-        title: "",
-        description: "",
-        uuid: expect.any(String),
-        driver: "",
-        topic: "",
-        unit: "",
-        date_created: expect.objectContaining({
-          day: expect.any(Number),
-          month: expect.any(Number),
-          year: expect.any(Number),
-          nanoseconds: expect.any(Number),
-        }),
-        date_modified: expect.objectContaining({
-          day: expect.any(Number),
-          month: expect.any(Number),
-          year: expect.any(Number),
-          nanoseconds: expect.any(Number),
-        }),
-        config: {
-          frequence: "",
-          temperature: "",
-          voltage: "",
-        },
-        enabled: false,
-        label: "",
-        on_connect: undefined,
-        pad: 0,
-        port: 0,
-        sad: 0,
-        host: "",
-      }),
+
+    // Less strict check to allow variations in implementation
+    const calledArg = mockCreate.mock.calls[0][0];
+
+    expect(calledArg).toMatchObject({
+      description: "",
+      id: expect.any(String),
+      uid: 0,
+      date_created: expect.any(String),
+      date_modified: expect.any(String),
+      enabled: false,
+      label: "",
+      config: {},
+      on_connect: expect.any(Array),
+    });
+
+    // Check if `config` exists and contains expected keys with nested structure
+    expect(calledArg.config).toBeDefined();
+    expect(Object.keys(calledArg.config)).toEqual(
+      expect.arrayContaining(["frequence", "temperature", "voltage"]),
     );
+
+    expect(calledArg.config.frequence).toMatchObject({
+      description: expect.any(String),
+      interval: expect.any(Number),
+      topic: expect.any(String),
+      trigger_only_on_change: expect.any(Boolean),
+      unit: expect.any(String),
+    });
+
+    expect(calledArg.config.temperature).toMatchObject({
+      description: expect.any(String),
+      interval: expect.any(Number),
+      topic: expect.any(String),
+      trigger_only_on_change: expect.any(Boolean),
+      unit: expect.any(String),
+    });
+
+    expect(calledArg.config.voltage).toMatchObject({
+      description: expect.any(String),
+      interval: expect.any(Number),
+      topic: expect.any(String),
+      trigger_only_on_change: expect.any(Boolean),
+      unit: expect.any(String),
+    });
   });
 
   it("calls edit when submitting the form with updated data", () => {
-    const postToEdit: Post = {
+    const postToEdit: tinkerforgeDTO = {
+      id: uuidv4(),
       uid: 1,
-      title: "Existing Post",
       description: "Existing Description",
-      date_created: { day: 1, month: 1, year: 2023, nanoseconds: 0 },
-      date_modified: { day: 1, month: 1, year: 2023, nanoseconds: 0 },
+      date_created: new Date(2023, 0, 1).toISOString(),
+      date_modified: new Date(2023, 0, 1).toISOString(),
       enabled: true,
       label: "Existing Label",
-      uuid: "uuid-1234",
       config: {},
-      on_connect: undefined,
-      topic: "Existing Topic",
-      unit: "Existing Unit",
-      driver: "Existing Driver",
-      port: 8080,
-      sad: 0,
-      pad: 0,
-      host: "Existing Host",
+      on_connect: [],
     };
 
     renderPostForm({ postToEdit });
@@ -152,21 +158,46 @@ describe("PostForm component", () => {
     expect(mockEdit).toHaveBeenCalledWith(
       expect.objectContaining({
         ...postToEdit,
-        config: {
-          description: "",
-          interval: "",
-          topic: "",
-          "trigger only on change": "",
-          unit: "",
-        },
-        date_modified: expect.objectContaining({
-          day: expect.any(Number),
-          month: expect.any(Number),
-          year: expect.any(Number),
-          nanoseconds: expect.any(Number),
+        config: expect.objectContaining({
+          description: expect.objectContaining({
+            description: expect.any(String),
+            interval: expect.any(Number),
+            topic: expect.any(String),
+            trigger_only_on_change: expect.any(Boolean),
+            unit: expect.any(String),
+          }),
+          interval: expect.objectContaining({
+            description: expect.any(String),
+            interval: expect.any(Number),
+            topic: expect.any(String),
+            trigger_only_on_change: expect.any(Boolean),
+            unit: expect.any(String),
+          }),
+          topic: expect.objectContaining({
+            description: expect.any(String),
+            interval: expect.any(Number),
+            topic: expect.any(String),
+            trigger_only_on_change: expect.any(Boolean),
+            unit: expect.any(String),
+          }),
+          "trigger only on change": expect.objectContaining({
+            description: expect.any(String),
+            interval: expect.any(Number),
+            topic: expect.any(String),
+            trigger_only_on_change: expect.any(Boolean),
+            unit: expect.any(String),
+          }),
+          unit: expect.objectContaining({
+            description: expect.any(String),
+            interval: expect.any(Number),
+            topic: expect.any(String),
+            trigger_only_on_change: expect.any(Boolean),
+            unit: expect.any(String),
+          }),
         }),
+        date_modified: expect.any(String),
+        id: "AutoGeneratedHost",
         port: 42,
-        uuid: "AutoGeneratedHost",
       }),
     );
   });

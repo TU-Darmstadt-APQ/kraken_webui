@@ -1,48 +1,113 @@
-import { DateType, convertDTOToPost, convertPostToDTO } from "@/types";
-import { Post } from "../types";
+import { DateType } from "@/types";
 import { tinkerforgeDTO } from "@/models/zTinkerforgeSensor.schema";
 import { useMemo } from "react";
 
 type SortKey = keyof tinkerforgeDTO;
 
-// the method converts DataType into a string
+/**
+ * Converts a `DateType` object into a formatted string.
+ *
+ * @param {DateType} date - The date object containing day, month, year, and optional nanoseconds.
+ * @returns {string} A formatted string representation of the date in the format `DD.MM.YYYY nanoseconds`.
+ *
+ * If any of the fields (`day`, `month`, `year`) are missing, they are replaced with an empty string.
+ * Nanoseconds are appended at the end if present.
+ */
 const formatDate = (date: DateType): string => {
   const { day, month, year, nanoseconds } = date;
+
+  // Return "Invalid date" if any required field is missing or undefined
+  if (
+    day == null ||
+    month == null ||
+    year == null ||
+    isNaN(day) ||
+    isNaN(month) ||
+    isNaN(year)
+  ) {
+    return "Invalid date";
+  }
+
   return `${day ?? ""}.${month ?? ""}.${year ?? ""} ${nanoseconds ?? ""}`;
 };
 
-// the method filter boolean
-const filterBoolean = (query: string, post: Post): boolean => {
+/**
+ * Filters a `tinkerforgeDTO` object based on a boolean-like query string.
+ *
+ * This function is used in search operations where the query string
+ * corresponds to different boolean-like states of a sensor.
+ *
+ * @param {string} query - The input string representing a boolean-like state.
+ *                         Possible values:
+ *                         - "on", "enabled", "true" → returns `true` if `post.enabled` is `true`
+ *                         - "off", "disabled", "false" → returns `true` if `post.enabled` is `false`
+ *                         - "undefined", "offline" → returns `true` if `post.enabled` is `undefined` or `null`
+ *                         - other values that will be evaluated as `false`
+ * @param {tinkerforgeDTO} post - The object that represents a sensor with the `enabled` field to check.
+ * @returns {boolean} - `true` if `post.enabled` matches the query condition, otherwise `false`.
+ */
+const filterBoolean = (query: string, post: tinkerforgeDTO): boolean => {
+  // Normalize query: convert to lowercase and trim whitespace
   const normalizedQuery = query.toLowerCase().trim();
 
+  // Check for "true-like" values
   if (["on", "enabled", "true"].includes(normalizedQuery)) {
     return post.enabled === true;
   }
+
+  // Check for "false-like" values
   if (["off", "disabled", "false"].includes(normalizedQuery)) {
     return post.enabled === false;
   }
+
+  // Check for "undefined-like" values
   if (["undefined", "offline"].includes(normalizedQuery)) {
     return post.enabled === undefined || post.enabled === null;
   }
+
+  // Return false for unsupported query values
   return false;
 };
 
+/**
+ * Compares two boolean values for sorting sensor data.
+ *
+ * Sorting order:
+ * - `true` values come first
+ * - `false` values come next
+ * - `null` or `undefined` values come last
+ *
+ * @param {boolean | null | undefined} valueA - First boolean value.
+ * @param {boolean | null | undefined} valueB - Second boolean value.
+ * @returns {number} - Comparison result: -1, 0, or 1.
+ */
 const compareBoolean = (
   valueA: boolean | null | undefined,
   valueB: boolean | null | undefined,
 ): number => {
-  if (valueA === true && valueB !== true) return -1; // `a` comes before `b
-  if (valueB === true && valueA !== true) return 1; // `b` comes before `a`
-  if (valueA === false && valueB !== false) return -1;
+  if (valueA === true && valueB !== true) return -1; // `true` comes first
+  if (valueB === true && valueA !== true) return 1;
+
+  if (valueA === false && valueB !== false) return -1; // `false` comes before `null/undefined`
   if (valueB === false && valueA !== false) return 1;
 
-  // `undefined` or `null` come last
-  if (valueA == null && valueB != null) return 1; // `a` after `b`
-  if (valueB == null && valueA != null) return -1; // `b` after `a`
-  return 0;
+  if (valueA == null && valueB != null) return 1; // `null/undefined` comes last
+  if (valueB == null && valueA != null) return -1;
+
+  return 0; // Both values are the same
 };
 
-/** Compare function for DateType values */
+/**
+ * Compares two `DateType` values for sorting sensor data.
+ *
+ * Sorting order:
+ * - Earlier dates come first
+ * - If two dates are equal, nanoseconds are used as a tiebreaker
+ *
+ * @param {DateType | null | undefined} valueA - First date value.
+ * @param {DateType | null | undefined} valueB - Second date value.
+ * @returns {number} - Comparison result: -1, 0, or 1.
+ */
 const compareDates = (
   valueA: DateType | null | undefined,
   valueB: DateType | null | undefined,
@@ -93,18 +158,33 @@ const compareDates = (
   return 0;
 };
 
-// Custom Hook: All custom hooks use predefined hooks from React (useState, useMemo etc)
+/**
+ * Custom React Hook to sort sensor data.
+ *
+ * Supports sorting by:
+ * - Boolean values (`enabled`)
+ * - Numbers (e.g., temperature, voltage)
+ * - Strings (e.g., sensor names)
+ * - Dates (`DateType`)
+ *
+ * @param {tinkerforgeDTO[]} posts - Array of sensor data objects.
+ * @param {SortKey | ""} sort - The field to sort by.
+ * @returns {tinkerforgeDTO[]} - Sorted array of sensors.
+ */
 export const useSortedPosts = (
   posts: tinkerforgeDTO[],
   sort: SortKey | "",
 ): tinkerforgeDTO[] => {
+  // Custom Hook: All custom hooks use predefined hooks from React (useState, useMemo etc)
+
+  // Memoize the sorted array to prevent unnecessary re-computation
   const sortedPosts = useMemo(() => {
     if (sort) {
       return [...posts].sort((a, b) => {
         const valueA = a[sort];
         const valueB = b[sort];
 
-        // Compare for Boolean
+        // Boolean comparison: `true` comes first, `false` next, then `null`/`undefined`
         if (typeof valueA === "boolean" || typeof valueB === "boolean") {
           return compareBoolean(valueA as boolean, valueB as boolean);
         }
@@ -134,7 +214,7 @@ export const useSortedPosts = (
           return valueA - valueB;
         }
 
-        // Compare for Strings
+        // String comparison: Use locale-based sorting for proper alphabetical order
         if (typeof valueA === "string" && typeof valueB === "string") {
           return valueA.localeCompare(valueB);
         }
@@ -154,26 +234,48 @@ export const useSortedPosts = (
   return sortedPosts;
 };
 
+/**
+ * Custom React Hook for searching and sorting sensor data.
+ *
+ * This hook provides a filtered and sorted list of sensors based on:
+ * - Sorting (sort): Uses `useSortedPosts` to sort data by the specified field.
+ * - Searching (query): Filters sensors based on a case-insensitive search.
+ * - Search Scope (searchField):
+ *   - "all": Searches across all fields of a sensor.
+ *   - Specific field: Searches only within the selected field.
+ *
+ * The search considers different data types:
+ * - Strings & Numbers: Directly checked using `.toLowerCase().includes(query)`.
+ * - DateType: Converted into a formatted string (formatDate) before searching.
+ * - Boolean (enabled): Uses `filterBoolean` to match "true"/"false"-like values.
+ *
+ * @param {tinkerforgeDTO[]} posts - Array of sensor data objects.
+ * @param {SortKey | ""} sort - Field to sort by (empty string means no sorting).
+ * @param {string} query - Search term for filtering sensors.
+ * @param {keyof tinkerforgeDTO | "all"} searchField - Field to search in ("all" means all fields).
+ * @returns {tinkerforgeDTO[]} - Sorted and filtered list of sensors.
+ */
 export const usePosts = (
-  posts: Post[],
+  posts: tinkerforgeDTO[],
   sort: SortKey | "",
   query: string,
-  searchField: keyof Post | "all",
+  searchField: keyof tinkerforgeDTO | "all",
 ) => {
-  const sortedPosts = useSortedPosts(posts.map(convertPostToDTO), sort);
+  // Apply sorting first before filtering
+  const sortedPosts = useSortedPosts(posts, sort);
 
-  // To make the search register-independent, it was "toLowerCase" for titles implemented
+  // Memoize the filtered results to optimize performance
   const sortedAndSearchedPosts = useMemo(() => {
-    if (!query.trim()) return sortedPosts; // if query is empty - return the original list
+    if (!query.trim()) return sortedPosts; // If query is empty, return sorted list without filtering
 
     return sortedPosts.filter((post) => {
-      // if we search in all fields of Post
+      // If searching across all fields
       if (searchField === "all") {
         return Object.values(post).some((value) => {
           if (typeof value === "string" || typeof value === "number") {
             return value.toString().toLowerCase().includes(query.toLowerCase());
           }
-          // identificate DataType
+          // Identify DateType and check formatted date string
           if (
             typeof value === "object" &&
             value !== null &&
@@ -185,19 +287,17 @@ export const usePosts = (
               .toLowerCase()
               .includes(query.toLowerCase());
           }
-          /*if(typeof value === 'object' && value !== null){
-              return isTextInConfig(value, query);
-            }*/
-          // identificate Enabled-status
+          // Identify and filter boolean `enabled` status
           if (typeof value === "boolean") {
-            return filterBoolean(query, convertDTOToPost(post));
+            return filterBoolean(query, post);
           }
           return false;
         });
       }
 
-      const fieldValue = convertDTOToPost(post)[searchField];
-      // If the fieldValue is of type DateType
+      const fieldValue = post[searchField];
+
+      // If the searched field is of type DateType
       if (
         typeof fieldValue === "object" &&
         fieldValue !== null &&
@@ -209,13 +309,13 @@ export const usePosts = (
           .toLowerCase()
           .includes(query.toLowerCase());
       }
-      // If the fieldValue is of type Config
-      /*if(typeof fieldValue === 'object' && fieldValue !== null){
-          return isTextInConfig(fieldValue, query);
-        }*/
+
+      // If the searched field is of type Boolean
       if (typeof fieldValue === "boolean") {
-        return filterBoolean(query, convertDTOToPost(post));
+        return filterBoolean(query, post);
       }
+
+      // If the searched field is of type String or Number
       if (typeof fieldValue === "string" || typeof fieldValue === "number") {
         return fieldValue
           .toString()
@@ -223,7 +323,7 @@ export const usePosts = (
           .includes(query.toLowerCase());
       }
 
-      return false;
+      return false; // If the field type is unsupported, do not include it in the results
     });
   }, [query, sortedPosts, searchField]);
 

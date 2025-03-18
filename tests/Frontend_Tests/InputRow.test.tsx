@@ -1,6 +1,7 @@
 import "@testing-library/jest-dom";
 import { render, screen } from "@testing-library/react";
 import InputRow from "@/components/UI/InputRow";
+import { tinkerforgeDTO } from "@/models/zTinkerforgeSensor.schema";
 import userEvent from "@testing-library/user-event";
 import { v4 as uuidv4 } from "uuid";
 
@@ -20,24 +21,31 @@ describe("InputRow Component", () => {
     uid: true,
   };
 
-  const samplePost = {
-    uid: 1,
-    title: "Sample Post",
-    description: "Test Description",
-    date_created: { day: 10, month: 12, year: 2024 },
-    date_modified: { day: 11, month: 12, year: 2024 },
+  const samplePost: tinkerforgeDTO = {
+    id: uuidv4(),
+    date_created: new Date(2024, 11, 10).toISOString(),
+    date_modified: new Date(2024, 11, 11).toISOString(),
     enabled: false,
     label: "Test Label",
-    uuid: uuidv4(),
-    config: { key1: "value1" },
-    on_connect: "test-connect",
-    topic: "Test Topic",
-    unit: "Test Unit",
-    driver: "Test Driver",
-    port: 1234,
-    sad: 0,
-    pad: 0,
-    host: "localhost",
+    description: "Test Description",
+    uid: 1,
+    config: {
+      default: {
+        description: "value1",
+        interval: 0,
+        trigger_only_on_change: false,
+        topic: "topic",
+        unit: "unit",
+      },
+    },
+    on_connect: [
+      {
+        function: "test-connect",
+        args: [],
+        kwargs: {},
+        timeout: null,
+      },
+    ],
   };
 
   beforeEach(() => {
@@ -58,8 +66,6 @@ describe("InputRow Component", () => {
 
     expect(screen.getByPlaceholderText("UUID")).toBeInTheDocument();
     expect(screen.getByPlaceholderText("Label")).toBeInTheDocument();
-    expect(screen.getByPlaceholderText("Topic")).toBeInTheDocument();
-    expect(screen.getByPlaceholderText("Driver")).toBeInTheDocument();
     expect(screen.getByPlaceholderText("On Connect")).toBeInTheDocument();
     expect(screen.getByPlaceholderText("UID")).toBeInTheDocument();
   });
@@ -117,7 +123,7 @@ describe("InputRow Component", () => {
     expect(mockCreatePost).toHaveBeenCalledTimes(1);
     expect(mockCreatePost).toHaveBeenCalledWith(
       expect.objectContaining({
-        uuid: expect.any(String),
+        id: expect.any(String),
       }),
     );
   });
