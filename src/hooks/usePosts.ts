@@ -69,19 +69,32 @@ const filterBoolean = (query: string, post: tinkerforgeDTO): boolean => {
   return false;
 };
 
+/**
+ * Compares two boolean values for sorting sensor data.
+ *
+ * Sorting order:
+ * - `true` values come first
+ * - `false` values come next
+ * - `null` or `undefined` values come last
+ *
+ * @param {boolean | null | undefined} valueA - First boolean value.
+ * @param {boolean | null | undefined} valueB - Second boolean value.
+ * @returns {number} - Comparison result: -1, 0, or 1.
+ */
 const compareBoolean = (
   valueA: boolean | null | undefined,
   valueB: boolean | null | undefined,
 ): number => {
-  if (valueA === true && valueB !== true) return -1; // `a` comes before `b
-  if (valueB === true && valueA !== true) return 1; // `b` comes before `a`
-  if (valueA === false && valueB !== false) return -1;
+  if (valueA === true && valueB !== true) return -1; // `true` comes first
+  if (valueB === true && valueA !== true) return 1;
+
+  if (valueA === false && valueB !== false) return -1; // `false` comes before `null/undefined`
   if (valueB === false && valueA !== false) return 1;
 
-  // `undefined` or `null` come last
-  if (valueA == null && valueB != null) return 1; // `a` after `b`
-  if (valueB == null && valueA != null) return -1; // `b` after `a`
-  return 0;
+  if (valueA == null && valueB != null) return 1; // `null/undefined` comes last
+  if (valueB == null && valueA != null) return -1;
+
+  return 0; // Both values are the same
 };
 
 /**
@@ -145,18 +158,33 @@ const compareDates = (
   return 0;
 };
 
-// Custom Hook: All custom hooks use predefined hooks from React (useState, useMemo etc)
+/**
+ * Custom React Hook to sort sensor data.
+ *
+ * Supports sorting by:
+ * - Boolean values (`enabled`)
+ * - Numbers (e.g., temperature, voltage)
+ * - Strings (e.g., sensor names)
+ * - Dates (`DateType`)
+ *
+ * @param {tinkerforgeDTO[]} posts - Array of sensor data objects.
+ * @param {SortKey | ""} sort - The field to sort by.
+ * @returns {tinkerforgeDTO[]} - Sorted array of sensors.
+ */
 export const useSortedPosts = (
   posts: tinkerforgeDTO[],
   sort: SortKey | "",
 ): tinkerforgeDTO[] => {
+  // Custom Hook: All custom hooks use predefined hooks from React (useState, useMemo etc)
+
+  // Memoize the sorted array to prevent unnecessary re-computation
   const sortedPosts = useMemo(() => {
     if (sort) {
       return [...posts].sort((a, b) => {
         const valueA = a[sort];
         const valueB = b[sort];
 
-        // Compare for Boolean
+        // Boolean comparison: `true` comes first, `false` next, then `null`/`undefined`
         if (typeof valueA === "boolean" || typeof valueB === "boolean") {
           return compareBoolean(valueA as boolean, valueB as boolean);
         }
@@ -186,7 +214,7 @@ export const useSortedPosts = (
           return valueA - valueB;
         }
 
-        // Compare for Strings
+        // String comparison: Use locale-based sorting for proper alphabetical order
         if (typeof valueA === "string" && typeof valueB === "string") {
           return valueA.localeCompare(valueB);
         }
