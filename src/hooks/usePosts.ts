@@ -31,19 +31,41 @@ const formatDate = (date: DateType): string => {
   return `${day ?? ""}.${month ?? ""}.${year ?? ""} ${nanoseconds ?? ""}`;
 };
 
-// the method filter boolean
+/**
+ * Filters a `tinkerforgeDTO` object based on a boolean-like query string.
+ *
+ * This function is used in search operations where the query string
+ * corresponds to different boolean-like states of a sensor.
+ *
+ * @param {string} query - The input string representing a boolean-like state.
+ *                         Possible values:
+ *                         - "on", "enabled", "true" → returns `true` if `post.enabled` is `true`
+ *                         - "off", "disabled", "false" → returns `true` if `post.enabled` is `false`
+ *                         - "undefined", "offline" → returns `true` if `post.enabled` is `undefined` or `null`
+ *                         - other values that will be evaluated as `false`
+ * @param {tinkerforgeDTO} post - The object that represents a sensor with the `enabled` field to check.
+ * @returns {boolean} - `true` if `post.enabled` matches the query condition, otherwise `false`.
+ */
 const filterBoolean = (query: string, post: tinkerforgeDTO): boolean => {
+  // Normalize query: convert to lowercase and trim whitespace
   const normalizedQuery = query.toLowerCase().trim();
 
+  // Check for "true-like" values
   if (["on", "enabled", "true"].includes(normalizedQuery)) {
     return post.enabled === true;
   }
+
+  // Check for "false-like" values
   if (["off", "disabled", "false"].includes(normalizedQuery)) {
     return post.enabled === false;
   }
+
+  // Check for "undefined-like" values
   if (["undefined", "offline"].includes(normalizedQuery)) {
     return post.enabled === undefined || post.enabled === null;
   }
+
+  // Return false for unsupported query values
   return false;
 };
 
