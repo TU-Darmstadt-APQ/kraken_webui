@@ -64,6 +64,10 @@ function PostHandler({ sensors }: { sensors: tinkerforgeDTO[] }) {
     filter.searchField,
   );
 
+  /**
+   * State that holds the post currently being edited.
+   * If `null`, no post is being edited.
+   */
   const [postToEdit, setPostToEdit] = useState<tinkerforgeDTO | null>(null);
 
   /**
@@ -86,11 +90,24 @@ function PostHandler({ sensors }: { sensors: tinkerforgeDTO[] }) {
     setPosts(posts.filter((p) => p.id != post.id));
   };
 
+  /**
+   * Updates an existing post in the list.
+   * Also closes the modal and resets the editing state.
+   *
+   * @param {tinkerforgeDTO} updatedPost - The modified post data.
+   */
   const editPost = (updatedPost: tinkerforgeDTO) => {
     setPosts(posts.map((p) => (p.id === updatedPost.id ? updatedPost : p)));
     setModal(false);
     setPostToEdit(null);
   };
+
+  /**
+   * Prepares a post for editing.
+   * Opens the modal and sets the selected post as `postToEdit`.
+   *
+   * @param {tinkerforgeDTO} post - The post to be edited.
+   */
   const handleEdit = (post: tinkerforgeDTO) => {
     setPostToEdit(post);
     setModal(true);
