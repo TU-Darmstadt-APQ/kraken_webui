@@ -5,6 +5,7 @@ import { PostFormProps } from "@/types";
 import { tinkerforgeDTO } from "@/models/zTinkerforgeSensor.schema";
 import { v4 as uuidv4 } from "uuid";
 
+// Predefined sensor types with their required configuration fields (just as a plug for testing functionality).
 const sensorTypes = [
   {
     name: "GPIB",
@@ -27,8 +28,15 @@ const sensorTypes = [
 ];
 
 /**
- * A form component for creating and adding new posts.
+ * A form component for creating and adding new configurations for posts.
  *
+ * This component provides:
+ * - Sensor type selection: Allows the user to choose between different sensor types (GPIB, Tinkerforge).
+ * - Dynamic configuration fields: Based on the selected sensor type, the form updates the required configuration fields.
+ * - Editing mode: If a post is passed via `postToEdit`, the form pre-fills with existing values.
+ * - Creation mode: If no `postToEdit` is provided, a new post is created with default fields.
+ * - Form submission handling: On submission, the post is either edited or created, and the input fields are cleared afterward.
+ * 
  * @component
  * @param {PostFormProps} props - Props for the PostForm component.
  * @param {(post: { title: string, description: string, id: number }) => void}
@@ -58,6 +66,7 @@ const PostForm: React.FC<PostFormProps> = ({ create, edit, postToEdit }) => {
     return new Date().toISOString();
   };
 
+  // Default post structure used when creating a new sensor post, to fill the input fields with empty/default values
   const defaultPost: tinkerforgeDTO = {
     id: "",
     uid: 0,
@@ -124,20 +133,6 @@ const PostForm: React.FC<PostFormProps> = ({ create, edit, postToEdit }) => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault(); // So that the page does not refresh after pressing the button
-
-    // Check for required fields
-    /*if (!post.driver.trim()) {
-      alert("The `driver` must not be empty.");
-      return;
-    }
-    if (!post.topic.trim()) {
-      alert("The `topic` must not be empty.");
-      return;
-    }
-    if (!post.unit.trim()) {
-      alert("The `unit` must not be empty.");
-      return;
-    }*/
 
     // We change the state indirectly. We create a new array where we write our old one. And at the end comes the new element
 

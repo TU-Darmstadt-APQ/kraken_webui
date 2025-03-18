@@ -13,20 +13,21 @@ import { tinkerforgeDTO } from "@/models/zTinkerforgeSensor.schema";
 import { v4 as uuidv4 } from "uuid";
 
 /**
- * InputRow component renders a row in the UI that allows a user to either create a new post or edit an existing one.
+ * InputRow renders an editable row for creating or modifying sensor data.
  *
- * This component displays various input fields such as UUID, label, topic, driver, and others based on the
- * provided selectedColumns prop.
- * A modal window is used to modify the configuration through a PostForm.
+ * This component provides:
+ * - Dynamic form fields: Shows only the fields specified in `selectedColumns`.
+ * - Modal for configuration editing: Opens a modal to modify the `config` field.
+ * - Controlled input fields.
+ * - Submit & Cancel buttons: Allows saving or discarding changes.
  *
  * @component
- * @param {InputRowProps} props - The props for the InputRow component.
- * @param {boolean} props.visible - Determines whether the input row is shown.
- * @param {function(boolean): void} props.setVisible - Callback to change the visibility of the input row.
- * @param {function(Post): void} props.createPost - Callback to create a new post.
- * @param {function(Post): void} props.edit - Callback to edit an existing post.
- * @param {Post} [props.postToEdit] - Optional post to pre-fill the input fields for editing.
- * @param {Object} props.selectedColumns - An object indicating which columns/fields should be displayed.
+ * @param {boolean} visible - Determines whether the input row is visible.
+ * @param {(visible: boolean) => void} setVisible - Function to toggle visibility.
+ * @param {(post: tinkerforgeDTO) => void} createPost - Callback to create a new post.
+ * @param {(post: tinkerforgeDTO) => void} .edit - Callback to edit an existing post.
+ * @param {tinkerforgeDTO | null} [postToEdit] - If provided, pre-fills the form for editing.
+ * @param {Record<string, boolean>} selectedColumns - Object indicating which fields should be displayed.
  *
  * @example
  * const selectedColumns = {
@@ -39,7 +40,17 @@ import { v4 as uuidv4 } from "uuid";
  *   on_connect: true,
  * };
  *
+ * <InputRow
+ *   visible={true}
+ *   setVisible={setVisible}
+ *   createPost={createPost}
+ *   edit={editPost}
+ *   postToEdit={postToEdit}
+ *   selectedColumns={selectedColumns}
  * />
+ *
+ * @returns {JSX.Element | null} A row with input fields for adding or editing a post.
+ *
  */
 const InputRow: React.FC<InputRowProps> = ({
   visible,
@@ -52,11 +63,18 @@ const InputRow: React.FC<InputRowProps> = ({
   // if false - we will not render this object
   if (!visible) return null;
 
-  // Helper function to generate the current date
+  /**
+   * Generates the current date-time in ISO format.
+   * Used for populating `date_created` and `date_modified` fields.
+   */
   const getCurrentDateISOString = (): string => {
     return new Date().toISOString();
   };
 
+  /**
+   * Default structure for a new post.
+   * Used when no `postToEdit` is provided.
+   */
   const defaultPost: tinkerforgeDTO = {
     id: "",
     uid: 0,
@@ -69,18 +87,34 @@ const InputRow: React.FC<InputRowProps> = ({
     on_connect: [],
   };
 
-  // State for managing the input values of the form
+  /**
+   * State to manage the input values of the form.
+   * - If editing, initializes with `postToEdit`.
+   * - Otherwise, starts with a new `defaultPost`.
+   */
   const [post, setPost] = useState<tinkerforgeDTO>(postToEdit || defaultPost);
 
+  /**
+   * State to control the visibility of the modal for editing configuration (`config` field).
+   */
   const [modalVisible, setModalVisible] = useState(false);
 
+  /**
+   * Handles form submission.
+   * - Calls `edit` if modifying an existing post.
+   * - Calls `createPost` if adding a new post.
+   * - Resets the form after submission.
+   *
+   * @param {React.FormEvent} e - The form submission event.
+   */
   const handleSubmit = (e: React.FormEvent) => {
     if (postToEdit) {
       edit({ ...post, date_modified: getCurrentDateISOString() });
     } else {
-      createPost({ ...post, id: uuidv4() }); // Generate a unique ID based on the current timestamp
+      createPost({ ...post, id: uuidv4() }); // Generate a unique ID
     }
 
+    // Reset input fields after submission
     setPost({
       id: "",
       uid: 0,
@@ -91,7 +125,7 @@ const InputRow: React.FC<InputRowProps> = ({
       label: "",
       config: {},
       on_connect: [],
-    }); // After inserting Element, we empty InputFields
+    });
   };
 
   return (
@@ -209,13 +243,7 @@ const InputRow: React.FC<InputRowProps> = ({
       {/* Edit button and delete button with callback */}
       <div className={styles.cell}>
         <MyButton className="list-button" onClick={handleSubmit}>
-          <img
-            src="/floppy-disk-pen.png"
-            alt="Submit"
-            //className="icon-button"
-            width={20}
-            height={20}
-          />
+          <img src="/floppy-disk-pen.png" alt="Submit" width={20} height={20} />
         </MyButton>
 
         <MyButton
@@ -235,17 +263,11 @@ const InputRow: React.FC<InputRowProps> = ({
           }}
           className="list-button"
         >
-          <img
-            src="/cross.png"
-            alt="Cancel"
-            //className="icon-button"
-            width={20}
-            height={20}
-          />
+          <img src="/cross.png" alt="Cancel" width={20} height={20} />
         </MyButton>
       </div>
 
-      {/* Modal Window */}
+      {/* Modal Window for Configuration Editing */}
       {modalVisible && (
         <ModalWindow visible={modalVisible} setVisible={setModalVisible}>
           <PostForm
