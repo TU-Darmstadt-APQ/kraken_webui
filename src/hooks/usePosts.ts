@@ -13,7 +13,7 @@ type SortKey = keyof tinkerforgeDTO;
  * If any of the fields (`day`, `month`, `year`) are missing, they are replaced with an empty string.
  * Nanoseconds are appended at the end if present.
  */
-const formatDate = (date: DateType): string => {
+export const formatDate = (date: DateType): string => {
   const { day, month, year, nanoseconds } = date;
 
   // Return "Invalid date" if any required field is missing or undefined
