@@ -1,6 +1,6 @@
 import { DateType } from "@/types";
-import { formatDate } from "@/hooks/usePosts";
 import { compareDates } from "@/hooks/usePosts";
+import { formatDate } from "@/hooks/usePosts";
 
 describe("formatDate", () => {
   test("should correctly format a valid date", () => {
@@ -21,7 +21,8 @@ describe("formatDate", () => {
       nanoseconds: 0,
     };
     expect(formatDate(invalidDate)).toBe("Invalid date");
-
+  });
+});
 
 describe("compareDates", () => {
   test("should return 0 when both dates are equal", () => {
