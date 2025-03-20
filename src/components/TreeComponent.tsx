@@ -1,16 +1,8 @@
 import React, { useEffect, useState } from "react";
 import MyButton from "./UI/button/MyButton";
 import Tree from "react-d3-tree";
+import { TreeNode } from "@/types";
 import { tinkerforgeDTO } from "@/models/zTinkerforgeSensor.schema";
-
-/**
- * Interface representing a tree node structure.
- * Each node has a `name` (label) and a list of `children` (sub-nodes).
- */
-interface TreeNode {
-  name: string;
-  children: TreeNode[];
-}
 
 /**
  * Function to build a balanced binary tree from a given list of sensors.
@@ -53,9 +45,26 @@ const buildBalancedTree = (
 };
 
 /**
- * React component that visualizes a tree structure built from sensor data.
+ * This component visualizes sensor data in a balanced tree structure (BFS-like).
  *
- * @param sensors - Array of sensor objects used to construct the tree.
+ * This component provides:
+ * - Tree visualization using `react-d3-tree`.
+ * - Dynamic tree generation: Updates whenever `sensors` change.
+ * - Zoom controls: Buttons for zooming in and out.
+ *
+ * @component
+ * @param {tinkerforgeDTO[]} sensors - An array of sensor objects used to construct the tree.
+ *
+ * @example
+ * const sensors = [
+ *   { id: "1", label: "Sensor A" },
+ *   { id: "2", label: "Sensor B" },
+ *   { id: "3", label: "Sensor C" }
+ * ];
+ *
+ * <TreeComponent sensors={sensors} />
+ *
+ * @returns {JSX.Element} A tree visualization of the sensor data.
  */
 const TreeComponent = ({ sensors }: { sensors: tinkerforgeDTO[] }) => {
   // State to store the generated tree data.
