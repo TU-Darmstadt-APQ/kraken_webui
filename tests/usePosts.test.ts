@@ -9,21 +9,9 @@ import {
 import { DateType } from "@/types";
 import { renderHook } from "@testing-library/react";
 import { tinkerforgeDTO } from "@/models/zTinkerforgeSensor.schema";
-import { usePosts } from "@/hooks/usePosts";
 
-// Mock Data
+// Mock Data for testing
 const mockPosts: tinkerforgeDTO[] = [
-  {
-    id: "1",
-    uid: 0,
-    description: "Temperature sensor in room A",
-    date_created: "2025-06-06",
-    date_modified: "2025-06-07",
-    enabled: true,
-    label: "Sensor A",
-    config: {},
-    on_connect: [],
-  },
   {
     id: "2",
     uid: 0,
@@ -32,6 +20,17 @@ const mockPosts: tinkerforgeDTO[] = [
     date_modified: "2023-06-07",
     enabled: false,
     label: "Sensor B",
+    config: {},
+    on_connect: [],
+  },
+  {
+    id: "1",
+    uid: 0,
+    description: "Temperature sensor in room A",
+    date_created: "2025-06-06",
+    date_modified: "2025-06-07",
+    enabled: true,
+    label: "Sensor A",
     config: {},
     on_connect: [],
   },
@@ -134,43 +133,6 @@ describe("usePosts Hook", () => {
     expect(result.current[0].date_created).toEqual("2023-06-06");
   });
 });
-
-// Mock Data for testing
-const mockPosts: tinkerforgeDTO[] = [
-  {
-    id: "2",
-    uid: 0,
-    description: "Pressure sensor in lab",
-    date_created: "2023-06-06",
-    date_modified: "2023-06-07",
-    enabled: false,
-    label: "Sensor B",
-    config: {},
-    on_connect: [],
-  },
-  {
-    id: "1",
-    uid: 0,
-    description: "Temperature sensor in room A",
-    date_created: "2025-06-06",
-    date_modified: "2025-06-07",
-    enabled: true,
-    label: "Sensor A",
-    config: {},
-    on_connect: [],
-  },
-  {
-    id: "3",
-    uid: 0,
-    description: "Temperature sensor in room B",
-    date_created: "2024-06-06",
-    date_modified: "2024-06-07",
-    enabled: true,
-    label: "Sensor C",
-    config: {},
-    on_connect: [],
-  },
-];
 
 describe("useSortedPosts Hook", () => {
   test("should return posts sorted by label (alphabetically)", () => {
