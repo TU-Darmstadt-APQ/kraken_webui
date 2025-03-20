@@ -3,13 +3,13 @@ import { InputRowProps } from "@/types";
 
 import ModalWindow from "../UI/ModalWindow/ModalWindow";
 import MyButton from "../UI/button/MyButton";
-
 import MyInput from "../UI/input/MyInput";
-
 import MyToggle from "../UI/toggle/MyToggle";
+
 import PostForm from "../PostForm";
 import styles from "@/styles/TableItem.module.css";
 import { tinkerforgeDTO } from "@/models/zTinkerforgeSensor.schema";
+import { upsertSensorAction } from "@/actions/action_upsertSensor";
 import { v4 as uuidv4 } from "uuid";
 
 /**
@@ -107,11 +107,17 @@ const InputRow: React.FC<InputRowProps> = ({
    *
    * @param {React.FormEvent} e - The form submission event.
    */
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     if (postToEdit) {
       edit({ ...post, date_modified: getCurrentDateISOString() });
     } else {
-      createPost({ ...post, id: uuidv4() }); // Generate a unique ID
+      const result = await upsertSensorAction(post);
+      if (result.success) {
+        alert(result.message);
+        createPost({ ...post, id: uuidv4() }); // Generate a unique ID and insert in UI
+      } else {
+        alert(`Error: ${result.message}`);
+      }
     }
 
     // Reset input fields after submission
