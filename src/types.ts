@@ -125,3 +125,11 @@ export interface InputRowProps {
   edit: PostAction;
   postToEdit: tinkerforgeDTO | null;
 }
+/**
+ * Interface representing a tree node structure.
+ * Each node has a `name` (label) and a list of `children` (sub-nodes).
+ */
+export interface TreeNode {
+  name: string;
+  children: TreeNode[];
+}
