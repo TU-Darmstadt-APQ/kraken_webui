@@ -109,7 +109,6 @@ describe("useSortedPosts Hook", () => {
   });
 });
 
-
 describe("formatDate", () => {
   test("should correctly format a valid date", () => {
     const date: DateType = {
