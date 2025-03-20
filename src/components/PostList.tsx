@@ -101,7 +101,7 @@ const PostList: React.FC<PostListProps> = ({
       const commaCount = (jsonString.match(/,/g) || []).length;
 
       // Adjust row height based on the number of fields in the config column
-      return selectedColumns.config ? (commaCount + 1) * 40 + 50 : 170;
+      return selectedColumns.config ? (commaCount + 1) * 50 + 100 : 170;
     },
     [selectedColumns],
   ); // Recalculate height when `selectedColumns` changes
