@@ -1,31 +1,34 @@
+import {
+  compareBoolean,
+  compareDates,
+  filterBoolean,
+  formatDate,
+  usePosts,
+  useSortedPosts,
+} from "@/hooks/usePosts";
 import { DateType } from "@/types";
-import { compareBoolean } from "@/hooks/usePosts";
-import { compareDates } from "@/hooks/usePosts";
-import { filterBoolean } from "@/hooks/usePosts";
-import { formatDate } from "@/hooks/usePosts";
 import { renderHook } from "@testing-library/react";
 import { tinkerforgeDTO } from "@/models/zTinkerforgeSensor.schema";
-import { useSortedPosts } from "@/hooks/usePosts";
 
-// Mock data for testing
+// Mock Data for testing
 const mockPosts: tinkerforgeDTO[] = [
   {
-    id: "1",
+    id: "2",
     uid: 0,
-    description: "",
-    date_created: "2025-6-6",
-    date_modified: "1910-10-10",
+    description: "Pressure sensor in lab",
+    date_created: "2023-06-06",
+    date_modified: "2023-06-07",
     enabled: false,
     label: "Sensor B",
     config: {},
     on_connect: [],
   },
   {
-    id: "2",
+    id: "1",
     uid: 0,
-    description: "",
-    date_created: "2025-6-6",
-    date_modified: "1910-10-10",
+    description: "Temperature sensor in room A",
+    date_created: "2025-06-06",
+    date_modified: "2025-06-07",
     enabled: true,
     label: "Sensor A",
     config: {},
@@ -34,26 +37,19 @@ const mockPosts: tinkerforgeDTO[] = [
   {
     id: "3",
     uid: 0,
-    description: "",
-    date_created: "2025-6-6",
-    date_modified: "1910-10-10",
-    enabled: false,
+    description: "Temperature sensor in room B",
+    date_created: "2024-06-06",
+    date_modified: "2024-06-07",
+    enabled: true,
     label: "Sensor C",
     config: {},
     on_connect: [],
   },
 ];
 
-// Wrap the mock data by setting `enabled` to the desired type
-const testPosts = mockPosts.map((post) => ({
-  ...post,
-  enabled: post.enabled as boolean,
-}));
-
 describe("useSortedPosts Hook", () => {
   test("should return posts sorted by label (alphabetically)", () => {
-    const { result } = renderHook(() => useSortedPosts(testPosts, "label"));
-
+    const { result } = renderHook(() => useSortedPosts(mockPosts, "label"));
     expect(result.current.map((p: tinkerforgeDTO) => p.label)).toEqual([
       "Sensor A",
       "Sensor B",
@@ -63,51 +59,63 @@ describe("useSortedPosts Hook", () => {
 
   test("should return posts sorted by date_created (earliest first)", () => {
     const { result } = renderHook(() =>
-      useSortedPosts(testPosts, "date_created"),
+      useSortedPosts(mockPosts, "date_created"),
     );
-
-    // Convert strings into `Date` objects for correct comparison
-    const sortedDates = result.current.map((p: tinkerforgeDTO) =>
+    const sortedDates = result.current.map((p) =>
       new Date(p.date_created).toISOString(),
     );
-
     expect(sortedDates).toEqual(
       [...sortedDates].sort(
         (a, b) => new Date(a).getTime() - new Date(b).getTime(),
-      ), // Check that the array is sorted correctly
+      ),
     );
   });
 
   test("should return posts sorted by enabled status (true first, then false)", () => {
-    const { result } = renderHook(() => useSortedPosts(testPosts, "enabled"));
+    const { result } = renderHook(() => useSortedPosts(mockPosts, "enabled"));
+    expect(result.current.map((p) => p.enabled)).toEqual([true, true, false]);
+  });
+});
 
-    expect(result.current.map((p: tinkerforgeDTO) => p.enabled)).toEqual([
-      true,
-      false,
-      false,
+describe("usePosts Hook", () => {
+  test("should return sorted posts by label", () => {
+    const { result } = renderHook(() =>
+      usePosts(mockPosts, "label", "", "all"),
+    );
+    expect(result.current.map((p) => p.label)).toEqual([
+      "Sensor A",
+      "Sensor B",
+      "Sensor C",
     ]);
   });
 
-  test("should return the same list if sort is an empty string", () => {
-    const { result } = renderHook(() => useSortedPosts(testPosts, ""));
-
-    expect(result.current).toEqual(testPosts);
+  test("should return posts sorted by date_created (earliest first)", () => {
+    const { result } = renderHook(() =>
+      usePosts(mockPosts, "date_created", "", "all"),
+    );
+    const sortedDates = result.current.map((p) =>
+      new Date(p.date_created).toISOString(),
+    );
+    expect(sortedDates).toEqual(
+      [...sortedDates].sort(
+        (a, b) => new Date(a).getTime() - new Date(b).getTime(),
+      ),
+    );
   });
 
-  test("should handle an empty list without errors", () => {
-    const { result } = renderHook(() => useSortedPosts([], "label"));
-
-    expect(result.current).toEqual([]);
+  test("should return filtered posts when searching for 'Temperature'", () => {
+    const { result } = renderHook(() =>
+      usePosts(mockPosts, "", "Temperature", "description"),
+    );
+    expect(result.current.map((p) => p.description)).toEqual([
+      "Temperature sensor in room A",
+      "Temperature sensor in room B",
+    ]);
   });
 
   test("should return posts sorted by numeric ID", () => {
-    const { result } = renderHook(() => useSortedPosts(testPosts, "id"));
-
-    expect(result.current.map((p: tinkerforgeDTO) => p.id)).toEqual([
-      "1",
-      "2",
-      "3",
-    ]);
+    const { result } = renderHook(() => usePosts(mockPosts, "id", "", "all"));
+    expect(result.current.map((p) => p.id)).toEqual(["1", "2", "3"]);
   });
 });
 
