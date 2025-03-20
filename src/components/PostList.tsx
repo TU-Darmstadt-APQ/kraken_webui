@@ -66,6 +66,13 @@ const PostList: React.FC<PostListProps> = ({
   remove,
   edit,
 }) => {
+  if (posts.length === 0) {
+    return (
+      <h1 style={{ textAlign: "center", padding: "20px" }}>
+        No posts available
+      </h1>
+    );
+  }
   // Reference for storing row heights in VariableSizeList
   const listRef = useRef<Table>(null);
 
