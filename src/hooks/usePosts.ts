@@ -75,7 +75,7 @@ export const filterBoolean = (query: string, post: tinkerforgeDTO): boolean => {
  * @param {boolean | null | undefined} valueB - Second boolean value.
  * @returns {number} - Comparison result: -1, 0, or 1.
  */
-const compareBoolean = (
+export const compareBoolean = (
   valueA: boolean | null | undefined,
   valueB: boolean | null | undefined,
 ): number => {
