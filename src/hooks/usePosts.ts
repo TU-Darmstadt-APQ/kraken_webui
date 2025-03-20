@@ -41,12 +41,11 @@ export const formatDate = (date: DateType): string => {
  *                         Possible values:
  *                         - "on", "enabled", "true" → returns `true` if `post.enabled` is `true`
  *                         - "off", "disabled", "false" → returns `true` if `post.enabled` is `false`
- *                         - "undefined", "offline" → returns `true` if `post.enabled` is `undefined` or `null`
  *                         - other values that will be evaluated as `false`
  * @param {tinkerforgeDTO} post - The object that represents a sensor with the `enabled` field to check.
  * @returns {boolean} - `true` if `post.enabled` matches the query condition, otherwise `false`.
  */
-const filterBoolean = (query: string, post: tinkerforgeDTO): boolean => {
+export const filterBoolean = (query: string, post: tinkerforgeDTO): boolean => {
   // Normalize query: convert to lowercase and trim whitespace
   const normalizedQuery = query.toLowerCase().trim();
 
@@ -58,11 +57,6 @@ const filterBoolean = (query: string, post: tinkerforgeDTO): boolean => {
   // Check for "false-like" values
   if (["off", "disabled", "false"].includes(normalizedQuery)) {
     return post.enabled === false;
-  }
-
-  // Check for "undefined-like" values
-  if (["undefined", "offline"].includes(normalizedQuery)) {
-    return post.enabled === undefined || post.enabled === null;
   }
 
   // Return false for unsupported query values
@@ -81,7 +75,7 @@ const filterBoolean = (query: string, post: tinkerforgeDTO): boolean => {
  * @param {boolean | null | undefined} valueB - Second boolean value.
  * @returns {number} - Comparison result: -1, 0, or 1.
  */
-const compareBoolean = (
+export const compareBoolean = (
   valueA: boolean | null | undefined,
   valueB: boolean | null | undefined,
 ): number => {
