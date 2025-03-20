@@ -47,10 +47,25 @@ const MyContent: React.FC<MyContentProps> = ({
         {/* Add any additional buttons or functionality here if needed */}
         {/* Button to show the list of posts */}
         <MyButton onClick={() => setShowPostList(true)}>
-          Show Post List
+          <img
+            src="tableIcon.png"
+            alt="Show Post List"
+            className="icon-button"
+            width={25}
+            height={25}
+          />
+          <hr />
         </MyButton>
         {/* Button to show the hierarchical tree view */}
-        <MyButton onClick={() => setShowPostList(false)}>Show Tree</MyButton>
+        <MyButton onClick={() => setShowPostList(false)}>
+          <img
+            src="tree-structure.png"
+            alt="Show Tree"
+            className="icon-button"
+            width={25}
+            height={25}
+          />
+        </MyButton>
       </div>
 
       {/* Right, Main Content */}

@@ -108,7 +108,7 @@ const compareBoolean = (
  * @param {DateType | null | undefined} valueB - Second date value.
  * @returns {number} - Comparison result: -1, 0, or 1.
  */
-const compareDates = (
+export const compareDates = (
   valueA: DateType | null | undefined,
   valueB: DateType | null | undefined,
 ): number => {
