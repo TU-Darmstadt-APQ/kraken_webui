@@ -129,7 +129,11 @@ const TableItem: React.FC<TableItemProps> = ({
       )}
 
       {selectedColumns.on_connect && (
-        <div className={styles.cell}>{post.on_connect.length}</div>
+        <div className={styles.cell}>
+          <pre style={{ whiteSpace: "pre-wrap", wordWrap: "break-word" }}>
+            {JSON.stringify(post.on_connect, null, 2)}
+          </pre>
+        </div>
       )}
 
       {/* Action buttons for editing and deleting the post */}
