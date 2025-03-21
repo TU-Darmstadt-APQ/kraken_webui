@@ -9,7 +9,8 @@
   padding: 8px;
   text-align: left;
   align-items: stretch;
-  overflow: hidden;
+  overflow-y: auto;
+  overflow-x: hidden;
   text-overflow: ellipsis; /* Add ellipsis for overflowing text */
   white-space: normal; /* Prevent text wrapping */
   border: 1px solid teal; /* Only top border */
