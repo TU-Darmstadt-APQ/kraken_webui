@@ -69,7 +69,7 @@ const PostList: React.FC<PostListProps> = ({
   if (posts.length === 0) {
     return (
       <h1 style={{ textAlign: "center", padding: "20px" }}>
-        No posts available
+        No sensors found
       </h1>
     );
   }
