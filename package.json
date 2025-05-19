@@ -22,7 +22,7 @@
     "zod": "^3.24.4"
   },
   "devDependencies": {
-    "@eslint/js": "^9.26.0",
+    "@eslint/js": "^9.27.0",
     "@next/eslint-plugin-next": "^15.3.2",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",
