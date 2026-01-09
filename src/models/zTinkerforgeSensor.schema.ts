@@ -2,6 +2,17 @@ import { UUID } from "bson";
 import functionCallSchema from "./FunctionCall.schema";
 import { z } from "zod";
 
+// Generic Sensor:
+
+const genericEntityObj = {
+  _id: z.instanceof(UUID),
+  date_created: z.instanceof(Date),
+  date_modified: z.instanceof(Date),
+  enabled: z.boolean(),
+  label: z.optional(z.union([z.string(), z.null()])),
+  description: z.union([z.string(), z.null()]),
+};
+
 // Defines the schema for the sensor configuration used by the Tinkerforge sensors
 export const tinkerforgeConfigSchema = z.object({
   interval: z.number().int().nonnegative(),
@@ -13,13 +24,8 @@ export const tinkerforgeConfigSchema = z.object({
 
 // Defines the schema for a Tinkerforge sensor as used by the Mongo
 // database
-export const tinkerforgeEntitySchema = z.object({
-  _id: z.instanceof(UUID),
-  date_created: z.instanceof(Date),
-  date_modified: z.instanceof(Date),
-  enabled: z.boolean(),
-  label: z.optional(z.union([z.string(), z.null()])),
-  description: z.union([z.string(), z.null()]),
+const tinkerforgeEntityObj = {
+  ...genericEntityObj,
   uid: z
     .number()
     .int()
@@ -27,7 +33,9 @@ export const tinkerforgeEntitySchema = z.object({
     .max(4294967295, { message: "Value exceeds uint32_t limit" }), // (uint32_t)
   config: z.record(z.string(), tinkerforgeConfigSchema),
   on_connect: z.array(functionCallSchema),
-});
+};
+
+export const tinkerforgeEntitySchema = z.object(tinkerforgeEntityObj);
 
 export type tinkerforgeEntity = z.infer<typeof tinkerforgeEntitySchema>;
 
