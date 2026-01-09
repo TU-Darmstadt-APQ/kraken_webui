@@ -1,8 +1,8 @@
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import InputRow from "./UI/InputRow";
 import MyToggle from "./UI/toggle/MyToggle";
 import { PostListProps } from "@/types";
-import { VariableSizeList as Table } from "react-window";
+import { FixedSizeList as Table } from "react-window";
 import TableItem from "./TableItem";
 import styles from "@/styles/PostList.module.css";
 
@@ -81,41 +81,6 @@ const PostList: React.FC<PostListProps> = ({
     on_connect: true,
   });
 
-  /**
-   * Calculates the row height dynamically based on the presence of configuration fields.
-   * Expands rows that contain large JSON objects for better readability.
-   *
-   * @param {number} index - The index of the row in the dataset.
-   * @returns {number} The computed height of the row.
-   */
-  const getRowHeight = useCallback(
-    (index: number) => {
-      const post = posts[index];
-
-      if (!post || !post.config) return 170; // Default row height if no config
-
-      // Convert the config object to a JSON string
-      const jsonString = JSON.stringify(post.config, null, 2);
-
-      // Count the number of commas in the JSON string to estimate complexity
-      const commaCount = (jsonString.match(/,/g) || []).length;
-
-      // Adjust row height based on the number of fields in the config column
-      return selectedColumns.config ? (commaCount + 1) * 40 + 50 : 170;
-    },
-    [selectedColumns],
-  ); // Recalculate height when `selectedColumns` changes
-
-  /**
-   * Ensures the virtualized table recalculates row heights when `selectedColumns` changes.
-   * This prevents layout glitches when toggling column visibility.
-   */
-  useEffect(() => {
-    if (listRef.current) {
-      listRef.current.resetAfterIndex(0, true); // Reset row heights
-    }
-  }, [selectedColumns]);
-
   // Check if at least one column is selected
   const isAnyColumnSelected = Object.values(selectedColumns).some(
     (value) => value,
@@ -187,7 +152,7 @@ const PostList: React.FC<PostListProps> = ({
           <Table
             height={600} // Height of the visible area of the list
             itemCount={posts.length} // Number of rows
-            itemSize={getRowHeight} // Function for row height
+            itemSize={200} // Function for row height
             width="100%" // Table width
             ref={listRef} // Reference for the list
           >
