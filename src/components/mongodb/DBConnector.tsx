@@ -1,9 +1,9 @@
+import { MongoClient, UUID } from "mongodb";
 import {
   convertToEntity,
   tinkerforgeDTO,
   tinkerforgeEntity,
 } from "@/models/zTinkerforgeSensor.schema";
-import { MongoClient } from "mongodb";
 import { config } from "@/../config";
 
 // Cache the db client and promise (to create one) so that (hot) reloading will reuse the connection
@@ -80,6 +80,82 @@ export default async function DBConnector() {
     //await client.close();
   }
   return <span>Connection successfully set up</span>;
+}
+
+/**
+ * Upserts a sensor in the database using the provided sensor data transfer object (DTO).
+ * If a sensor with the given ID exists, it is updated; otherwise, a new sensor is inserted.
+ *
+ * @param {Omit<tinkerforgeDTO, "date_modified"> & Partial<{ date_created: string }>} dto -
+ *        The sensor data transfer object to be upserted. If dto.date_created is not provided, a new sensor insertion
+ *        is assumed.
+ * @returns {Promise<void>} A promise that resolves when the upsert is complete.
+ *
+ * @throws {Error} If the upsert fails, an error is thrown with details.
+ * Possible Errors:
+ * - `MongoWriteException`: If the write fails due to a specific write exception.
+ * - `MongoWriteConcernException`: If the write fails due to being unable to fulfill the write concern.
+ * - `MongoCommandException`: If the write fails due to a specific command exception.
+ * - `MongoException`: If the write fails due to some other failure.
+ * - `ZodIssue`: If the sensorDTO validation fails due to schema issues.
+ */
+export async function upsertSensor(
+  dto: Omit<tinkerforgeDTO, "date_modified"> &
+    Partial<{ date_created: string }>,
+): Promise<void> {
+  try {
+    const client = await connectToDB();
+    const database = client.db("sensor_config");
+    const sensors = database.collection<tinkerforgeEntity>("TinkerforgeSensor");
+
+    // Check if the sensor already exists
+    const existingSensor = await sensors.findOne({ _id: new UUID(dto.id) });
+
+    if (existingSensor) {
+      // Create DTO without date_created field (we don't want to touch it)
+      const updatedDTO: tinkerforgeDTO = {
+        ...dto,
+        date_created: existingSensor.date_created.toISOString(), // Use the one from DB
+        date_modified: new Date().toISOString(),
+      };
+
+      // Convert to entity
+      const candidate = convertToEntity(updatedDTO);
+
+      // When updating, use $set to avoid modifying fields we don't specify
+      await sensors.updateOne(
+        { _id: candidate._id },
+        {
+          $set: {
+            // List all fields except date_created
+            date_modified: candidate.date_modified,
+            enabled: candidate.enabled,
+            label: candidate.label,
+            description: candidate.description,
+            uid: candidate.uid,
+            config: candidate.config,
+            on_connect: candidate.on_connect,
+            // Intentionally omitting date_created
+          },
+        },
+      );
+    } else {
+      // CREATING a new sensor: set date_created
+      const newDTO: tinkerforgeDTO = {
+        ...dto,
+        date_created: new Date().toISOString(),
+        date_modified: new Date().toISOString(),
+      };
+
+      // Convert to entity
+      const candidate = convertToEntity(newDTO);
+
+      // Insert the new document
+      await sensors.insertOne(candidate);
+    }
+  } catch (error) {
+    throw error;
+  }
 }
 
 /**
