@@ -1,3 +1,7 @@
+/* 
+  Reset default margin and padding for the entire page 
+  to prevent unwanted spacing issues.
+*/
 html,
 body {
   margin: 0;
@@ -6,6 +10,11 @@ body {
   height: 100%;
 }
 
+/* 
+  This ensures that the main container (`.App`) 
+  takes up the full viewport height (`100vh`) and width.
+  It also sets up a flexbox layout for easier content alignment.
+*/
 .App {
   display: flex;
   flex-direction: column;
@@ -13,7 +22,71 @@ body {
   width: 100%;
 }
 
+/* 
+  Custom styling for selected text across different browsers 
+  (Chrome, Firefox, Safari).
+  Changes background and text color when the user selects text.
+*/
 ::selection {
-  background-color: #35bfa4; /* Background color of selected text (Chrome, Firefox, Safari) */
-  color: #ffffff; /* Example text color */
+  background-color: #35bfa4; /* Background color of selected text */
+  color: #ffffff; /* Text color for better contrast */
 }
+
+/* 
+  @font-face is used to define custom fonts.
+  These fonts are stored in the `public/fonts/` directory.
+  We are specifying different font weights ranging from 100 to 900.
+  `font-display: swap;` ensures text is displayed immediately with a fallback font
+  until the custom font is fully loaded.
+*/
+@font-face {
+  font-family: "Geist Sans";
+  src: url("/fonts/GeistVF.woff") format("woff");
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Geist Mono";
+  src: url("/fonts/GeistMonoVF.woff") format("woff");
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+/* 
+  Defining global CSS variables (`--font-geist-sans` and `--font-geist-mono`)
+  so we can use them throughout the application.
+  This ensures consistency and makes it easier to update fonts in the future.
+*/
+:root {
+  --font-geist-sans: "Geist Sans", sans-serif;
+  --font-geist-mono: "Geist Mono", monospace;
+}
+
+/* 
+  These utility classes apply the custom fonts to elements.
+  Instead of applying `font-family` inline or in multiple places,
+  we can use `.font-geist-sans` and `.font-geist-mono` as reusable classes.
+*/
+.font-geist-sans {
+  font-family: var(--font-geist-sans);
+}
+
+.font-geist-mono {
+  font-family: var(--font-geist-mono);
+}
+
+/* 
+  Reference to the Hydration Issue:
+    Previously, we were using `next/font/local` to load fonts dynamically,
+    but this caused "Hydration errors" because the server-rendered HTML 
+    didn't match the client-rendered version.
+  
+  Solution:
+    - We moved the fonts to `public/fonts/`, making them static assets.
+    - We replaced `next/font/local` with `@font-face` in `globals.css`.
+    - We use CSS variables (`--font-geist-sans`) to ensure consistent font rendering.
+    - Now, Next.js can correctly pre-render pages with the correct fonts.
+
+  This approach prevents SSR/CSR mismatches and ensures proper font loading.
+*/
